@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class TerminalPrompt
+Partial Class Terminal
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -29,6 +29,7 @@ Partial Class TerminalPrompt
         '
         Me.TextBox1.BackColor = System.Drawing.Color.Black
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBox1.Font = New System.Drawing.Font("Consolas", 11.0!)
         Me.TextBox1.ForeColor = System.Drawing.Color.Silver
         Me.TextBox1.Location = New System.Drawing.Point(0, 0)
         Me.TextBox1.Multiline = True
@@ -40,7 +41,6 @@ Partial Class TerminalPrompt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Terminal"

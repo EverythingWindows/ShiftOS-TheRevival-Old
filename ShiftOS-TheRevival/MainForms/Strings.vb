@@ -1,8 +1,8 @@
 ﻿Public Class Strings
     Public Shared OSInfo() As String
-    Public Shared ComputerInfo() As String
-    Public Shared GameState() As String
-    Public Shared OnceInfo() As String
+    Public Shared ComputerInfo(1) As String
+    Public Shared IsFree As Boolean
+    Public Shared OnceInfo(0) As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -30,6 +30,4 @@
     '0 = Computer Name (default : shiftos)
     '1 = Username (default : user)
     '
-    'GameState Strings:
-    '0 = Playing Mode (default : Story)
 End Class

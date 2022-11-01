@@ -18,6 +18,7 @@ Public Class Form1
             lbl_BuildString.Text = ActualBuildLab
         Catch ex As Exception
             MsgBox("Why? Because of " & ex.Message)
+            lbl_BuildString.Text = ActualBuildLab
         End Try
     End Sub
 
@@ -27,8 +28,8 @@ Public Class Form1
 
     Private Sub btn_FreeRoam_Click(sender As Object, e As EventArgs) Handles btn_FreeRoam.Click
         Try
-            Strings.GameState(0) = "Free"
-            TerminalPrompt.Show()
+            Strings.IsFree = True
+            Terminal.Show()
             Close()
         Catch ex As Exception
             Dim NewBugSlap As New BugSlap
