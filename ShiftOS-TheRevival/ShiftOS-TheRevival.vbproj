@@ -72,17 +72,31 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainForms\ShiftOS Menu.vb">
+    <Compile Include="MainForms\BugSlap.Designer.vb">
+      <DependentUpon>BugSlap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\BugSlap.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\ShiftOS Menu.Designer.vb">
-      <DependentUpon>ShiftOS Menu.vb</DependentUpon>
+    <Compile Include="MainForms\ShiftOSMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\ShiftOSMenu.Designer.vb">
+      <DependentUpon>ShiftOSMenu.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\Strings.vb" />
+    <Compile Include="MainForms\TerminalPrompt.Designer.vb">
+      <DependentUpon>TerminalPrompt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\TerminalPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,14 +110,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MainForms\BugSlap.resx">
+      <DependentUpon>BugSlap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\TerminalPrompt.resx">
+      <DependentUpon>TerminalPrompt.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\ShiftOS Menu.resx">
-      <DependentUpon>ShiftOS Menu.vb</DependentUpon>
+    <EmbeddedResource Include="MainForms\ShiftOSMenu.resx">
+      <DependentUpon>ShiftOSMenu.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

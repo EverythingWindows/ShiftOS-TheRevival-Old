@@ -61,33 +61,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ewindows.
-        '''</summary>
-        Friend ReadOnly Property BuildLab() As String
-            Get
-                Return ResourceManager.GetString("BuildLab", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to 8.
-        '''</summary>
-        Friend ReadOnly Property BuildNumber() As String
-            Get
-                Return ResourceManager.GetString("BuildNumber", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to No.
-        '''</summary>
-        Friend ReadOnly Property ReleasedExe() As String
-            Get
-                Return ResourceManager.GetString("ReleasedExe", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to No
         '''12
         '''Enter your username for the build lab below :

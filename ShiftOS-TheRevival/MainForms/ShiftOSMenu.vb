@@ -24,4 +24,17 @@ Public Class Form1
     Private Sub btn_Exit_Click(sender As Object, e As EventArgs) Handles btn_Exit.Click
         Close()
     End Sub
+
+    Private Sub btn_FreeRoam_Click(sender As Object, e As EventArgs) Handles btn_FreeRoam.Click
+        Try
+            Strings.GameState(0) = "Free"
+            TerminalPrompt.Show()
+            Close()
+        Catch ex As Exception
+            Dim NewBugSlap As New BugSlap
+            NewBugSlap.Show()
+            NewBugSlap.TextBox1.Text = ex.Message
+            Close()
+        End Try
+    End Sub
 End Class

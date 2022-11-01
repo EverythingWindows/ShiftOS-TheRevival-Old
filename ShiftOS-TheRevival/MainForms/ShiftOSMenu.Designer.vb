@@ -29,6 +29,7 @@ Partial Class Form1
         Me.btn_StoryMode = New System.Windows.Forms.Button()
         Me.btn_FreeRoam = New System.Windows.Forms.Button()
         Me.btn_Exit = New System.Windows.Forms.Button()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Label1
@@ -107,6 +108,9 @@ Partial Class Form1
         Me.btn_Exit.Text = "Exit"
         Me.btn_Exit.UseVisualStyleBackColor = True
         '
+        'BackgroundWorker1
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -137,4 +141,5 @@ Partial Class Form1
     Friend WithEvents btn_StoryMode As Button
     Friend WithEvents btn_FreeRoam As Button
     Friend WithEvents btn_Exit As Button
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class
