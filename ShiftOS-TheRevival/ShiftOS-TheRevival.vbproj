@@ -72,10 +72,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShiftOS Menu.vb">
+    <Compile Include="MainForms\ShiftOS Menu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShiftOS Menu.Designer.vb">
+    <Compile Include="MainForms\ShiftOS Menu.Designer.vb">
       <DependentUpon>ShiftOS Menu.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -102,7 +102,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShiftOS Menu.resx">
+    <EmbeddedResource Include="MainForms\ShiftOS Menu.resx">
       <DependentUpon>ShiftOS Menu.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -117,6 +117,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DevOnlyRes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShiftOSBuildLab.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
