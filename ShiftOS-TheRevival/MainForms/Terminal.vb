@@ -10,6 +10,7 @@
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
+            Strings.ComputerInfo(2) = 0
             PrintPrompt()
             AssignPrompt()
         Else
@@ -55,6 +56,25 @@
             Case "clear"
                 TextBox1.Text = Nothing
                 AdvancedCommand = False
+            Case "codepoint"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(2) & " Codepoint(s) available in your wallet"
+                AdvancedCommand = False
+            Case "help"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine & Environment.NewLine & "You can type 'help' to get all available commands and its corresponding action."
+                If Strings.AvailableFeature(0) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "To get help on each command, you can type 'man [command]'"
+                End If
+                If Strings.AvailableFeature(1) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR      Clear the terminal"
+                End If
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT Display Codepoint(s) from your wallet"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP      Shows all commands available and its corresponding action"
+                If Strings.AvailableFeature(0) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN       Shows a command, its corresponding action, and its example usage"
+                End If
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN  Terminate ShiftOS session"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER       Printing current version of ShiftOS TheRevival"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine
             Case "ver"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
                 AdvancedCommand = False
@@ -145,6 +165,9 @@
                 End If
             End If
         End If
+
+        TextBox1.Select(TextBox1.TextLength, 0)
+        TextBox1.ScrollToCaret()
     End Sub
 
     Private Sub TextBox1_Click(sender As Object, e As EventArgs) Handles TextBox1.Click, TextBox1.MouseDoubleClick

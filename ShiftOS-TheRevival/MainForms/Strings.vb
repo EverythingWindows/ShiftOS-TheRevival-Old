@@ -1,10 +1,10 @@
 ﻿Public Class Strings
     Public Shared OSInfo() As String
-    Public Shared ComputerInfo(1) As String
+    Public Shared ComputerInfo(2) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
     Public Shared StoryChapter As Integer
-    Public Shared AvailableFeature() As String
+    Public Shared AvailableFeature(1) As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -31,5 +31,9 @@
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)
     '1 = Username (0.1) (default : user)
+    '2 = Codepoint (0.2) (default : 0)
     '
+    'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1)Strings:
+    '0 = MAN command [Manual on each command] (0.2) (default : 0)
+    '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
 End Class
