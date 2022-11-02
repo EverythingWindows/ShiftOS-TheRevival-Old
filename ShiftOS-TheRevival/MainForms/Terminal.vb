@@ -3,6 +3,7 @@
     Public DefaultPrompt As String
     Public TrackPos As Integer
     Public AdvancedCommand As Boolean
+    Public BadCommand As Boolean
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -44,6 +45,10 @@
         End If
     End Sub
 
+    Private Sub Undeveloped()
+        TextBox1.Text = TextBox1.Text & Environment.NewLine & "Oopsie! It's only for newer version"
+    End Sub
+
     Private Sub ReadCommand()
         command = TextBox1.Lines(TextBox1.Lines.Length - 1)
         command = command.Replace(DefaultPrompt, "")
@@ -52,17 +57,30 @@
 
     Private Sub DoCommand()
         AdvancedCommand = True
+        BadCommand = True
         Select Case command
-            Case "clear"
-                TextBox1.Text = Nothing
+            Case ""
                 AdvancedCommand = False
+                BadCommand = False
+            Case "clear"
+                If Strings.AvailableFeature(1) = "1" Then
+                    TextBox1.Text = Nothing
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             Case "codepoint"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(2) & " Codepoint(s) available in your wallet"
                 AdvancedCommand = False
+                BadCommand = False
+            Case "guess"
+                'AppHost("gtn")
+                Undeveloped()
             Case "help"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine & Environment.NewLine & "You can type 'help' to get all available commands and its corresponding action."
                 If Strings.AvailableFeature(0) = 1 Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "To get help on each command, you can type 'man [command]'"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "To get help on each command, you can type 'man [command]'" & Environment.NewLine
+                Else
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine
                 End If
                 If Strings.AvailableFeature(1) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR      Clear the terminal"
@@ -75,9 +93,12 @@
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN  Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER       Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
+                AdvancedCommand = False
+                BadCommand = False
             Case "ver"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
                 AdvancedCommand = False
+                BadCommand = False
             Case "shutdown", "shut down"
                 ShiftOSMenu.Show()
                 Close()
@@ -89,8 +110,13 @@
                 Dim printed As String = command.Replace("print ", "")
                 ''It has the same issue, only displays in lowercase
                 'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                BadCommand = False
             End If
             AdvancedCommand = False
+        End If
+
+        If BadCommand = True Then
+            TextBox1.Text = TextBox1.Text & Environment.NewLine & "Bad command or wrong file name"
         End If
     End Sub
 

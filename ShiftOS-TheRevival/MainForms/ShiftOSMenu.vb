@@ -30,15 +30,42 @@ Public Class ShiftOSMenu
     End Sub
 
     Private Sub btn_FreeRoam_Click(sender As Object, e As EventArgs) Handles btn_FreeRoam.Click
-        Try
-            Strings.IsFree = True
-            Terminal.Show()
-            Close()
-        Catch ex As Exception
-            Dim NewBugSlap As New BugSlap
-            NewBugSlap.Show()
-            NewBugSlap.TextBox1.Text = ex.Message
-            Close()
-        End Try
+        Select Case btn_FreeRoam.Text
+            Case "Free Roam Mode"
+                Try
+                    Strings.IsFree = True
+                    Terminal.Show()
+                    Close()
+                Catch ex As Exception
+                    Dim NewBugSlap As New BugSlap
+                    NewBugSlap.Show()
+                    NewBugSlap.TextBox1.Text = ex.Message
+                    Close()
+                End Try
+            Case "Continue"
+                MsgBox("This feature is in development")
+        End Select
+    End Sub
+
+    Private Sub btn_StoryMode_Click(sender As Object, e As EventArgs) Handles btn_StoryMode.Click
+        Select Case btn_StoryMode.Text
+            Case "Story Mode"
+                btn_StoryMode.Text = "New Game"
+                btn_FreeRoam.Text = "Continue"
+                btn_Aboot.Text = "Back"
+                btn_Exit.Visible = False
+            Case "New Game"
+                MsgBox("This feature is in development")
+        End Select
+    End Sub
+
+    Private Sub btn_Aboot_Click(sender As Object, e As EventArgs) Handles btn_Aboot.Click
+        Select Case btn_Aboot.Text
+            Case "Back"
+                btn_StoryMode.Text = "Story Mode"
+                btn_FreeRoam.Text = "Free Roam Mode"
+                btn_Aboot.Text = "About"
+                btn_Exit.Visible = True
+        End Select
     End Sub
 End Class

@@ -36,4 +36,8 @@
     'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1)Strings:
     '0 = MAN command [Manual on each command] (0.2) (default : 0)
     '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
+    '
+    'Features bought hierarchy :
+    'MAN (20 CP)
+    'CLEAR (25 CP)
 End Class

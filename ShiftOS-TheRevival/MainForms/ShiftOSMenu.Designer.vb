@@ -30,6 +30,8 @@ Partial Class ShiftOSMenu
         Me.btn_FreeRoam = New System.Windows.Forms.Button()
         Me.btn_Exit = New System.Windows.Forms.Button()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Thumbnail = New System.Windows.Forms.PictureBox()
+        CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -60,8 +62,8 @@ Partial Class ShiftOSMenu
         Me.btn_Aboot.ForeColor = System.Drawing.Color.White
         Me.btn_Aboot.Location = New System.Drawing.Point(22, 166)
         Me.btn_Aboot.Name = "btn_Aboot"
-        Me.btn_Aboot.Size = New System.Drawing.Size(158, 23)
-        Me.btn_Aboot.TabIndex = 2
+        Me.btn_Aboot.Size = New System.Drawing.Size(224, 23)
+        Me.btn_Aboot.TabIndex = 3
         Me.btn_Aboot.Text = "About"
         Me.btn_Aboot.UseVisualStyleBackColor = True
         '
@@ -81,8 +83,8 @@ Partial Class ShiftOSMenu
         Me.btn_StoryMode.ForeColor = System.Drawing.Color.White
         Me.btn_StoryMode.Location = New System.Drawing.Point(22, 108)
         Me.btn_StoryMode.Name = "btn_StoryMode"
-        Me.btn_StoryMode.Size = New System.Drawing.Size(158, 23)
-        Me.btn_StoryMode.TabIndex = 2
+        Me.btn_StoryMode.Size = New System.Drawing.Size(224, 23)
+        Me.btn_StoryMode.TabIndex = 1
         Me.btn_StoryMode.Text = "Story Mode"
         Me.btn_StoryMode.UseVisualStyleBackColor = True
         '
@@ -92,7 +94,7 @@ Partial Class ShiftOSMenu
         Me.btn_FreeRoam.ForeColor = System.Drawing.Color.White
         Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 137)
         Me.btn_FreeRoam.Name = "btn_FreeRoam"
-        Me.btn_FreeRoam.Size = New System.Drawing.Size(158, 23)
+        Me.btn_FreeRoam.Size = New System.Drawing.Size(224, 23)
         Me.btn_FreeRoam.TabIndex = 2
         Me.btn_FreeRoam.Text = "Free Roam Mode"
         Me.btn_FreeRoam.UseVisualStyleBackColor = True
@@ -103,10 +105,20 @@ Partial Class ShiftOSMenu
         Me.btn_Exit.ForeColor = System.Drawing.Color.White
         Me.btn_Exit.Location = New System.Drawing.Point(22, 195)
         Me.btn_Exit.Name = "btn_Exit"
-        Me.btn_Exit.Size = New System.Drawing.Size(158, 23)
-        Me.btn_Exit.TabIndex = 2
+        Me.btn_Exit.Size = New System.Drawing.Size(224, 23)
+        Me.btn_Exit.TabIndex = 4
         Me.btn_Exit.Text = "Exit"
         Me.btn_Exit.UseVisualStyleBackColor = True
+        '
+        'Thumbnail
+        '
+        Me.Thumbnail.BackColor = System.Drawing.Color.Silver
+        Me.Thumbnail.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Thumbnail.Location = New System.Drawing.Point(264, 0)
+        Me.Thumbnail.Name = "Thumbnail"
+        Me.Thumbnail.Size = New System.Drawing.Size(360, 441)
+        Me.Thumbnail.TabIndex = 5
+        Me.Thumbnail.TabStop = False
         '
         'ShiftOSMenu
         '
@@ -114,6 +126,7 @@ Partial Class ShiftOSMenu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(624, 441)
+        Me.Controls.Add(Me.Thumbnail)
         Me.Controls.Add(Me.lbl_BuildString)
         Me.Controls.Add(Me.btn_FreeRoam)
         Me.Controls.Add(Me.btn_StoryMode)
@@ -126,6 +139,7 @@ Partial Class ShiftOSMenu
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Main Menu"
+        CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -139,4 +153,5 @@ Partial Class ShiftOSMenu
     Friend WithEvents btn_FreeRoam As Button
     Friend WithEvents btn_Exit As Button
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Thumbnail As PictureBox
 End Class
