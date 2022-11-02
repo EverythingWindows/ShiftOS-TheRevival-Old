@@ -38,6 +38,6 @@
     '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
     '
     'Features bought hierarchy :
-    'MAN (20 CP)
-    'CLEAR (25 CP)
+    'ShiftOS Help Manual (MAN) (20 CP)
+    'Terminal Clear (CLEAR) (25 CP)
 End Class

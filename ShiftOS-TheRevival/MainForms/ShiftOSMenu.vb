@@ -34,6 +34,8 @@ Public Class ShiftOSMenu
             Case "Free Roam Mode"
                 Try
                     Strings.IsFree = True
+                    Strings.AvailableFeature(0) = "0"
+                    Strings.AvailableFeature(1) = "0"
                     Terminal.Show()
                     Close()
                 Catch ex As Exception

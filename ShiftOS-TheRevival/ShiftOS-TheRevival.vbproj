@@ -99,6 +99,7 @@
     <Compile Include="MainForms\BugSlap.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\Shiftoriums.vb" />
     <Compile Include="MainForms\ShiftOSMenu.vb">
       <SubType>Form</SubType>
     </Compile>

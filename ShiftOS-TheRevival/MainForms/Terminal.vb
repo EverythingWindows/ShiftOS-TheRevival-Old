@@ -75,6 +75,11 @@
             Case "guess"
                 'AppHost("gtn")
                 Undeveloped()
+            Case "gimme"
+                Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
+                TempCP = TempCP + 50
+                Strings.ComputerInfo(2) = Convert.ToString(TempCP)
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "you cheater!"
             Case "help"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine & Environment.NewLine & "You can type 'help' to get all available commands and its corresponding action."
                 If Strings.AvailableFeature(0) = 1 Then
@@ -83,7 +88,7 @@
                     TextBox1.Text = TextBox1.Text & Environment.NewLine
                 End If
                 If Strings.AvailableFeature(1) = 1 Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR        Clear the terminal"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR       Clear the terminal"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
@@ -117,58 +122,97 @@
 
         If AdvancedCommand = True Then
             If command Like "man *" Then
-                'MAN command starts with this kinda format
-                'ShiftOS Help Manual
-                '
-                ''command' Usage: [switch/value if needed]
-                '
-                'Summary of the command's action
-                '
-                'Example usage : command
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine
-                'TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(4)
-                Dim mancommand As String = command.Replace("man ", "")
-                Dim TempUsage As String = "'" & mancommand & "' Usage: "
-                Select Case mancommand
-                    Case "clear"
-                        TempUsage = TempUsage & "clear"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Clears all contents of the terminal" & Environment.NewLine
-                        BadCommand = False
-                    Case "codepoint"
-                        TempUsage = TempUsage & "codepoint"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows the value of codepoint in your wallet" & Environment.NewLine
-                        BadCommand = False
-                    Case "help"
-                        TempUsage = TempUsage & "help"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows all commands available in the terminal and its brief explanation of action" & Environment.NewLine
-                        BadCommand = False
-                    Case "man"
-                        TempUsage = TempUsage & "man [command]"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows up a manual on each corresponding command and its example of action" & Environment.NewLine & Environment.NewLine & "[COMMAND] Any command that you want to get the manual for" & Environment.NewLine & Environment.NewLine & "Example: man help"
-                        BadCommand = False
-                    Case "shutdown"
-                        TempUsage = TempUsage & "shutdown"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Terminate ShiftOS session" & Environment.NewLine
-                        BadCommand = False
-                    Case "ver"
-                        TempUsage = TempUsage & "ver"
-                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Displays current version of ShiftOS TheRevival" & Environment.NewLine
-                        BadCommand = False
-                    Case Else
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
-                End Select
-
+                If Strings.AvailableFeature(0) = "1" Then
+                    'MAN command starts with this kinda format
+                    'ShiftOS Help Manual
+                    '
+                    ''command' Usage: [switch/value if needed]
+                    '
+                    'Summary of the command's action
+                    '
+                    'Example usage : command
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine
+                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(4)
+                    Dim mancommand As String = command.Replace("man ", "")
+                    Dim TempUsage As String = "'" & mancommand & "' Usage: "
+                    Select Case mancommand
+                        Case "clear"
+                            TempUsage = TempUsage & "clear"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Clears all contents of the terminal" & Environment.NewLine
+                            BadCommand = False
+                        Case "codepoint"
+                            TempUsage = TempUsage & "codepoint"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows the value of codepoint in your wallet" & Environment.NewLine
+                            BadCommand = False
+                        Case "help"
+                            TempUsage = TempUsage & "help"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows all commands available in the terminal and its brief explanation of action" & Environment.NewLine
+                            BadCommand = False
+                        Case "man"
+                            TempUsage = TempUsage & "man [command]"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows up a manual on each corresponding command and its example of action" & Environment.NewLine & Environment.NewLine & "[COMMAND] Any command that you want to get the manual for" & Environment.NewLine & Environment.NewLine & "Example: man help"
+                            BadCommand = False
+                        Case "shutdown"
+                            TempUsage = TempUsage & "shutdown"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Terminate ShiftOS session" & Environment.NewLine
+                            BadCommand = False
+                        Case "ver"
+                            TempUsage = TempUsage & "ver"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Displays current version of ShiftOS TheRevival" & Environment.NewLine
+                            BadCommand = False
+                        Case Else
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
+                    End Select
+                End If
             End If
             If command Like "shiftorium *" Then
                 Dim prompt As String = command.Replace("shiftorium ", "")
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium ShiftOS Center"
                 If prompt Like "info *" Then
-
+                    prompt = command.Replace("shiftorium info ", "")
+                    'ManHeader is for the ShiftOS Help Manual header and the 'Cost' footer, kinda like template-ish
+                    Dim ManHeader(1) As String
+                    'ManHeader(0) = Insert any feature here for the Case prompt
+                    ManHeader(1) = "Cost: "
+                    Select Case prompt
+                        Case "man"
+                            ManHeader(0) = "ShiftOS Help Manual (command: man)"
+                            ManHeader(1) = "20 CP"
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows up any further help instruction on each command, its corresponding action and its example if necessary" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                            BadCommand = False
+                        Case "clear"
+                            ManHeader(0) = "Clear Terminal Screen (command: clear)"
+                            ManHeader(1) = "25 CP"
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Clears the terminal screen" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                            BadCommand = False
+                        Case Else
+                            BadCommand = False
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
+                    End Select
                 End If
                 If prompt Like "install *" Then
-
+                    prompt = command.Replace("shiftorium install ", "")
+                    Select Case prompt
+                        Case "man"
+                            InstallFeature(True, "man", 20)
+                            BadCommand = False
+                        Case "clear"
+                            InstallFeature(True, "clear", 25)
+                            BadCommand = False
+                        Case Else
+                            BadCommand = False
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
+                    End Select
                 End If
                 If prompt = "list" Then
-
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium Available Feature(s)" & Environment.NewLine
+                    If Strings.AvailableFeature(0) = "0" Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual (20 CP)"
+                    End If
+                    If Strings.AvailableFeature(1) = "0" Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "Clear Terminal Screen (25 CP)"
+                    End If
+                    BadCommand = False
                 End If
             End If
                 If command Like "print *" Then
