@@ -83,21 +83,18 @@
                     TextBox1.Text = TextBox1.Text & Environment.NewLine
                 End If
                 If Strings.AvailableFeature(1) = 1 Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR      Clear the terminal"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR        Clear the terminal"
                 End If
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT Display Codepoint(s) from your wallet"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP      Shows all commands available and its corresponding action"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
                 If Strings.AvailableFeature(0) = 1 Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN       Shows a command, its corresponding action, and its example usage"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN         Shows a command, its corresponding action, and its example usage"
                 End If
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU        Runs terminal as super user"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN  Terminate ShiftOS session"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER       Printing current version of ShiftOS TheRevival"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  Terminate ShiftOS session"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN    Terminate ShiftOS session"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU          Runs terminal as super user"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
-                AdvancedCommand = False
-                BadCommand = False
-            Case "ver"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
                 AdvancedCommand = False
                 BadCommand = False
             Case "su"
@@ -112,20 +109,79 @@
             Case "shutdown", "shut down"
                 ShiftOSMenu.Show()
                 Close()
+            Case "ver"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
+                AdvancedCommand = False
+                BadCommand = False
         End Select
 
         If AdvancedCommand = True Then
-            If command Like "print *" Then
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
-                Dim printed As String = command.Replace("print ", "")
-                ''It has the same issue, only displays in lowercase
-                'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
-                BadCommand = False
-            End If
-            AdvancedCommand = False
-        End If
+            If command Like "man *" Then
+                'MAN command starts with this kinda format
+                'ShiftOS Help Manual
+                '
+                ''command' Usage: [switch/value if needed]
+                '
+                'Summary of the command's action
+                '
+                'Example usage : command
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine
+                'TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(4)
+                Dim mancommand As String = command.Replace("man ", "")
+                Dim TempUsage As String = "'" & mancommand & "' Usage: "
+                Select Case mancommand
+                    Case "clear"
+                        TempUsage = TempUsage & "clear"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Clears all contents of the terminal" & Environment.NewLine
+                        BadCommand = False
+                    Case "codepoint"
+                        TempUsage = TempUsage & "codepoint"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows the value of codepoint in your wallet" & Environment.NewLine
+                        BadCommand = False
+                    Case "help"
+                        TempUsage = TempUsage & "help"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows all commands available in the terminal and its brief explanation of action" & Environment.NewLine
+                        BadCommand = False
+                    Case "man"
+                        TempUsage = TempUsage & "man [command]"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows up a manual on each corresponding command and its example of action" & Environment.NewLine & Environment.NewLine & "[COMMAND] Any command that you want to get the manual for" & Environment.NewLine & Environment.NewLine & "Example: man help"
+                        BadCommand = False
+                    Case "shutdown"
+                        TempUsage = TempUsage & "shutdown"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Terminate ShiftOS session" & Environment.NewLine
+                        BadCommand = False
+                    Case "ver"
+                        TempUsage = TempUsage & "ver"
+                        TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Displays current version of ShiftOS TheRevival" & Environment.NewLine
+                        BadCommand = False
+                    Case Else
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
+                End Select
 
-        If BadCommand = True Then
+            End If
+            If command Like "shiftorium *" Then
+                Dim prompt As String = command.Replace("shiftorium ", "")
+                If prompt Like "info *" Then
+
+                End If
+                If prompt Like "install *" Then
+
+                End If
+                If prompt = "list" Then
+
+                End If
+            End If
+                If command Like "print *" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
+                    Dim printed As String = command.Replace("print ", "")
+                    ''It has the same issue, only displays in lowercase
+                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                    BadCommand = False
+                End If
+                AdvancedCommand = False
+            End If
+
+            If BadCommand = True Then
             TextBox1.Text = TextBox1.Text & Environment.NewLine & "Bad command or wrong file name"
         End If
     End Sub
