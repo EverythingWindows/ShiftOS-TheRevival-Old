@@ -134,9 +134,11 @@ Partial Class ShiftOSMenu
         Me.Controls.Add(Me.btn_Aboot)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "ShiftOSMenu"
         Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Main Menu"
         CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).EndInit()

@@ -57,7 +57,10 @@ Public Class ShiftOSMenu
                 btn_Aboot.Text = "Back"
                 btn_Exit.Visible = False
             Case "New Game"
-                MsgBox("This feature is in development")
+                Strings.IsFree = False
+                MsgBox("This feature is in development, be sure to watch out for bugs")
+                IntroStory.Show()
+                Close()
         End Select
     End Sub
 

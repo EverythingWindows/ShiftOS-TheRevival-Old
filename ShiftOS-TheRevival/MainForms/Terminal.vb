@@ -1,9 +1,13 @@
-﻿Public Class Terminal
+﻿Imports System.IO
+
+Public Class Terminal
     Public command As String
     Public DefaultPrompt As String
     Public TrackPos As Integer
     Public AdvancedCommand As Boolean
     Public BadCommand As Boolean
+    Public DisplayStory As Integer
+    Public StoryToTell As String
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -15,7 +19,16 @@
             PrintPrompt()
             AssignPrompt()
         Else
-
+            If Strings.ComputerInfo(3) = "0" Then
+                TextBox1.ReadOnly = True
+                StoryOnlyTimer.Start()
+            Else
+                Strings.ComputerInfo(0) = "shiftos"
+                Strings.ComputerInfo(1) = "user"
+                Strings.ComputerInfo(2) = 0
+                PrintPrompt()
+                AssignPrompt()
+            End If
         End If
         TextBox1.Select(TextBox1.TextLength, 0)
         TextBox1.ScrollToCaret()
@@ -215,17 +228,17 @@
                     BadCommand = False
                 End If
             End If
-                If command Like "print *" Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
-                    Dim printed As String = command.Replace("print ", "")
-                    ''It has the same issue, only displays in lowercase
-                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
-                    BadCommand = False
-                End If
-                AdvancedCommand = False
+            If command Like "print *" Then
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
+                Dim printed As String = command.Replace("print ", "")
+                ''It has the same issue, only displays in lowercase
+                'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                BadCommand = False
             End If
+            AdvancedCommand = False
+        End If
 
-            If BadCommand = True Then
+        If BadCommand = True Then
             TextBox1.Text = TextBox1.Text & Environment.NewLine & "Bad command or wrong file name"
         End If
     End Sub
@@ -309,5 +322,46 @@
     Private Sub TextBox1_Click(sender As Object, e As EventArgs) Handles TextBox1.Click, TextBox1.MouseDoubleClick
         TextBox1.Select(TextBox1.TextLength, 0)
         TextBox1.ScrollToCaret()
+    End Sub
+
+    Private Sub StoryOnlyTimer_Tick(sender As Object, e As EventArgs) Handles StoryOnlyTimer.Tick
+        Select Case Strings.ComputerInfo(3)
+            Case "0"
+                Select Case DisplayStory
+                    Case 5
+                        TextBox1.Text = "Connected to <null>"
+                    Case 25
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Hey there, Unknown user!"
+                    Case 40
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: You have been selected for an unvolentary test on my experimental operating system, ShiftOS"
+                    Case 90
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: ShiftOS is an operating system that purposes itself to evolve itself as the time progresses"
+                    Case 140
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I will add features into the operating system as you use it"
+                    Case 170
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Currently ShiftOS didn't have that much function aside from a command line with little command"
+                    Case 190
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I'll install ShiftOS now on your system"
+                    Case 215
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I will come back and contact you later on when the time is necessary, see you!"
+                    Case 250
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null> Disconnected"
+                    Case 275
+                        TextBox1.Text = "Installing ShiftOS..."
+                    Case 350
+                        TextBox1.Text = "ShiftOS Installed, The computer will restart in a few seconds"
+                    Case 400
+                        TextBox1.Text = Nothing
+                        TextBox1.ReadOnly = False
+                        Strings.ComputerInfo(0) = "shiftos"
+                        Strings.ComputerInfo(1) = "user"
+                        Strings.ComputerInfo(2) = 0
+                        PrintPrompt()
+                        AssignPrompt()
+                        TextBox1.Select(TextBox1.TextLength, 0)
+                        TextBox1.ScrollToCaret()
+                End Select
+        End Select
+        DisplayStory = DisplayStory + 1
     End Sub
 End Class

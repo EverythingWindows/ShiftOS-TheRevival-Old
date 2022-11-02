@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Terminal
+Partial Class IntroStory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,39 +23,26 @@ Partial Class Terminal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.StoryOnlyTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.OpacityPlay = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.Black
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox1.Font = New System.Drawing.Font("Consolas", 11.0!)
-        Me.TextBox1.ForeColor = System.Drawing.Color.Silver
-        Me.TextBox1.Location = New System.Drawing.Point(0, 0)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(800, 450)
-        Me.TextBox1.TabIndex = 0
-        '
-        'StoryOnlyTimer
+        'OpacityPlay
         '
         '
-        'Terminal
+        'IntroStory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Name = "Terminal"
-        Me.Text = "Terminal"
+        Me.Name = "IntroStory"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.Text = "IntroStory"
+        Me.TopMost = True
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents StoryOnlyTimer As Timer
+    Friend WithEvents OpacityPlay As Timer
 End Class
