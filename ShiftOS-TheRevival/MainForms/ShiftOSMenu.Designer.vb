@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class ShiftOSMenu
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -108,10 +108,7 @@ Partial Class Form1
         Me.btn_Exit.Text = "Exit"
         Me.btn_Exit.UseVisualStyleBackColor = True
         '
-        'BackgroundWorker1
-        '
-        '
-        'Form1
+        'ShiftOSMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -125,7 +122,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "ShiftOSMenu"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Main Menu"

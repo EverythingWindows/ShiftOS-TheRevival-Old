@@ -28,6 +28,7 @@ Partial Class Terminal
         'TextBox1
         '
         Me.TextBox1.BackColor = System.Drawing.Color.Black
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TextBox1.Font = New System.Drawing.Font("Consolas", 11.0!)
         Me.TextBox1.ForeColor = System.Drawing.Color.Silver

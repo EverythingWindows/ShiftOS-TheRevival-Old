@@ -2,6 +2,7 @@
     Public command As String
     Public DefaultPrompt As String
     Public TrackPos As Integer
+    Public AdvancedCommand As Boolean
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -11,7 +12,11 @@
             Strings.ComputerInfo(1) = "user"
             PrintPrompt()
             AssignPrompt()
+        Else
+
         End If
+        TextBox1.Select(TextBox1.TextLength, 0)
+        TextBox1.ScrollToCaret()
     End Sub
 
     Public Sub PrintPrompt()
@@ -42,6 +47,31 @@
         command = TextBox1.Lines(TextBox1.Lines.Length - 1)
         command = command.Replace(DefaultPrompt, "")
         command = command.ToLower()
+    End Sub
+
+    Private Sub DoCommand()
+        AdvancedCommand = True
+        Select Case command
+            Case "clear"
+                TextBox1.Text = Nothing
+                AdvancedCommand = False
+            Case "ver"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
+                AdvancedCommand = False
+            Case "shutdown", "shut down"
+                ShiftOSMenu.Show()
+                Close()
+        End Select
+
+        If AdvancedCommand = True Then
+            If command Like "print *" Then
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
+                Dim printed As String = command.Replace("print ", "")
+                ''It has the same issue, only displays in lowercase
+                'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+            End If
+            AdvancedCommand = False
+        End If
     End Sub
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
@@ -85,7 +115,7 @@
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             ReadCommand()
-            'DoCommand()
+            DoCommand()
 
             If command = "clear" Then
                 PrintPrompt()

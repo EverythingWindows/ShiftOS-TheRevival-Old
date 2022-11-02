@@ -1,24 +1,27 @@
 ﻿Imports System.IO
 
-Public Class Form1
+Public Class ShiftOSMenu
 
     Public Shared ActualBuildLab As String
     Public Shared BuildLab() As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            BuildLab = File.ReadAllLines("D:\ShiftOSBuildLab.txt")
-            If BuildLab(0) = "No" Then
-                Dim BuildNum As Integer = BuildLab(1)
-                BuildNum = BuildLab(1) + 1
-                ActualBuildLab = "ShiftOS_TheRevival." & BuildLab(3) & "." & BuildNum & "." & Date.Today.Year & Date.Today.Month & Date.Today.Day
-                BuildLab(1) = BuildNum
-                File.WriteAllLines("D:\ShiftOSBuildLab.txt", BuildLab)
+            If File.Exists("D:\ShiftOSBuildLab.txt") Then
+                BuildLab = File.ReadAllLines("D:\ShiftOSBuildLab.txt")
+                If BuildLab(0) = "No" Then
+                    Dim BuildNum As Integer = BuildLab(1)
+                    BuildNum = BuildLab(1) + 1
+                    ActualBuildLab = "ShiftOS_TheRevival." & BuildLab(3) & "." & BuildNum & "." & Date.Today.Year & Date.Today.Month & Date.Today.Day
+                    BuildLab(1) = BuildNum
+                    File.WriteAllLines("D:\ShiftOSBuildLab.txt", BuildLab)
+                End If
+                lbl_BuildString.Text = ActualBuildLab
+            Else
+
             End If
-            lbl_BuildString.Text = ActualBuildLab
         Catch ex As Exception
             MsgBox("Why? Because of " & ex.Message)
-            lbl_BuildString.Text = ActualBuildLab
         End Try
     End Sub
 

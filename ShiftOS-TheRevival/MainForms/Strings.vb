@@ -3,6 +3,8 @@
     Public Shared ComputerInfo(1) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
+    Public Shared StoryChapter As Integer
+    Public Shared AvailableFeature() As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -24,10 +26,10 @@
     '0 = OSVersion (default : dependant)
     '
     'OnceInfo Strings:
-    '0 = IsRoot? (default : 0)
+    '0 = IsRoot? (0.1) (default : 0)
     '
     'ComputerInfo Strings:
-    '0 = Computer Name (default : shiftos)
-    '1 = Username (default : user)
+    '0 = Computer Name (0.1) (default : shiftos)
+    '1 = Username (0.1) (default : user)
     '
 End Class

@@ -61,15 +61,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to No
-        '''12
-        '''Enter your username for the build lab below :
-        '''ewindows
-        '''.
+        '''  Looks up a localized string similar to .
         '''</summary>
-        Friend ReadOnly Property ShiftOSBuildLab() As String
+        Friend ReadOnly Property BuildString() As String
             Get
-                Return ResourceManager.GetString("ShiftOSBuildLab", resourceCulture)
+                Return ResourceManager.GetString("BuildString", resourceCulture)
             End Get
         End Property
     End Module

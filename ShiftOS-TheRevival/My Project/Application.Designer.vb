@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.ShiftOS_TheRevival.Form1
+            Me.MainForm = Global.ShiftOS_TheRevival.ShiftOSMenu
         End Sub
     End Class
 End Namespace
