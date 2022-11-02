@@ -23,13 +23,13 @@
 
     Public Sub PrintPrompt()
         If TextBox1.Text = Nothing Then
-            If Strings.OnceInfo(0) = "No" Then
+            If Strings.OnceInfo(0) = "Yes" Then
                 TextBox1.Text = "root@" & Strings.ComputerInfo(0) & " #> "
             Else
                 TextBox1.Text = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
             End If
         Else
-            If Strings.OnceInfo(0) = "No" Then
+            If Strings.OnceInfo(0) = "Yes" Then
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "root@" & Strings.ComputerInfo(0) & " #> "
             Else
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
@@ -38,7 +38,7 @@
     End Sub
 
     Public Sub AssignPrompt()
-        If Strings.OnceInfo(0) = "No" Then
+        If Strings.OnceInfo(0) = "Yes" Then
             DefaultPrompt = "root@" & Strings.ComputerInfo(0) & " #> "
         Else
             DefaultPrompt = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
@@ -90,6 +90,7 @@
                 If Strings.AvailableFeature(0) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN       Shows a command, its corresponding action, and its example usage"
                 End If
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU        Runs terminal as super user"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN  Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER       Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
@@ -97,6 +98,15 @@
                 BadCommand = False
             Case "ver"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
+                AdvancedCommand = False
+                BadCommand = False
+            Case "su"
+                If Strings.OnceInfo(0) = "Yes" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "You already in root mode!"
+                Else
+                    Strings.OnceInfo(0) = "Yes"
+                    AssignPrompt()
+                End If
                 AdvancedCommand = False
                 BadCommand = False
             Case "shutdown", "shut down"

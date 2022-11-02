@@ -26,7 +26,7 @@
     '0 = OSVersion (default : dependant)
     '
     'OnceInfo Strings:
-    '0 = IsRoot? (0.1) (default : 0)
+    '0 = IsRoot? (0.1) (default : No)
     '
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)
