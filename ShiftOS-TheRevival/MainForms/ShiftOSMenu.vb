@@ -6,23 +6,23 @@ Public Class ShiftOSMenu
     Public Shared BuildLab() As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            If File.Exists("D:\ShiftOSBuildLab.txt") Then
-                BuildLab = File.ReadAllLines("D:\ShiftOSBuildLab.txt")
-                If BuildLab(0) = "No" Then
-                    Dim BuildNum As Integer = BuildLab(1)
-                    BuildNum = BuildLab(1) + 1
-                    ActualBuildLab = "ShiftOS_TheRevival." & BuildLab(3) & "." & BuildNum & "." & Date.Today.Year & Date.Today.Month & Date.Today.Day
-                    BuildLab(1) = BuildNum
-                    File.WriteAllLines("D:\ShiftOSBuildLab.txt", BuildLab)
-                End If
-                lbl_BuildString.Text = ActualBuildLab
-            Else
+        'Try
+        '    If File.Exists("D:\ShiftOSBuildLab.txt") Then
+        '        BuildLab = File.ReadAllLines("D:\ShiftOSBuildLab.txt")
+        '        If BuildLab(0) = "No" Then
+        '            Dim BuildNum As Integer = BuildLab(1)
+        '            BuildNum = BuildLab(1) + 1
+        '            ActualBuildLab = "ShiftOS_TheRevival." & BuildLab(3) & "." & BuildNum & "." & Date.Today.Year & Date.Today.Month & Date.Today.Day
+        '            BuildLab(1) = BuildNum
+        '            File.WriteAllLines("D:\ShiftOSBuildLab.txt", BuildLab)
+        '        End If
+        '        lbl_BuildString.Text = ActualBuildLab
+        '    Else
 
-            End If
-        Catch ex As Exception
-            MsgBox("Why? Because of " & ex.Message)
-        End Try
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox("Why? Because of " & ex.Message)
+        'End Try
         CheckUpdate()
     End Sub
 
@@ -76,17 +76,41 @@ Public Class ShiftOSMenu
     End Sub
 
     Private Sub CheckUpdate()
-        If File.Exists("C:\SOS_NewVer.txt") = True Then
-            File.Delete("C:\SOS_NewVer.txt")
-        End If
-        My.Computer.Network.DownloadFile("http://148.251.124.62:8080/ShiftOS/data/NewVer.txt", "C:\SOS_NewVer.txt")
-        Dim CurrentVersion As String = My.Resources.CurrentVersion
-        Dim NewVersion As String = File.ReadAllText("C:\SOS_NewVer.txt")
-        If CurrentVersion = NewVersion Then
+        Try
+            If File.Exists("C:\SOS_NewVer.txt") = True Then
+                File.Delete("C:\SOS_NewVer.txt")
+            End If
+            My.Computer.Network.DownloadFile("http://148.251.124.62:8080/ShiftOS/data/NewVer.txt", "C:\SOS_NewVer.txt")
+            Dim CurrentVersion As String = My.Resources.CurrentVersion
+            Dim NewVersion As String = File.ReadAllText("C:\SOS_NewVer.txt")
+            If CurrentVersion = NewVersion Then
 
-        Else
-            ShiftOSUpdater.Show()
-            ShiftOSUpdater.Label2.Text = "A new version, " & NewVersion & " is available." & Environment.NewLine & "Your version is " & CurrentVersion
+            Else
+                btn_Aboot.Enabled = False
+                btn_Exit.Enabled = False
+                btn_FreeRoam.Enabled = False
+                btn_StoryMode.Enabled = False
+                ShiftOSUpdater.Show()
+                ShiftOSUpdater.NewVersion = NewVersion
+                ShiftOSUpdater.Label2.Text = "A new version, " & NewVersion & " is available." & Environment.NewLine & "Your version is " & CurrentVersion
+                ShiftOSUpdater.Focus()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Label2.Text = "Debug it your way"
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        If Label2.Text = "Debug it your way" Then
+            Strings.IsFree = True
+            Strings.AvailableFeature(0) = "0"
+            Strings.AvailableFeature(1) = "0"
+            Terminal.Show()
+            Close()
         End If
     End Sub
 End Class

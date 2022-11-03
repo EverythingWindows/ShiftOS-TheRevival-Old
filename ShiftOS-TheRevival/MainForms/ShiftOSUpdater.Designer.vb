@@ -26,6 +26,7 @@ Partial Class ShiftOSUpdater
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -70,6 +71,17 @@ Partial Class ShiftOSUpdater
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         Me.ProgressBar1.TabIndex = 3
         '
+        'Button2
+        '
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Consolas", 10.0!)
+        Me.Button2.Location = New System.Drawing.Point(194, 220)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(86, 29)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Download"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'ShiftOSUpdater
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -78,6 +90,7 @@ Partial Class ShiftOSUpdater
         Me.ClientSize = New System.Drawing.Size(384, 261)
         Me.ControlBox = False
         Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -98,4 +111,5 @@ Partial Class ShiftOSUpdater
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Button2 As Button
 End Class
