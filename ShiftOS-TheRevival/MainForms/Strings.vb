@@ -4,6 +4,7 @@
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
     Public Shared AvailableFeature(1) As String
+    Public Shared CLIInterpreter As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!

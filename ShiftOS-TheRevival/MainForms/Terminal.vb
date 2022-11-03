@@ -8,6 +8,8 @@ Public Class Terminal
     Public BadCommand As Boolean
     Public DisplayStory As Integer
     Public StoryToTell As String
+    Public ChangeInterpreter As Boolean = False
+    Public CurrentInterpreter As String = "Terminal"
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -36,25 +38,35 @@ Public Class Terminal
 
     Public Sub PrintPrompt()
         If TextBox1.Text = Nothing Then
-            If Strings.OnceInfo(0) = "Yes" Then
-                TextBox1.Text = "root@" & Strings.ComputerInfo(0) & " #> "
+            If ChangeInterpreter = True Then
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & DefaultPrompt
             Else
-                TextBox1.Text = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+                If Strings.OnceInfo(0) = "Yes" Then
+                    TextBox1.Text = "root@" & Strings.ComputerInfo(0) & " #> "
+                Else
+                    TextBox1.Text = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+                End If
             End If
         Else
-            If Strings.OnceInfo(0) = "Yes" Then
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "root@" & Strings.ComputerInfo(0) & " #> "
+            If ChangeInterpreter = True Then
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & DefaultPrompt
             Else
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+                If Strings.OnceInfo(0) = "Yes" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "root@" & Strings.ComputerInfo(0) & " #> "
+                Else
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+                End If
             End If
         End If
     End Sub
 
     Public Sub AssignPrompt()
-        If Strings.OnceInfo(0) = "Yes" Then
-            DefaultPrompt = "root@" & Strings.ComputerInfo(0) & " #> "
-        Else
-            DefaultPrompt = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+        If ChangeInterpreter = False Then
+            If Strings.OnceInfo(0) = "Yes" Then
+                DefaultPrompt = "root@" & Strings.ComputerInfo(0) & " #> "
+            Else
+                DefaultPrompt = Strings.ComputerInfo(1) & "@" & Strings.ComputerInfo(0) & " $> "
+            End If
         End If
     End Sub
 
@@ -86,8 +98,11 @@ Public Class Terminal
                 AdvancedCommand = False
                 BadCommand = False
             Case "guess"
-                'AppHost("gtn")
-                Undeveloped()
+                ChangeInterpreter = True
+                AppHost("guess")
+                AdvancedCommand = False
+                BadCommand = False
+                'Undeveloped()
             Case "gimme"
                 Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
                 TempCP = TempCP + 50
@@ -149,13 +164,16 @@ Public Class Terminal
                     Dim mancommand As String = command.Replace("man ", "")
                     Dim TempUsage As String = "'" & mancommand & "' Usage: "
                     Select Case mancommand
+                        'In process to convert every command from printing from code to printing from text file
                         Case "clear"
-                            TempUsage = TempUsage & "clear"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Clears all contents of the terminal" & Environment.NewLine
-                            BadCommand = False
+                            If Strings.AvailableFeature(1) = "1" Then
+                                TempUsage = TempUsage & "clear"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_clear & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "codepoint"
                             TempUsage = TempUsage & "codepoint"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows the value of codepoint in your wallet" & Environment.NewLine
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_codepoint & Environment.NewLine
                             BadCommand = False
                         Case "help"
                             TempUsage = TempUsage & "help"
@@ -284,16 +302,24 @@ Public Class Terminal
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             ReadCommand()
-            DoCommand()
-
-            If command = "clear" Then
+            If ChangeInterpreter = True Then
+                DoChildCommand()
                 PrintPrompt()
                 TextBox1.Select(TextBox1.Text.Length, 0)
-
             Else
+                DoCommand()
                 PrintPrompt()
                 TextBox1.Select(TextBox1.Text.Length, 0)
             End If
+
+            'If command = "clear" Then
+            '    PrintPrompt()
+            '    TextBox1.Select(TextBox1.Text.Length, 0)
+
+            'Else
+            '    PrintPrompt()
+            '    TextBox1.Select(TextBox1.Text.Length, 0)
+            'End If
 
             TrackPos = 0
         Else

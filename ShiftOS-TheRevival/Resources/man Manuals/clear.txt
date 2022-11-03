@@ -1,0 +1,1 @@
+﻿Clears all contents of the terminal

@@ -1,0 +1,1 @@
+﻿Shows the value of codepoint in your wallet

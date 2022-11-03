@@ -195,6 +195,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <Content Include="Resources\man Manuals\clear.txt" />
+    <Content Include="Resources\man Manuals\codepoint.txt" />
     <Content Include="ShiftOS.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

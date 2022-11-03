@@ -39,7 +39,8 @@ Public Class ShiftOSUpdater
 
     End Sub
 
-    Private Sub Download_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles Download.DownloadProgressChanged
-        ProgressBar1.Value = e.ProgressPercentage
-    End Sub
+    'Will revisit this later
+    'Private Sub Download_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles Download.DownloadProgressChanged
+    '    ProgressBar1.Value = e.ProgressPercentage
+    'End Sub
 End Class

@@ -70,11 +70,29 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 0.2.0.
+        '''  Looks up a localized string similar to 0.2.1.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
                 Return ResourceManager.GetString("CurrentVersion", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Clears all contents of the terminal.
+        '''</summary>
+        Friend ReadOnly Property man_clear() As String
+            Get
+                Return ResourceManager.GetString("man_clear", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Shows the value of codepoint in your wallet.
+        '''</summary>
+        Friend ReadOnly Property man_codepoint() As String
+            Get
+                Return ResourceManager.GetString("man_codepoint", resourceCulture)
             End Get
         End Property
     End Module
