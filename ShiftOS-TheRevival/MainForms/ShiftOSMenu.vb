@@ -23,6 +23,7 @@ Public Class ShiftOSMenu
         Catch ex As Exception
             MsgBox("Why? Because of " & ex.Message)
         End Try
+        CheckUpdate()
     End Sub
 
     Private Sub btn_Exit_Click(sender As Object, e As EventArgs) Handles btn_Exit.Click
@@ -72,5 +73,20 @@ Public Class ShiftOSMenu
                 btn_Aboot.Text = "About"
                 btn_Exit.Visible = True
         End Select
+    End Sub
+
+    Private Sub CheckUpdate()
+        If File.Exists("C:\SOS_NewVer.txt") = True Then
+            File.Delete("C:\SOS_NewVer.txt")
+        End If
+        My.Computer.Network.DownloadFile("http://148.251.124.62:8080/ShiftOS/data/NewVer.txt", "C:\SOS_NewVer.txt")
+        Dim CurrentVersion As String = My.Resources.CurrentVersion
+        Dim NewVersion As String = File.ReadAllText("C:\SOS_NewVer.txt")
+        If CurrentVersion = NewVersion Then
+
+        Else
+            ShiftOSUpdater.Show()
+            ShiftOSUpdater.Label2.Text = "A new version, " & NewVersion & " is available." & Environment.NewLine & "Your version is " & CurrentVersion
+        End If
     End Sub
 End Class

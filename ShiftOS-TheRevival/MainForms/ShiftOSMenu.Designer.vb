@@ -54,7 +54,7 @@ Partial Class ShiftOSMenu
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(162, 19)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Shift is your way"
+        Me.Label2.Text = "Shift it your way"
         '
         'btn_Aboot
         '

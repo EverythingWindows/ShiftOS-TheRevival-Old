@@ -113,6 +113,12 @@
       <DependentUpon>ShiftOSMenu.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\ShiftOSUpdater.Designer.vb">
+      <DependentUpon>ShiftOSUpdater.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\ShiftOSUpdater.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\Strings.vb" />
     <Compile Include="MainForms\Terminal.Designer.vb">
       <DependentUpon>Terminal.vb</DependentUpon>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\IntroStory.resx">
       <DependentUpon>IntroStory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\ShiftOSUpdater.resx">
+      <DependentUpon>ShiftOSUpdater.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Terminal.resx">
       <DependentUpon>Terminal.vb</DependentUpon>
@@ -185,6 +194,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\CurrentVersion.txt" />
     <Content Include="ShiftOS.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -68,5 +68,14 @@ Namespace My.Resources
                 Return ResourceManager.GetString("BuildString", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 0.2.0.
+        '''</summary>
+        Friend ReadOnly Property CurrentVersion() As String
+            Get
+                Return ResourceManager.GetString("CurrentVersion", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
