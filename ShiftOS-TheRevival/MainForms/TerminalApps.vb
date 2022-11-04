@@ -21,7 +21,12 @@
                 Terminal.CurrentInterpreter = "guess"
                 GTN_GenerateNumber()
                 ShouldChange = True
-            Case "shiftoriumfx"
+            Case "pause" 'Pause function
+                Terminal.DefaultPrompt = "Press any key to continue..."
+                Terminal.CurrentInterpreter = "pause"
+                Terminal.TextBox1.ReadOnly = True
+                ShouldChange = True
+            Case "shiftoriumfx" 'ShiftoriumFX : Advanced Shiftorium
                 Terminal.DefaultPrompt = "Navigate> "
                 Terminal.CurrentInterpreter = "shiftoriumfx"
                 ShiftoriumFX_DisplayPackages()
@@ -39,6 +44,7 @@
         Terminal.CurrentInterpreter = "terminal"
         Terminal.PrintPrompt()
         Terminal.AssignPrompt()
+        Terminal.TextBox1.ReadOnly = False
     End Sub
 
     Public Sub DoChildCommand()
@@ -54,9 +60,11 @@
                             Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Invalid value!"
                         End Try
                 End Select
+            Case "pause"
+                TerminateApp()
             Case "shiftoriumfx"
                 Select Case Terminal.command
-                    Case ""
+                    'Case ""
 
                     Case "exit"
                         TerminateApp()

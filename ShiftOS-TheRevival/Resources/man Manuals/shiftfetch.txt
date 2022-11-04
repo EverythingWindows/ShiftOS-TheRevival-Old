@@ -1,0 +1,2 @@
+﻿Command-line system information tool for ShiftOS
+Ported from Neofetch

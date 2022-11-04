@@ -70,7 +70,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 0.2.1.
+        '''  Looks up a localized string similar to 0.2.2.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
@@ -128,11 +128,30 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Prints a corresponding text entered in the command.
         '''</summary>
         Friend ReadOnly Property man_print() As String
             Get
                 Return ResourceManager.GetString("man_print", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Terminate ShiftOS session and re-running the session.
+        '''</summary>
+        Friend ReadOnly Property man_reboot() As String
+            Get
+                Return ResourceManager.GetString("man_reboot", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Command-line system information tool for ShiftOS
+        '''Ported from Neofetch.
+        '''</summary>
+        Friend ReadOnly Property man_shiftfetch() As String
+            Get
+                Return ResourceManager.GetString("man_shiftfetch", resourceCulture)
             End Get
         End Property
         

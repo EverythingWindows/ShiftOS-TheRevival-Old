@@ -1,0 +1,1 @@
+﻿Terminate ShiftOS session and re-running the session

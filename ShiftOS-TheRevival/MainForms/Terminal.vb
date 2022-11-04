@@ -10,11 +10,11 @@ Public Class Terminal
     Public StoryToTell As String
     Public ChangeInterpreter As Boolean = False
     Public CurrentInterpreter As String = "terminal"
-    Public CommandCache(4) As String
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
         WindowState = FormWindowState.Maximized
+        Cursor.Hide()
         InitializeTerminal()
     End Sub
 
@@ -148,6 +148,10 @@ Public Class Terminal
                 If Strings.AvailableFeature(2) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "PRINT       Prints a corresponding text entered in the command"
                 End If
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "REBOOT      Terminate and re-run ShiftOS session"
+                If Strings.AvailableFeature(8) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTFETCH  Shows informations about your computer"
+                End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  A software center for upgrading features on ShiftOS"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN    Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU          Runs terminal as super user"
@@ -164,6 +168,11 @@ Public Class Terminal
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
+                AdvancedCommand = False
+                BadCommand = False
+            Case "pause"
+                ChangeInterpreter = True
+                AppHost("pause")
                 AdvancedCommand = False
                 BadCommand = False
             Case "reboot"
@@ -218,6 +227,7 @@ Public Class Terminal
                 BadCommand = False
                 Undeveloped()
             Case "shutdown", "shut down"
+                Cursor.Show()
                 ShiftOSMenu.Show()
                 Close()
             Case "time"
@@ -287,6 +297,16 @@ Public Class Terminal
                                 TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_print & Environment.NewLine
                                 BadCommand = False
                             End If
+                        Case "reboot"
+                            TempUsage = TempUsage & "reboot"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_reboot & Environment.NewLine
+                            BadCommand = False
+                        Case "shiftfetch"
+                            If Strings.AvailableFeature(8) = "1" Then
+                                TempUsage = TempUsage & "shiftfetch"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shiftfetch & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "shiftorium"
                             TempUsage = TempUsage & "shiftorium [option] [featureName]"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shiftorium & Environment.NewLine
@@ -338,85 +358,89 @@ Public Class Terminal
     End Sub
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.T AndAlso e.Control Then
-            Me.Hide()
-            e.SuppressKeyPress = True
-        End If
+        If CurrentInterpreter = "pause" Then
+            TerminateApp()
+        Else
+            If e.KeyCode = Keys.T AndAlso e.Control Then
+                Me.Hide()
+                e.SuppressKeyPress = True
+            End If
 
-        Select Case e.KeyCode
-            Case Keys.ShiftKey
-                TrackPos = TrackPos - 1
-            Case Keys.Alt
-                TrackPos = TrackPos - 1
-            Case Keys.CapsLock
-                TrackPos = TrackPos - 1
-            Case Keys.ControlKey
-                TrackPos = TrackPos - 1
-            Case Keys.LWin
-                TrackPos = TrackPos - 1
-            Case Keys.RWin
-                TrackPos = TrackPos - 1
-            Case Keys.Right
-                If TextBox1.SelectionStart = TextBox1.TextLength Then
+            Select Case e.KeyCode
+                Case Keys.ShiftKey
                     TrackPos = TrackPos - 1
+                Case Keys.Alt
+                    TrackPos = TrackPos - 1
+                Case Keys.CapsLock
+                    TrackPos = TrackPos - 1
+                Case Keys.ControlKey
+                    TrackPos = TrackPos - 1
+                Case Keys.LWin
+                    TrackPos = TrackPos - 1
+                Case Keys.RWin
+                    TrackPos = TrackPos - 1
+                Case Keys.Right
+                    If TextBox1.SelectionStart = TextBox1.TextLength Then
+                        TrackPos = TrackPos - 1
+                    End If
+                Case Keys.Left
+                    If TrackPos < 1 Then
+                        e.SuppressKeyPress = True
+                        TrackPos = TrackPos - 1
+                    Else
+                        TrackPos = TrackPos - 2
+                    End If
+                Case Keys.Up
+                    e.SuppressKeyPress = True
+                    TrackPos = TrackPos - 1
+                Case Keys.Down
+                    e.SuppressKeyPress = True
+                    TrackPos = TrackPos - 1
+            End Select
+
+            If e.KeyCode = Keys.Enter Then
+                e.SuppressKeyPress = True
+                If TextBox1.ReadOnly = True Then
+
+                Else
+                    ReadCommand()
+                    If ChangeInterpreter = True Then
+                        DoChildCommand()
+                        PrintPrompt()
+                        TextBox1.Select(TextBox1.Text.Length, 0)
+                    Else
+                        DoCommand()
+                        PrintPrompt()
+                        TextBox1.Select(TextBox1.Text.Length, 0)
+                    End If
                 End If
-            Case Keys.Left
+
+                'If command = "clear" Then
+                '    PrintPrompt()
+                '    TextBox1.Select(TextBox1.Text.Length, 0)
+
+                'Else
+                '    PrintPrompt()
+                '    TextBox1.Select(TextBox1.Text.Length, 0)
+                'End If
+
+                TrackPos = 0
+            Else
+                If e.KeyCode = Keys.Back Then
+                Else
+                    TrackPos = TrackPos + 1
+                End If
+            End If
+
+            If e.KeyCode = Keys.Back Then
                 If TrackPos < 1 Then
                     e.SuppressKeyPress = True
-                    TrackPos = TrackPos - 1
                 Else
-                    TrackPos = TrackPos - 2
-                End If
-            Case Keys.Up
-                e.SuppressKeyPress = True
-                TrackPos = TrackPos - 1
-            Case Keys.Down
-                e.SuppressKeyPress = True
-                TrackPos = TrackPos - 1
-        End Select
-
-        If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True
-            If TextBox1.ReadOnly = True Then
-
-            Else
-                ReadCommand()
-                If ChangeInterpreter = True Then
-                    DoChildCommand()
-                    PrintPrompt()
-                    TextBox1.Select(TextBox1.Text.Length, 0)
-                Else
-                    DoCommand()
-                    PrintPrompt()
-                    TextBox1.Select(TextBox1.Text.Length, 0)
-                End If
-            End If
-
-            'If command = "clear" Then
-            '    PrintPrompt()
-            '    TextBox1.Select(TextBox1.Text.Length, 0)
-
-            'Else
-            '    PrintPrompt()
-            '    TextBox1.Select(TextBox1.Text.Length, 0)
-            'End If
-
-            TrackPos = 0
-        Else
-            If e.KeyCode = Keys.Back Then
-            Else
-                TrackPos = TrackPos + 1
-            End If
-        End If
-
-        If e.KeyCode = Keys.Back Then
-            If TrackPos < 1 Then
-                e.SuppressKeyPress = True
-            Else
-                If TextBox1.SelectedText.Length < 1 Then
-                    TrackPos = TrackPos - 1
-                Else
-                    e.SuppressKeyPress = True
+                    If TextBox1.SelectedText.Length < 1 Then
+                        TrackPos = TrackPos - 1
+                    Else
+                        e.SuppressKeyPress = True
+                    End If
                 End If
             End If
         End If

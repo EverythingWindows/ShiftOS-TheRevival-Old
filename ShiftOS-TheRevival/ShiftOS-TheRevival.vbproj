@@ -202,6 +202,8 @@
     <Content Include="Resources\man Manuals\help.txt" />
     <Content Include="Resources\man Manuals\man.txt" />
     <Content Include="Resources\man Manuals\print.txt" />
+    <Content Include="Resources\man Manuals\reboot.txt" />
+    <Content Include="Resources\man Manuals\shiftfetch.txt" />
     <Content Include="Resources\man Manuals\shiftorium.txt" />
     <Content Include="Resources\man Manuals\shutdown.txt" />
     <Content Include="Resources\man Manuals\ver.txt" />
