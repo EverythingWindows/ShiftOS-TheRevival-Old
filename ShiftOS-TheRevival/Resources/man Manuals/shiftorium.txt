@@ -1,0 +1,10 @@
+﻿A software center for upgrading features in ShiftOS
+
+[OPTION] Shiftorium execute mode
+LIST    Printing a list of available upgrade in ShiftOS
+INFO    Displays informations such as description, instruction, and example command
+INSTALL Install the selected feature to ShiftOS (if the Codepoints are either equal or more to required)
+
+[featureName] Feature name
+
+Example: shiftorium install man, shiftorium info clear

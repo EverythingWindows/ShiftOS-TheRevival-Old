@@ -17,7 +17,7 @@ Public Class Terminal
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
-            Strings.ComputerInfo(2) = 0
+            'Strings.ComputerInfo(2) = 0
             PrintPrompt()
             AssignPrompt()
         Else
@@ -119,11 +119,15 @@ Public Class Terminal
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR       Clear the terminal"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
                 If Strings.AvailableFeature(0) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN         Shows a command, its corresponding action, and its example usage"
                 End If
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  Terminate ShiftOS session"
+                If Strings.AvailableFeature(2) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "PRINT       Prints a corresponding text entered in the command"
+                End If
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  A software center for upgrading features on ShiftOS"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN    Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU          Runs terminal as super user"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
@@ -143,7 +147,7 @@ Public Class Terminal
                 ShiftOSMenu.Show()
                 Close()
             Case "ver"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version 0.1.1"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version " & My.Resources.CurrentVersion
                 AdvancedCommand = False
                 BadCommand = False
         End Select
@@ -175,21 +179,37 @@ Public Class Terminal
                             TempUsage = TempUsage & "codepoint"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_codepoint & Environment.NewLine
                             BadCommand = False
+                        Case "guess"
+                            TempUsage = TempUsage & "guess"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_guess & Environment.NewLine
+                            BadCommand = False
                         Case "help"
                             TempUsage = TempUsage & "help"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows all commands available in the terminal and its brief explanation of action" & Environment.NewLine
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_help & Environment.NewLine
                             BadCommand = False
                         Case "man"
-                            TempUsage = TempUsage & "man [command]"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Shows up a manual on each corresponding command and its example of action" & Environment.NewLine & Environment.NewLine & "[COMMAND] Any command that you want to get the manual for" & Environment.NewLine & Environment.NewLine & "Example: man help"
+                            If Strings.AvailableFeature(0) = "1" Then
+                                TempUsage = TempUsage & "man [command]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_man & Environment.NewLine
+                                BadCommand = False
+                            End If
+                        Case "print"
+                            If Strings.AvailableFeature(2) = "1" Then
+                                TempUsage = TempUsage & "print [text]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_print & Environment.NewLine
+                                BadCommand = False
+                            End If
+                        Case "shiftorium"
+                            TempUsage = TempUsage & "shiftorium [option] [featureName]"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shiftorium & Environment.NewLine
                             BadCommand = False
                         Case "shutdown"
                             TempUsage = TempUsage & "shutdown"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Terminate ShiftOS session" & Environment.NewLine
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shutdown & Environment.NewLine
                             BadCommand = False
                         Case "ver"
                             TempUsage = TempUsage & "ver"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & "Displays current version of ShiftOS TheRevival" & Environment.NewLine
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_ver & Environment.NewLine
                             BadCommand = False
                         Case Else
                             TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
@@ -200,58 +220,26 @@ Public Class Terminal
                 Dim prompt As String = command.Replace("shiftorium ", "")
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium ShiftOS Center"
                 If prompt Like "info *" Then
-                    prompt = command.Replace("shiftorium info ", "")
-                    'ManHeader is for the ShiftOS Help Manual header and the 'Cost' footer, kinda like template-ish
-                    Dim ManHeader(1) As String
-                    'ManHeader(0) = Insert any feature here for the Case prompt
-                    ManHeader(1) = "Cost: "
-                    Select Case prompt
-                        Case "man"
-                            ManHeader(0) = "ShiftOS Help Manual (command: man)"
-                            ManHeader(1) = "20 CP"
-                            TextBox1.Text = TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows up any further help instruction on each command, its corresponding action and its example if necessary" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                            BadCommand = False
-                        Case "clear"
-                            ManHeader(0) = "Clear Terminal Screen (command: clear)"
-                            ManHeader(1) = "25 CP"
-                            TextBox1.Text = TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Clears the terminal screen" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                            BadCommand = False
-                        Case Else
-                            BadCommand = False
-                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
-                    End Select
+                    Shiftoriums.prompt = command.Replace("shiftorium info ", "")
+                    Shiftorium_InformationFeatures()
                 End If
                 If prompt Like "install *" Then
-                    prompt = command.Replace("shiftorium install ", "")
-                    Select Case prompt
-                        Case "man"
-                            InstallFeature(True, "man", 20)
-                            BadCommand = False
-                        Case "clear"
-                            InstallFeature(True, "clear", 25)
-                            BadCommand = False
-                        Case Else
-                            BadCommand = False
-                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
-                    End Select
+                    Shiftoriums.prompt = command.Replace("shiftorium install ", "")
+                    Shiftorium_DetectInstallFeatures()
                 End If
                 If prompt = "list" Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "Shiftorium Available Feature(s)" & Environment.NewLine
-                    If Strings.AvailableFeature(0) = "0" Then
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual (20 CP)"
-                    End If
-                    If Strings.AvailableFeature(1) = "0" Then
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "Clear Terminal Screen (25 CP)"
-                    End If
+                    Shiftorium_ListFeatures()
                     BadCommand = False
                 End If
             End If
             If command Like "print *" Then
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
-                Dim printed As String = command.Replace("print ", "")
-                ''It has the same issue, only displays in lowercase
-                'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
-                BadCommand = False
+                If Strings.AvailableFeature(2) = "1" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
+                    Dim printed As String = command.Replace("print ", "")
+                    ''It has the same issue, only displays in lowercase
+                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                    BadCommand = False
+                End If
             End If
             AdvancedCommand = False
         End If
@@ -301,15 +289,19 @@ Public Class Terminal
 
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            ReadCommand()
-            If ChangeInterpreter = True Then
-                DoChildCommand()
-                PrintPrompt()
-                TextBox1.Select(TextBox1.Text.Length, 0)
+            If TextBox1.ReadOnly = True Then
+
             Else
-                DoCommand()
-                PrintPrompt()
-                TextBox1.Select(TextBox1.Text.Length, 0)
+                ReadCommand()
+                If ChangeInterpreter = True Then
+                    DoChildCommand()
+                    PrintPrompt()
+                    TextBox1.Select(TextBox1.Text.Length, 0)
+                Else
+                    DoCommand()
+                    PrintPrompt()
+                    TextBox1.Select(TextBox1.Text.Length, 0)
+                End If
             End If
 
             'If command = "clear" Then

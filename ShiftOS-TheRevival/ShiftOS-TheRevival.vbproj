@@ -105,6 +105,7 @@
     <Compile Include="MainForms\IntroStory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\SaveLoadSystem.vb" />
     <Compile Include="MainForms\Shiftoriums.vb" />
     <Compile Include="MainForms\ShiftOSMenu.vb">
       <SubType>Form</SubType>
@@ -197,6 +198,13 @@
     <None Include="Resources\CurrentVersion.txt" />
     <Content Include="Resources\man Manuals\clear.txt" />
     <Content Include="Resources\man Manuals\codepoint.txt" />
+    <Content Include="Resources\man Manuals\guess.txt" />
+    <Content Include="Resources\man Manuals\help.txt" />
+    <Content Include="Resources\man Manuals\man.txt" />
+    <Content Include="Resources\man Manuals\print.txt" />
+    <Content Include="Resources\man Manuals\shiftorium.txt" />
+    <Content Include="Resources\man Manuals\shutdown.txt" />
+    <Content Include="Resources\man Manuals\ver.txt" />
     <Content Include="ShiftOS.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -1,0 +1,5 @@
+﻿Shows up a manual on each corresponding command and its example of action
+
+[COMMAND] Any command that you want to get the manual for
+
+Example: man help

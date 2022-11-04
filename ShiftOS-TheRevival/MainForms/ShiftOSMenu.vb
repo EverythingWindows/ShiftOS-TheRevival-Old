@@ -35,8 +35,7 @@ Public Class ShiftOSMenu
             Case "Free Roam Mode"
                 Try
                     Strings.IsFree = True
-                    Strings.AvailableFeature(0) = "0"
-                    Strings.AvailableFeature(1) = "0"
+                    FreeRoamMode()
                     Terminal.Show()
                     Close()
                 Catch ex As Exception
@@ -107,8 +106,7 @@ Public Class ShiftOSMenu
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
         If Label2.Text = "Debug it your way" Then
             Strings.IsFree = True
-            Strings.AvailableFeature(0) = "0"
-            Strings.AvailableFeature(1) = "0"
+            GodMode()
             Terminal.Show()
             Close()
         End If

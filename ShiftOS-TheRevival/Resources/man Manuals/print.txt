@@ -1,0 +1,1 @@
+﻿Prints a corresponding text entered in the command

@@ -1,0 +1,1 @@
+﻿Displays current version of ShiftOS TheRevival

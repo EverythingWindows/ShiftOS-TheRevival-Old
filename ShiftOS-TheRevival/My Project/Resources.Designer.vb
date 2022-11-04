@@ -95,5 +95,81 @@ Namespace My.Resources
                 Return ResourceManager.GetString("man_codepoint", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Runs the &apos;Guess the Number&apos; application..
+        '''</summary>
+        Friend ReadOnly Property man_guess() As String
+            Get
+                Return ResourceManager.GetString("man_guess", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Shows all commands available in the terminal and its brief explanation of action.
+        '''</summary>
+        Friend ReadOnly Property man_help() As String
+            Get
+                Return ResourceManager.GetString("man_help", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Shows up a manual on each corresponding command and its example of action
+        '''
+        '''[COMMAND] Any command that you want to get the manual for
+        '''
+        '''Example: man help.
+        '''</summary>
+        Friend ReadOnly Property man_man() As String
+            Get
+                Return ResourceManager.GetString("man_man", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .
+        '''</summary>
+        Friend ReadOnly Property man_print() As String
+            Get
+                Return ResourceManager.GetString("man_print", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to A software center for upgrading features in ShiftOS
+        '''
+        '''[OPTION] Shiftorium execute mode
+        '''LIST    Printing a list of available upgrade in ShiftOS
+        '''INFO    Displays informations such as description, instruction, and example command
+        '''INSTALL Install the selected feature to ShiftOS (if the Codepoints are either equal or more to required)
+        '''
+        '''[featureName] Feature name
+        '''
+        '''Example: shiftorium install man, shiftorium info clear.
+        '''</summary>
+        Friend ReadOnly Property man_shiftorium() As String
+            Get
+                Return ResourceManager.GetString("man_shiftorium", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Terminate ShiftOS session.
+        '''</summary>
+        Friend ReadOnly Property man_shutdown() As String
+            Get
+                Return ResourceManager.GetString("man_shutdown", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Displays current version of ShiftOS TheRevival.
+        '''</summary>
+        Friend ReadOnly Property man_ver() As String
+            Get
+                Return ResourceManager.GetString("man_ver", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

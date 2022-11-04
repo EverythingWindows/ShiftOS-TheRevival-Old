@@ -130,4 +130,25 @@
   <data name="man_codepoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\codepoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="man_guess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\guess.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\help.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\man.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\print.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_shiftorium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\shiftorium.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\shutdown.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_ver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\ver.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

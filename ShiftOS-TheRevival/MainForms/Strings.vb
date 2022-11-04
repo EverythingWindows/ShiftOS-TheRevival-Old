@@ -3,8 +3,9 @@
     Public Shared ComputerInfo(3) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
-    Public Shared AvailableFeature(1) As String
+    Public Shared AvailableFeature(3) As String
     Public Shared CLIInterpreter As String
+    Public Shared SaveFile As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -34,11 +35,15 @@
     '2 = Codepoint (0.2) (default : 0)
     '3 = Story Chapter (0.2) (default : 0 for New Game)
     '
-    'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1)Strings:
+    'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2) Strings:
     '0 = MAN command [Manual on each command] (0.2) (default : 0)
     '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
+    '2 = PRINT command [Printing a string] (0.2.2) (default : 0)
+    '3 = Terminal Display Driver [Dependencies for advanced terminal applications] (0.2.2) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Help Manual (MAN) (20 CP)
     'Terminal Clear (CLEAR) (25 CP)
+    '>Terminal Print (PRINT) (30 CP)
+    '>>Terminal Display Driver (50 CP)
 End Class
