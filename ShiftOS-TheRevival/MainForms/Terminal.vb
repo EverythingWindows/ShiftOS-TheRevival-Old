@@ -10,6 +10,7 @@ Public Class Terminal
     Public StoryToTell As String
     Public ChangeInterpreter As Boolean = False
     Public CurrentInterpreter As String = "terminal"
+    Public CommandCache(4) As String
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -179,6 +180,43 @@ Public Class Terminal
                 End If
                 AdvancedCommand = False
                 BadCommand = False
+            Case "shiftfetch"
+                If Strings.AvailableFeature(8) = "1" Then
+                    If Strings.OnceInfo(0) = "Yes" Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & Environment.NewLine & "                 :^!7?JJJJJ?7!^:                  root@shiftos"
+                    Else
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & Environment.NewLine & "                 :^!7?JJJJJ?7!^:                  user@shiftos"
+                    End If
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "            .~?PB###BGP555PGB###BP?~.             ----------------------"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "         .!P#&B57^..::^~~!!~^::~7YG&#5!.          OS: ShiftOS TheRevival"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "       .?#@G7: .^               :^::!5&#?.        Host: " & Environment.MachineName
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "     .?#@5^  !                   .^!!..J&#?       Kernel: " & My.Resources.CurrentVersion
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "    ^B@G^ .J                        :7?..J@G:     Uptime: N/A"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "   ~&@Y  7         ~PB&#Y:.           ~G7 ~&&^    Packages: " & Strings.ComputerInfo(4)
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  ^&@Y  Y         5#5??YB@&B~          .GJ :&&:   Shell: sos-justshell"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  G@B  ?         5P      ^YB!           .#! ~@G   Window Manager: -"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " ^@@! :          @Y   .:::^~:.           7#  Y@^  Window Manager Theme: -"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " 7@@: !          B@&BBBBGPPB@#Y.         :&^ ^@?  Terminal: shiftos-terminal"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: Consolas, 11pt"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " ~@@! !@    G#&B!.          Y@@B         7#.  Y~  CPU: N/A"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  B@G  B@J   ...~&G.       7@@@?        .#?   7   GPU: N/A"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  ~&@? ^@Y       !G#57~~!YB@#Y^        .GP   ..   Memory: " & (My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024) & " GB"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "   !@@7 ~#J        5#&&BG57^          ~BY         Codepoint: " & Strings.ComputerInfo(2)
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "    ~#@Y .5P~                       ^5G~          "
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "     .J&#! ^JY!:.                ^?P5!            "
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "       :J&B?..!JYY7!~::...::~!7Y5Y7:              "
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "         .7PBP?^::~!?JJJJJJJ?7~:                  "
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "            .~?55Y?!^:...                         "
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "                 .:~~^~^^::.                      "
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
+            Case "shiftoriumfx"
+                    'ChangeInterpreter = True
+                    'AppHost("shiftoriumfx")
+                    AdvancedCommand = False
+                BadCommand = False
+                Undeveloped()
             Case "shutdown", "shut down"
                 ShiftOSMenu.Show()
                 Close()

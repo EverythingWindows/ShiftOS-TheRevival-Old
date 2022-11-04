@@ -4,30 +4,33 @@
     Public Sub Shiftorium_ListFeatures()
         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium Available Feature(s)" & Environment.NewLine
         If Strings.AvailableFeature(0) = "0" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual (man | 20 CP)"
+            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(man | 20 CP) ShiftOS Help Manual"
         End If
         If Strings.AvailableFeature(1) = "0" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Clear Terminal Screen (clear | 25 CP)"
+            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(clear | 25 CP) Clear Terminal Screen"
         Else
             If Strings.AvailableFeature(2) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Print Terminal Screen (print | 30 CP)"
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(print | 30 CP) Print Terminal Screen"
             Else
                 If Strings.AvailableFeature(3) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Terminal Display Driver (termdspdrv | 50 CP)"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(termdspdrv | 50 CP) Terminal Display Driver"
                 Else
                     If Strings.AvailableFeature(4) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Terminal InfoBar (infobar | 55 CP)"
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(infobar | 55 CP) Terminal InfoBar"
+                    End If
+                    If Strings.AvailableFeature(8) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(shiftfetch | 75 CP) Shiftfetch"
                     End If
                 End If
             End If
             If Strings.AvailableFeature(5) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Time by Seconds (stime | 10 CP)"
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
             Else
                 If Strings.AvailableFeature(6) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Time by Minutes (mtime | 20 CP)"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
                 Else
                     If Strings.AvailableFeature(7) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Time by Hours (htime | 40 CP)"
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 40 CP) Time by Hours"
                     End If
                 End If
             End If
@@ -96,6 +99,13 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in hours form since midnight" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "shiftfetch"
+                If Strings.AvailableFeature(8) = "0" Then
+                    ManHeader(0) = "Shiftfetch"
+                    ManHeader(1) = "75 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "ShiftOS port of Neofetch, A command-line system information tool" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -129,6 +139,9 @@
             Case "htime"
                 Shiftorium_InstallFeatures(True, "htime", 7, 40)
                 Terminal.BadCommand = False
+            Case "shiftfetch"
+                Shiftorium_InstallFeatures(True, "shiftfetch", 8, 75)
+                Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -157,6 +170,7 @@
                         Case "termdspdrv"
                             Strings.AvailableFeature(3) = "1"
                             Strings.AvailableFeature(4) = "0"
+                            Strings.AvailableFeature(8) = "0"
                             success = True
                         Case "infobar"
                             Strings.AvailableFeature(4) = "1"
@@ -174,12 +188,16 @@
                             Strings.AvailableFeature(6) = "3"
                             Strings.AvailableFeature(7) = "1"
                             success = True
+                        Case "shiftfetch"
+                            Strings.AvailableFeature(8) = "1"
+                            success = True
                     End Select
                     If success = False Then
                         If IsCLI = True Then
                             Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Invalid command or feature already installed"
                         End If
                     Else
+                        Strings.ComputerInfo(4) = Strings.ComputerInfo(4) + 1
                         TempCP = TempCP - Codepoint
                         Strings.ComputerInfo(2) = Convert.ToString(TempCP)
                         If IsCLI = True Then

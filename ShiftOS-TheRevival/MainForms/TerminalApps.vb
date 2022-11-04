@@ -21,6 +21,12 @@
                 Terminal.CurrentInterpreter = "guess"
                 GTN_GenerateNumber()
                 ShouldChange = True
+            Case "shiftoriumfx"
+                Terminal.DefaultPrompt = "Navigate> "
+                Terminal.CurrentInterpreter = "shiftoriumfx"
+                ShiftoriumFX_DisplayPackages()
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate"
+                ShouldChange = True
         End Select
         If ShouldChange = True Then
             Terminal.ChangeInterpreter = True
@@ -48,6 +54,16 @@
                             Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Invalid value!"
                         End Try
                 End Select
+            Case "shiftoriumfx"
+                Select Case Terminal.command
+                    Case ""
+
+                    Case "exit"
+                        TerminateApp()
+                    Case Else
+                        ShiftoriumFX_DisplayPackages()
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate" & Environment.NewLine & "Invalid package or bad command"
+                End Select
         End Select
     End Sub
 
@@ -73,5 +89,10 @@
                 End If
             End If
         End If
+    End Sub
+
+    Public Sub ShiftoriumFX_DisplayPackages()
+        Terminal.TextBox1.Text = "Shiftorium FX!" & Environment.NewLine & "The place to shiftisize the ShiftOS" & Environment.NewLine & Environment.NewLine & "Available Package(s)"
+        Shiftorium_ListFeatures()
     End Sub
 End Module
