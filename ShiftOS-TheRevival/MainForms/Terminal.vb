@@ -9,15 +9,20 @@ Public Class Terminal
     Public DisplayStory As Integer
     Public StoryToTell As String
     Public ChangeInterpreter As Boolean = False
-    Public CurrentInterpreter As String = "Terminal"
+    Public CurrentInterpreter As String = "terminal"
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
         WindowState = FormWindowState.Maximized
+        InitializeTerminal()
+    End Sub
+
+    Public Sub InitializeTerminal()
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
             'Strings.ComputerInfo(2) = 0
+            CheckFeature()
             PrintPrompt()
             AssignPrompt()
         Else
@@ -28,12 +33,27 @@ Public Class Terminal
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
                 Strings.ComputerInfo(2) = 0
+                CheckFeature()
                 PrintPrompt()
                 AssignPrompt()
             End If
         End If
         TextBox1.Select(TextBox1.TextLength, 0)
         TextBox1.ScrollToCaret()
+    End Sub
+
+    Public Sub CheckFeature()
+        If Strings.AvailableFeature(4) = "1" Then
+            InfoBarTimer.Start()
+            TextBox1.Dock = DockStyle.None
+            InfoBar.Visible = True
+            InfoBar.SendToBack()
+            TextBox1.Dock = DockStyle.Fill
+        Else
+            TextBox1.Dock = DockStyle.None
+            InfoBar.Visible = False
+            TextBox1.Dock = DockStyle.Fill
+        End If
     End Sub
 
     Public Sub PrintPrompt()
@@ -130,10 +150,26 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  A software center for upgrading features on ShiftOS"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN    Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU          Runs terminal as super user"
+                If Strings.AvailableFeature(5) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of seconds since midnight"
+                ElseIf Strings.AvailableFeature(5) = 3 Then
+                    If Strings.AvailableFeature(6) = 1 Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of minutes since midnight"
+                    ElseIf Strings.AvailableFeature(6) = 3 Then
+                        If Strings.AvailableFeature(7) = 1 Then
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of hours since midnight"
+                        End If
+                    End If
+                End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
                 AdvancedCommand = False
                 BadCommand = False
+            Case "reboot"
+                TextBox1.Text = Nothing
+                AdvancedCommand = False
+                BadCommand = False
+                InitializeTerminal()
             Case "su"
                 If Strings.OnceInfo(0) = "Yes" Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "You already in root mode!"
@@ -146,6 +182,20 @@ Public Class Terminal
             Case "shutdown", "shut down"
                 ShiftOSMenu.Show()
                 Close()
+            Case "time"
+                If Strings.AvailableFeature(5) = "1" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & Math.Floor(Date.Now.Subtract(Date.Today).TotalSeconds) & " seconds passed since midnight"
+                ElseIf Strings.AvailableFeature(5) = "3" Then
+                    If Strings.AvailableFeature(6) = "1" Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & Math.Floor(Date.Now.Subtract(Date.Today).TotalMinutes) & " minutes passed since midnight"
+                    ElseIf Strings.AvailableFeature(6) = "3" Then
+                        If Strings.AvailableFeature(7) = "1" Then
+                            TextBox1.Text = TextBox1.Text & Environment.NewLine & Math.Floor(Date.Now.Subtract(Date.Today).TotalHours) & " hours passed since midnight"
+                        End If
+                    End If
+                End If
+                AdvancedCommand = False
+                BadCommand = False
             Case "ver"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS TheRevival version " & My.Resources.CurrentVersion
                 AdvancedCommand = False
@@ -381,5 +431,27 @@ Public Class Terminal
                 End Select
         End Select
         DisplayStory = DisplayStory + 1
+    End Sub
+
+    Private Sub InfoBarTimer_Tick(sender As Object, e As EventArgs) Handles InfoBarTimer.Tick
+        InfoBar.Text = "|"
+        If Strings.AvailableFeature(5) = "1" Then
+            InfoBar.Text = InfoBar.Text & " " & Math.Floor(Date.Now.Subtract(Date.Today).TotalSeconds) & " |"
+        ElseIf Strings.AvailableFeature(5) = "3" Then
+            If Strings.AvailableFeature(6) = "1" Then
+                InfoBar.Text = InfoBar.Text & " " & Math.Floor(Date.Now.Subtract(Date.Today).TotalMinutes) & " |"
+            ElseIf Strings.AvailableFeature(6) = "3" Then
+                If Strings.AvailableFeature(7) = "1" Then
+                    InfoBar.Text = InfoBar.Text & " " & Math.Floor(Date.Now.Subtract(Date.Today).TotalHours) & " |"
+                End If
+            End If
+        End If
+        If Strings.OnceInfo(0) = "Yes" Then
+            InfoBar.Text = InfoBar.Text & " root |"
+        Else
+            InfoBar.Text = InfoBar.Text & " user |"
+        End If
+        InfoBar.Text = InfoBar.Text & " " & CurrentInterpreter & " |"
+        InfoBar.Text = InfoBar.Text & " " & Strings.ComputerInfo(2) & " CP |"
     End Sub
 End Class

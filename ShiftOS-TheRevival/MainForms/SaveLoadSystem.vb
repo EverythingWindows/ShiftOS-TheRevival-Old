@@ -5,6 +5,10 @@
         Strings.AvailableFeature(1) = "0"
         Strings.AvailableFeature(2) = "2"
         Strings.AvailableFeature(3) = "2"
+        Strings.AvailableFeature(4) = "2"
+        Strings.AvailableFeature(5) = "2"
+        Strings.AvailableFeature(6) = "2"
+        Strings.AvailableFeature(7) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
@@ -12,6 +16,10 @@
         Strings.AvailableFeature(1) = "1"
         Strings.AvailableFeature(2) = "1"
         Strings.AvailableFeature(3) = "1"
+        Strings.AvailableFeature(4) = "1"
+        Strings.AvailableFeature(5) = "3"
+        Strings.AvailableFeature(6) = "3"
+        Strings.AvailableFeature(7) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -20,5 +28,9 @@
         Strings.AvailableFeature(1) = "0"
         Strings.AvailableFeature(2) = "2"
         Strings.AvailableFeature(3) = "2"
+        Strings.AvailableFeature(4) = "2"
+        Strings.AvailableFeature(5) = "2"
+        Strings.AvailableFeature(6) = "2"
+        Strings.AvailableFeature(7) = "2"
     End Sub
 End Module

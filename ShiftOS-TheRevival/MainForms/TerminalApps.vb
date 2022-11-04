@@ -30,6 +30,7 @@
 
     Public Sub TerminateApp()
         Terminal.ChangeInterpreter = False
+        Terminal.CurrentInterpreter = "terminal"
         Terminal.PrintPrompt()
         Terminal.AssignPrompt()
     End Sub

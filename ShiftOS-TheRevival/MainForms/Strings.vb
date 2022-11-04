@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(3) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
-    Public Shared AvailableFeature(3) As String
+    Public Shared AvailableFeature(7) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -35,15 +35,23 @@
     '2 = Codepoint (0.2) (default : 0)
     '3 = Story Chapter (0.2) (default : 0 for New Game)
     '
-    'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2) Strings:
+    'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2, Upgraded assigned as 3) Strings:
     '0 = MAN command [Manual on each command] (0.2) (default : 0)
     '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
     '2 = PRINT command [Printing a string] (0.2.2) (default : 0)
     '3 = Terminal Display Driver [Dependencies for advanced terminal applications] (0.2.2) (default : 0)
+    '4 = Terminal InfoBar [A panel bar at the bottom of the terminal to show 'Time', 'User Session', 'Codepoint', 'Program running'] (0.2.2) (default : 0)
+    '5 = Time by Second [Showing time in seconds form since midnight] (0.2.2) (default : 0)
+    '6 = Time by Minutes [Showing time in minutes form since midnight] (0.2.2) (default : 0)
+    '7 = Time by Hours [Showing time in hours form since midnight] (0.2.2) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Help Manual (MAN) (20 CP)
     'Terminal Clear (CLEAR) (25 CP)
     '>Terminal Print (PRINT) (30 CP)
     '>>Terminal Display Driver (50 CP)
+    '>>>Terminal InfoBar (55 CP)
+    '>Time by Seconds (TIME, STIME) (10 CP)
+    '>>Time by Minutes (TIME, MTIME) (20 CP)
+    '>>>Time by Hours (Time, HTIME) (40 CP)
 End Class
