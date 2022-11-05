@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
-    Public Shared AvailableFeature(8) As String
+    Public Shared AvailableFeature(9) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -46,11 +46,13 @@
     '6 = Time by Minutes [Showing time in minutes form since midnight] (0.2.2) (default : 0)
     '7 = Time by Hours [Showing time in hours form since midnight] (0.2.2) (default : 0)
     '8 = Shiftfetch [ShiftOS port of Neofetch, A command-line system information tool] (0.2.3) (default : 0)
+    '9 = bc [Basic Calculator for ShiftOS] (0.2.3) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Help Manual (MAN) (20 CP)
     'Terminal Clear (CLEAR) (25 CP)
     '>Terminal Print (PRINT) (30 CP)
+    '>Basic Calculator (BC) (75 CP)
     '>>Terminal Display Driver (50 CP)
     '>>>Terminal InfoBar (55 CP)
     '>>>Shiftfetch (75 CP)

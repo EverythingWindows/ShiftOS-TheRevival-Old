@@ -108,6 +108,13 @@ Public Class Terminal
             Case ""
                 AdvancedCommand = False
                 BadCommand = False
+            Case "bc"
+                If Strings.AvailableFeature(9) = "1" Then
+                    ChangeInterpreter = True
+                    AppHost("bc")
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             Case "clear"
                 If Strings.AvailableFeature(1) = "1" Then
                     TextBox1.Text = Nothing
@@ -168,11 +175,6 @@ Public Class Terminal
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
-                AdvancedCommand = False
-                BadCommand = False
-            Case "pause"
-                ChangeInterpreter = True
-                AppHost("pause")
                 AdvancedCommand = False
                 BadCommand = False
             Case "reboot"
@@ -267,6 +269,12 @@ Public Class Terminal
                     Dim TempUsage As String = "'" & mancommand & "' Usage: "
                     Select Case mancommand
                         'In process to convert every command from printing from code to printing from text file
+                        Case "bc"
+                            If Strings.AvailableFeature(9) = "1" Then
+                                TempUsage = TempUsage & "bc"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_bc & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "clear"
                             If Strings.AvailableFeature(1) = "1" Then
                                 TempUsage = TempUsage & "clear"
@@ -358,89 +366,85 @@ Public Class Terminal
     End Sub
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
-        If CurrentInterpreter = "pause" Then
-            TerminateApp()
-        Else
-            If e.KeyCode = Keys.T AndAlso e.Control Then
-                Me.Hide()
-                e.SuppressKeyPress = True
-            End If
+        If e.KeyCode = Keys.T AndAlso e.Control Then
+            Me.Hide()
+            e.SuppressKeyPress = True
+        End If
 
-            Select Case e.KeyCode
-                Case Keys.ShiftKey
+        Select Case e.KeyCode
+            Case Keys.ShiftKey
+                TrackPos = TrackPos - 1
+            Case Keys.Alt
+                TrackPos = TrackPos - 1
+            Case Keys.CapsLock
+                TrackPos = TrackPos - 1
+            Case Keys.ControlKey
+                TrackPos = TrackPos - 1
+            Case Keys.LWin
+                TrackPos = TrackPos - 1
+            Case Keys.RWin
+                TrackPos = TrackPos - 1
+            Case Keys.Right
+                If TextBox1.SelectionStart = TextBox1.TextLength Then
                     TrackPos = TrackPos - 1
-                Case Keys.Alt
-                    TrackPos = TrackPos - 1
-                Case Keys.CapsLock
-                    TrackPos = TrackPos - 1
-                Case Keys.ControlKey
-                    TrackPos = TrackPos - 1
-                Case Keys.LWin
-                    TrackPos = TrackPos - 1
-                Case Keys.RWin
-                    TrackPos = TrackPos - 1
-                Case Keys.Right
-                    If TextBox1.SelectionStart = TextBox1.TextLength Then
-                        TrackPos = TrackPos - 1
-                    End If
-                Case Keys.Left
-                    If TrackPos < 1 Then
-                        e.SuppressKeyPress = True
-                        TrackPos = TrackPos - 1
-                    Else
-                        TrackPos = TrackPos - 2
-                    End If
-                Case Keys.Up
-                    e.SuppressKeyPress = True
-                    TrackPos = TrackPos - 1
-                Case Keys.Down
-                    e.SuppressKeyPress = True
-                    TrackPos = TrackPos - 1
-            End Select
-
-            If e.KeyCode = Keys.Enter Then
-                e.SuppressKeyPress = True
-                If TextBox1.ReadOnly = True Then
-
-                Else
-                    ReadCommand()
-                    If ChangeInterpreter = True Then
-                        DoChildCommand()
-                        PrintPrompt()
-                        TextBox1.Select(TextBox1.Text.Length, 0)
-                    Else
-                        DoCommand()
-                        PrintPrompt()
-                        TextBox1.Select(TextBox1.Text.Length, 0)
-                    End If
                 End If
-
-                'If command = "clear" Then
-                '    PrintPrompt()
-                '    TextBox1.Select(TextBox1.Text.Length, 0)
-
-                'Else
-                '    PrintPrompt()
-                '    TextBox1.Select(TextBox1.Text.Length, 0)
-                'End If
-
-                TrackPos = 0
-            Else
-                If e.KeyCode = Keys.Back Then
-                Else
-                    TrackPos = TrackPos + 1
-                End If
-            End If
-
-            If e.KeyCode = Keys.Back Then
+            Case Keys.Left
                 If TrackPos < 1 Then
                     e.SuppressKeyPress = True
+                    TrackPos = TrackPos - 1
                 Else
-                    If TextBox1.SelectedText.Length < 1 Then
-                        TrackPos = TrackPos - 1
-                    Else
-                        e.SuppressKeyPress = True
-                    End If
+                    TrackPos = TrackPos - 2
+                End If
+            Case Keys.Up
+                e.SuppressKeyPress = True
+                TrackPos = TrackPos - 1
+            Case Keys.Down
+                e.SuppressKeyPress = True
+                TrackPos = TrackPos - 1
+        End Select
+
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            If TextBox1.ReadOnly = True Then
+
+            Else
+                ReadCommand()
+                If ChangeInterpreter = True Then
+                    DoChildCommand()
+                    PrintPrompt()
+                    TextBox1.Select(TextBox1.Text.Length, 0)
+                Else
+                    DoCommand()
+                    PrintPrompt()
+                    TextBox1.Select(TextBox1.Text.Length, 0)
+                End If
+            End If
+
+            'If command = "clear" Then
+            '    PrintPrompt()
+            '    TextBox1.Select(TextBox1.Text.Length, 0)
+
+            'Else
+            '    PrintPrompt()
+            '    TextBox1.Select(TextBox1.Text.Length, 0)
+            'End If
+
+            TrackPos = 0
+        Else
+            If e.KeyCode = Keys.Back Then
+            Else
+                TrackPos = TrackPos + 1
+            End If
+        End If
+
+        If e.KeyCode = Keys.Back Then
+            If TrackPos < 1 Then
+                e.SuppressKeyPress = True
+            Else
+                If TextBox1.SelectedText.Length < 1 Then
+                    TrackPos = TrackPos - 1
+                Else
+                    e.SuppressKeyPress = True
                 End If
             End If
         End If

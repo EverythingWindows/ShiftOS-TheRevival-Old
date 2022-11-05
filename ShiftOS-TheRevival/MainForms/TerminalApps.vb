@@ -2,6 +2,15 @@
     Public ShouldChange As Boolean = False
     'This is for GTN's RAM
     Public TheNumber As Integer = 0
+    Public FreezeText As String
+    Public BC_ReadNumbers As Integer
+    Public BC_Numbers1 As String
+    Public BC_Numbers2 As String
+    Public BC_ThriceMoreValue As Integer
+    Public BC_ThriceMoreCount As Integer
+    Public BC_CurrentNumber As String
+    Public BC_Result As Integer
+    Public BC_Operation2 As String
 
     Public Sub ChangeCP(Addition As Boolean, NeededCP As Integer)
         Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
@@ -15,17 +24,24 @@
 
     Public Sub AppHost(App As Object)
         Select Case App
+            Case "bc"
+                Terminal.DefaultPrompt = "> "
+                Terminal.TextBox1.Text = "bc (Basic Calcultator)" & Environment.NewLine & "Copyright, Free Software Foundation." & Environment.NewLine & "ShiftOS port by DevX." & Environment.NewLine & "This is free software with ABSOLUTELY NO WARRANTY." & Environment.NewLine
+                Terminal.CurrentInterpreter = "bc"
+                ShouldChange = True
             Case "guess" 'Guess the Number
                 Terminal.DefaultPrompt = "Your answer: "
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Guess the Number" & Environment.NewLine & "Guess the correct number between 1 and 50 and you'll get anything between 1 to 5 Codepoints" & Environment.NewLine & "Type 'exit' to terminate this game"
                 Terminal.CurrentInterpreter = "guess"
                 GTN_GenerateNumber()
                 ShouldChange = True
-            Case "pause" 'Pause function
-                Terminal.DefaultPrompt = "Press any key to continue..."
-                Terminal.CurrentInterpreter = "pause"
-                Terminal.TextBox1.ReadOnly = True
-                ShouldChange = True
+            'Revisit Later
+            'Case "pause" 'Pause function
+            '    Terminal.TextBox1.ReadOnly = True
+            '    Terminal.DefaultPrompt = "Press any key to continue..."
+            '    Terminal.CurrentInterpreter = "pause"
+            '    FreezeText = Terminal.TextBox1.Text
+            '    ShouldChange = True
             Case "shiftoriumfx" 'ShiftoriumFX : Advanced Shiftorium
                 Terminal.DefaultPrompt = "Navigate> "
                 Terminal.CurrentInterpreter = "shiftoriumfx"
@@ -42,9 +58,7 @@
     Public Sub TerminateApp()
         Terminal.ChangeInterpreter = False
         Terminal.CurrentInterpreter = "terminal"
-        Terminal.PrintPrompt()
         Terminal.AssignPrompt()
-        Terminal.TextBox1.ReadOnly = False
     End Sub
 
     Public Sub DoChildCommand()
@@ -60,11 +74,9 @@
                             Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Invalid value!"
                         End Try
                 End Select
-            Case "pause"
-                TerminateApp()
             Case "shiftoriumfx"
                 Select Case Terminal.command
-                    'Case ""
+                    Case ""
 
                     Case "exit"
                         TerminateApp()
@@ -72,6 +84,75 @@
                         ShiftoriumFX_DisplayPackages()
                         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate" & Environment.NewLine & "Invalid package or bad command"
                 End Select
+            Case "bc"
+                Select Case Terminal.command
+                    Case "jim"
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "69, the funni number" & Environment.NewLine & "gotcha!"
+                    Case "ojas"
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "dis calculator is very gud" & Environment.NewLine & "it counts from another universe"
+                    Case "exit"
+                        TerminateApp()
+                    Case Else
+                        BC_ReadNumbers = 0
+                        BC_ThriceMoreValue = 1
+                        BC_Numbers1 = Nothing
+                        BC_Numbers2 = Nothing
+                        BC_Operation2 = Nothing
+                        BC_CurrentNumber = Nothing
+                        BC_Result = Nothing
+                        Dim GetText As String
+                        Try
+                            Do
+                                GetText = Terminal.command.Chars(BC_ReadNumbers)
+                                Select Case GetText
+                                    Case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+                                        BC_CurrentNumber = BC_CurrentNumber & GetText
+                                    Case "+", "-", "*", "/"
+                                        Dim BC_Numbers3 As Integer
+                                        Select Case BC_ThriceMoreValue
+                                            Case 1
+                                                BC_Numbers1 = BC_CurrentNumber
+                                                BC_CurrentNumber = Nothing
+                                                BC_Operation2 = GetText
+                                                BC_ThriceMoreValue = BC_ThriceMoreValue + 1
+                                            Case >= 2
+                                                BC_Numbers2 = BC_CurrentNumber
+                                                BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
+                                                BC_Numbers3 = BC_Result
+                                                BC_Numbers1 = BC_Numbers3
+                                                BC_Numbers2 = Nothing
+                                                BC_CurrentNumber = Nothing
+                                                BC_ThriceMoreValue = BC_ThriceMoreValue + 1
+                                        End Select
+                                        BC_Operation2 = GetText
+                                    Case "."
+                                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & "Decimals aren't supported yet!"
+                                    Case Else
+                                        'BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
+                                End Select
+                                BC_ReadNumbers = BC_ReadNumbers + 1
+                            Loop
+                        Catch ex As Exception
+                            BC_Numbers2 = BC_CurrentNumber
+                            BC_CurrentNumber = Nothing
+                        End Try
+                        BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
+                        BC_ThriceMoreValue = Nothing
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & BC_Result
+                End Select
+        End Select
+    End Sub
+
+    Public Sub BC_Counting(FirstNum As Integer, SecondNum As Integer, Operation As String)
+        Select Case Operation
+            Case "+"
+                BC_Result = FirstNum + SecondNum
+            Case "-"
+                BC_Result = FirstNum - SecondNum
+            Case "*"
+                BC_Result = FirstNum * SecondNum
+            Case "/"
+                BC_Result = FirstNum / SecondNum
         End Select
     End Sub
 

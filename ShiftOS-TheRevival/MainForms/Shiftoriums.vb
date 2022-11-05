@@ -34,6 +34,9 @@
                     End If
                 End If
             End If
+            If Strings.AvailableFeature(9) = "0" Then
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 10 CP) Basic Calculator"
+            End If
         End If
     End Sub
 
@@ -106,6 +109,13 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "ShiftOS port of Neofetch, A command-line system information tool" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "bc"
+                If Strings.AvailableFeature(9) = "0" Then
+                    ManHeader(0) = "Basic Calculator"
+                    ManHeader(1) = "75 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Basic Calculator for simple calculation" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -142,6 +152,9 @@
             Case "shiftfetch"
                 Shiftorium_InstallFeatures(True, "shiftfetch", 8, 75)
                 Terminal.BadCommand = False
+            Case "bc"
+                Shiftorium_InstallFeatures(True, "bc", 9, 75)
+                Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -162,6 +175,7 @@
                             Strings.AvailableFeature(1) = "1"
                             Strings.AvailableFeature(2) = "0"
                             Strings.AvailableFeature(5) = "0"
+                            Strings.AvailableFeature(9) = "0"
                             success = True
                         Case "print"
                             Strings.AvailableFeature(2) = "1"
@@ -190,6 +204,8 @@
                             success = True
                         Case "shiftfetch"
                             Strings.AvailableFeature(8) = "1"
+                        Case "bc"
+                            Strings.AvailableFeature(9) = "1"
                             success = True
                     End Select
                     If success = False Then

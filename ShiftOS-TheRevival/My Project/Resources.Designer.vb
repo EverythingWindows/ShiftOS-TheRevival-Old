@@ -61,20 +61,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
-        '''</summary>
-        Friend ReadOnly Property BuildString() As String
-            Get
-                Return ResourceManager.GetString("BuildString", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to 0.2.2.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
                 Return ResourceManager.GetString("CurrentVersion", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to A basic command-line tool for simple calculation..
+        '''</summary>
+        Friend ReadOnly Property man_bc() As String
+            Get
+                Return ResourceManager.GetString("man_bc", resourceCulture)
             End Get
         End Property
         

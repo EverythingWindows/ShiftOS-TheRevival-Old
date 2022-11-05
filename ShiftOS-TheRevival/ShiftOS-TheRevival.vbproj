@@ -196,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <Content Include="Resources\man Manuals\bc.txt" />
     <Content Include="Resources\man Manuals\clear.txt" />
     <Content Include="Resources\man Manuals\codepoint.txt" />
     <Content Include="Resources\man Manuals\guess.txt" />
