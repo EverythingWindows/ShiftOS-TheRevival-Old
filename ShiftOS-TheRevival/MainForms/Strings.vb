@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(0) As String
-    Public Shared AvailableFeature(9) As String
+    Public Shared AvailableFeature(10) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -28,6 +28,7 @@
     '
     'OnceInfo Strings:
     '0 = IsRoot? (0.1) (default : No)
+    '1 = RootDirectory (0.2.3) (default : My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS\")
     '
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)
@@ -47,15 +48,17 @@
     '7 = Time by Hours [Showing time in hours form since midnight] (0.2.2) (default : 0)
     '8 = Shiftfetch [ShiftOS port of Neofetch, A command-line system information tool] (0.2.3) (default : 0)
     '9 = bc [Basic Calculator for ShiftOS] (0.2.3) (default : 0)
+    '10 = 2-bit Color Display [Adds Dark Gray and Light Gray support to the Display Driver] (0.2.3) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Help Manual (MAN) (20 CP)
     'Terminal Clear (CLEAR) (25 CP)
     '>Terminal Print (PRINT) (30 CP)
+    '>>Terminal Display Driver (TERMDSPDRV) (50 CP)
+    '>>>Terminal InfoBar (INFOBAR) (55 CP)
+    '>>>Shiftfetch (SHIFTFETCH) (75 CP)
+    '>>>2-bit Color Display (2BITCOLOR) (100 CP)
     '>Basic Calculator (BC) (75 CP)
-    '>>Terminal Display Driver (50 CP)
-    '>>>Terminal InfoBar (55 CP)
-    '>>>Shiftfetch (75 CP)
     '>Time by Seconds (TIME, STIME) (10 CP)
     '>>Time by Minutes (TIME, MTIME) (20 CP)
     '>>>Time by Hours (Time, HTIME) (40 CP)

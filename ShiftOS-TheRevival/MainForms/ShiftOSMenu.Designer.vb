@@ -22,6 +22,7 @@ Partial Class ShiftOSMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btn_Aboot = New System.Windows.Forms.Button()
@@ -31,6 +32,7 @@ Partial Class ShiftOSMenu
         Me.btn_Exit = New System.Windows.Forms.Button()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Thumbnail = New System.Windows.Forms.PictureBox()
+        Me.BannerChange = New System.Windows.Forms.Timer(Me.components)
         CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -113,6 +115,8 @@ Partial Class ShiftOSMenu
         'Thumbnail
         '
         Me.Thumbnail.BackColor = System.Drawing.Color.Silver
+        Me.Thumbnail.BackgroundImage = Global.ShiftOS_TheRevival.My.Resources.Resources.MenuBanner1
+        Me.Thumbnail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Thumbnail.Dock = System.Windows.Forms.DockStyle.Right
         Me.Thumbnail.Location = New System.Drawing.Point(264, 0)
         Me.Thumbnail.Name = "Thumbnail"
@@ -120,11 +124,14 @@ Partial Class ShiftOSMenu
         Me.Thumbnail.TabIndex = 5
         Me.Thumbnail.TabStop = False
         '
+        'BannerChange
+        '
+        '
         'ShiftOSMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Black
+        Me.BackColor = System.Drawing.Color.DimGray
         Me.ClientSize = New System.Drawing.Size(624, 441)
         Me.Controls.Add(Me.Thumbnail)
         Me.Controls.Add(Me.lbl_BuildString)
@@ -156,4 +163,5 @@ Partial Class ShiftOSMenu
     Friend WithEvents btn_Exit As Button
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Thumbnail As PictureBox
+    Friend WithEvents BannerChange As Timer
 End Class

@@ -37,6 +37,9 @@
             If Strings.AvailableFeature(9) = "0" Then
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 10 CP) Basic Calculator"
             End If
+            If Strings.AvailableFeature(10) = "0" Then
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(2bitcolor | 100 CP) 2-bit Color Support"
+            End If
         End If
     End Sub
 
@@ -116,6 +119,13 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Basic Calculator for simple calculation" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "2bitcolor"
+                If Strings.AvailableFeature(10) = "0" Then
+                    ManHeader(0) = "2-bit Color Support"
+                    ManHeader(1) = "100 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds 2 colours (Dark Gray, Light Gray) supports to the terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -155,6 +165,9 @@
             Case "bc"
                 Shiftorium_InstallFeatures(True, "bc", 9, 75)
                 Terminal.BadCommand = False
+            Case "2bitcolor"
+                Shiftorium_InstallFeatures(True, "2bitcolor", 10, 100)
+                Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -185,6 +198,7 @@
                             Strings.AvailableFeature(3) = "1"
                             Strings.AvailableFeature(4) = "0"
                             Strings.AvailableFeature(8) = "0"
+                            Strings.AvailableFeature(10) = "0"
                             success = True
                         Case "infobar"
                             Strings.AvailableFeature(4) = "1"

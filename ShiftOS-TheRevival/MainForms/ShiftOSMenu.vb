@@ -4,6 +4,8 @@ Public Class ShiftOSMenu
 
     Public Shared ActualBuildLab As String
     Public Shared BuildLab() As String
+    Public Shared BannerUse As Integer = 1
+    Public Shared TimeToChange
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Try
@@ -24,6 +26,7 @@ Public Class ShiftOSMenu
         '    MsgBox("Why? Because of " & ex.Message)
         'End Try
         CheckUpdate()
+        BannerChange.Start()
     End Sub
 
     Private Sub btn_Exit_Click(sender As Object, e As EventArgs) Handles btn_Exit.Click
@@ -110,5 +113,16 @@ Public Class ShiftOSMenu
             Terminal.Show()
             Close()
         End If
+    End Sub
+
+    Private Sub BannerChange_Tick(sender As Object, e As EventArgs) Handles BannerChange.Tick
+        Select Case TimeToChange
+            Case 50
+                Thumbnail.BackgroundImage = My.Resources.MenuBanner1
+            Case 100
+                Thumbnail.BackgroundImage = My.Resources.MenuBanner2
+                TimeToChange = 0
+        End Select
+        TimeToChange = TimeToChange + 1
     End Sub
 End Class

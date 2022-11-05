@@ -10,6 +10,7 @@ Public Class Terminal
     Public StoryToTell As String
     Public ChangeInterpreter As Boolean = False
     Public CurrentInterpreter As String = "terminal"
+    Public CurrentDirectory As String
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -19,6 +20,7 @@ Public Class Terminal
     End Sub
 
     Public Sub InitializeTerminal()
+        Strings.OnceInfo(1) = My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS\"
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
@@ -142,6 +144,9 @@ Public Class Terminal
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "To get help on each command, you can type 'man [command]'" & Environment.NewLine
                 Else
                     TextBox1.Text = TextBox1.Text & Environment.NewLine
+                End If
+                If Strings.AvailableFeature(9) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "BC          Basic Calculator for simple calculation"
                 End If
                 If Strings.AvailableFeature(1) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR       Clear the terminal"

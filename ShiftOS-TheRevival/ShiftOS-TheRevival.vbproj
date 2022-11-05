@@ -208,6 +208,8 @@
     <Content Include="Resources\man Manuals\shiftorium.txt" />
     <Content Include="Resources\man Manuals\shutdown.txt" />
     <Content Include="Resources\man Manuals\ver.txt" />
+    <None Include="Resources\ShiftOS_MenuBanner2.jpg" />
+    <None Include="Resources\ShiftOS_MenuBanner1.jpg" />
     <Content Include="ShiftOS.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
