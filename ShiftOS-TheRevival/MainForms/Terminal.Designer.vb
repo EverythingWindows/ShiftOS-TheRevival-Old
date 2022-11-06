@@ -58,6 +58,7 @@ Partial Class Terminal
         Me.InfoBar.TabIndex = 0
         Me.InfoBar.Text = "Infobar"
         Me.InfoBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.InfoBar.Visible = False
         '
         'InfoBarTimer
         '

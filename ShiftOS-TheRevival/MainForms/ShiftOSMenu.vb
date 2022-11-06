@@ -6,6 +6,7 @@ Public Class ShiftOSMenu
     Public Shared BuildLab() As String
     Public Shared BannerUse As Integer = 1
     Public Shared TimeToChange
+    Public Shared ShouldUpdate As Boolean = False
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Try
@@ -26,6 +27,7 @@ Public Class ShiftOSMenu
         '    MsgBox("Why? Because of " & ex.Message)
         'End Try
         CheckUpdate()
+        'CheckInstall()
         BannerChange.Start()
     End Sub
 
@@ -63,6 +65,7 @@ Public Class ShiftOSMenu
                 Strings.IsFree = False
                 MsgBox("This feature is in development, be sure to watch out for bugs")
                 IntroStory.Show()
+                NewGameMode()
                 Close()
         End Select
     End Sub
@@ -100,6 +103,31 @@ Public Class ShiftOSMenu
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub CheckInstall()
+        If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS") = True Then
+            Dim WhatVersion As String = File.ReadAllText(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\version.txt")
+            If WhatVersion = My.Resources.CurrentVersion Then
+
+            Else
+                btn_Aboot.Enabled = False
+                btn_Exit.Enabled = False
+                btn_FreeRoam.Enabled = False
+                btn_StoryMode.Enabled = False
+                ShouldUpdate = True
+                ShiftOSUpdater.Show()
+            End If
+        Else
+            If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS") = True Then
+                If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS") = True Then
+                    Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS\ShiftFS")
+                End If
+            Else
+                Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS")
+                Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS\ShiftFS")
+            End If
+        End If
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click

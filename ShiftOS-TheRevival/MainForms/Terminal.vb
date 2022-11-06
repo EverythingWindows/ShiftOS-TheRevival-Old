@@ -11,6 +11,7 @@ Public Class Terminal
     Public ChangeInterpreter As Boolean = False
     Public CurrentInterpreter As String = "terminal"
     Public CurrentDirectory As String
+    Public StayAtChapter As Boolean = False
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -24,21 +25,28 @@ Public Class Terminal
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
-            'Strings.ComputerInfo(2) = 0
             CheckFeature()
             PrintPrompt()
             AssignPrompt()
         Else
-            If Strings.ComputerInfo(3) = "0" Then
-                TextBox1.ReadOnly = True
-                StoryOnlyTimer.Start()
-            Else
+            If StayAtChapter = True Then
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
-                Strings.ComputerInfo(2) = 0
                 CheckFeature()
                 PrintPrompt()
                 AssignPrompt()
+            Else
+                If Strings.ComputerInfo(3) = "0" Then
+                    TextBox1.ReadOnly = True
+                    StayAtChapter = True
+                    StoryOnlyTimer.Start()
+                Else
+                    Strings.ComputerInfo(0) = "shiftos"
+                    Strings.ComputerInfo(1) = "user"
+                    CheckFeature()
+                    PrintPrompt()
+                    AssignPrompt()
+                End If
             End If
         End If
         TextBox1.Select(TextBox1.TextLength, 0)
@@ -175,6 +183,10 @@ Public Class Terminal
                     ElseIf Strings.AvailableFeature(6) = 3 Then
                         If Strings.AvailableFeature(7) = 1 Then
                             TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of hours since midnight"
+                        ElseIf Strings.AvailableFeature(7) = 3 Then
+                            If Strings.AvailableFeature(12) = 1 Then
+                                TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of PM and AM format"
+                            End If
                         End If
                     End If
                 End If
@@ -214,9 +226,11 @@ Public Class Terminal
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & " ^@@! :          @Y   .:::^~:.           7#  Y@^  Window Manager Theme: -"
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & " 7@@: !          B@&BBBBGPPB@#Y.         :&^ ^@?  Terminal: shiftos-terminal"
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & " ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: Consolas, 11pt"
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " ~@@! !@    G#&B!.          Y@@B         7#.  Y~  CPU: N/A"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & " ~@@! !@    G#&B!.          Y@@B         7#.  Y~  CPU: " & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0", "ProcessorNameString", Nothing)
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "  B@G  B@J   ...~&G.       7@@@?        .#?   7   GPU: N/A"
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  ~&@? ^@Y       !G#57~~!YB@#Y^        .GP   ..   Memory: " & (My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024) & " GB"
+                    Dim TripleDigitRAM As String
+                    TripleDigitRAM = (My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024)
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "  ~&@? ^@Y       !G#57~~!YB@#Y^        .GP   ..   Memory: " & TripleDigitRAM.Substring(0, 4) & " GB"
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "   !@@7 ~#J        5#&&BG57^          ~BY         Codepoint: " & Strings.ComputerInfo(2)
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "    ~#@Y .5P~                       ^5G~          "
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "     .J&#! ^JY!:.                ^?P5!            "
@@ -246,6 +260,14 @@ Public Class Terminal
                     ElseIf Strings.AvailableFeature(6) = "3" Then
                         If Strings.AvailableFeature(7) = "1" Then
                             TextBox1.Text = TextBox1.Text & Environment.NewLine & Math.Floor(Date.Now.Subtract(Date.Today).TotalHours) & " hours passed since midnight"
+                        ElseIf Strings.AvailableFeature(7) = "3" Then
+                            If Strings.AvailableFeature(12) = "1" Then
+                                If Date.Now.Hour < 12 Then
+                                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "The time is " & TimeOfDay.Hour & " AM"
+                                Else
+                                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "The time is " & TimeOfDay.Hour - 12 & " PM"
+                                End If
+                            End If
                         End If
                     End If
                 End If
@@ -490,11 +512,12 @@ Public Class Terminal
                     Case 350
                         TextBox1.Text = "ShiftOS Installed, The computer will restart in a few seconds"
                     Case 400
+                        StoryOnlyTimer.Stop()
                         TextBox1.Text = Nothing
                         TextBox1.ReadOnly = False
                         Strings.ComputerInfo(0) = "shiftos"
                         Strings.ComputerInfo(1) = "user"
-                        Strings.ComputerInfo(2) = 0
+                        CheckFeature()
                         PrintPrompt()
                         AssignPrompt()
                         TextBox1.Select(TextBox1.TextLength, 0)
@@ -514,6 +537,14 @@ Public Class Terminal
             ElseIf Strings.AvailableFeature(6) = "3" Then
                 If Strings.AvailableFeature(7) = "1" Then
                     InfoBar.Text = InfoBar.Text & " " & Math.Floor(Date.Now.Subtract(Date.Today).TotalHours) & " |"
+                ElseIf Strings.AvailableFeature(7) = "3" Then
+                    If Strings.AvailableFeature(12) = "1" Then
+                        If Date.Now.Hour < 12 Then
+                            InfoBar.Text = InfoBar.Text & Environment.NewLine & " " & TimeOfDay.Hour & " AM |"
+                        Else
+                            InfoBar.Text = InfoBar.Text & Environment.NewLine & " " & TimeOfDay.Hour - 12 & " PM |"
+                        End If
+                    End If
                 End If
             End If
         End If

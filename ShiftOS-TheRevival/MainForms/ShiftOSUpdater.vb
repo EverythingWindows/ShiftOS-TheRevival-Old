@@ -6,6 +6,14 @@ Public Class ShiftOSUpdater
     Public NewVersion As String
     Public WithEvents Download As WebClient
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If ShiftOSMenu.ShouldUpdate = True Then
+
+        Else
+            ShiftOSMenu.btn_Aboot.Enabled = True
+            ShiftOSMenu.btn_Exit.Enabled = True
+            ShiftOSMenu.btn_FreeRoam.Enabled = True
+            ShiftOSMenu.btn_StoryMode.Enabled = True
+        End If
         Close()
     End Sub
 
@@ -31,12 +39,17 @@ Public Class ShiftOSUpdater
                 ShiftOSMenu.btn_StoryMode.Enabled = True
                 Button2.Text = "Saved"
             End If
+        ElseIf Button2.Text = "Update" Then
+            Label2.Text = "Updating ShiftOS from" & My.Resources.CurrentVersion & " to " & NewVersion
+
         Else
 
         End If
     End Sub
     Private Sub ShiftOSUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        If ShiftOSMenu.ShouldUpdate = True Then
+            Button1.Text = "Update"
+        End If
     End Sub
 
     'Will revisit this later

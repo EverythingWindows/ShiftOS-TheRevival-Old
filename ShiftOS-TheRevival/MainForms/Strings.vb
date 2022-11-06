@@ -2,8 +2,8 @@
     Public Shared OSInfo() As String
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
-    Public Shared OnceInfo(0) As String
-    Public Shared AvailableFeature(10) As String
+    Public Shared OnceInfo(1) As String
+    Public Shared AvailableFeature(12) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -49,17 +49,21 @@
     '8 = Shiftfetch [ShiftOS port of Neofetch, A command-line system information tool] (0.2.3) (default : 0)
     '9 = bc [Basic Calculator for ShiftOS] (0.2.3) (default : 0)
     '10 = 2-bit Color Display [Adds Dark Gray and Light Gray support to the Display Driver] (0.2.3) (default : 0)
+    '11 = ShiftOS Key [A key to unlock advanced features on ShiftOS] (0.2.3) (default : 0)
+    '12 = Time by PM and AM [Showing time in hours form since midnight] (0.2.3) (default : 0)
     '
     'Features bought hierarchy :
-    'ShiftOS Help Manual (MAN) (20 CP)
-    'Terminal Clear (CLEAR) (25 CP)
-    '>Terminal Print (PRINT) (30 CP)
-    '>>Terminal Display Driver (TERMDSPDRV) (50 CP)
-    '>>>Terminal InfoBar (INFOBAR) (55 CP)
-    '>>>Shiftfetch (SHIFTFETCH) (75 CP)
-    '>>>2-bit Color Display (2BITCOLOR) (100 CP)
-    '>Basic Calculator (BC) (75 CP)
-    '>Time by Seconds (TIME, STIME) (10 CP)
-    '>>Time by Minutes (TIME, MTIME) (20 CP)
-    '>>>Time by Hours (Time, HTIME) (40 CP)
+    'ShiftOS Key (KEY) (5 CP)
+    '>ShiftOS Help Manual (MAN) (20 CP)
+    '>Terminal Clear (CLEAR) (25 CP)
+    '>>Terminal Print (PRINT) (30 CP)
+    '>>>Terminal Display Driver (TERMDSPDRV) (50 CP)
+    '>>>>Terminal InfoBar (INFOBAR) (55 CP)
+    '>>>>Shiftfetch (SHIFTFETCH) (75 CP)
+    '>>>>2-bit Color Display (2BITCOLOR) (100 CP)
+    '>>Basic Calculator (BC) (75 CP)
+    '>>Time by Seconds (TIME, STIME) (10 CP)
+    '>>>Time by Minutes (TIME, MTIME) (20 CP)
+    '>>>>Time by Hours (Time, HTIME) (40 CP)
+    '>>>>>PM and AM (Time, PMAM (60 CP))
 End Class

@@ -3,42 +3,50 @@
 
     Public Sub Shiftorium_ListFeatures()
         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium Available Feature(s)" & Environment.NewLine
-        If Strings.AvailableFeature(0) = "0" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(man | 20 CP) ShiftOS Help Manual"
-        End If
-        If Strings.AvailableFeature(1) = "0" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(clear | 25 CP) Clear Terminal Screen"
+        If Strings.AvailableFeature(11) = "0" Then
+            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(key | 5 CP) ShiftOS Key"
         Else
-            If Strings.AvailableFeature(2) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(print | 30 CP) Print Terminal Screen"
+            If Strings.AvailableFeature(0) = "0" Then
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(man | 20 CP) ShiftOS Help Manual"
+            End If
+            If Strings.AvailableFeature(1) = "0" Then
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(clear | 25 CP) Clear Terminal Screen"
             Else
-                If Strings.AvailableFeature(3) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(termdspdrv | 50 CP) Terminal Display Driver"
+                If Strings.AvailableFeature(2) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(print | 30 CP) Print Terminal Screen"
                 Else
-                    If Strings.AvailableFeature(4) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(infobar | 55 CP) Terminal InfoBar"
-                    End If
-                    If Strings.AvailableFeature(8) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(shiftfetch | 75 CP) Shiftfetch"
+                    If Strings.AvailableFeature(3) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(termdspdrv | 50 CP) Terminal Display Driver"
+                    Else
+                        If Strings.AvailableFeature(4) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(infobar | 55 CP) Terminal InfoBar"
+                        End If
+                        If Strings.AvailableFeature(8) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(shiftfetch | 75 CP) Shiftfetch"
+                        End If
                     End If
                 End If
-            End If
-            If Strings.AvailableFeature(5) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
-            Else
-                If Strings.AvailableFeature(6) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
+                If Strings.AvailableFeature(5) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
                 Else
-                    If Strings.AvailableFeature(7) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 40 CP) Time by Hours"
+                    If Strings.AvailableFeature(6) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
+                    Else
+                        If Strings.AvailableFeature(7) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 40 CP) Time by Hours"
+                        Else
+                            If Strings.AvailableFeature(12) = "0" Then
+                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(pmam | 60 CP) PM and AM"
+                            End If
+                        End If
                     End If
                 End If
-            End If
-            If Strings.AvailableFeature(9) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 10 CP) Basic Calculator"
-            End If
-            If Strings.AvailableFeature(10) = "0" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(2bitcolor | 100 CP) 2-bit Color Support"
+                If Strings.AvailableFeature(9) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 10 CP) Basic Calculator"
+                End If
+                If Strings.AvailableFeature(10) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(2bitcolor | 100 CP) 2-bit Color Support"
+                End If
             End If
         End If
     End Sub
@@ -126,6 +134,20 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds 2 colours (Dark Gray, Light Gray) supports to the terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "key"
+                If Strings.AvailableFeature(11) = "0" Then
+                    ManHeader(0) = "ShiftOS Key"
+                    ManHeader(1) = "5 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "An encryption key to unlock advanced terminal feature for ShiftOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
+            Case "pmam"
+                If Strings.AvailableFeature(12) = "0" Then
+                    ManHeader(0) = "PM and AM"
+                    ManHeader(1) = "60 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in PM and AM format" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -167,6 +189,12 @@
                 Terminal.BadCommand = False
             Case "2bitcolor"
                 Shiftorium_InstallFeatures(True, "2bitcolor", 10, 100)
+                Terminal.BadCommand = False
+            Case "key"
+                Shiftorium_InstallFeatures(True, "key", 11, 5)
+                Terminal.BadCommand = False
+            Case "pmam"
+                Shiftorium_InstallFeatures(True, "pmam", 12, 60)
                 Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
@@ -215,12 +243,26 @@
                         Case "htime"
                             Strings.AvailableFeature(6) = "3"
                             Strings.AvailableFeature(7) = "1"
+                            Strings.AvailableFeature(12) = "0"
                             success = True
                         Case "shiftfetch"
                             Strings.AvailableFeature(8) = "1"
+                            success = True
                         Case "bc"
                             Strings.AvailableFeature(9) = "1"
                             success = True
+                        Case "2bitcolor"
+                            Strings.AvailableFeature(10) = "1"
+                            success = True
+                        Case "key"
+                            Strings.AvailableFeature(11) = "1"
+                            Strings.AvailableFeature(0) = "0"
+                            Strings.AvailableFeature(1) = "0"
+                            success = True
+                        Case "pmam"
+                            Strings.AvailableFeature(7) = "3"
+                            Strings.AvailableFeature(12) = "1"
+                            'Strings.AvailableFeature(13) = "0"
                     End Select
                     If success = False Then
                         If IsCLI = True Then
