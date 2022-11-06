@@ -180,6 +180,16 @@ Public Class Terminal
                 TerminalDirectories(CurrentDirectory)
                 AdvancedCommand = False
                 BadCommand = False
+            Case "exit su"
+                If Strings.OnceInfo(0) = "No" Then
+
+                Else
+                    AdvancedCommand = False
+                    BadCommand = False
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "Exitting root mode..."
+                    Strings.OnceInfo(0) = "No"
+                    AssignPrompt()
+                End If
             Case "guess"
                 ChangeInterpreter = True
                 AppHost("guess", False)
@@ -335,6 +345,9 @@ Public Class Terminal
         End Select
 
         If AdvancedCommand = True Then
+            If command Like "cat *" Then
+                CatFile(command.Substring(4))
+            End If
             If command Like "cd *" Then
                 NavigateDir(command.Replace("cd ", ""))
                 AdvancedCommand = False

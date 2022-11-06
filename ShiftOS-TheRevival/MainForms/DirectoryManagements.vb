@@ -1,6 +1,7 @@
 ﻿Module DirectoryManagements
     Dim spaces As String
     Public Sub TerminalDirectories(TheDirectory As String)
+        Terminal.Pseudodir = TheDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!")
         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Contents of " & Terminal.Pseudodir & Environment.NewLine
         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "[DIR]     0 KB ."
         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "[DIR]     0 KB .."
