@@ -3,6 +3,7 @@
     'This is for GTN's RAM
     Public TheNumber As Integer = 0
     Public FreezeText As String
+    'Basic Calculator's RAM
     Public BC_ReadNumbers As Integer
     Public BC_Numbers1 As String
     Public BC_Numbers2 As String

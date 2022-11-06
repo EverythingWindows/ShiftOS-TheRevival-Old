@@ -11,6 +11,7 @@ Public Class Terminal
     Public ChangeInterpreter As Boolean = False
     Public CurrentInterpreter As String = "terminal"
     Public CurrentDirectory As String
+    Public Pseudodir As String
     Public StayAtChapter As Boolean = False
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,7 +22,8 @@ Public Class Terminal
     End Sub
 
     Public Sub InitializeTerminal()
-        Strings.OnceInfo(1) = My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS\"
+        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS\"
+        Strings.OnceInfo(4) = "!"
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
@@ -49,6 +51,8 @@ Public Class Terminal
                 End If
             End If
         End If
+        CurrentDirectory = Strings.OnceInfo(1)
+        Pseudodir = CurrentDirectory.Replace(Strings.OnceInfo(1), "!\")
         TextBox1.Select(TextBox1.TextLength, 0)
         TextBox1.ScrollToCaret()
     End Sub
@@ -145,6 +149,10 @@ Public Class Terminal
                 DisplayColors()
                 AdvancedCommand = False
                 BadCommand = False
+            Case "dir"
+                TerminalDirectories(CurrentDirectory)
+                AdvancedCommand = False
+                BadCommand = False
             Case "guess"
                 ChangeInterpreter = True
                 AppHost("guess")
@@ -211,15 +219,6 @@ Public Class Terminal
                 AdvancedCommand = False
                 BadCommand = False
                 InitializeTerminal()
-            Case "su"
-                If Strings.OnceInfo(0) = "Yes" Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "You already in root mode!"
-                Else
-                    Strings.OnceInfo(0) = "Yes"
-                    AssignPrompt()
-                End If
-                AdvancedCommand = False
-                BadCommand = False
             Case "shiftfetch"
                 If Strings.AvailableFeature(8) = "1" Then
                     If Strings.OnceInfo(0) = "Yes" Then
@@ -254,9 +253,9 @@ Public Class Terminal
                     BadCommand = False
                 End If
             Case "shiftoriumfx"
-                    'ChangeInterpreter = True
-                    'AppHost("shiftoriumfx")
-                    AdvancedCommand = False
+                'ChangeInterpreter = True
+                'AppHost("shiftoriumfx")
+                AdvancedCommand = False
                 BadCommand = False
                 Undeveloped()
             Case "shutdown", "shut down"
@@ -282,6 +281,15 @@ Public Class Terminal
                             End If
                         End If
                     End If
+                End If
+                AdvancedCommand = False
+                BadCommand = False
+            Case "su"
+                If Strings.OnceInfo(0) = "Yes" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "You already in root mode!"
+                Else
+                    Strings.OnceInfo(0) = "Yes"
+                    AssignPrompt()
                 End If
                 AdvancedCommand = False
                 BadCommand = False
@@ -434,11 +442,23 @@ Public Class Terminal
     End Sub
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.T AndAlso e.Control Then
-            Me.Hide()
-            e.SuppressKeyPress = True
-        End If
-
+        Select Case e.KeyData
+            Case (Keys.Control + Keys.Q)
+                If CurrentInterpreter = "terminal" Then
+                Else
+                    TerminateApp()
+                    PrintPrompt()
+                End If
+        End Select
+        'Select Case e.KeyCode
+        '    Case e.KeyCode = Keys.T AndAlso e.Control
+        '        e.SuppressKeyPress = True
+        '    Case e.KeyCode = Keys.Q AndAlso e.Control
+        '        If CurrentInterpreter = "terminal" Then
+        '        Else
+        '            TerminateApp()
+        '        End If
+        'End Select
         Select Case e.KeyCode
             Case Keys.ShiftKey
                 TrackPos = TrackPos - 1

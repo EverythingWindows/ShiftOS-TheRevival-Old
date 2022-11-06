@@ -204,6 +204,7 @@
             Case "terminal"
                 Terminal.TextBox1.BackColor = BgColor
                 Terminal.TextBox1.ForeColor = FgColor
+                Strings.OnceInfo(3) = Bg & Fg
         End Select
     End Sub
 End Module

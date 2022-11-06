@@ -99,6 +99,7 @@
     <Compile Include="MainForms\BugSlap.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\DirectoryManagements.vb" />
     <Compile Include="MainForms\IntroStory.Designer.vb">
       <DependentUpon>IntroStory.vb</DependentUpon>
     </Compile>

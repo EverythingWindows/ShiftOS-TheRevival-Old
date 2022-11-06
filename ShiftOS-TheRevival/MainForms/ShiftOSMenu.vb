@@ -106,8 +106,8 @@ Public Class ShiftOSMenu
     End Sub
 
     Private Sub CheckInstall()
-        If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS") = True Then
-            Dim WhatVersion As String = File.ReadAllText(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\version.txt")
+        If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
+            Dim WhatVersion As String = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
             If WhatVersion = My.Resources.CurrentVersion Then
 
             Else
@@ -119,8 +119,8 @@ Public Class ShiftOSMenu
                 ShiftOSUpdater.Show()
             End If
         Else
-            If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS") = True Then
-                If Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS") = True Then
+            If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then
+                If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
                     Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS\ShiftFS")
                 End If
             Else
