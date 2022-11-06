@@ -71,6 +71,7 @@ Partial Class Terminal
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.InfoBar)
+        Me.ForeColor = System.Drawing.Color.White
         Me.Name = "Terminal"
         Me.Text = "Terminal"
         Me.ResumeLayout(False)

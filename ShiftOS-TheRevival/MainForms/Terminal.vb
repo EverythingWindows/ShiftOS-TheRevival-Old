@@ -55,11 +55,17 @@ Public Class Terminal
 
     Public Sub CheckFeature()
         If Strings.AvailableFeature(4) = "1" Then
-            InfoBarTimer.Start()
-            TextBox1.Dock = DockStyle.None
-            InfoBar.Visible = True
-            InfoBar.SendToBack()
-            TextBox1.Dock = DockStyle.Fill
+            If Strings.OnceInfo(2) = "True" Then
+                InfoBarTimer.Start()
+                TextBox1.Dock = DockStyle.None
+                InfoBar.Visible = True
+                InfoBar.SendToBack()
+                TextBox1.Dock = DockStyle.Fill
+            Else
+                TextBox1.Dock = DockStyle.None
+                InfoBar.Visible = False
+                TextBox1.Dock = DockStyle.Fill
+            End If
         Else
             TextBox1.Dock = DockStyle.None
             InfoBar.Visible = False
@@ -135,6 +141,10 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & Strings.ComputerInfo(2) & " Codepoint(s) available in your wallet"
                 AdvancedCommand = False
                 BadCommand = False
+            Case "colors"
+                DisplayColors()
+                AdvancedCommand = False
+                BadCommand = False
             Case "guess"
                 ChangeInterpreter = True
                 AppHost("guess")
@@ -160,6 +170,8 @@ Public Class Terminal
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR       Clear the terminal"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLOR       Changes Terminal Text and Background color to the corresponding choice"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLORS      Shows available colors support for the terminal"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
                 If Strings.AvailableFeature(0) = 1 Then
@@ -280,6 +292,35 @@ Public Class Terminal
         End Select
 
         If AdvancedCommand = True Then
+            If command Like "color *" Then
+                GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
+                BadCommand = False
+            End If
+            If command Like "infobar *" Then
+                If Strings.AvailableFeature(4) = "1" Then
+                    'Infobar panel-ish and some sort
+                    Dim infobarcommand As String = command.Replace("infobar ", "")
+                    Dim advancedtool As Boolean = True
+                    Select Case infobarcommand
+                        Case "on"
+                            Strings.OnceInfo(2) = "True"
+                            CheckFeature()
+                            BadCommand = False
+                            advancedtool = False
+                        Case "off"
+                            Strings.OnceInfo(2) = "False"
+                            CheckFeature()
+                            BadCommand = False
+                            advancedtool = False
+                    End Select
+                    If advancedtool = True Then
+                        If infobarcommand Like "color *" Then
+                            GetColor("infobar", infobarcommand.Substring(6, 1), infobarcommand.Substring(7, 1))
+                            BadCommand = False
+                        End If
+                    End If
+                End If
+            End If
             If command Like "man *" Then
                 If Strings.AvailableFeature(0) = "1" Then
                     'MAN command starts with this kinda format

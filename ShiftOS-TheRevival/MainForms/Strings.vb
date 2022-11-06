@@ -2,8 +2,8 @@
     Public Shared OSInfo() As String
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
-    Public Shared OnceInfo(1) As String
-    Public Shared AvailableFeature(12) As String
+    Public Shared OnceInfo(2) As String
+    Public Shared AvailableFeature(15) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -29,6 +29,8 @@
     'OnceInfo Strings:
     '0 = IsRoot? (0.1) (default : No)
     '1 = RootDirectory (0.2.3) (default : My.Computer.FileSystem.SpecialDirectories.Temp & "\ShiftOS\ShiftFS\")
+    '2 = Infobar Boolean (0.2.3) (default : True)
+    '3 = Color for Terminal (0.2.3) (default : 0F)
     '
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)
@@ -51,19 +53,25 @@
     '10 = 2-bit Color Display [Adds Dark Gray and Light Gray support to the Display Driver] (0.2.3) (default : 0)
     '11 = ShiftOS Key [A key to unlock advanced features on ShiftOS] (0.2.3) (default : 0)
     '12 = Time by PM and AM [Showing time in hours form since midnight] (0.2.3) (default : 0)
+    '13 = Red, Green, Blue [Adds Red, Green, and Blue support to the Display Driver] (0.2.3) (default : 0)
+    '14 = RGB Variant [Adds lighter or darker variant of Red, Green, and Blue] (0.2.3) (default : 0)
+    '15 = 4-bit Color Display [Adds to 16 colours support to the Display Driver] (0.2.3) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
-    '>ShiftOS Help Manual (MAN) (20 CP)
-    '>Terminal Clear (CLEAR) (25 CP)
-    '>>Terminal Print (PRINT) (30 CP)
-    '>>>Terminal Display Driver (TERMDSPDRV) (50 CP)
-    '>>>>Terminal InfoBar (INFOBAR) (55 CP)
-    '>>>>Shiftfetch (SHIFTFETCH) (75 CP)
-    '>>>>2-bit Color Display (2BITCOLOR) (100 CP)
-    '>>Basic Calculator (BC) (75 CP)
+    '>ShiftOS Help Manual (MAN) (10 CP)
+    '>Terminal Clear (CLEAR) (20 CP)
+    '>>Terminal Print (PRINT) (25 CP)
+    '>>>Terminal Display Driver (TERMDSPDRV) (40 CP)
+    '>>>>Terminal InfoBar (INFOBAR) (50 CP)
+    '>>>>Shiftfetch (SHIFTFETCH) (55 CP)
+    '>>>>2-bit Color Display (2BITCOLOR) (60 CP)
+    '>>>>>Red, Green, Blue (rgb) (70 CP)
+    '>>>>>>RGB Variant (rgb2) (75 CP)
+    '>>>>>>>4-bit Color Display (4BITCOLOR) (80 CP)
+    '>>Basic Calculator (BC) (55 CP)
     '>>Time by Seconds (TIME, STIME) (10 CP)
     '>>>Time by Minutes (TIME, MTIME) (20 CP)
-    '>>>>Time by Hours (Time, HTIME) (40 CP)
-    '>>>>>PM and AM (Time, PMAM (60 CP))
+    '>>>>Time by Hours (Time, HTIME) (30 CP)
+    '>>>>>PM and AM (Time, PMAM (40 CP))
 End Class
