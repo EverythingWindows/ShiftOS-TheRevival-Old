@@ -2,7 +2,7 @@
     Public Shared OSInfo() As String
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
-    Public Shared OnceInfo(4) As String
+    Public Shared OnceInfo(6) As String
     Public Shared AvailableFeature(15) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
@@ -32,6 +32,8 @@
     '2 = Infobar Boolean (0.2.3) (default : True)
     '3 = Color for Terminal (0.2.3) (default : 0F)
     '4 = RootDirectoryString (0.2.3) (default : !)
+    '5 = Terminal TrackPos (0.2.3) (default : 0)
+    '6 = GameMode (0.2.3) (dependant)
     '
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)

@@ -27,6 +27,7 @@ Partial Class Terminal
         Me.StoryOnlyTimer = New System.Windows.Forms.Timer(Me.components)
         Me.InfoBar = New System.Windows.Forms.TextBox()
         Me.InfoBarTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolBar = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -36,10 +37,10 @@ Partial Class Terminal
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TextBox1.Font = New System.Drawing.Font("Consolas", 11.0!)
         Me.TextBox1.ForeColor = System.Drawing.Color.White
-        Me.TextBox1.Location = New System.Drawing.Point(0, 0)
+        Me.TextBox1.Location = New System.Drawing.Point(0, 36)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(800, 432)
+        Me.TextBox1.Size = New System.Drawing.Size(800, 396)
         Me.TextBox1.TabIndex = 0
         '
         'StoryOnlyTimer
@@ -63,6 +64,18 @@ Partial Class Terminal
         'InfoBarTimer
         '
         '
+        'ToolBar
+        '
+        Me.ToolBar.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ToolBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ToolBar.Font = New System.Drawing.Font("Consolas", 11.0!)
+        Me.ToolBar.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBar.Multiline = True
+        Me.ToolBar.Name = "ToolBar"
+        Me.ToolBar.Size = New System.Drawing.Size(800, 36)
+        Me.ToolBar.TabIndex = 1
+        Me.ToolBar.Visible = False
+        '
         'Terminal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -71,6 +84,7 @@ Partial Class Terminal
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.InfoBar)
+        Me.Controls.Add(Me.ToolBar)
         Me.ForeColor = System.Drawing.Color.White
         Me.Name = "Terminal"
         Me.Text = "Terminal"
@@ -83,4 +97,5 @@ Partial Class Terminal
     Friend WithEvents StoryOnlyTimer As Timer
     Friend WithEvents InfoBar As TextBox
     Friend WithEvents InfoBarTimer As Timer
+    Friend WithEvents ToolBar As TextBox
 End Class

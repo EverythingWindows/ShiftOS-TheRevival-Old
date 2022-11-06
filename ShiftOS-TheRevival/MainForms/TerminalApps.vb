@@ -23,7 +23,7 @@
         Strings.ComputerInfo(2) = Convert.ToString(TempCP)
     End Sub
 
-    Public Sub AppHost(App As Object)
+    Public Sub AppHost(App As Object, UseToolBar As Boolean)
         Select Case App
             Case "bc"
                 Terminal.DefaultPrompt = "> "
@@ -32,7 +32,7 @@
                 ShouldChange = True
             Case "guess" 'Guess the Number
                 Terminal.DefaultPrompt = "Your answer: "
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Guess the Number" & Environment.NewLine & "Guess the correct number between 1 and 50 and you'll get anything between 1 to 5 Codepoints" & Environment.NewLine & "Type 'exit' to terminate this game"
+                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Guess the Number" & Environment.NewLine & "Guess the correct number between 1 and 50 and you'll get anything between 1 to 10 Codepoints" & Environment.NewLine & "Type 'exit' to terminate this game"
                 Terminal.CurrentInterpreter = "guess"
                 GTN_GenerateNumber()
                 ShouldChange = True
@@ -49,7 +49,19 @@
                 ShiftoriumFX_DisplayPackages()
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate"
                 ShouldChange = True
+            Case "textpad"
+                Terminal.DefaultPrompt = ""
+                Terminal.ToolBarUse = True
+                Terminal.CheckFeature()
+                Terminal.CurrentInterpreter = "textpad"
+                Terminal.ToolBar.Text = "TextPad - " & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
+                Terminal.TextBox1.Text = Nothing
+                Terminal.ReleaseCursor = True
         End Select
+        If Terminal.ReleaseCursor = True Then
+            Strings.OnceInfo(5) = Terminal.TrackPos
+            Terminal.TrackPos = Nothing
+        End If
         If ShouldChange = True Then
             Terminal.ChangeInterpreter = True
             ShouldChange = False
@@ -57,8 +69,15 @@
     End Sub
 
     Public Sub TerminateApp()
+        If Terminal.ReleaseCursor = True Then
+            Terminal.TrackPos = Strings.OnceInfo(5)
+            Strings.OnceInfo(5) = 0
+        End If
+        Terminal.ToolBarUse = False
         Terminal.ChangeInterpreter = False
+        Terminal.ReleaseCursor = False
         Terminal.CurrentInterpreter = "terminal"
+        Terminal.CheckFeature()
         Terminal.AssignPrompt()
     End Sub
 
@@ -167,7 +186,7 @@
         If TheirNumber > 0 And TheirNumber < 51 Then
             If TheirNumber = TheNumber Then
                 Dim GetCP As New Random
-                Dim GotCP As Integer = GetCP.Next(1, 6)
+                Dim GotCP As Integer = GetCP.Next(1, 11)
                 ChangeCP(True, GotCP)
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "You are correct!, you got " & GotCP & " Codepoint(s)" & Environment.NewLine & "Guess the new number between 1 and 50."
                 GTN_GenerateNumber()

@@ -61,6 +61,7 @@ Partial Class ShiftOSMenu
         'btn_Aboot
         '
         Me.btn_Aboot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Aboot.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Aboot.ForeColor = System.Drawing.Color.White
         Me.btn_Aboot.Location = New System.Drawing.Point(22, 166)
         Me.btn_Aboot.Name = "btn_Aboot"
@@ -82,6 +83,7 @@ Partial Class ShiftOSMenu
         'btn_StoryMode
         '
         Me.btn_StoryMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_StoryMode.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_StoryMode.ForeColor = System.Drawing.Color.White
         Me.btn_StoryMode.Location = New System.Drawing.Point(22, 108)
         Me.btn_StoryMode.Name = "btn_StoryMode"
@@ -93,6 +95,7 @@ Partial Class ShiftOSMenu
         'btn_FreeRoam
         '
         Me.btn_FreeRoam.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_FreeRoam.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_FreeRoam.ForeColor = System.Drawing.Color.White
         Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 137)
         Me.btn_FreeRoam.Name = "btn_FreeRoam"
@@ -104,6 +107,7 @@ Partial Class ShiftOSMenu
         'btn_Exit
         '
         Me.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Exit.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Exit.ForeColor = System.Drawing.Color.White
         Me.btn_Exit.Location = New System.Drawing.Point(22, 195)
         Me.btn_Exit.Name = "btn_Exit"

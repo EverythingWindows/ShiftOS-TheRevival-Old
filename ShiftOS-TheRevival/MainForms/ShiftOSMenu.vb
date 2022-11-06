@@ -26,8 +26,8 @@ Public Class ShiftOSMenu
         'Catch ex As Exception
         '    MsgBox("Why? Because of " & ex.Message)
         'End Try
+        CheckInstall()
         CheckUpdate()
-        'CheckInstall()
         BannerChange.Start()
     End Sub
 
@@ -40,6 +40,7 @@ Public Class ShiftOSMenu
             Case "Free Roam Mode"
                 Try
                     Strings.IsFree = True
+                    Strings.OnceInfo(6) = "free"
                     FreeRoamMode()
                     Terminal.Show()
                     Close()
@@ -51,6 +52,11 @@ Public Class ShiftOSMenu
                 End Try
             Case "Continue"
                 MsgBox("This feature is in development")
+                Strings.IsFree = False
+                Strings.OnceInfo(6) = "story"
+                Terminal.Show()
+                Terminal.StayAtChapter = True
+                Close()
         End Select
     End Sub
 
@@ -63,6 +69,7 @@ Public Class ShiftOSMenu
                 btn_Exit.Visible = False
             Case "New Game"
                 Strings.IsFree = False
+                Strings.OnceInfo(6) = "story"
                 MsgBox("This feature is in development, be sure to watch out for bugs")
                 IntroStory.Show()
                 NewGameMode()
@@ -82,12 +89,12 @@ Public Class ShiftOSMenu
 
     Private Sub CheckUpdate()
         Try
-            If File.Exists("C:\SOS_NewVer.txt") = True Then
-                File.Delete("C:\SOS_NewVer.txt")
+            If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SOS_NewVer.txt") = True Then
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SOS_NewVer.txt")
             End If
-            My.Computer.Network.DownloadFile("http://148.251.124.62:8080/ShiftOS/data/NewVer.txt", "C:\SOS_NewVer.txt")
+            My.Computer.Network.DownloadFile("http://148.251.124.62:8080/ShiftOS/data/NewVer.txt", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SOS_NewVer.txt")
             Dim CurrentVersion As String = My.Resources.CurrentVersion
-            Dim NewVersion As String = File.ReadAllText("C:\SOS_NewVer.txt")
+            Dim NewVersion As String = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SOS_NewVer.txt")
             If CurrentVersion = NewVersion Then
 
             Else
@@ -107,25 +114,33 @@ Public Class ShiftOSMenu
 
     Private Sub CheckInstall()
         If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
-            Dim WhatVersion As String = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
-            If WhatVersion = My.Resources.CurrentVersion Then
+            'Dim WhatVersion As String = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
+            'If WhatVersion = My.Resources.CurrentVersion Then
 
-            Else
-                btn_Aboot.Enabled = False
-                btn_Exit.Enabled = False
-                btn_FreeRoam.Enabled = False
-                btn_StoryMode.Enabled = False
-                ShouldUpdate = True
-                ShiftOSUpdater.Show()
-            End If
+            'Else
+            '    btn_Aboot.Enabled = False
+            '    btn_Exit.Enabled = False
+            '    btn_FreeRoam.Enabled = False
+            '    btn_StoryMode.Enabled = False
+            '    ShouldUpdate = True
+            '    ShiftOSUpdater.Show()
+            'End If
         Else
             If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then
                 If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
-                    Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS\ShiftFS")
+
+                Else
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
+                End If
+                If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved") = True Then
+
+                Else
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
                 End If
             Else
-                Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS")
-                Directory.CreateDirectory(My.Computer.FileSystem.GetTempFileName & "\ShiftOS\ShiftFS")
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS")
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
             End If
         End If
     End Sub
