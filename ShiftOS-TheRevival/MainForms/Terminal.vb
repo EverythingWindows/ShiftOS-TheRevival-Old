@@ -22,7 +22,7 @@ Public Class Terminal
     End Sub
 
     Public Sub InitializeTerminal()
-        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS\"
+        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
         Strings.OnceInfo(4) = "!"
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
@@ -214,6 +214,8 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
                 AdvancedCommand = False
                 BadCommand = False
+            Case "textpad"
+
             Case "reboot"
                 TextBox1.Text = Nothing
                 AdvancedCommand = False
@@ -300,6 +302,11 @@ Public Class Terminal
         End Select
 
         If AdvancedCommand = True Then
+            If command Like "cd *" Then
+                NavigateDir(command.Replace("cd ", ""))
+                AdvancedCommand = False
+                BadCommand = False
+            End If
             If command Like "color *" Then
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
                 BadCommand = False
@@ -407,6 +414,16 @@ Public Class Terminal
                             TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
                     End Select
                 End If
+            End If
+            If command Like "mkdir *" Then
+                CreateDir(command.Replace("mkdir ", ""))
+                AdvancedCommand = False
+                BadCommand = False
+            End If
+            If command Like "rmdir *" Then
+                RemoveDir(command.Replace("rmdir ", ""))
+                AdvancedCommand = False
+                BadCommand = False
             End If
             If command Like "shiftorium *" Then
                 Dim prompt As String = command.Replace("shiftorium ", "")
