@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShiftOS-TheRevival", "ShiftOS-TheRevival\ShiftOS-TheRevival.vbproj", "{63D3B7A6-0A50-4F34-802E-134F6106BF45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShiftOS-TheRevival-CS", "ShiftOS-TheRevival-CS\ShiftOS-TheRevival-CS.csproj", "{C98CF326-3487-44EE-940C-E37026F6B8AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{63D3B7A6-0A50-4F34-802E-134F6106BF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D3B7A6-0A50-4F34-802E-134F6106BF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D3B7A6-0A50-4F34-802E-134F6106BF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98CF326-3487-44EE-940C-E37026F6B8AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98CF326-3487-44EE-940C-E37026F6B8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98CF326-3487-44EE-940C-E37026F6B8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98CF326-3487-44EE-940C-E37026F6B8AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
