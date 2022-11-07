@@ -1,0 +1,3 @@
+﻿Displays all subdirectories and files that are in the current directory
+
+example: dir

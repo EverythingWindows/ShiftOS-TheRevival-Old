@@ -247,6 +247,9 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTORIUM  A software center for upgrading features on ShiftOS"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHUTDOWN    Terminate ShiftOS session"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "SU          Runs terminal as super user"
+                If Strings.AvailableFeature(17) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "TEXTPAD     Simple text-editor for ShiftOS"
+                End If
                 If Strings.AvailableFeature(5) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "TIME        Display the current time in the form of seconds since midnight"
                 ElseIf Strings.AvailableFeature(5) = 3 Then
@@ -424,16 +427,36 @@ Public Class Terminal
                                 TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_bc & Environment.NewLine
                                 BadCommand = False
                             End If
+                        Case "cd"
+                            If Strings.AvailableFeature(16) = "1" Then
+                                TempUsage = TempUsage & "cd [DIRECTORY]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_cd & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "clear"
                             If Strings.AvailableFeature(1) = "1" Then
                                 TempUsage = TempUsage & "clear"
                                 TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_clear & Environment.NewLine
                                 BadCommand = False
                             End If
+                        Case "color"
+                            TempUsage = TempUsage & "color [bg][fg]"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_color & Environment.NewLine
+                            BadCommand = False
+                        Case "colors"
+                            TempUsage = TempUsage & "colors"
+                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_colors & Environment.NewLine
+                            BadCommand = False
                         Case "codepoint"
                             TempUsage = TempUsage & "codepoint"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_codepoint & Environment.NewLine
                             BadCommand = False
+                        Case "dir"
+                            If Strings.AvailableFeature(16) = "1" Then
+                                TempUsage = TempUsage & "dir"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_dir & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "guess"
                             TempUsage = TempUsage & "guess"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_guess & Environment.NewLine
@@ -448,6 +471,12 @@ Public Class Terminal
                                 TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_man & Environment.NewLine
                                 BadCommand = False
                             End If
+                        Case "mkdir"
+                            If Strings.AvailableFeature(16) = "1" Then
+                                TempUsage = TempUsage & "mkdir [DIRECTORY]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_mkdir & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "print"
                             If Strings.AvailableFeature(2) = "1" Then
                                 TempUsage = TempUsage & "print [text]"
@@ -458,6 +487,12 @@ Public Class Terminal
                             TempUsage = TempUsage & "reboot"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_reboot & Environment.NewLine
                             BadCommand = False
+                        Case "rmdir"
+                            If Strings.AvailableFeature(16) = "1" Then
+                                TempUsage = TempUsage & "rmdir [DIRECTORY]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_rmdir & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "shiftfetch"
                             If Strings.AvailableFeature(8) = "1" Then
                                 TempUsage = TempUsage & "shiftfetch"

@@ -1,0 +1,6 @@
+﻿Changes Background and Foreground color to a specific two Hexadecimal value
+
+[BG] Color for Terminal Background
+[FG] Color for Terminal Foreground such as text
+
+example: color 02

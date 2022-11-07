@@ -1,0 +1,3 @@
+﻿ Changes directory to a selected one
+
+ [DIRECTORY] Name of directory you want to enter

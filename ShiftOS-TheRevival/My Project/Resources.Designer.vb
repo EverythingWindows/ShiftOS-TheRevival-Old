@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 0.2.2.
+        '''  Looks up a localized string similar to 0.2.3.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
@@ -70,11 +70,27 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to A basic command-line tool for simple calculation..
+        '''  Looks up a localized string similar to A basic command-line tool for simple calculation.
+        '''
+        '''example: 
+        '''5*5+5
+        '''8-3
+        '''44/2.
         '''</summary>
         Friend ReadOnly Property man_bc() As String
             Get
                 Return ResourceManager.GetString("man_bc", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to  Changes directory to a selected one
+        '''
+        ''' [DIRECTORY] Name of directory you want to enter.
+        '''</summary>
+        Friend ReadOnly Property man_cd() As String
+            Get
+                Return ResourceManager.GetString("man_cd", resourceCulture)
             End Get
         End Property
         
@@ -93,6 +109,40 @@ Namespace My.Resources
         Friend ReadOnly Property man_codepoint() As String
             Get
                 Return ResourceManager.GetString("man_codepoint", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Changes Background and Foreground color to a specific two Hexadecimal value
+        '''
+        '''[BG] Color for Terminal Background
+        '''[FG] Color for Terminal Foreground such as text
+        '''
+        '''example: color 02.
+        '''</summary>
+        Friend ReadOnly Property man_color() As String
+            Get
+                Return ResourceManager.GetString("man_color", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Display available colors for ShiftOS.
+        '''</summary>
+        Friend ReadOnly Property man_colors() As String
+            Get
+                Return ResourceManager.GetString("man_colors", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Displays all subdirectories and files that are in the current directory
+        '''
+        '''example: dir.
+        '''</summary>
+        Friend ReadOnly Property man_dir() As String
+            Get
+                Return ResourceManager.GetString("man_dir", resourceCulture)
             End Get
         End Property
         
@@ -128,6 +178,17 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Creating a directory
+        '''
+        '''[DIRECTORY] Any directory you want to create.
+        '''</summary>
+        Friend ReadOnly Property man_mkdir() As String
+            Get
+                Return ResourceManager.GetString("man_mkdir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Prints a corresponding text entered in the command.
         '''</summary>
         Friend ReadOnly Property man_print() As String
@@ -137,11 +198,35 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Display any current directory navigated on ShiftOS
+        '''
+        '''example: pwd.
+        '''</summary>
+        Friend ReadOnly Property man_pwd() As String
+            Get
+                Return ResourceManager.GetString("man_pwd", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Terminate ShiftOS session and re-running the session.
         '''</summary>
         Friend ReadOnly Property man_reboot() As String
             Get
                 Return ResourceManager.GetString("man_reboot", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Deleting a directory if there is no file present
+        '''
+        '''[DIRECTORY] Any directory you want to remove
+        '''
+        '''example: rmdir Windows.
+        '''</summary>
+        Friend ReadOnly Property man_rmdir() As String
+            Get
+                Return ResourceManager.GetString("man_rmdir", resourceCulture)
             End Get
         End Property
         

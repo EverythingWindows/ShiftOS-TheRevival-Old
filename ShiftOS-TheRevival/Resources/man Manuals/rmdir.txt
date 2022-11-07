@@ -1,0 +1,5 @@
+﻿Deleting a directory if there is no file present
+
+[DIRECTORY] Any directory you want to remove
+
+example: rmdir Windows

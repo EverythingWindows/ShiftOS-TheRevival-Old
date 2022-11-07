@@ -200,13 +200,20 @@
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
     <Content Include="Resources\man Manuals\bc.txt" />
+    <Content Include="Resources\man Manuals\cd.txt" />
     <Content Include="Resources\man Manuals\clear.txt" />
     <Content Include="Resources\man Manuals\codepoint.txt" />
+    <Content Include="Resources\man Manuals\color.txt" />
+    <Content Include="Resources\man Manuals\colors.txt" />
+    <Content Include="Resources\man Manuals\dir.txt" />
     <Content Include="Resources\man Manuals\guess.txt" />
     <Content Include="Resources\man Manuals\help.txt" />
     <Content Include="Resources\man Manuals\man.txt" />
+    <Content Include="Resources\man Manuals\mkdir.txt" />
     <Content Include="Resources\man Manuals\print.txt" />
+    <Content Include="Resources\man Manuals\pwd.txt" />
     <Content Include="Resources\man Manuals\reboot.txt" />
+    <Content Include="Resources\man Manuals\rmdir.txt" />
     <Content Include="Resources\man Manuals\shiftfetch.txt" />
     <Content Include="Resources\man Manuals\shiftorium.txt" />
     <Content Include="Resources\man Manuals\shutdown.txt" />
