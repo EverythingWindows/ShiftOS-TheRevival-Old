@@ -1,5 +1,8 @@
-﻿Module TerminalApps
+﻿Imports System.IO
+
+Module TerminalApps
     Public ShouldChange As Boolean = False
+    Public KeyInput As Keys
     'This is for GTN's RAM
     Public TheNumber As Integer = 0
     Public FreezeText As String
@@ -12,6 +15,9 @@
     Public BC_CurrentNumber As String
     Public BC_Result As Integer
     Public BC_Operation2 As String
+    'TextPad's RAM
+    Public TextPad_FileName As String
+    Public TextPad_TempText As New Timer
 
     Public Sub ChangeCP(Addition As Boolean, NeededCP As Integer)
         Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
@@ -50,17 +56,18 @@
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate"
                 ShouldChange = True
             Case "textpad"
-                Terminal.DefaultPrompt = ""
+                Terminal.DefaultPrompt = Nothing
+                Terminal.TextBox1.Text = Nothing
                 Terminal.ToolBarUse = True
                 Terminal.CheckFeature()
                 Terminal.CurrentInterpreter = "textpad"
-                Terminal.ToolBar.Text = "TextPad - " & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
-                Terminal.TextBox1.Text = Nothing
+                TextPad_CheckExist(Terminal.command)
+                Terminal.ToolBar.Text = "TextPad - " & Terminal.command & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
                 Terminal.ReleaseCursor = True
         End Select
         If Terminal.ReleaseCursor = True Then
-            Strings.OnceInfo(5) = Terminal.TrackPos
-            Terminal.TrackPos = Nothing
+            'Strings.OnceInfo(5) = Terminal.TrackPos
+            'Terminal.TrackPos = Nothing
         End If
         If ShouldChange = True Then
             Terminal.ChangeInterpreter = True
@@ -68,17 +75,67 @@
         End If
     End Sub
 
-    Public Sub TerminateApp()
-        If Terminal.ReleaseCursor = True Then
-            Terminal.TrackPos = Strings.OnceInfo(5)
-            Strings.OnceInfo(5) = 0
-        End If
-        Terminal.ToolBarUse = False
-        Terminal.ChangeInterpreter = False
-        Terminal.ReleaseCursor = False
-        Terminal.CurrentInterpreter = "terminal"
-        Terminal.CheckFeature()
-        Terminal.AssignPrompt()
+    Public Sub CaptureKeyBinding(KeysInput As Keys)
+        Select Case KeysInput
+            Case (Keys.S + Keys.Control)
+                If File.Exists(Terminal.CurrentDirectory & "\" & Terminal.command) = True Then
+                    Dim TempCompare As String = File.ReadAllText(Terminal.CurrentDirectory & "\" & Terminal.command)
+                    If Terminal.TextBox1.Text = TempCompare Then
+
+                    Else
+                        Dim BeforeCP As Integer = Strings.ComputerInfo(2)
+                        SaveFile(Terminal.command)
+                        TextPad_GenerateCP_SavedFile()
+                        Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                        Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
+                    End If
+                Else
+                    Dim BeforeCP As Integer = Strings.ComputerInfo(2)
+                    SaveFile(Terminal.command)
+                    TextPad_GenerateCP_SavedFile()
+                    Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                    Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
+                End If
+        End Select
+    End Sub
+
+    Public Sub TerminateApp(KeyInput As Keys)
+        Select Case Terminal.CurrentInterpreter
+            Case "textpad"
+                Dim BeforeCP As Integer = Strings.ComputerInfo(2)
+                If File.Exists(Terminal.CurrentDirectory & "\" & Terminal.command) = True Then
+                    Dim TextCompare As String = My.Computer.FileSystem.ReadAllText(Terminal.CurrentDirectory & "\" & Terminal.command)
+                    If Terminal.TextBox1.Text = TextCompare Then
+                        Terminal.TextBox1.Text = Nothing
+                    Else
+                        SaveFile(Terminal.command)
+                        TextPad_GenerateCP_SavedFile()
+                        Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                        Terminal.TextBox1.Text = "You've got " & AfterCP & " Codepoints"
+                    End If
+                Else
+                    SaveFile(Terminal.command)
+                    TextPad_GenerateCP_SavedFile()
+                    Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                    Terminal.TextBox1.Text = "You've got " & AfterCP & " Codepoints"
+                End If
+                Terminal.ToolBarUse = False
+                Terminal.ChangeInterpreter = False
+                Terminal.ReleaseCursor = False
+                Terminal.CurrentInterpreter = "terminal"
+                Terminal.CheckFeature()
+                Terminal.AssignPrompt()
+                Terminal.PrintPrompt()
+                Terminal.TextRebind()
+            Case Else
+                Terminal.ToolBarUse = False
+                Terminal.ChangeInterpreter = False
+                Terminal.ReleaseCursor = False
+                Terminal.CurrentInterpreter = "terminal"
+                Terminal.CheckFeature()
+                Terminal.AssignPrompt()
+                Terminal.TextRebind()
+        End Select
     End Sub
 
     Public Sub DoChildCommand()
@@ -86,7 +143,7 @@
             Case "guess"
                 Select Case Terminal.command
                     Case "exit"
-                        TerminateApp()
+                        TerminateApp(Nothing)
                     Case Else
                         Try
                             GTN_CheckNumber()
@@ -99,7 +156,7 @@
                     Case ""
 
                     Case "exit"
-                        TerminateApp()
+                        TerminateApp(Nothing)
                     Case Else
                         ShiftoriumFX_DisplayPackages()
                         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate" & Environment.NewLine & "Invalid package or bad command"
@@ -111,7 +168,7 @@
                     Case "ojas"
                         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "dis calculator is very gud" & Environment.NewLine & "it counts from another universe"
                     Case "exit"
-                        TerminateApp()
+                        TerminateApp(Nothing)
                     Case Else
                         BC_ReadNumbers = 0
                         BC_ThriceMoreValue = 1
@@ -198,6 +255,33 @@
                 End If
             End If
         End If
+    End Sub
+
+    Public Sub TextPad_CheckExist(TxtFileName As String)
+        If File.Exists(Terminal.CurrentDirectory & "\" & TxtFileName) = True Then
+            Terminal.TextBox1.Text = My.Computer.FileSystem.ReadAllText(Terminal.CurrentDirectory & "\" & TxtFileName)
+        End If
+    End Sub
+
+    Public Sub TextPad_GenerateCP_SavedFile()
+        Select Case Terminal.TextBox1.TextLength
+            Case 1 To 9
+                Dim GetCP As New Random
+                Dim GotCP As Integer = GetCP.Next(1, 6)
+                ChangeCP(True, GotCP)
+            Case 10 To 99
+                Dim GetCP As New Random
+                Dim GotCP As Integer = GetCP.Next(1, 51)
+                ChangeCP(True, GotCP)
+            Case 100 To 999
+                Dim GetCP As New Random
+                Dim GotCP As Integer = GetCP.Next(1, 501)
+                ChangeCP(True, GotCP)
+            Case 1000 To 9999
+                Dim GetCP As New Random
+                Dim GotCP As Integer = GetCP.Next(1, 5001)
+                ChangeCP(True, GotCP)
+        End Select
     End Sub
 
     Public Sub ShiftoriumFX_DisplayPackages()

@@ -1,9 +1,9 @@
 ﻿Imports System.IO
 
 Public Class Terminal
+    Public TrackPos As Integer
     Public command As String
     Public DefaultPrompt As String
-    Public TrackPos As Integer
     Public AdvancedCommand As Boolean
     Public BadCommand As Boolean
     Public DisplayStory As Integer
@@ -266,11 +266,6 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
                 AdvancedCommand = False
                 BadCommand = False
-            Case "textpad"
-                ChangeInterpreter = True
-                AppHost("textpad", True)
-                AdvancedCommand = False
-                BadCommand = False
             Case "pwd"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & CurrentDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!")
                 AdvancedCommand = False
@@ -365,12 +360,18 @@ Public Class Terminal
 
         If AdvancedCommand = True Then
             If command Like "cat *" Then
-                CatFile(command.Substring(4))
+                If Strings.AvailableFeature(16) = 1 Then
+                    CatFile(command.Substring(4))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             End If
             If command Like "cd *" Then
-                NavigateDir(command.Replace("cd ", ""))
-                AdvancedCommand = False
-                BadCommand = False
+                If Strings.AvailableFeature(16) = 1 Then
+                    NavigateDir(command.Replace("cd ", ""))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             End If
             If command Like "color *" Then
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
@@ -481,14 +482,28 @@ Public Class Terminal
                 End If
             End If
             If command Like "mkdir *" Then
-                CreateDir(command.Replace("mkdir ", ""))
-                AdvancedCommand = False
-                BadCommand = False
+                If Strings.AvailableFeature(16) Then
+                    CreateDir(command.Replace("mkdir ", ""))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
+            End If
+            If command Like "print *" Then
+                If Strings.AvailableFeature(2) = "1" Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
+                    Dim printed As String = command.Replace("print ", "")
+                    ''It has the same issue, only displays in lowercase
+                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                    BadCommand = False
+                    AdvancedCommand = False
+                End If
             End If
             If command Like "rmdir *" Then
-                RemoveDir(command.Replace("rmdir ", ""))
-                AdvancedCommand = False
-                BadCommand = False
+                If Strings.AvailableFeature(16) = 1 Then
+                    RemoveDir(command.Replace("rmdir ", ""))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             End If
             If command Like "shiftorium *" Then
                 Dim prompt As String = command.Replace("shiftorium ", "")
@@ -506,16 +521,15 @@ Public Class Terminal
                     BadCommand = False
                 End If
             End If
-            If command Like "print *" Then
-                If Strings.AvailableFeature(2) = "1" Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
-                    Dim printed As String = command.Replace("print ", "")
-                    ''It has the same issue, only displays in lowercase
-                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+            If command Like "textpad *" Then
+                If Strings.AvailableFeature(17) = 1 Then
+                    ChangeInterpreter = True
+                    command = command.Replace("textpad ", "")
+                    AppHost("textpad", True)
+                    AdvancedCommand = False
                     BadCommand = False
                 End If
             End If
-            AdvancedCommand = False
         End If
 
         If BadCommand = True Then
@@ -523,124 +537,212 @@ Public Class Terminal
         End If
     End Sub
 
+    Public Sub TextRebind()
+        TextBox1.Select(TextBox1.Text.Length, 0)
+        TextBox1.ScrollToCaret()
+    End Sub
+
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
-
-
+        TerminalApps.KeyInput = e.KeyData
         Select Case e.KeyData
             Case (Keys.Control + Keys.Q)
                 If CurrentInterpreter = "terminal" Then
                 Else
-                    TerminateApp()
-                    PrintPrompt()
+                    TerminateApp(TerminalApps.KeyInput)
+                    TextRebind()
                 End If
+            Case Else
+                CaptureKeyBinding(TerminalApps.KeyInput)
         End Select
-        'Select Case e.KeyCode
-        '    Case e.KeyCode = Keys.T AndAlso e.Control
-        '        e.SuppressKeyPress = True
-        '    Case e.KeyCode = Keys.Q AndAlso e.Control
-        '        If CurrentInterpreter = "terminal" Then
+        'If ReleaseCursor = True Then
+
+        'Else
+        '    Select Case e.KeyCode
+        '        Case Keys.ShiftKey
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.Alt
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.CapsLock
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.ControlKey
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.LWin
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.RWin
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.Right
+        '            If TextBox1.SelectionStart = TextBox1.TextLength Then
+        '                TrackPos = TrackPos - 1
+        '            End If
+        '        Case Keys.Left
+        '            If TrackPos < 1 Then
+        '                e.SuppressKeyPress = True
+        '                TrackPos = TrackPos - 1
+        '            Else
+        '                TrackPos = TrackPos - 2
+        '            End If
+        '        Case Keys.Up
+        '            e.SuppressKeyPress = True
+        '            TrackPos = TrackPos - 1
+        '        Case Keys.Down
+        '            e.SuppressKeyPress = True
+        '            TrackPos = TrackPos - 1
+        '    End Select
+        'End If
+
+        'If e.KeyCode = Keys.Enter Then
+        '    e.SuppressKeyPress = True
+        '    If TextBox1.ReadOnly = True Then
+
+        '    Else
+        '        ReadCommand()
+        '        If ChangeInterpreter = True Then
+        '            DoChildCommand()
+        '            PrintPrompt()
+        '            TextBox1.Select(TextBox1.Text.Length, 0)
         '        Else
-        '            TerminateApp()
+        '            DoCommand()
+        '            PrintPrompt()
+        '            TextBox1.Select(TextBox1.Text.Length, 0)
         '        End If
-        'End Select
+        '    End If
+
+        '    'If command = "clear" Then
+        '    '    PrintPrompt()
+        '    '    TextBox1.Select(TextBox1.Text.Length, 0)
+
+        '    'Else
+        '    '    PrintPrompt()
+        '    '    TextBox1.Select(TextBox1.Text.Length, 0)
+        '    'End If
+
+        '    TrackPos = 0
+        'Else
+        '    If ReleaseCursor = True Then
+
+        '    Else
+        '        If e.KeyCode = Keys.Back Then
+        '        Else
+        '            TrackPos = TrackPos + 1
+        '        End If
+        '    End If
+        'End If
+
+        'If e.KeyCode = Keys.Back Then
+        '    If TrackPos < 1 Then
+        '        e.SuppressKeyPress = True
+        '    Else
+        '        If TextBox1.SelectedText.Length < 1 Then
+        '            TrackPos = TrackPos - 1
+        '        Else
+        '            e.SuppressKeyPress = True
+        '        End If
+        '    End If
+        'End If
+        'TextBox1.Select(TextBox1.TextLength, 0)
+        'TextBox1.ScrollToCaret()
         If ReleaseCursor = True Then
 
         Else
-            If ReleaseCursor = True Then
+            Select Case e.KeyData
+                Case Keys.Enter
+                    e.SuppressKeyPress = True
+                    If TextBox1.ReadOnly = True Then
 
-            Else
-                Select Case e.KeyCode
-                    Case Keys.ShiftKey
-                        TrackPos = TrackPos - 1
-                    Case Keys.Alt
-                        TrackPos = TrackPos - 1
-                    Case Keys.CapsLock
-                        TrackPos = TrackPos - 1
-                    Case Keys.ControlKey
-                        TrackPos = TrackPos - 1
-                    Case Keys.Right
-                        If TextBox1.SelectionStart = TextBox1.TextLength Then
-                            TrackPos = TrackPos - 1
-                        End If
-                    Case Keys.Left
-                        If TrackPos < 1 Then
-                            e.SuppressKeyPress = True
-                            TrackPos = TrackPos - 1
-                        Else
-                            TrackPos = TrackPos - 2
-                        End If
-                    Case Keys.Up
-                        e.SuppressKeyPress = True
-                        TrackPos = TrackPos - 1
-                    Case Keys.Down
-                        e.SuppressKeyPress = True
-                        TrackPos = TrackPos - 1
-                End Select
-            End If
-            Select Case e.KeyCode
-                Case Keys.LWin
-                    TrackPos = TrackPos - 1
-                Case Keys.RWin
-                    TrackPos = TrackPos - 1
-            End Select
-
-            If e.KeyCode = Keys.Enter Then
-                e.SuppressKeyPress = True
-                If TextBox1.ReadOnly = True Then
-
-                Else
-                    ReadCommand()
-                    If ChangeInterpreter = True Then
-                        DoChildCommand()
-                        PrintPrompt()
-                        TextBox1.Select(TextBox1.Text.Length, 0)
                     Else
-                        DoCommand()
-                        PrintPrompt()
-                        TextBox1.Select(TextBox1.Text.Length, 0)
+                        ReadCommand()
+                        If ChangeInterpreter = True Then
+                            DoChildCommand()
+                            PrintPrompt()
+                            TextRebind()
+                        Else
+                            DoCommand()
+                            PrintPrompt()
+                            TextRebind()
+                        End If
                     End If
-                End If
-
-                'If command = "clear" Then
-                '    PrintPrompt()
-                '    TextBox1.Select(TextBox1.Text.Length, 0)
-
-                'Else
-                '    PrintPrompt()
-                '    TextBox1.Select(TextBox1.Text.Length, 0)
-                'End If
-
-                TrackPos = 0
-            Else
-                If ReleaseCursor = True Then
-
-                Else
-                    If e.KeyCode = Keys.Back Then
+                    TrackPos = 0
+                Case Keys.ShiftKey, Keys.Alt, Keys.ControlKey, Keys.LWin, Keys.RWin
+                    e.SuppressKeyPress = True
+                Case Keys.Back
+                    If TrackPos <= 0 Then
+                        e.SuppressKeyPress = True
+                    Else
+                        TrackPos = TrackPos - 1
+                        'If TextBox1.SelectedText.Length < 1 Then
+                        '    TrackPos = TrackPos - 1
+                        'Else
+                        '    e.SuppressKeyPress = True
+                        'End If
+                    End If
+                Case Keys.Right
+                    If TextBox1.SelectionStart = TextBox1.TextLength Then
                     Else
                         TrackPos = TrackPos + 1
                     End If
-                End If
-            End If
-
-            If ReleaseCursor = True Then
-
-            Else
-                If e.KeyCode = Keys.Back Then
-                    If TrackPos < 1 Then
+                    'If TrackPos <= 0 Then
+                    '    Dim CommandChar As String
+                    '    CommandChar = TextBox1.Lines(TextBox1.Lines.Length - 1)
+                    '    CommandChar = CommandChar.Replace(DefaultPrompt, "")
+                    '    TrackPos = CommandChar.Length - 1
+                    '    TextBox1.Select(TextBox1.TextLength, 0)
+                    '    TextBox1.ScrollToCaret()
+                    'End If
+                Case Keys.Left
+                    If TextBox1.SelectionStart = 0 Then
                         e.SuppressKeyPress = True
                     Else
-                        If TextBox1.SelectedText.Length < 1 Then
-                            TrackPos = TrackPos - 1
-                        Else
-                            e.SuppressKeyPress = True
-                        End If
+                        TrackPos = TrackPos - 1
                     End If
-                End If
-            End If
-
+                    If TrackPos <= 0 Then
+                        Dim CommandChar As String
+                        CommandChar = TextBox1.Lines(TextBox1.Lines.Length - 1)
+                        CommandChar = CommandChar.Replace(DefaultPrompt, "")
+                        TrackPos = CommandChar.Length - 1
+                        TextBox1.Select(TextBox1.TextLength, 0)
+                        TextBox1.ScrollToCaret()
+                    End If
+                'If TrackPos < 1 Then
+                '    e.SuppressKeyPress = True
+                '    TrackPos = TrackPos - 1
+                'Else
+                '    TrackPos = TrackPos - 2
+                'End If
+                Case Keys.Up
+                    e.SuppressKeyPress = True
+                Case Keys.Down
+                    e.SuppressKeyPress = True
+                Case Else
+                    TrackPos = TrackPos + 1
+            End Select
         End If
-        TextBox1.Select(TextBox1.TextLength, 0)
-        TextBox1.ScrollToCaret()
+        'If e.KeyCode = Keys.Enter Then
+        '    'If command = "clear" Then
+        '    '    txtterm.Text = txtterm.Text + ShiftOSDesktop.username & "@" & ShiftOSDesktop.osname & " $> "
+        '    '    txtterm.Select(txtterm.Text.Length, 0)
+
+        '    'Else
+        '    '    txtterm.Text = txtterm.Text + Environment.NewLine & ShiftOSDesktop.username & "@" & ShiftOSDesktop.osname & " $> "
+        '    '    txtterm.Select(txtterm.Text.Length, 0)
+        '    'End If
+        'Else
+        '    If e.KeyCode = Keys.Back Then
+        '    Else
+        '        TrackPos = TrackPos + 1
+        '    End If
+        'End If
+
+        'If e.KeyCode = Keys.Back Then
+        '    'If TrackPos < 1 Then
+        '    '    e.SuppressKeyPress = True
+        '    'Else
+        '    '    If TextBox1.SelectedText.Length < 1 Then
+        '    '        TrackPos = TrackPos - 1
+        '    '    Else
+        '    '        e.SuppressKeyPress = True
+        '    '    End If
+        '    'End If
+        'End If
     End Sub
 
     Private Sub TextBox1_Click(sender As Object, e As EventArgs) Handles TextBox1.Click, TextBox1.MouseDoubleClick
@@ -718,5 +820,10 @@ Public Class Terminal
         End If
         InfoBar.Text = InfoBar.Text & " " & CurrentInterpreter & " |"
         InfoBar.Text = InfoBar.Text & " " & Strings.ComputerInfo(2) & " CP |"
+        InfoBar.Text = InfoBar.Text & " " & TrackPos & " |"
+    End Sub
+
+    Private Sub TextBox1_Click(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseDoubleClick, TextBox1.Click
+
     End Sub
 End Class
