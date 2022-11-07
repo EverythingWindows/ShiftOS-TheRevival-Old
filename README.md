@@ -1,5 +1,7 @@
 # _**ShiftOS: Shift it your way**_
 
+Join the Development Hub Discord Server : https://discord.gg/5QXxWJRM6R
+
 ## :question: **What is ShiftOS?**
 > ShiftOS is a game about evolving an experiemental operating system called "ShiftOS" from a completly black and white text based command line environment to a fully graphical operating system filled with advanced features and beautiful colours.
 > 
