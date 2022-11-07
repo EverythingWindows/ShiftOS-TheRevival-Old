@@ -352,6 +352,7 @@
                             success = True
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
+                            success = True
                     End Select
                     If success = False Then
                         If IsCLI = True Then

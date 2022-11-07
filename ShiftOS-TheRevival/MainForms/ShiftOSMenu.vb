@@ -51,12 +51,18 @@ Public Class ShiftOSMenu
                     Close()
                 End Try
             Case "Continue"
-                MsgBox("This feature is in development")
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
                 Terminal.Show()
                 Terminal.StayAtChapter = True
                 Close()
+            Case "No"
+                Label3.Visible = False
+                btn_StoryMode.Text = "Story Mode"
+                btn_FreeRoam.Text = "Free Roam Mode"
+                btn_Aboot.Text = "About"
+                btn_Aboot.Visible = True
+                btn_Exit.Visible = True
         End Select
     End Sub
 
@@ -68,9 +74,15 @@ Public Class ShiftOSMenu
                 btn_Aboot.Text = "Back"
                 btn_Exit.Visible = False
             Case "New Game"
+                Label3.Text = "Are you sure?"
+                Label3.Visible = True
+                btn_StoryMode.Text = "Yes"
+                btn_FreeRoam.Text = "No"
+                btn_Aboot.Visible = False
+                btn_Exit.Visible = False
+            Case "Yes"
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
-                MsgBox("This feature is in development, be sure to watch out for bugs")
                 IntroStory.Show()
                 NewGameMode()
                 Close()
@@ -149,7 +161,7 @@ Public Class ShiftOSMenu
         Label2.Text = "Debug it your way"
     End Sub
 
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click, Label3.Click
         If Label2.Text = "Debug it your way" Then
             Strings.IsFree = True
             GodMode()

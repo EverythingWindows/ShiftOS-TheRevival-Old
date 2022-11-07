@@ -177,9 +177,11 @@ Public Class Terminal
                 AdvancedCommand = False
                 BadCommand = False
             Case "dir"
-                TerminalDirectories(CurrentDirectory)
-                AdvancedCommand = False
-                BadCommand = False
+                If Strings.AvailableFeature(16) = "1" Then
+                    TerminalDirectories(CurrentDirectory)
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             Case "exit su"
                 If Strings.OnceInfo(0) = "No" Then
 
@@ -330,7 +332,7 @@ Public Class Terminal
                 Close()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
-                    TextBox1.Text = TextBox1.Text & "Type any filename after 'textpad'!, ex: textpad text.txt"
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "Type any filename after 'textpad'!, ex: textpad text.txt"
                     AdvancedCommand = False
                     BadCommand = False
                 End If
@@ -389,6 +391,13 @@ Public Class Terminal
             If command Like "color *" Then
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
                 BadCommand = False
+            End If
+            If command Like "del *" Then
+                If Strings.AvailableFeature(16) = 1 Then
+                    DeleteFile(command.Substring(4))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             End If
             If command Like "infobar *" Then
                 If Strings.AvailableFeature(4) = "1" Then

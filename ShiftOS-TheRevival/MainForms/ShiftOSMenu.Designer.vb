@@ -33,6 +33,7 @@ Partial Class ShiftOSMenu
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Thumbnail = New System.Windows.Forms.PictureBox()
         Me.BannerChange = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -63,7 +64,7 @@ Partial Class ShiftOSMenu
         Me.btn_Aboot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Aboot.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Aboot.ForeColor = System.Drawing.Color.White
-        Me.btn_Aboot.Location = New System.Drawing.Point(22, 166)
+        Me.btn_Aboot.Location = New System.Drawing.Point(22, 184)
         Me.btn_Aboot.Name = "btn_Aboot"
         Me.btn_Aboot.Size = New System.Drawing.Size(224, 23)
         Me.btn_Aboot.TabIndex = 3
@@ -85,7 +86,7 @@ Partial Class ShiftOSMenu
         Me.btn_StoryMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_StoryMode.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_StoryMode.ForeColor = System.Drawing.Color.White
-        Me.btn_StoryMode.Location = New System.Drawing.Point(22, 108)
+        Me.btn_StoryMode.Location = New System.Drawing.Point(22, 126)
         Me.btn_StoryMode.Name = "btn_StoryMode"
         Me.btn_StoryMode.Size = New System.Drawing.Size(224, 23)
         Me.btn_StoryMode.TabIndex = 1
@@ -97,7 +98,7 @@ Partial Class ShiftOSMenu
         Me.btn_FreeRoam.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_FreeRoam.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_FreeRoam.ForeColor = System.Drawing.Color.White
-        Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 137)
+        Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 155)
         Me.btn_FreeRoam.Name = "btn_FreeRoam"
         Me.btn_FreeRoam.Size = New System.Drawing.Size(224, 23)
         Me.btn_FreeRoam.TabIndex = 2
@@ -109,7 +110,7 @@ Partial Class ShiftOSMenu
         Me.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Exit.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Exit.ForeColor = System.Drawing.Color.White
-        Me.btn_Exit.Location = New System.Drawing.Point(22, 195)
+        Me.btn_Exit.Location = New System.Drawing.Point(22, 213)
         Me.btn_Exit.Name = "btn_Exit"
         Me.btn_Exit.Size = New System.Drawing.Size(224, 23)
         Me.btn_Exit.TabIndex = 4
@@ -131,6 +132,18 @@ Partial Class ShiftOSMenu
         'BannerChange
         '
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Consolas", 12.0!)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(18, 94)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(162, 19)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Shift it your way"
+        Me.Label3.Visible = False
+        '
         'ShiftOSMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -143,6 +156,7 @@ Partial Class ShiftOSMenu
         Me.Controls.Add(Me.btn_StoryMode)
         Me.Controls.Add(Me.btn_Exit)
         Me.Controls.Add(Me.btn_Aboot)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -168,4 +182,5 @@ Partial Class ShiftOSMenu
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Thumbnail As PictureBox
     Friend WithEvents BannerChange As Timer
+    Friend WithEvents Label3 As Label
 End Class

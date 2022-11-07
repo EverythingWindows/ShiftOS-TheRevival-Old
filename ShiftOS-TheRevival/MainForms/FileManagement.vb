@@ -8,6 +8,12 @@ Module FileManagement
         End If
     End Sub
 
+    Public Sub DeleteFile(filename As String)
+        If File.Exists(Terminal.CurrentDirectory & "\" & filename) = True Then
+            File.Delete(Terminal.CurrentDirectory & "\" & filename)
+        End If
+    End Sub
+
     Public Sub SaveFile(filename As String)
         'If File.Exists(Terminal.CurrentDirectory & "\" & filename) = False Then
         '    File.WriteAllText(Terminal.CurrentDirectory & "\" & filename, Terminal.TextBox1.Text)
