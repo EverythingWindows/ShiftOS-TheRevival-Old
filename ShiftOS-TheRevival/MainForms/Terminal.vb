@@ -278,6 +278,10 @@ Public Class Terminal
                 AdvancedCommand = False
                 BadCommand = False
                 InitializeTerminal()
+            Case "shiftorium"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & My.Resources.man_shiftorium
+                AdvancedCommand = False
+                BadCommand = False
             Case "shiftfetch"
                 If Strings.AvailableFeature(8) = "1" Then
                     If Strings.OnceInfo(0) = "Yes" Then
@@ -324,6 +328,12 @@ Public Class Terminal
                 Cursor.Show()
                 ShiftOSMenu.Show()
                 Close()
+            Case "textpad"
+                If Strings.AvailableFeature(17) = "1" Then
+                    TextBox1.Text = TextBox1.Text & "Type any filename after 'textpad'!, ex: textpad text.txt"
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             Case "time"
                 If Strings.AvailableFeature(5) = "1" Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & Math.Floor(Date.Now.Subtract(Date.Today).TotalSeconds) & " seconds passed since midnight"
