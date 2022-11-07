@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ShiftOS_TheRevival_CS
 {
-    public partial class Form1 : Form
+    public partial class ShiftOSMenu : Form
     {
-        public Form1()
+        public ShiftOSMenu()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
