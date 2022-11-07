@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(4) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(6) As String
-    Public Shared AvailableFeature(15) As String
+    Public Shared AvailableFeature(17) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -59,6 +59,8 @@
     '13 = Red, Green, Blue [Adds Red, Green, and Blue support to the Display Driver] (0.2.3) (default : 0)
     '14 = RGB Variant [Adds lighter or darker variant of Red, Green, and Blue] (0.2.3) (default : 0)
     '15 = 4-bit Color Display [Adds to 16 colours support to the Display Driver] (0.2.3) (default : 0)
+    '16 = Terminal Read-Only Memory Driver [ShiftOS Read-Only Memory support for HDD, SSD, etc.] (0.2.4) (default : 0)
+    '17 = TextPad [Notepad] (0.2.4) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -72,6 +74,8 @@
     '>>>>>Red, Green, Blue (rgb) (70 CP)
     '>>>>>>RGB Variant (rgb2) (75 CP)
     '>>>>>>>4-bit Color Display (4BITCOLOR) (80 CP)
+    '>>>>>>>>Terminal Read-Only Memory Driver (ROMDRIVER, DIR, MKDIR, RMDIR, CD, PWD) (90 CP)
+    '>>>>>>>>>TextPad (100 CP)
     '>>Basic Calculator (BC) (55 CP)
     '>>Time by Seconds (TIME, STIME) (10 CP)
     '>>>Time by Minutes (TIME, MTIME) (20 CP)

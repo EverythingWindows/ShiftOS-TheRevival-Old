@@ -1,1 +1,6 @@
 ﻿A basic command-line tool for simple calculation.
+
+example: 
+5*5+5
+8-3
+44/2

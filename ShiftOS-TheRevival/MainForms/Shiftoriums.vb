@@ -35,29 +35,37 @@
                                 Else
                                     If Strings.AvailableFeature(15) = "0" Then
                                         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(4bitcolor | 80 CP) 4-bit Color Support"
+                                    Else
+                                        If Strings.AvailableFeature(16) = "0" Then
+                                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(romdriver | 90 CP) Terminal Read-Only Memory Support"
+                                        Else
+                                            If Strings.AvailableFeature(17) = "0" Then
+                                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(textpad | 100 CP) TextPad"
+                                            End If
+                                        End If
                                     End If
                                 End If
                             End If
                         End If
-                        End If
-                End If
-                If Strings.AvailableFeature(5) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
-                Else
-                    If Strings.AvailableFeature(6) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
+                    End If
+                    If Strings.AvailableFeature(5) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
                     Else
-                        If Strings.AvailableFeature(7) = "0" Then
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 30 CP) Time by Hours"
+                        If Strings.AvailableFeature(6) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
                         Else
-                            If Strings.AvailableFeature(12) = "0" Then
-                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(pmam | 40 CP) PM and AM"
+                            If Strings.AvailableFeature(7) = "0" Then
+                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 30 CP) Time by Hours"
+                            Else
+                                If Strings.AvailableFeature(12) = "0" Then
+                                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(pmam | 40 CP) PM and AM"
+                                End If
                             End If
                         End If
                     End If
-                End If
-                If Strings.AvailableFeature(9) = "0" Then
-                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 55 CP) Basic Calculator"
+                    If Strings.AvailableFeature(9) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 55 CP) Basic Calculator"
+                    End If
                 End If
             End If
         End If
@@ -181,6 +189,20 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds to 16 colours support to the Display Driver" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "romdriver"
+                If Strings.AvailableFeature(16) = "0" Then
+                    ManHeader(0) = "Terminal Read-Only Memory Driver"
+                    ManHeader(1) = "90 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "ShiftOS Read-Only Memory support for ShiftOS such as writing and reading permanent memory such as HDD, SDD, etc." & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
+            Case "textpad"
+                If Strings.AvailableFeature(17) = "0" Then
+                    ManHeader(0) = "TextPad"
+                    ManHeader(1) = "100 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "A simple text-editor for ShiftOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -237,6 +259,12 @@
                 Terminal.BadCommand = False
             Case "4bitcolor"
                 Shiftorium_InstallFeatures(True, "4bitcolor", 15, 80)
+                Terminal.BadCommand = False
+            Case "romdriver"
+                Shiftorium_InstallFeatures(True, "romdriver", 16, 90)
+                Terminal.BadCommand = False
+            Case "textpad"
+                Shiftorium_InstallFeatures(True, "textpad", 17, 100)
                 Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
@@ -316,7 +344,14 @@
                             success = True
                         Case "4bitcolor"
                             Strings.AvailableFeature(15) = "1"
+                            Strings.AvailableFeature(16) = "0"
                             success = True
+                        Case "romdriver"
+                            Strings.AvailableFeature(16) = "1"
+                            Strings.AvailableFeature(17) = "0"
+                            success = True
+                        Case "textpad"
+                            Strings.AvailableFeature(17) = "1"
                     End Select
                     If success = False Then
                         If IsCLI = True Then

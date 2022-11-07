@@ -211,21 +211,36 @@ Public Class Terminal
                 If Strings.AvailableFeature(9) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "BC          Basic Calculator for simple calculation"
                 End If
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "CD          Changes directory to a selected one"
+                End If
                 If Strings.AvailableFeature(1) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "CLEAR       Clear the terminal"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLOR       Changes Terminal Text and Background color to the corresponding choice"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLORS      Shows available colors support for the terminal"
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "DIR         Displays subdirectories and files in a directory"
+                End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
                 If Strings.AvailableFeature(0) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN         Shows a command, its corresponding action, and its example usage"
                 End If
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "MKDIR       Creating a directory"
+                End If
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "PWD         Display current directory navigated on ShiftOS"
+                End If
                 If Strings.AvailableFeature(2) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "PRINT       Prints a corresponding text entered in the command"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "REBOOT      Terminate and re-run ShiftOS session"
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "RMDIR       Deleting a directory"
+                End If
                 If Strings.AvailableFeature(8) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "SHIFTFETCH  Shows informations about your computer"
                 End If
@@ -254,6 +269,10 @@ Public Class Terminal
             Case "textpad"
                 ChangeInterpreter = True
                 AppHost("textpad", True)
+                AdvancedCommand = False
+                BadCommand = False
+            Case "pwd"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & CurrentDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!")
                 AdvancedCommand = False
                 BadCommand = False
             Case "reboot"
