@@ -48,24 +48,27 @@
                             End If
                         End If
                     End If
-                    If Strings.AvailableFeature(5) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
+                    If Strings.AvailableFeature(18) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(shiftkey | 45 CP) ShiftKey"
+                    End If
+                End If
+                If Strings.AvailableFeature(5) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
+                Else
+                    If Strings.AvailableFeature(6) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
                     Else
-                        If Strings.AvailableFeature(6) = "0" Then
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
+                        If Strings.AvailableFeature(7) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 30 CP) Time by Hours"
                         Else
-                            If Strings.AvailableFeature(7) = "0" Then
-                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(htime | 30 CP) Time by Hours"
-                            Else
-                                If Strings.AvailableFeature(12) = "0" Then
-                                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(pmam | 40 CP) PM and AM"
-                                End If
+                            If Strings.AvailableFeature(12) = "0" Then
+                                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(pmam | 40 CP) PM and AM"
                             End If
                         End If
                     End If
-                    If Strings.AvailableFeature(9) = "0" Then
-                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 55 CP) Basic Calculator"
-                    End If
+                End If
+                If Strings.AvailableFeature(9) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(bc | 55 CP) Basic Calculator"
                 End If
             End If
         End If
@@ -203,6 +206,13 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "A simple text-editor for ShiftOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "shiftkey"
+                If Strings.AvailableFeature(18) = "0" Then
+                    ManHeader(0) = "ShiftKey"
+                    ManHeader(1) = "45 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Recall the previous command on terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -266,6 +276,9 @@
             Case "textpad"
                 Shiftorium_InstallFeatures(True, "textpad", 17, 100)
                 Terminal.BadCommand = False
+            Case "shiftkey"
+                Shiftorium_InstallFeatures(True, "shiftkey", 18, 45)
+                Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -291,6 +304,7 @@
                         Case "print"
                             Strings.AvailableFeature(2) = "1"
                             Strings.AvailableFeature(3) = "0"
+                            Strings.AvailableFeature(18) = "0"
                             success = True
                         Case "termdspdrv"
                             Strings.AvailableFeature(3) = "1"
@@ -352,6 +366,9 @@
                             success = True
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
+                            success = True
+                        Case "shiftkey"
+                            Strings.AvailableFeature(18) = "1"
                             success = True
                     End Select
                     If success = False Then

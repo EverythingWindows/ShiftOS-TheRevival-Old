@@ -15,6 +15,7 @@ Public Class Terminal
     Public StayAtChapter As Boolean = False
     Public ToolBarUse As Boolean = False
     Public ReleaseCursor As Boolean = False
+    Public ShOSKey As String
 
     Private Sub Terminal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FormBorderStyle = FormBorderStyle.None
@@ -34,8 +35,6 @@ Public Class Terminal
             AssignPrompt()
         Else
             If StayAtChapter = True Then
-                Strings.ComputerInfo(0) = "shiftos"
-                Strings.ComputerInfo(1) = "user"
                 LoadGame()
                 CheckFeature()
                 PrintPrompt()
@@ -46,8 +45,6 @@ Public Class Terminal
                     StayAtChapter = True
                     StoryOnlyTimer.Start()
                 Else
-                    Strings.ComputerInfo(0) = "shiftos"
-                    Strings.ComputerInfo(1) = "user"
                     LoadGame()
                     CheckFeature()
                     PrintPrompt()
@@ -227,6 +224,9 @@ Public Class Terminal
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
+                If Strings.AvailableFeature(4) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "INFOBAR     Displays informations about current session such as current app, current user, current time, etc."
+                End If
                 If Strings.AvailableFeature(0) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN         Shows a command, its corresponding action, and its example usage"
                 End If
@@ -271,10 +271,16 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
                 AdvancedCommand = False
                 BadCommand = False
+            Case "infobar"
+                If Strings.AvailableFeature(4) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & My.Resources.man_infobar
+                End If
             Case "pwd"
-                TextBox1.Text = TextBox1.Text & Environment.NewLine & CurrentDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!")
-                AdvancedCommand = False
-                BadCommand = False
+                If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & CurrentDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!")
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
             Case "reboot"
                 TextBox1.Text = Nothing
                 AdvancedCommand = False
@@ -324,6 +330,7 @@ Public Class Terminal
                 BadCommand = False
                 Undeveloped()
             Case "shutdown", "shut down"
+                TextBox1.Text = TextBox1.Text & Environment.NewLine & "Saving game..."
                 If Strings.OnceInfo(6) = "story" Then
                     SaveGame()
                 End If
@@ -484,6 +491,12 @@ Public Class Terminal
                             TempUsage = TempUsage & "help"
                             TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_help & Environment.NewLine
                             BadCommand = False
+                        Case "infobar"
+                            If Strings.AvailableFeature(4) = 1 Then
+                                TempUsage = TempUsage & "infbar [ON|OFF] [OPTION]"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_infobar & Environment.NewLine
+                                BadCommand = False
+                            End If
                         Case "man"
                             If Strings.AvailableFeature(0) = "1" Then
                                 TempUsage = TempUsage & "man [command]"
@@ -500,6 +513,12 @@ Public Class Terminal
                             If Strings.AvailableFeature(2) = "1" Then
                                 TempUsage = TempUsage & "print [text]"
                                 TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_print & Environment.NewLine
+                                BadCommand = False
+                            End If
+                        Case "pwd"
+                            If Strings.AvailableFeature(16) = "1" Then
+                                TempUsage = TempUsage & "pwd"
+                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_pwd & Environment.NewLine
                                 BadCommand = False
                             End If
                         Case "reboot"
@@ -705,6 +724,9 @@ Public Class Terminal
 
                     Else
                         ReadCommand()
+                        If Strings.AvailableFeature(18) = 1 Then
+                            ShOSKey_InputCommand(command)
+                        End If
                         If ChangeInterpreter = True Then
                             DoChildCommand()
                             PrintPrompt()
@@ -764,8 +786,16 @@ Public Class Terminal
                 'End If
                 Case Keys.Up
                     e.SuppressKeyPress = True
+                    If Strings.AvailableFeature(18) = 1 Then
+                        ShOSKey_Display()
+                        TextRebind()
+                    End If
                 Case Keys.Down
                     e.SuppressKeyPress = True
+                    If Strings.AvailableFeature(18) = 1 Then
+                        ShOSKey_Display()
+                        TextRebind()
+                    End If
                 Case Else
                     TrackPos = TrackPos + 1
             End Select

@@ -1,9 +1,9 @@
 ﻿Public Class Strings
     Public Shared OSInfo() As String
-    Public Shared ComputerInfo(4) As String
+    Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(6) As String
-    Public Shared AvailableFeature(17) As String
+    Public Shared AvailableFeature(18) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
 
@@ -30,7 +30,7 @@
     '0 = IsRoot? (0.1) (default : No)
     '1 = RootDirectory (0.2.3) (default : Environment.SpecialDirectories.ApplicationData & "\ShiftOS\ShiftFS\")
     '2 = Infobar Boolean (0.2.3) (default : True)
-    '3 = Color for Terminal (0.2.3) (default : 0F)
+    '3 = Color for Terminal (0.2.3) (default : 0F) => moved to ComputerInfo(5)
     '4 = RootDirectoryString (0.2.3) (default : !)
     '5 = Terminal TrackPos (0.2.3) (default : 0)
     '6 = GameMode (0.2.3) (dependant)
@@ -41,6 +41,8 @@
     '2 = Codepoint (0.2) (default : 0)
     '3 = Story Chapter (0.2) (default : 0 for New Game)
     '4 = Installed Packages (0.2.3) (default : 0 for New Game)
+    '5 = Color for Terminal (0.2.4) (default : 0F)
+    '6 = Color for Infobar (0.2.4) (default : F0)
     '
     'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2, Upgraded assigned as 3) Strings:
     '0 = MAN command [Manual on each command] (0.2) (default : 0)
@@ -61,12 +63,18 @@
     '15 = 4-bit Color Display [Adds to 16 colours support to the Display Driver] (0.2.3) (default : 0)
     '16 = Terminal Read-Only Memory Driver [ShiftOS Read-Only Memory support for HDD, SSD, etc.] (0.2.4) (default : 0)
     '17 = TextPad [Notepad] (0.2.4) (default : 0)
+    '18 = ShiftKey [DOSKey for ShiftOS] (0.2.4) (default : 0)
+    '19 = Custom Username [Custom username for ShiftOS] (0.2.4) (default : 0)
+    '20 = Custom Hostname [Custom hostname for ShiftOS] (0.2.4) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
     '>ShiftOS Help Manual (MAN) (10 CP)
+    '>>Custom Username (USERNAME) (15 CP)
+    '>>Custom Hostname (HOSTNAME) (15 CP)
     '>Terminal Clear (CLEAR) (20 CP)
     '>>Terminal Print (PRINT) (25 CP)
+    '>>>ShiftKey (ShOSKey) (45 CP)
     '>>>Terminal Display Driver (TERMDSPDRV) (40 CP)
     '>>>>Terminal InfoBar (INFOBAR) (50 CP)
     '>>>>Shiftfetch (SHIFTFETCH) (55 CP)

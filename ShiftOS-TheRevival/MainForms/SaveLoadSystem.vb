@@ -3,6 +3,12 @@
 Module SaveLoadSystem
 
     Public Sub NewGameMode()
+        Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", True)
+        Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved", True)
+        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
+        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
+        Strings.ComputerInfo(0) = "shiftos"
+        Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
         Strings.ComputerInfo(4) = "0"
         Strings.AvailableFeature(0) = "2"
@@ -24,11 +30,16 @@ Module SaveLoadSystem
         '0.2.4 Features
         Strings.AvailableFeature(16) = "2"
         Strings.AvailableFeature(17) = "2"
+        Strings.AvailableFeature(18) = "2"
+        Strings.AvailableFeature(19) = "2"
+        Strings.AvailableFeature(20) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
+        Strings.ComputerInfo(0) = "shiftos"
+        Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
-        Strings.ComputerInfo(4) = "16"
+        Strings.ComputerInfo(4) = "19"
         Strings.AvailableFeature(0) = "1"
         Strings.AvailableFeature(1) = "1"
         Strings.AvailableFeature(2) = "1"
@@ -48,9 +59,14 @@ Module SaveLoadSystem
         '0.2.4 Features
         Strings.AvailableFeature(16) = "1"
         Strings.AvailableFeature(17) = "1"
+        Strings.AvailableFeature(18) = "1"
+        Strings.AvailableFeature(19) = "1"
+        Strings.AvailableFeature(20) = "1"
     End Sub
 
     Public Sub GodMode()
+        Strings.ComputerInfo(0) = "shiftos"
+        Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = 9999
         Strings.ComputerInfo(4) = "0"
         Strings.AvailableFeature(0) = "2"
@@ -71,6 +87,9 @@ Module SaveLoadSystem
         '0.2.4 Features
         Strings.AvailableFeature(16) = "2"
         Strings.AvailableFeature(17) = "2"
+        Strings.AvailableFeature(18) = "2"
+        Strings.AvailableFeature(19) = "2"
+        Strings.AvailableFeature(20) = "2"
     End Sub
 
     Public Sub SaveGame()

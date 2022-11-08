@@ -1,0 +1,5 @@
+﻿Displays informations about current session of Terminal such as current time, current application, current user, and current codepoint
+
+[OPTION]		Option to do certain things regarding the Infobar
+COLOR [BG][FG]	changes the infobar's color to the selected one
+[ON|OFF]		Turning infobar on or off

@@ -165,6 +165,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Displays informations about current session of Terminal such as current time, current application, current user, and current codepoint
+        '''
+        '''[OPTION]		Option to do certain things regarding the Infobar
+        '''COLOR [BG][FG]	changes the infobar&apos;s color to the selected one
+        '''[ON|OFF]		Turning infobar on or off
+        '''.
+        '''</summary>
+        Friend ReadOnly Property man_infobar() As String
+            Get
+                Return ResourceManager.GetString("man_infobar", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Shows up a manual on each corresponding command and its example of action
         '''
         '''[COMMAND] Any command that you want to get the manual for

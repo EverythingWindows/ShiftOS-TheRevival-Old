@@ -134,6 +134,7 @@ Module TerminalApps
                 Terminal.CurrentInterpreter = "terminal"
                 Terminal.CheckFeature()
                 Terminal.AssignPrompt()
+                Terminal.PrintPrompt()
                 Terminal.TextRebind()
         End Select
     End Sub
@@ -255,6 +256,19 @@ Module TerminalApps
                 End If
             End If
         End If
+    End Sub
+
+    Public Sub ShOSKey_InputCommand(lastcommand As String)
+        Terminal.ShOSKey = lastcommand
+    End Sub
+
+    Public Sub ShOSKey_Display()
+        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Terminal.ShOSKey
+        Try
+            Terminal.TrackPos = Terminal.ShOSKey.Length
+        Catch ex As Exception
+            Terminal.TrackPos = 0
+        End Try
     End Sub
 
     Public Sub TextPad_CheckExist(TxtFileName As String)

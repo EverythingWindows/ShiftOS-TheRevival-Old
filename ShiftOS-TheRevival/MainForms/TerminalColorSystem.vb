@@ -201,10 +201,11 @@
             Case "infobar"
                 Terminal.InfoBar.BackColor = BgColor
                 Terminal.InfoBar.ForeColor = FgColor
+                Strings.ComputerInfo(6) = Bg & Fg
             Case "terminal"
                 Terminal.TextBox1.BackColor = BgColor
                 Terminal.TextBox1.ForeColor = FgColor
-                Strings.OnceInfo(3) = Bg & Fg
+                Strings.ComputerInfo(5) = Bg & Fg
         End Select
     End Sub
 End Module
