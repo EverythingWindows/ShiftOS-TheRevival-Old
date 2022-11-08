@@ -34,6 +34,8 @@ Partial Class ShiftOSMenu
         Me.Thumbnail = New System.Windows.Forms.PictureBox()
         Me.BannerChange = New System.Windows.Forms.Timer(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btn_Chapter5 = New System.Windows.Forms.Button()
+        Me.btn_Back = New System.Windows.Forms.Button()
         CType(Me.Thumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -64,11 +66,11 @@ Partial Class ShiftOSMenu
         Me.btn_Aboot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Aboot.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Aboot.ForeColor = System.Drawing.Color.White
-        Me.btn_Aboot.Location = New System.Drawing.Point(22, 184)
+        Me.btn_Aboot.Location = New System.Drawing.Point(22, 204)
         Me.btn_Aboot.Name = "btn_Aboot"
-        Me.btn_Aboot.Size = New System.Drawing.Size(224, 23)
+        Me.btn_Aboot.Size = New System.Drawing.Size(224, 40)
         Me.btn_Aboot.TabIndex = 3
-        Me.btn_Aboot.Text = "About"
+        Me.btn_Aboot.Text = "About" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btn_Aboot.UseVisualStyleBackColor = True
         '
         'lbl_BuildString
@@ -86,9 +88,9 @@ Partial Class ShiftOSMenu
         Me.btn_StoryMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_StoryMode.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_StoryMode.ForeColor = System.Drawing.Color.White
-        Me.btn_StoryMode.Location = New System.Drawing.Point(22, 126)
+        Me.btn_StoryMode.Location = New System.Drawing.Point(22, 112)
         Me.btn_StoryMode.Name = "btn_StoryMode"
-        Me.btn_StoryMode.Size = New System.Drawing.Size(224, 23)
+        Me.btn_StoryMode.Size = New System.Drawing.Size(224, 40)
         Me.btn_StoryMode.TabIndex = 1
         Me.btn_StoryMode.Text = "Story Mode"
         Me.btn_StoryMode.UseVisualStyleBackColor = True
@@ -98,9 +100,9 @@ Partial Class ShiftOSMenu
         Me.btn_FreeRoam.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_FreeRoam.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_FreeRoam.ForeColor = System.Drawing.Color.White
-        Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 155)
+        Me.btn_FreeRoam.Location = New System.Drawing.Point(22, 158)
         Me.btn_FreeRoam.Name = "btn_FreeRoam"
-        Me.btn_FreeRoam.Size = New System.Drawing.Size(224, 23)
+        Me.btn_FreeRoam.Size = New System.Drawing.Size(224, 40)
         Me.btn_FreeRoam.TabIndex = 2
         Me.btn_FreeRoam.Text = "Free Roam Mode"
         Me.btn_FreeRoam.UseVisualStyleBackColor = True
@@ -110,9 +112,9 @@ Partial Class ShiftOSMenu
         Me.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Exit.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Exit.ForeColor = System.Drawing.Color.White
-        Me.btn_Exit.Location = New System.Drawing.Point(22, 213)
+        Me.btn_Exit.Location = New System.Drawing.Point(22, 250)
         Me.btn_Exit.Name = "btn_Exit"
-        Me.btn_Exit.Size = New System.Drawing.Size(224, 23)
+        Me.btn_Exit.Size = New System.Drawing.Size(224, 40)
         Me.btn_Exit.TabIndex = 4
         Me.btn_Exit.Text = "Exit"
         Me.btn_Exit.UseVisualStyleBackColor = True
@@ -137,12 +139,38 @@ Partial Class ShiftOSMenu
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Consolas", 12.0!)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(18, 94)
+        Me.Label3.Location = New System.Drawing.Point(18, 87)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(162, 19)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Shift it your way"
         Me.Label3.Visible = False
+        '
+        'btn_Chapter5
+        '
+        Me.btn_Chapter5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Chapter5.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btn_Chapter5.ForeColor = System.Drawing.Color.White
+        Me.btn_Chapter5.Location = New System.Drawing.Point(22, 296)
+        Me.btn_Chapter5.Name = "btn_Chapter5"
+        Me.btn_Chapter5.Size = New System.Drawing.Size(224, 40)
+        Me.btn_Chapter5.TabIndex = 4
+        Me.btn_Chapter5.Text = "Chapter 5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Praeter sensum"
+        Me.btn_Chapter5.UseVisualStyleBackColor = True
+        Me.btn_Chapter5.Visible = False
+        '
+        'btn_Back
+        '
+        Me.btn_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Back.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btn_Back.ForeColor = System.Drawing.Color.White
+        Me.btn_Back.Location = New System.Drawing.Point(22, 342)
+        Me.btn_Back.Name = "btn_Back"
+        Me.btn_Back.Size = New System.Drawing.Size(224, 40)
+        Me.btn_Back.TabIndex = 4
+        Me.btn_Back.Text = "Back"
+        Me.btn_Back.UseVisualStyleBackColor = True
+        Me.btn_Back.Visible = False
         '
         'ShiftOSMenu
         '
@@ -154,6 +182,8 @@ Partial Class ShiftOSMenu
         Me.Controls.Add(Me.lbl_BuildString)
         Me.Controls.Add(Me.btn_FreeRoam)
         Me.Controls.Add(Me.btn_StoryMode)
+        Me.Controls.Add(Me.btn_Back)
+        Me.Controls.Add(Me.btn_Chapter5)
         Me.Controls.Add(Me.btn_Exit)
         Me.Controls.Add(Me.btn_Aboot)
         Me.Controls.Add(Me.Label3)
@@ -183,4 +213,6 @@ Partial Class ShiftOSMenu
     Friend WithEvents Thumbnail As PictureBox
     Friend WithEvents BannerChange As Timer
     Friend WithEvents Label3 As Label
+    Friend WithEvents btn_Chapter5 As Button
+    Friend WithEvents btn_Back As Button
 End Class

@@ -32,7 +32,10 @@ Public Class ShiftOSMenu
     End Sub
 
     Private Sub btn_Exit_Click(sender As Object, e As EventArgs) Handles btn_Exit.Click
-        Close()
+        Select Case btn_Exit.Text
+            Case "Exit"
+                Close()
+        End Select
     End Sub
 
     Private Sub btn_FreeRoam_Click(sender As Object, e As EventArgs) Handles btn_FreeRoam.Click
@@ -81,6 +84,17 @@ Public Class ShiftOSMenu
                 btn_Aboot.Visible = False
                 btn_Exit.Visible = False
             Case "Yes"
+                Label3.Text = "Choose Chapter"
+                btn_StoryMode.Text = "Chapter 1" & Environment.NewLine & "Hijacked!"
+                btn_FreeRoam.Text = "Chapter 2" & Environment.NewLine & "Exploration"
+                btn_Aboot.Text = "Chapter 3" & Environment.NewLine & "Escaped"
+                btn_Exit.Text = "Chapter 4" & Environment.NewLine & "The known"
+                btn_Aboot.Visible = True
+                btn_Exit.Visible = True
+                btn_Chapter5.Visible = True
+                btn_Back.Visible = True
+            Case "Chapter 1" & Environment.NewLine & "Hijacked!"
+                MsgBox(My.Resources.epilepsy)
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
                 IntroStory.Show()
@@ -97,6 +111,22 @@ Public Class ShiftOSMenu
                 btn_Aboot.Text = "About"
                 btn_Exit.Visible = True
         End Select
+    End Sub
+
+    Private Sub btn_Chapter5_Click(sender As Object, e As EventArgs) Handles btn_Chapter5.Click
+
+    End Sub
+
+    Private Sub btn_Back_Click(sender As Object, e As EventArgs) Handles btn_Back.Click
+        Label3.Visible = False
+        btn_StoryMode.Text = "Story Mode"
+        btn_FreeRoam.Text = "Free Roam Mode"
+        btn_Aboot.Text = "About"
+        btn_Exit.Text = "Exit"
+        btn_Aboot.Visible = True
+        btn_Exit.Visible = True
+        btn_Chapter5.Visible = False
+        btn_Back.Visible = False
     End Sub
 
     Private Sub CheckUpdate()

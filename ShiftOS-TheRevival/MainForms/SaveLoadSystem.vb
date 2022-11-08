@@ -39,7 +39,7 @@ Module SaveLoadSystem
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
-        Strings.ComputerInfo(4) = "19"
+        Strings.ComputerInfo(4) = "21"
         Strings.AvailableFeature(0) = "1"
         Strings.AvailableFeature(1) = "1"
         Strings.AvailableFeature(2) = "1"

@@ -199,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <Content Include="Resources\epilepsy.txt" />
     <Content Include="Resources\man Manuals\bc.txt" />
     <Content Include="Resources\man Manuals\cd.txt" />
     <Content Include="Resources\man Manuals\clear.txt" />

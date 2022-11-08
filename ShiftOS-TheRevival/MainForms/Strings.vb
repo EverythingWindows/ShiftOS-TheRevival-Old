@@ -2,10 +2,11 @@
     Public Shared OSInfo() As String
     Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
-    Public Shared OnceInfo(6) As String
-    Public Shared AvailableFeature(18) As String
+    Public Shared OnceInfo(8) As String
+    Public Shared AvailableFeature(20) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
+    Public Shared Achievement As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -34,6 +35,8 @@
     '4 = RootDirectoryString (0.2.3) (default : !)
     '5 = Terminal TrackPos (0.2.3) (default : 0)
     '6 = GameMode (0.2.3) (dependant)
+    '7 = MaxWidth (0.2.4) (depentant)
+    '8 = MaxHeight (0.2.4) (depentant)
     '
     'ComputerInfo Strings:
     '0 = Computer Name (0.1) (default : shiftos)

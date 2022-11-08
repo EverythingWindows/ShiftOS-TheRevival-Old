@@ -24,10 +24,21 @@ Partial Class IntroStory
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.OpacityPlay = New System.Windows.Forms.Timer(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'OpacityPlay
         '
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Consolas", 32.0!)
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(790, 51)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Your computer has been hijacked!"
         '
         'IntroStory
         '
@@ -35,14 +46,17 @@ Partial Class IntroStory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label1)
         Me.Name = "IntroStory"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "IntroStory"
         Me.TopMost = True
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents OpacityPlay As Timer
+    Friend WithEvents Label1 As Label
 End Class

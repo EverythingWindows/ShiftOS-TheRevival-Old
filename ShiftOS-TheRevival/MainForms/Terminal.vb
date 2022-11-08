@@ -27,6 +27,8 @@ Public Class Terminal
     Public Sub InitializeTerminal()
         Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
         Strings.OnceInfo(4) = "!"
+        Strings.OnceInfo(7) = Width
+        Strings.OnceInfo(8) = Height
         If Strings.IsFree = True Then
             Strings.ComputerInfo(0) = "shiftos"
             Strings.ComputerInfo(1) = "user"
@@ -224,6 +226,9 @@ Public Class Terminal
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "HELP        Shows all commands available and its corresponding action"
+                If Strings.AvailableFeature(20) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "HOSTNAME    Sets the name of current hostname/computer name with a new one"
+                End If
                 If Strings.AvailableFeature(4) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "INFOBAR     Displays informations about current session such as current app, current user, current time, etc."
                 End If
@@ -266,6 +271,9 @@ Public Class Terminal
                             End If
                         End If
                     End If
+                End If
+                If Strings.AvailableFeature(20) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "USERNAME    Sets the name of current user with a new one"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "VER         Printing current version of ShiftOS TheRevival"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine
@@ -405,6 +413,14 @@ Public Class Terminal
                     AdvancedCommand = False
                     BadCommand = False
                 End If
+            End If
+            If command Like "hostname *" Then
+                If Strings.AvailableFeature(20) = 1 Then
+                    Strings.ComputerInfo(0) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                End If
+                AssignPrompt()
+                AdvancedCommand = False
+                BadCommand = False
             End If
             If command Like "infobar *" Then
                 If Strings.AvailableFeature(4) = "1" Then
@@ -602,6 +618,18 @@ Public Class Terminal
                     AdvancedCommand = False
                     BadCommand = False
                 End If
+            End If
+            If command Like "username *" Then
+                If Strings.AvailableFeature(19) = 1 Then
+                    If command.Substring(9) = "root" Then
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "This username is already taken!"
+                    Else
+                        Strings.ComputerInfo(1) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                    End If
+                End If
+                AssignPrompt()
+                AdvancedCommand = False
+                BadCommand = False
             End If
         End If
 
@@ -842,25 +870,25 @@ Public Class Terminal
                         TextBox1.Text = "Connected to <null>"
                     Case 25
                         TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Hey there, Unknown user!"
-                    Case 40
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: You have been selected for an unvolentary test on my experimental operating system, ShiftOS"
-                    Case 90
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: ShiftOS is an operating system that purposes itself to evolve itself as the time progresses"
-                    Case 140
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I will add features into the operating system as you use it"
-                    Case 170
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Currently ShiftOS didn't have that much function aside from a command line with little command"
-                    Case 190
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I'll install ShiftOS now on your system"
-                    Case 215
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I will come back and contact you later on when the time is necessary, see you!"
-                    Case 250
-                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null> Disconnected"
-                    Case 275
-                        TextBox1.Text = "Installing ShiftOS..."
-                    Case 350
-                        TextBox1.Text = "ShiftOS Installed, The computer will restart in a few seconds"
+                    Case 60
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Congratulaions! You have been involuntarily selected for a test on my experimental operating system, ShiftOS."
+                    Case 125
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: ShiftOS is an operating system that will evolve itself as you use it as I progressively add more features into ShiftOS."
+                    Case 160
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Currently ShiftOS isn't much from a basic command-line operating system."
+                    Case 210
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I don't wish to reveal my indentity at this point in time."
+                    Case 270
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: I will install ShiftOS on your system once I leave while I work on... something else."
+                    Case 335
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null>: Once you have ShiftOS rich feature enough, I will come back to you. In the mean time, goodbye!"
                     Case 400
+                        TextBox1.Text = TextBox1.Text & Environment.NewLine & "<null> Disconnected"
+                    Case 430
+                        TextBox1.Text = "Installing ShiftOS..."
+                    Case 550
+                        TextBox1.Text = "ShiftOS Installed, The computer will restart in a few seconds"
+                    Case 600
                         StoryOnlyTimer.Stop()
                         TextBox1.Text = Nothing
                         TextBox1.ReadOnly = False
