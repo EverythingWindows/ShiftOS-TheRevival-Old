@@ -33,13 +33,15 @@ Module SaveLoadSystem
         Strings.AvailableFeature(18) = "2"
         Strings.AvailableFeature(19) = "2"
         Strings.AvailableFeature(20) = "2"
+        Strings.AvailableFeature(21) = "2"
+        Strings.AvailableFeature(22) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
-        Strings.ComputerInfo(4) = "21"
+        Strings.ComputerInfo(4) = "23"
         Strings.AvailableFeature(0) = "1"
         Strings.AvailableFeature(1) = "1"
         Strings.AvailableFeature(2) = "1"
@@ -62,6 +64,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(18) = "1"
         Strings.AvailableFeature(19) = "1"
         Strings.AvailableFeature(20) = "1"
+        Strings.AvailableFeature(21) = "1"
+        Strings.AvailableFeature(22) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -90,6 +94,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(18) = "2"
         Strings.AvailableFeature(19) = "2"
         Strings.AvailableFeature(20) = "2"
+        Strings.AvailableFeature(21) = "2"
+        Strings.AvailableFeature(22) = "2"
     End Sub
 
     Public Sub SaveGame()

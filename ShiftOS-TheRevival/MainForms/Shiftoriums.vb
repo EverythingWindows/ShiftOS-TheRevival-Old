@@ -8,8 +8,15 @@
         Else
             If Strings.AvailableFeature(0) = "0" Then
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(man | 10 CP) ShiftOS Help Manual"
+            Else
+                If Strings.AvailableFeature(19) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(username | 15 CP) Custom Username"
+                End If
+                If Strings.AvailableFeature(20) = "0" Then
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(hostname | 15 CP) Custom hostname"
+                End If
             End If
-            If Strings.AvailableFeature(1) = "0" Then
+                If Strings.AvailableFeature(1) = "0" Then
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(clear | 20 CP) Clear Terminal Screen"
             Else
                 If Strings.AvailableFeature(2) = "0" Then
@@ -50,6 +57,13 @@
                     End If
                     If Strings.AvailableFeature(18) = "0" Then
                         Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(shiftkey | 45 CP) ShiftKey"
+                    End If
+                    If Strings.AvailableFeature(21) = "0" Then
+                        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(rev | 30 CP) Reverse String"
+                    Else
+                        If Strings.AvailableFeature(22) = "0" Then
+                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "(cowsay | 50 CP) Cowsay"
+                        End If
                     End If
                 End If
                 If Strings.AvailableFeature(5) = "0" Then
@@ -213,6 +227,34 @@
                     Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Recall the previous command on terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Terminal.BadCommand = False
                 End If
+            Case "username"
+                If Strings.AvailableFeature(19) = "0" Then
+                    ManHeader(0) = "Custom Username"
+                    ManHeader(1) = "15 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Set custom username for ShfitOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
+            Case "hostname"
+                If Strings.AvailableFeature(20) = "0" Then
+                    ManHeader(0) = "Custom Hostname"
+                    ManHeader(1) = "15 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Set custom hostname/computer name for ShfitOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
+            Case "rev"
+                If Strings.AvailableFeature(21) = "0" Then
+                    ManHeader(0) = "Reverse String"
+                    ManHeader(1) = "30 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Reverse any text you entered in the terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
+            Case "cowsay"
+                If Strings.AvailableFeature(22) = "0" Then
+                    ManHeader(0) = "Cowsay"
+                    ManHeader(1) = "50 CP"
+                    Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Make the ASCII cow say anything you want to" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    Terminal.BadCommand = False
+                End If
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -279,6 +321,18 @@
             Case "shiftkey"
                 Shiftorium_InstallFeatures(True, "shiftkey", 18, 45)
                 Terminal.BadCommand = False
+            Case "username"
+                Shiftorium_InstallFeatures(True, "username", 19, 15)
+                Terminal.BadCommand = False
+            Case "hostname"
+                Shiftorium_InstallFeatures(True, "hostname", 20, 15)
+                Terminal.BadCommand = False
+            Case "rev"
+                Shiftorium_InstallFeatures(True, "rev", 21, 30)
+                Terminal.BadCommand = False
+            Case "cowsay"
+                Shiftorium_InstallFeatures(True, "cowsay", 22, 50)
+                Terminal.BadCommand = False
             Case Else
                 Terminal.BadCommand = False
                 Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -294,6 +348,8 @@
                     Select Case Feature
                         Case "man"
                             Strings.AvailableFeature(0) = "1"
+                            Strings.AvailableFeature(19) = "0"
+                            Strings.AvailableFeature(20) = "0"
                             success = True
                         Case "clear"
                             Strings.AvailableFeature(1) = "1"
@@ -305,6 +361,7 @@
                             Strings.AvailableFeature(2) = "1"
                             Strings.AvailableFeature(3) = "0"
                             Strings.AvailableFeature(18) = "0"
+                            Strings.AvailableFeature(21) = "0"
                             success = True
                         Case "termdspdrv"
                             Strings.AvailableFeature(3) = "1"
@@ -369,6 +426,19 @@
                             success = True
                         Case "shiftkey"
                             Strings.AvailableFeature(18) = "1"
+                            success = True
+                        Case "username"
+                            Strings.AvailableFeature(19) = "1"
+                            success = True
+                        Case "hostname"
+                            Strings.AvailableFeature(20) = "1"
+                            success = True
+                        Case "rev"
+                            Strings.AvailableFeature(21) = "1"
+                            Strings.AvailableFeature(22) = "0"
+                            success = True
+                        Case "cowsay"
+                            Strings.AvailableFeature(22) = "1"
                             success = True
                     End Select
                     If success = False Then

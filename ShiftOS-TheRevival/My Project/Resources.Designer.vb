@@ -72,18 +72,25 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to WARNING: READ BEFORE PLAYING!
         '''
-        '''A very small percentage of individuals may experience epileptic seizures when 
-        '''exposed to certain light patterns or flashing lights. Exposure to certain patterns or 
-        '''backgrounds on a computer screen, or while playing video games, may induce an 
-        '''epileptic seizure in these individuals. Certain conditions may induce previously 
-        '''undetected epileptic symptoms even in persons who have no history of prior 
-        '''seizures or epilepsy.
+        '''A very small percentage of individuals may experience epileptic seizures when exposed to certain light patterns or flashing lights. Exposure to certain patterns or backgrounds on a computer screen, or while playing video games, may induce an epileptic seizure in these individuals. Certain conditions may induce previously undetected epileptic symptoms even in persons who have no history of prior seizures or epilepsy.
         '''
-        '''If you, or anyone in your family, have an epil [rest of string was truncated]&quot;;.
+        '''If you, or anyone in your family, have an epileptic cond [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property epilepsy() As String
             Get
                 Return ResourceManager.GetString("epilepsy", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Fuck
+        '''Shit
+        '''Bitch
+        '''Damn.
+        '''</summary>
+        Friend ReadOnly Property Fortunes() As String
+            Get
+                Return ResourceManager.GetString("Fortunes", resourceCulture)
             End Get
         End Property
         

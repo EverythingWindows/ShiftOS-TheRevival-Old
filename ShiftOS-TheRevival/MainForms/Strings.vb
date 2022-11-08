@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(20) As String
+    Public Shared AvailableFeature(22) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -69,6 +69,8 @@
     '18 = ShiftKey [DOSKey for ShiftOS] (0.2.4) (default : 0)
     '19 = Custom Username [Custom username for ShiftOS] (0.2.4) (default : 0)
     '20 = Custom Hostname [Custom hostname for ShiftOS] (0.2.4) (default : 0)
+    '21 = Reverse String [Reverse a text] (0.2.4) (default : 0)
+    '22 = Cowsay [Cowsay] (0.2.4) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -77,6 +79,8 @@
     '>>Custom Hostname (HOSTNAME) (15 CP)
     '>Terminal Clear (CLEAR) (20 CP)
     '>>Terminal Print (PRINT) (25 CP)
+    '>>>Reverse String command (REV) (30 CP)
+    '>>>>Cowsay (50 CP)
     '>>>ShiftKey (ShOSKey) (45 CP)
     '>>>Terminal Display Driver (TERMDSPDRV) (40 CP)
     '>>>>Terminal InfoBar (INFOBAR) (50 CP)

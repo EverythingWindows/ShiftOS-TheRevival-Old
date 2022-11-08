@@ -2,6 +2,7 @@
 
 Public Class Terminal
     Public TrackPos As Integer
+    Public RawCommand As String
     Public command As String
     Public DefaultPrompt As String
     Public AdvancedCommand As Boolean
@@ -144,6 +145,7 @@ Public Class Terminal
         Else
             command = command.Replace(DefaultPrompt, "")
         End If
+        RawCommand = command
         command = command.ToLower()
     End Sub
 
@@ -222,6 +224,7 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLOR       Changes Terminal Text and Background color to the corresponding choice"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLORS      Shows available colors support for the terminal"
                 If Strings.AvailableFeature(16) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "DEL         Delete a selected file from the directory"
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "DIR         Displays subdirectories and files in a directory"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "GUESS       Runs 'Guess the Number' application"
@@ -407,9 +410,15 @@ Public Class Terminal
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
                 BadCommand = False
             End If
+            If command Like "cowsay *" Then
+                If Strings.AvailableFeature(22) = 1 Then
+                    Cowsay_Say(RawCommand.Substring(7))
+                    BadCommand = False
+                End If
+            End If
             If command Like "del *" Then
                 If Strings.AvailableFeature(16) = 1 Then
-                    DeleteFile(command.Substring(4))
+                    DeleteFile(RawCommand.Substring(4))
                     AdvancedCommand = False
                     BadCommand = False
                 End If
@@ -417,10 +426,10 @@ Public Class Terminal
             If command Like "hostname *" Then
                 If Strings.AvailableFeature(20) = 1 Then
                     Strings.ComputerInfo(0) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                    AssignPrompt()
+                    AdvancedCommand = False
+                    BadCommand = False
                 End If
-                AssignPrompt()
-                AdvancedCommand = False
-                BadCommand = False
             End If
             If command Like "infobar *" Then
                 If Strings.AvailableFeature(4) = "1" Then
@@ -579,10 +588,17 @@ Public Class Terminal
             End If
             If command Like "print *" Then
                 If Strings.AvailableFeature(2) = "1" Then
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(6)
-                    Dim printed As String = command.Replace("print ", "")
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & RawCommand.Substring(6)
+                    'Dim printed As String = command.Replace("print ", "")
                     ''It has the same issue, only displays in lowercase
                     'TextBox1.Text = TextBox1.Text & Environment.NewLine & printed
+                    BadCommand = False
+                    AdvancedCommand = False
+                End If
+            End If
+            If command Like "rev *" Then
+                If Strings.AvailableFeature(21) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & StrReverse(RawCommand.Substring(4))
                     BadCommand = False
                     AdvancedCommand = False
                 End If
@@ -613,7 +629,7 @@ Public Class Terminal
             If command Like "textpad *" Then
                 If Strings.AvailableFeature(17) = 1 Then
                     ChangeInterpreter = True
-                    command = command.Replace("textpad ", "")
+                    command = RawCommand.Replace("textpad ", "")
                     AppHost("textpad", True)
                     AdvancedCommand = False
                     BadCommand = False
@@ -625,11 +641,11 @@ Public Class Terminal
                         TextBox1.Text = TextBox1.Text & Environment.NewLine & "This username is already taken!"
                     Else
                         Strings.ComputerInfo(1) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                        AssignPrompt()
                     End If
+                    AdvancedCommand = False
+                    BadCommand = False
                 End If
-                AssignPrompt()
-                AdvancedCommand = False
-                BadCommand = False
             End If
         End If
 

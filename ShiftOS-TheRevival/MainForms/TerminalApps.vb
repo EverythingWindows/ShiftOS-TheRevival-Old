@@ -78,24 +78,32 @@ Module TerminalApps
     Public Sub CaptureKeyBinding(KeysInput As Keys)
         Select Case KeysInput
             Case (Keys.S + Keys.Control)
-                If File.Exists(Terminal.CurrentDirectory & "\" & Terminal.command) = True Then
-                    Dim TempCompare As String = File.ReadAllText(Terminal.CurrentDirectory & "\" & Terminal.command)
-                    If Terminal.TextBox1.Text = TempCompare Then
+                Select Case Terminal.CurrentInterpreter
+                    Case "textpad"
+                        If File.Exists(Terminal.CurrentDirectory & "\" & Terminal.command) = True Then
+                            Dim TempCompare As String = File.ReadAllText(Terminal.CurrentDirectory & "\" & Terminal.command)
+                            If Terminal.TextBox1.Text = TempCompare Then
 
-                    Else
-                        Dim BeforeCP As Integer = Strings.ComputerInfo(2)
-                        SaveFile(Terminal.command)
-                        TextPad_GenerateCP_SavedFile()
-                        Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
-                        Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
-                    End If
-                Else
-                    Dim BeforeCP As Integer = Strings.ComputerInfo(2)
-                    SaveFile(Terminal.command)
-                    TextPad_GenerateCP_SavedFile()
-                    Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
-                    Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
-                End If
+                            Else
+                                Dim BeforeCP As Integer = Strings.ComputerInfo(2)
+                                SaveFile(Terminal.command)
+                                TextPad_GenerateCP_SavedFile()
+                                Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                                Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
+                            End If
+                        Else
+                            Dim BeforeCP As Integer = Strings.ComputerInfo(2)
+                            SaveFile(Terminal.command)
+                            TextPad_GenerateCP_SavedFile()
+                            Dim AfterCP As Integer = Strings.ComputerInfo(2) - BeforeCP
+                            Terminal.ToolBar.Text = "TextPad - " & Terminal.command & " - You've got " & AfterCP & " Codepoints" & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
+                        End If
+                End Select
+            Case (Keys.N + Keys.Control)
+                Select Case Terminal.CurrentInterpreter
+                    Case "textpad"
+                        Terminal.TextBox1.Text = Nothing
+                End Select
         End Select
     End Sub
 
