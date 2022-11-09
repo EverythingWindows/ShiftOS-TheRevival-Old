@@ -132,6 +132,7 @@
     <Compile Include="MainForms\TerminalApps.vb" />
     <Compile Include="MainForms\TerminalColorSystem.vb" />
     <Compile Include="MainForms\TerminalInternalApps.vb" />
+    <Compile Include="MainForms\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

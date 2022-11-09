@@ -40,15 +40,15 @@ Public Class ShiftOSUpdater
                 Button2.Text = "Saved"
             End If
         ElseIf Button2.Text = "Update" Then
-            Label2.Text = "Updating ShiftOS from" & My.Resources.CurrentVersion & " to " & NewVersion
-
+            Label2.Text = "Updating ShiftOS to " & My.Resources.CurrentVersion
+            UpdateToNew()
         Else
-
+            Close()
         End If
     End Sub
     Private Sub ShiftOSUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If ShiftOSMenu.ShouldUpdate = True Then
-            Button1.Text = "Update"
+            Button2.Text = "Update"
         End If
     End Sub
 

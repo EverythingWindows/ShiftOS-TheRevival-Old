@@ -27,7 +27,6 @@ Public Class ShiftOSMenu
         '    MsgBox("Why? Because of " & ex.Message)
         'End Try
         CheckInstall()
-        CheckUpdate()
         BannerChange.Start()
     End Sub
 
@@ -56,8 +55,8 @@ Public Class ShiftOSMenu
             Case "Continue"
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
-                Terminal.Show()
                 Terminal.StayAtChapter = True
+                Terminal.Show()
                 Close()
             Case "No"
                 Label3.Visible = False
@@ -156,17 +155,25 @@ Public Class ShiftOSMenu
 
     Private Sub CheckInstall()
         If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
-            'Dim WhatVersion As String = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
-            'If WhatVersion = My.Resources.CurrentVersion Then
-
-            'Else
-            '    btn_Aboot.Enabled = False
-            '    btn_Exit.Enabled = False
-            '    btn_FreeRoam.Enabled = False
-            '    btn_StoryMode.Enabled = False
-            '    ShouldUpdate = True
-            '    ShiftOSUpdater.Show()
-            'End If
+            Dim CurrentVersion As String = My.Resources.CurrentVersion
+            If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt") = True Then
+                TheUpdater.WhatVersion = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
+            Else
+                TheUpdater.WhatVersion = "0.2.3"
+            End If
+            If TheUpdater.WhatVersion = My.Resources.CurrentVersion Then
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
+                CheckUpdate()
+            Else
+                btn_Aboot.Enabled = False
+                btn_Exit.Enabled = False
+                btn_FreeRoam.Enabled = False
+                btn_StoryMode.Enabled = False
+                ShouldUpdate = True
+                ShiftOSUpdater.Show()
+                ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Update now to get more features."
+                ShiftOSUpdater.Button2.Text = "Update"
+            End If
         Else
             If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then
                 If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
