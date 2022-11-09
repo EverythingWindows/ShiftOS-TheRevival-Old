@@ -1,0 +1,5 @@
+﻿Delete a file in the current directory
+
+[FILENAME.EXT] Filename you want to remove
+
+example: del junk.exe

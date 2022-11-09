@@ -200,6 +200,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <Content Include="MainForms\rev.txt" />
+    <Content Include="Resources\man Manuals\textpad.txt" />
     <Content Include="Resources\epilepsy.txt" />
     <Content Include="Resources\Fortunes.txt" />
     <Content Include="Resources\hangman.txt" />
@@ -209,11 +211,14 @@
     <Content Include="Resources\man Manuals\codepoint.txt" />
     <Content Include="Resources\man Manuals\color.txt" />
     <Content Include="Resources\man Manuals\colors.txt" />
+    <Content Include="Resources\man Manuals\del.txt" />
     <Content Include="Resources\man Manuals\dir.txt" />
     <Content Include="Resources\man Manuals\guess.txt" />
     <Content Include="Resources\man Manuals\help.txt" />
+    <Content Include="Resources\man Manuals\hostname.txt" />
     <Content Include="Resources\man Manuals\infobar.txt" />
     <Content Include="Resources\man Manuals\man.txt" />
+    <Content Include="Resources\man Manuals\cowsay.txt" />
     <Content Include="Resources\man Manuals\mkdir.txt" />
     <Content Include="Resources\man Manuals\print.txt" />
     <Content Include="Resources\man Manuals\pwd.txt" />
@@ -222,6 +227,8 @@
     <Content Include="Resources\man Manuals\shiftfetch.txt" />
     <Content Include="Resources\man Manuals\shiftorium.txt" />
     <Content Include="Resources\man Manuals\shutdown.txt" />
+    <Content Include="Resources\man Manuals\time.txt" />
+    <Content Include="Resources\man Manuals\username.txt" />
     <Content Include="Resources\man Manuals\ver.txt" />
     <None Include="Resources\Menu Picture\ShiftOS_MenuBanner2.jpg" />
     <None Include="Resources\Menu Picture\ShiftOS_MenuBanner1.jpg" />

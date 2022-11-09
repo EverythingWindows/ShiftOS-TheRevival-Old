@@ -1,0 +1,5 @@
+﻿Reverse the text you inputted in the terminal
+
+[TEXT] Words or sentences you want to reverse
+
+example: rev SOtfihS

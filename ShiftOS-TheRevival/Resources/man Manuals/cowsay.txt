@@ -1,0 +1,5 @@
+﻿Spawns a cow into the terminal and making it saying anything you typed in the terminal
+
+[STRING] Words or sentences you want to say
+
+example: cowsay ShiftOS is cool

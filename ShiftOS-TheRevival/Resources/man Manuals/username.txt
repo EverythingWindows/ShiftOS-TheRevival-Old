@@ -1,0 +1,5 @@
+﻿Changes the current username with a new one.
+
+[USERNAME] New username you want to change to
+
+example: username philip

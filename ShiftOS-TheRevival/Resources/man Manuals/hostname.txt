@@ -1,0 +1,5 @@
+﻿Changes the existing hostname with a new one
+
+[HOSTNAME] New hostname/computer name you decided
+
+example: hostname ShiftPC

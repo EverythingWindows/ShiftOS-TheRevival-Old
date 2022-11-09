@@ -1,0 +1,8 @@
+﻿A simple text-editor for ShiftOS.
+
+[FILENAME.TXT] Filename of the text you want to write
+			   
+			   It will open a blank text if the file is not existent
+			   Otherwise, it will open the file and fills the text with the file's content
+
+example: textpad important.txt

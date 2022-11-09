@@ -161,6 +161,32 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Spawns a cow into the terminal and making it saying anything you typed in the terminal
+        '''
+        '''[STRING] Words or sentences you want to say
+        '''
+        '''example: cowsay ShiftOS is cool.
+        '''</summary>
+        Friend ReadOnly Property man_cowsay() As String
+            Get
+                Return ResourceManager.GetString("man_cowsay", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Delete a file in the current directory
+        '''
+        '''[FILENAME.EXT] Filename you want to remove
+        '''
+        '''example: del junk.exe.
+        '''</summary>
+        Friend ReadOnly Property man_del() As String
+            Get
+                Return ResourceManager.GetString("man_del", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Displays all subdirectories and files that are in the current directory
         '''
         '''example: dir.
@@ -186,6 +212,19 @@ Namespace My.Resources
         Friend ReadOnly Property man_help() As String
             Get
                 Return ResourceManager.GetString("man_help", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Changes the existing hostname with a new one
+        '''
+        '''[HOSTNAME] New hostname/computer name you decided
+        '''
+        '''example: hostname ShiftPC.
+        '''</summary>
+        Friend ReadOnly Property man_hostname() As String
+            Get
+                Return ResourceManager.GetString("man_hostname", resourceCulture)
             End Get
         End Property
         
@@ -303,6 +342,46 @@ Namespace My.Resources
         Friend ReadOnly Property man_shutdown() As String
             Get
                 Return ResourceManager.GetString("man_shutdown", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to A simple text-editor for ShiftOS.
+        '''
+        '''[FILENAME.TXT] Filename of the text you want to write
+        '''			   
+        '''			   It will open a blank text if the file is not existent
+        '''			   Otherwise, it will open the file and fills the text with the file&apos;s content
+        '''
+        '''example: textpad important.txt.
+        '''</summary>
+        Friend ReadOnly Property man_textpad() As String
+            Get
+                Return ResourceManager.GetString("man_textpad", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Shows the time in the corresponding existed format
+        '''
+        '''example: time.
+        '''</summary>
+        Friend ReadOnly Property man_time() As String
+            Get
+                Return ResourceManager.GetString("man_time", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Changes the current username with a new one.
+        '''
+        '''[USERNAME] New username you want to change to
+        '''
+        '''example: username philip.
+        '''</summary>
+        Friend ReadOnly Property man_username() As String
+            Get
+                Return ResourceManager.GetString("man_username", resourceCulture)
             End Get
         End Property
         

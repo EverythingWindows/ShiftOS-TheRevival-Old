@@ -145,6 +145,12 @@
   <data name="man_colors" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\colors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="man_cowsay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\cowsay.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_del" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\del.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="man_dir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\dir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -153,6 +159,9 @@
   </data>
   <data name="man_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\help.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_hostname" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\hostname.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="man_infobar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\infobar.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -183,6 +192,15 @@
   </data>
   <data name="man_shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\shutdown.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_textpad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\textpad.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\time.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_username" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\username.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="man_ver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\ver.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

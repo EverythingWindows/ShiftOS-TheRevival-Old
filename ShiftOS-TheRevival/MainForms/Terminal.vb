@@ -223,6 +223,9 @@ Public Class Terminal
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "CODEPOINT   Display Codepoint(s) from your wallet"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLOR       Changes Terminal Text and Background color to the corresponding choice"
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "COLORS      Shows available colors support for the terminal"
+                If Strings.AvailableFeature(22) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "COWSAY      Spawn a cow and saying anything you want"
+                End If
                 If Strings.AvailableFeature(16) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "DEL         Delete a selected file from the directory"
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "DIR         Displays subdirectories and files in a directory"
@@ -248,6 +251,9 @@ Public Class Terminal
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "PRINT       Prints a corresponding text entered in the command"
                 End If
                 TextBox1.Text = TextBox1.Text & Environment.NewLine & "REBOOT      Terminate and re-run ShiftOS session"
+                If Strings.AvailableFeature(21) = 1 Then
+                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "REV         Turn any sentences you want and making it reversed"
+                End If
                 If Strings.AvailableFeature(16) = 1 Then
                     TextBox1.Text = TextBox1.Text & Environment.NewLine & "RMDIR       Deleting a directory"
                 End If
@@ -458,125 +464,7 @@ Public Class Terminal
             End If
             If command Like "man *" Then
                 If Strings.AvailableFeature(0) = "1" Then
-                    'MAN command starts with this kinda format
-                    'ShiftOS Help Manual
-                    '
-                    ''command' Usage: [switch/value if needed]
-                    '
-                    'Summary of the command's action
-                    '
-                    'Example usage : command
-                    TextBox1.Text = TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine
-                    'TextBox1.Text = TextBox1.Text & Environment.NewLine & command.Substring(4)
-                    Dim mancommand As String = command.Replace("man ", "")
-                    Dim TempUsage As String = "'" & mancommand & "' Usage: "
-                    Select Case mancommand
-                        'In process to convert every command from printing from code to printing from text file
-                        Case "bc"
-                            If Strings.AvailableFeature(9) = "1" Then
-                                TempUsage = TempUsage & "bc"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_bc & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "cd"
-                            If Strings.AvailableFeature(16) = "1" Then
-                                TempUsage = TempUsage & "cd [DIRECTORY]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_cd & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "clear"
-                            If Strings.AvailableFeature(1) = "1" Then
-                                TempUsage = TempUsage & "clear"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_clear & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "color"
-                            TempUsage = TempUsage & "color [bg][fg]"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_color & Environment.NewLine
-                            BadCommand = False
-                        Case "colors"
-                            TempUsage = TempUsage & "colors"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_colors & Environment.NewLine
-                            BadCommand = False
-                        Case "codepoint"
-                            TempUsage = TempUsage & "codepoint"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_codepoint & Environment.NewLine
-                            BadCommand = False
-                        Case "dir"
-                            If Strings.AvailableFeature(16) = "1" Then
-                                TempUsage = TempUsage & "dir"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_dir & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "guess"
-                            TempUsage = TempUsage & "guess"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_guess & Environment.NewLine
-                            BadCommand = False
-                        Case "help"
-                            TempUsage = TempUsage & "help"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_help & Environment.NewLine
-                            BadCommand = False
-                        Case "infobar"
-                            If Strings.AvailableFeature(4) = 1 Then
-                                TempUsage = TempUsage & "infbar [ON|OFF] [OPTION]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_infobar & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "man"
-                            If Strings.AvailableFeature(0) = "1" Then
-                                TempUsage = TempUsage & "man [command]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_man & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "mkdir"
-                            If Strings.AvailableFeature(16) = "1" Then
-                                TempUsage = TempUsage & "mkdir [DIRECTORY]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_mkdir & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "print"
-                            If Strings.AvailableFeature(2) = "1" Then
-                                TempUsage = TempUsage & "print [text]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_print & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "pwd"
-                            If Strings.AvailableFeature(16) = "1" Then
-                                TempUsage = TempUsage & "pwd"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_pwd & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "reboot"
-                            TempUsage = TempUsage & "reboot"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_reboot & Environment.NewLine
-                            BadCommand = False
-                        Case "rmdir"
-                            If Strings.AvailableFeature(16) = "1" Then
-                                TempUsage = TempUsage & "rmdir [DIRECTORY]"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_rmdir & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "shiftfetch"
-                            If Strings.AvailableFeature(8) = "1" Then
-                                TempUsage = TempUsage & "shiftfetch"
-                                TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shiftfetch & Environment.NewLine
-                                BadCommand = False
-                            End If
-                        Case "shiftorium"
-                            TempUsage = TempUsage & "shiftorium [option] [featureName]"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shiftorium & Environment.NewLine
-                            BadCommand = False
-                        Case "shutdown"
-                            TempUsage = TempUsage & "shutdown"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_shutdown & Environment.NewLine
-                            BadCommand = False
-                        Case "ver"
-                            TempUsage = TempUsage & "ver"
-                            TextBox1.Text = TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_ver & Environment.NewLine
-                            BadCommand = False
-                        Case Else
-                            TextBox1.Text = TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
-                    End Select
+                    Manual(command)
                 End If
             End If
             If command Like "mkdir *" Then
