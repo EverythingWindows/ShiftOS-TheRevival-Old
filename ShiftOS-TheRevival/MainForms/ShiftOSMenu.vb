@@ -93,12 +93,7 @@ Public Class ShiftOSMenu
                 btn_Chapter5.Visible = True
                 btn_Back.Visible = True
             Case "Chapter 1" & Environment.NewLine & "Hijacked!"
-                MsgBox(My.Resources.epilepsy)
-                Strings.IsFree = False
-                Strings.OnceInfo(6) = "story"
-                IntroStory.Show()
-                NewGameMode()
-                Close()
+                Epilepsy.Show()
         End Select
     End Sub
 
@@ -171,8 +166,9 @@ Public Class ShiftOSMenu
                 btn_StoryMode.Enabled = False
                 ShouldUpdate = True
                 ShiftOSUpdater.Show()
-                ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Update now to get more features."
-                ShiftOSUpdater.Button2.Text = "Update"
+                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."
+                ShiftOSUpdater.Label2.Text = "Update function is temporarily disabled." & Environment.NewLine & "Click the 'Reset' to reset the save"
+                ShiftOSUpdater.Button2.Text = "Reset"
             End If
         Else
             If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then

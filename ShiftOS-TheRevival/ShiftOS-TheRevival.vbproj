@@ -100,6 +100,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\DirectoryManagements.vb" />
+    <Compile Include="MainForms\Epilepsy.Designer.vb">
+      <DependentUpon>Epilepsy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Epilepsy.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\FileManagement.vb" />
     <Compile Include="MainForms\IntroStory.Designer.vb">
       <DependentUpon>IntroStory.vb</DependentUpon>
@@ -154,6 +160,9 @@
     <EmbeddedResource Include="MainForms\BugSlap.resx">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Epilepsy.resx">
+      <DependentUpon>Epilepsy.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\IntroStory.resx">
       <DependentUpon>IntroStory.vb</DependentUpon>
     </EmbeddedResource>
@@ -203,7 +212,6 @@
     <None Include="Resources\CurrentVersion.txt" />
     <Content Include="MainForms\rev.txt" />
     <Content Include="Resources\man Manuals\textpad.txt" />
-    <Content Include="Resources\epilepsy.txt" />
     <Content Include="Resources\Fortunes.txt" />
     <Content Include="Resources\hangman.txt" />
     <Content Include="Resources\man Manuals\bc.txt" />
