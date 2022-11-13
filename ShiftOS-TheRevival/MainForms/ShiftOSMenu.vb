@@ -9,23 +9,6 @@ Public Class ShiftOSMenu
     Public Shared ShouldUpdate As Boolean = False
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Try
-        '    If File.Exists("D:\ShiftOSBuildLab.txt") Then
-        '        BuildLab = File.ReadAllLines("D:\ShiftOSBuildLab.txt")
-        '        If BuildLab(0) = "No" Then
-        '            Dim BuildNum As Integer = BuildLab(1)
-        '            BuildNum = BuildLab(1) + 1
-        '            ActualBuildLab = "ShiftOS_TheRevival." & BuildLab(3) & "." & BuildNum & "." & Date.Today.Year & Date.Today.Month & Date.Today.Day
-        '            BuildLab(1) = BuildNum
-        '            File.WriteAllLines("D:\ShiftOSBuildLab.txt", BuildLab)
-        '        End If
-        '        lbl_BuildString.Text = ActualBuildLab
-        '    Else
-
-        '    End If
-        'Catch ex As Exception
-        '    MsgBox("Why? Because of " & ex.Message)
-        'End Try
         CheckInstall()
         BannerChange.Start()
     End Sub
@@ -44,7 +27,7 @@ Public Class ShiftOSMenu
                     Strings.IsFree = True
                     Strings.OnceInfo(6) = "free"
                     FreeRoamMode()
-                    Terminal.Show()
+                    Console.Show()
                     Close()
                 Catch ex As Exception
                     Dim NewBugSlap As New BugSlap
@@ -55,8 +38,8 @@ Public Class ShiftOSMenu
             Case "Continue"
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
-                Terminal.StayAtChapter = True
-                Terminal.Show()
+                Console.StayAtChapter = True
+                Console.Show()
                 Close()
             Case "No"
                 Label3.Visible = False
@@ -94,6 +77,7 @@ Public Class ShiftOSMenu
                 btn_Back.Visible = True
             Case "Chapter 1" & Environment.NewLine & "Hijacked!"
                 Epilepsy.Show()
+                DebugWindow.ShouldDebug = True
         End Select
     End Sub
 
@@ -154,7 +138,7 @@ Public Class ShiftOSMenu
             If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt") = True Then
                 TheUpdater.WhatVersion = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
             Else
-                TheUpdater.WhatVersion = "0.2.3"
+                TheUpdater.WhatVersion = "0.2.4"
             End If
             If TheUpdater.WhatVersion = My.Resources.CurrentVersion Then
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
@@ -186,6 +170,7 @@ Public Class ShiftOSMenu
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS")
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
             End If
         End If
     End Sub
@@ -198,7 +183,7 @@ Public Class ShiftOSMenu
         If Label2.Text = "Debug it your way" Then
             Strings.IsFree = True
             GodMode()
-            Terminal.Show()
+            Console.Show()
             Close()
         End If
     End Sub

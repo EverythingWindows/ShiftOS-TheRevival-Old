@@ -31,7 +31,7 @@
                 If Opacity = 1 Then
                     Strings.ComputerInfo(3) = "0"
                     Strings.IsFree = False
-                    Terminal.Show()
+                    Console.Show()
                     Close()
                 Else
                     Opacity = Opacity + 0.05

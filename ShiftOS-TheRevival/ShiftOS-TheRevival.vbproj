@@ -99,6 +99,18 @@
     <Compile Include="MainForms\BugSlap.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\ConsoleRTF.Designer.vb">
+      <DependentUpon>ConsoleRTF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\ConsoleRTF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\DebugWindow.Designer.vb">
+      <DependentUpon>DebugWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\DebugWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\DirectoryManagements.vb" />
     <Compile Include="MainForms\Epilepsy.Designer.vb">
       <DependentUpon>Epilepsy.vb</DependentUpon>
@@ -129,13 +141,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\Strings.vb" />
-    <Compile Include="MainForms\Terminal.Designer.vb">
-      <DependentUpon>Terminal.vb</DependentUpon>
+    <Compile Include="MainForms\Console.Designer.vb">
+      <DependentUpon>Console.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Terminal.vb">
+    <Compile Include="MainForms\Console.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\TerminalApps.vb" />
+    <Compile Include="MainForms\ConsoleAPI.vb" />
+    <Compile Include="MainForms\TerminalAPI.vb" />
+    <Compile Include="MainForms\TerminalExternalApps.vb" />
     <Compile Include="MainForms\TerminalColorSystem.vb" />
     <Compile Include="MainForms\TerminalInternalApps.vb" />
     <Compile Include="MainForms\TheUpdater.vb" />
@@ -160,6 +174,12 @@
     <EmbeddedResource Include="MainForms\BugSlap.resx">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\ConsoleRTF.resx">
+      <DependentUpon>ConsoleRTF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\DebugWindow.resx">
+      <DependentUpon>DebugWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Epilepsy.resx">
       <DependentUpon>Epilepsy.vb</DependentUpon>
     </EmbeddedResource>
@@ -169,8 +189,8 @@
     <EmbeddedResource Include="MainForms\ShiftOSUpdater.resx">
       <DependentUpon>ShiftOSUpdater.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\Terminal.resx">
-      <DependentUpon>Terminal.vb</DependentUpon>
+    <EmbeddedResource Include="MainForms\Console.resx">
+      <DependentUpon>Console.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

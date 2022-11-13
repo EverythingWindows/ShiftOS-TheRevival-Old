@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Terminal
+Partial Class Console
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -40,6 +40,7 @@ Partial Class Terminal
         Me.TextBox1.Location = New System.Drawing.Point(0, 36)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ShortcutsEnabled = False
         Me.TextBox1.Size = New System.Drawing.Size(800, 396)
         Me.TextBox1.TabIndex = 0
         '
@@ -76,7 +77,7 @@ Partial Class Terminal
         Me.ToolBar.TabIndex = 1
         Me.ToolBar.Visible = False
         '
-        'Terminal
+        'Console
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -86,7 +87,8 @@ Partial Class Terminal
         Me.Controls.Add(Me.InfoBar)
         Me.Controls.Add(Me.ToolBar)
         Me.ForeColor = System.Drawing.Color.White
-        Me.Name = "Terminal"
+        Me.Name = "Console"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Terminal"
         Me.ResumeLayout(False)
         Me.PerformLayout()

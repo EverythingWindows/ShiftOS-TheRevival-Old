@@ -13,48 +13,48 @@
     Public FgColor As Color
 
     Public Sub DisplayColors()
-        Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "TERMINAL SUPPORTED COLORS" & Environment.NewLine & Environment.NewLine
+        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "TERMINAL SUPPORTED COLORS" & Environment.NewLine & Environment.NewLine
         If Strings.AvailableFeature(10) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "0 = Black      8 = Gray"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "0 = Black      8 = Gray"
         Else
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "0 = Black      8 = ???"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "0 = Black      8 = ???"
         End If
         If Strings.AvailableFeature(14) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "1 = Blue       9 = Light Blue"
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "2 = Green      A = Light Green"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = Blue       9 = Light Blue"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = Green      A = Light Green"
 
         Else
             If Strings.AvailableFeature(13) = "1" Then
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "1 = ???        9 = Light Blue"
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "2 = Green      A = ???"
+                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = ???        9 = Light Blue"
+                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = Green      A = ???"
             Else
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "1 = ???        9 = ???"
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "2 = ???        A = ???"
+                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = ???        9 = ???"
+                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = ???        A = ???"
             End If
         End If
         If Strings.AvailableFeature(15) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "3 = Aqua       B = Light Aqua"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "3 = Aqua       B = Light Aqua"
         Else
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "3 = ???        B = ???"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "3 = ???        B = ???"
         End If
         If Strings.AvailableFeature(14) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "4 = Red        C = Light Red"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = Red        C = Light Red"
         ElseIf Strings.AvailableFeature(13) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "4 = ???        C = Light Red"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = ???        C = Light Red"
         Else
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "4 = ???        C = ???"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = ???        C = ???"
         End If
         If Strings.AvailableFeature(15) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "5 = Purple     D = Light Purple"
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "6 = Yellow     E = Yellow"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "5 = Purple     D = Light Purple"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "6 = Yellow     E = Yellow"
         Else
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "5 = ???        D = ???"
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "6 = ???        E = ???"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "5 = ???        D = ???"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "6 = ???        E = ???"
         End If
         If Strings.AvailableFeature(10) = "1" Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "7 = Dark Gray  F = White"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "7 = Dark Gray  F = White"
         Else
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "7 = ???        F = White"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "7 = ???        F = White"
         End If
     End Sub
 
@@ -68,7 +68,7 @@
                 FgColor = Color.Black
         End Select
         If Bg = Fg Then
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Background and Foreground Color cannot be same!"
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Background and Foreground Color cannot be same!"
         Else
             If Strings.AvailableFeature(10) = "1" Then
                 Select Case Bg
@@ -91,7 +91,7 @@
                                     BgColor = Color.Red
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case "1", "4", "a"
                         If Strings.AvailableFeature(14) = "1" Then
@@ -104,7 +104,7 @@
                                     BgColor = Color.Lime
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case "3", "5", "6", "b", "d", "e"
                         If Strings.AvailableFeature(15) = "1" Then
@@ -123,7 +123,7 @@
                                     BgColor = Color.Yellow
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case Else
                         BgColor = Color.Black
@@ -148,7 +148,7 @@
                                     FgColor = Color.Red
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case "1", "4", "a"
                         If Strings.AvailableFeature(14) = "1" Then
@@ -161,7 +161,7 @@
                                     FgColor = Color.Lime
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case "3", "5", "6", "b", "d", "e"
                         If Strings.AvailableFeature(15) = "1" Then
@@ -180,13 +180,13 @@
                                     FgColor = Color.Yellow
                             End Select
                         Else
-                            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
                         End If
                     Case Else
                         FgColor = Color.White
                 End Select
             Else
-                Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "Color is not supported for 1-bit Color Display"
+                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Color is not supported for 1-bit Color Display"
                 Select Case App
                     Case "terminal"
                         BgColor = Color.Black
@@ -199,12 +199,12 @@
         End If
         Select Case App
             Case "infobar"
-                Terminal.InfoBar.BackColor = BgColor
-                Terminal.InfoBar.ForeColor = FgColor
+                Console.InfoBar.BackColor = BgColor
+                Console.InfoBar.ForeColor = FgColor
                 Strings.ComputerInfo(6) = Bg & Fg
             Case "terminal"
-                Terminal.TextBox1.BackColor = BgColor
-                Terminal.TextBox1.ForeColor = FgColor
+                Console.TextBox1.BackColor = BgColor
+                Console.TextBox1.ForeColor = FgColor
                 Strings.ComputerInfo(5) = Bg & Fg
         End Select
     End Sub

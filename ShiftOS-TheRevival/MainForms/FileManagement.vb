@@ -2,15 +2,15 @@
 
 Module FileManagement
     Public Sub CatFile(filename As String)
-        If File.Exists(Terminal.CurrentDirectory & "\" & filename) = True Then
-            Dim ContentsFinal As String = File.ReadAllText(Terminal.CurrentDirectory & "\" & filename)
-            Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & ContentsFinal
+        If File.Exists(Console.CurrentDirectory & "\" & filename) = True Then
+            Dim ContentsFinal As String = File.ReadAllText(Console.CurrentDirectory & "\" & filename)
+            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ContentsFinal
         End If
     End Sub
 
     Public Sub DeleteFile(filename As String)
-        If File.Exists(Terminal.CurrentDirectory & "\" & filename) = True Then
-            File.Delete(Terminal.CurrentDirectory & "\" & filename)
+        If File.Exists(Console.CurrentDirectory & "\" & filename) = True Then
+            File.Delete(Console.CurrentDirectory & "\" & filename)
         End If
     End Sub
 
@@ -20,6 +20,6 @@ Module FileManagement
         'Else
         '    File.WriteAllText(Terminal.CurrentDirectory & "\" & filename, Terminal.TextBox1.Text)
         'End If
-        File.WriteAllText(Terminal.CurrentDirectory & "\" & filename, Terminal.TextBox1.Text)
+        File.WriteAllText(Console.CurrentDirectory & "\" & filename, Console.TextBox1.Text)
     End Sub
 End Module

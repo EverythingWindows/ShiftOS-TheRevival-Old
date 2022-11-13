@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(22) As String
+    Public Shared AvailableFeature(24) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -71,6 +71,8 @@
     '20 = Custom Hostname [Custom hostname for ShiftOS] (0.2.4) (default : 0)
     '21 = Reverse String [Reverse a text] (0.2.4) (default : 0)
     '22 = Cowsay [Cowsay] (0.2.4) (default : 0)
+    '23 = Time by Hours and Minutes [Shows time in Hours and Minutes format] (0.2.5) (default : 0)
+    '24 = fortune command [Shows random quote] (0.2.5) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -81,6 +83,7 @@
     '>>Terminal Print (PRINT) (25 CP)
     '>>>Reverse String command (REV) (30 CP)
     '>>>>Cowsay (50 CP)
+    '>>>>Fortune command (55 CP)
     '>>>ShiftKey (ShOSKey) (45 CP)
     '>>>Terminal Display Driver (TERMDSPDRV) (40 CP)
     '>>>>Terminal InfoBar (INFOBAR) (50 CP)
@@ -96,4 +99,5 @@
     '>>>Time by Minutes (TIME, MTIME) (20 CP)
     '>>>>Time by Hours (Time, HTIME) (30 CP)
     '>>>>>PM and AM (Time, PMAM (40 CP))
+    '>>>>>>Time by Hours and Minutes (Time, HHMM (50 CP))
 End Class
