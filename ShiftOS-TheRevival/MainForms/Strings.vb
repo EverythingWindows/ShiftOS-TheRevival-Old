@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(24) As String
+    Public Shared AvailableFeature(30) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -72,7 +72,13 @@
     '21 = Reverse String [Reverse a text] (0.2.4) (default : 0)
     '22 = Cowsay [Cowsay] (0.2.4) (default : 0)
     '23 = Time by Hours and Minutes [Shows time in Hours and Minutes format] (0.2.5) (default : 0)
-    '24 = fortune command [Shows random quote] (0.2.5) (default : 0)
+    '24 = Date command [Shows date in days since first day of the year format] (0.2.5) (default : 0)
+    '25 = Date by week [Shows date in weeks since first week of the year format] (0.2.5) (default : 0)
+    '26 = Date by month [Shows date in months since first month of the year format] (0.2.5) (default : 0)
+    '27 = Date by year [Shows date in year format] (0.2.5) (default : 0)
+    '28 = Date by month and year [Shows date in MM/YYYY format] (0.2.5) (default : 0)
+    '29 = Date by general [Shows date in general DD/MM/YYYY format] (0.2.5) (default : 0)
+    '30 = Batch-file support for ShiftOS [Gives execution support for ShiftOS Script File (.scr)] (0.2.5) (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -94,10 +100,17 @@
     '>>>>>>>4-bit Color Display (4BITCOLOR) (80 CP)
     '>>>>>>>>Terminal Read-Only Memory Driver (ROMDRIVER, DIR, MKDIR, RMDIR, CD, PWD) (90 CP)
     '>>>>>>>>>TextPad (100 CP)
+    '>>>>>>>>>>ShiftOS Batch Script Support (BATCHSCRIPT) (100 CP)
     '>>Basic Calculator (BC) (55 CP)
     '>>Time by Seconds (TIME, STIME) (10 CP)
     '>>>Time by Minutes (TIME, MTIME) (20 CP)
     '>>>>Time by Hours (Time, HTIME) (30 CP)
     '>>>>>PM and AM (Time, PMAM (40 CP))
     '>>>>>>Time by Hours and Minutes (Time, HHMM (50 CP))
+    '>>>>>>>Date command (DATE (70 CP))
+    '>>>>>>>>Date by week (DATE, WOY (75 CP))
+    '>>>>>>>>>Date by month (DATE, MOY (80 CP))
+    '>>>>>>>>>>Date by year (DATE, YEAR (85 CP))
+    '>>>>>>>>>>>Date by month and year (DATE, MMYYYY (90 CP))
+    '>>>>>>>>>>>>Date by general (DATE, GENERALDATE (95 CP))
 End Class

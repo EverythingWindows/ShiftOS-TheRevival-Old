@@ -150,9 +150,9 @@ Public Class ShiftOSMenu
                 btn_StoryMode.Enabled = False
                 ShouldUpdate = True
                 ShiftOSUpdater.Show()
-                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."
-                ShiftOSUpdater.Label2.Text = "Update function is temporarily disabled." & Environment.NewLine & "Click the 'Reset' to reset the save"
-                ShiftOSUpdater.Button2.Text = "Reset"
+                ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & Environment.NewLine & "Update now to get more features."                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."
+                'ShiftOSUpdater.Label2.Text = "Update function is temporarily disabled." & Environment.NewLine & "Click the 'Reset' to reset the save"
+                'ShiftOSUpdater.Button2.Text = "Reset"
             End If
         Else
             If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then

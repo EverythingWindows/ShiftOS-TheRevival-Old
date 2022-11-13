@@ -4,7 +4,7 @@ Module FileManagement
     Public Sub CatFile(filename As String)
         If File.Exists(Console.CurrentDirectory & "\" & filename) = True Then
             Dim ContentsFinal As String = File.ReadAllText(Console.CurrentDirectory & "\" & filename)
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ContentsFinal
+            NewLine(ContentsFinal)
         End If
     End Sub
 

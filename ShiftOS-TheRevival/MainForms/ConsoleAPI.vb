@@ -15,4 +15,10 @@
         Console.TextBox1.Select(Console.TextBox1.Text.Length, 0)
         Console.TextBox1.ScrollToCaret()
     End Sub
+
+    Public Sub TextRebindBehind()
+        'Console.TextBox1.Select(Console.TextBox1.Lines.Length - 1, 0)
+        Console.TextBox1.Select(Console.TextBox1.Lines.Length - 1, 0)
+        Console.TextBox1.ScrollToCaret()
+    End Sub
 End Module

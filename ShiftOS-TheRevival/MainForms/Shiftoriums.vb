@@ -2,52 +2,57 @@
     Public prompt As String
 
     Public Sub Shiftorium_ListFeatures()
-        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium Available Feature(s)" & Environment.NewLine
+        NewLine("Shiftorium Available Feature(s)")
+        NewLine(Nothing)
         If Strings.AvailableFeature(11) = "0" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(key | 5 CP) ShiftOS Key"
+            NewLine("(key | 5 CP) ShiftOS Key")
         Else
             If Strings.AvailableFeature(0) = "0" Then
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(man | 10 CP) ShiftOS Help Manual"
+                NewLine("(man | 10 CP) ShiftOS Help Manual")
             Else
                 If Strings.AvailableFeature(19) = "0" Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(username | 15 CP) Custom Username"
+                    NewLine("(username | 15 CP) Custom Username")
                 End If
                 If Strings.AvailableFeature(20) = "0" Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(hostname | 15 CP) Custom hostname"
+                    NewLine("(hostname | 15 CP) Custom hostname")
                 End If
             End If
-                If Strings.AvailableFeature(1) = "0" Then
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(clear | 20 CP) Clear Terminal Screen"
+            If Strings.AvailableFeature(1) = "0" Then
+                NewLine("(clear | 20 CP) Clear Terminal Screen")
             Else
                 If Strings.AvailableFeature(2) = "0" Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(print | 25 CP) Print Terminal Screen"
+                    NewLine("(print | 25 CP) Print Terminal Screen")
                 Else
                     If Strings.AvailableFeature(3) = "0" Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(termdspdrv | 40 CP) Terminal Display Driver"
+                        NewLine("(termdspdrv | 40 CP) Terminal Display Driver")
                     Else
                         If Strings.AvailableFeature(4) = "0" Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(infobar | 50 CP) Terminal InfoBar"
+                            NewLine("(infobar | 50 CP) Terminal InfoBar")
                         End If
                         If Strings.AvailableFeature(8) = "0" Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(shiftfetch | 55 CP) Shiftfetch"
+                            NewLine("(shiftfetch | 55 CP) Shiftfetch")
                         End If
                         If Strings.AvailableFeature(10) = "0" Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(2bitcolor | 60 CP) 2-bit Color Support"
+                            NewLine("(2bitcolor | 60 CP) 2-bit Color Support")
                         Else
                             If Strings.AvailableFeature(13) = "0" Then
-                                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(rgb | 70 CP) Red, Green, and Blue"
+                                NewLine("(rgb | 70 CP) Red, Green, and Blue")
                             Else
                                 If Strings.AvailableFeature(14) = "0" Then
-                                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(rgb2 | 75 CP) RGB Variant"
+                                    NewLine("(rgb2 | 75 CP) RGB Variant")
                                 Else
                                     If Strings.AvailableFeature(15) = "0" Then
-                                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(4bitcolor | 80 CP) 4-bit Color Support"
+                                        NewLine("(4bitcolor | 80 CP) 4-bit Color Support")
                                     Else
                                         If Strings.AvailableFeature(16) = "0" Then
-                                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(romdriver | 90 CP) Terminal Read-Only Memory Support"
+                                            NewLine("(romdriver | 90 CP) Terminal Read-Only Memory Support")
                                         Else
                                             If Strings.AvailableFeature(17) = "0" Then
-                                                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(textpad | 100 CP) TextPad"
+                                                NewLine("(textpad | 100 CP) TextPad")
+                                            Else
+                                                If Strings.AvailableFeature(30) = "0" Then
+                                                    NewLine("(script | 100 CP) ShiftOS Batch Script Support")
+                                                End If
                                             End If
                                         End If
                                     End If
@@ -56,37 +61,41 @@
                         End If
                     End If
                     If Strings.AvailableFeature(18) = "0" Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(shiftkey | 45 CP) ShiftKey"
+                        NewLine("(shiftkey | 45 CP) ShiftKey")
                     End If
                     If Strings.AvailableFeature(21) = "0" Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(rev | 30 CP) Reverse String"
+                        NewLine("(rev | 30 CP) Reverse String")
                     Else
                         If Strings.AvailableFeature(22) = "0" Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(cowsay | 50 CP) Cowsay"
+                            NewLine("(cowsay | 50 CP) Cowsay")
                         End If
                     End If
                 End If
                 If Strings.AvailableFeature(5) = "0" Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(stime | 10 CP) Time by Seconds"
+                    NewLine("(stime | 10 CP) Time by Seconds")
                 Else
                     If Strings.AvailableFeature(6) = "0" Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(mtime | 20 CP) Time by Minutes"
+                        NewLine("(mtime | 20 CP) Time by Minutes")
                     Else
                         If Strings.AvailableFeature(7) = "0" Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(htime | 30 CP) Time by Hours"
+                            NewLine("(htime | 30 CP) Time by Hours")
                         Else
                             If Strings.AvailableFeature(12) = "0" Then
-                                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(pmam | 40 CP) PM and AM"
+                                NewLine("(pmam | 40 CP) PM and AM")
                             Else
                                 If Strings.AvailableFeature(23) = "0" Then
-                                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(hhmm | 50 CP) Time by Hours and Minutes"
+                                    NewLine("(hhmm | 50 CP) Time by Hours and Minutes")
+                                Else
+                                    If Strings.AvailableFeature(24) = "0" Then
+                                        NewLine("(date | 70 CP) Date command")
+                                    End If
                                 End If
                             End If
                         End If
                     End If
                 End If
                 If Strings.AvailableFeature(9) = "0" Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "(bc | 55 CP) Basic Calculator"
+                    NewLine("(bc | 55 CP) Basic Calculator")
                 End If
             End If
         End If
@@ -102,7 +111,11 @@
                 If Strings.AvailableFeature(0) = "0" Then
                     ManHeader(0) = "ShiftOS Help Manual (command: man)"
                     ManHeader(1) = "10 CP"
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows up any further help instruction on each command, its corresponding action and its example if necessary" & Environment.NewLine & Environment.NewLine & ManHeader(1)
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Shows up any further help instruction on each command, its corresponding action and its example if necessary")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
                     Console.BadCommand = False
                 End If
             Case "clear"
@@ -266,6 +279,83 @@
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in Hours and Minutes format" & Environment.NewLine & Environment.NewLine & ManHeader(1)
                     Console.BadCommand = False
                 End If
+            Case "date"
+                If Strings.AvailableFeature(24) = "0" Then
+                    ManHeader(0) = "Date command"
+                    ManHeader(1) = "70 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in days format since first day of the year")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "woy"
+                If Strings.AvailableFeature(25) = "0" Then
+                    ManHeader(0) = "Date by week of year"
+                    ManHeader(1) = "75 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in week format since first week of the year")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "moy"
+                If Strings.AvailableFeature(26) = "0" Then
+                    ManHeader(0) = "Date by month of year"
+                    ManHeader(1) = "80 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in month format since first month of the year")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "year"
+                If Strings.AvailableFeature(27) = "0" Then
+                    ManHeader(0) = "Date by year"
+                    ManHeader(1) = "85 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in year format")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "mmyyyy"
+                If Strings.AvailableFeature(28) = "0" Then
+                    ManHeader(0) = "Date by month and year"
+                    ManHeader(1) = "90 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in month and year format")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "generaldate"
+                If Strings.AvailableFeature(29) = "0" Then
+                    ManHeader(0) = "Date by general format"
+                    ManHeader(1) = "95 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Displays date in DD/MM/YYYY format")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
+            Case "batchscript"
+                If Strings.AvailableFeature(30) = "0" Then
+                    ManHeader(0) = "ShiftOS Batch Script Support"
+                    ManHeader(1) = "100 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds the supports for ShiftOS Batch Script")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
             Case Else
                 Console.BadCommand = False
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -273,7 +363,7 @@
     End Sub
 
     Public Sub Shiftorium_DetectInstallFeatures()
-        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Installing feature..."
+        NewLine("Installing feature...")
         Select Case prompt
             Case "man"
                 Shiftorium_InstallFeatures(True, "man", 0, 10)
@@ -347,9 +437,30 @@
             Case "hhmm"
                 Shiftorium_InstallFeatures(True, "hhmm", 23, 50)
                 Console.BadCommand = False
+            Case "date"
+                Shiftorium_InstallFeatures(True, "date", 24, 70)
+                Console.BadCommand = False
+            Case "woy"
+                Shiftorium_InstallFeatures(True, "woy", 25, 75)
+                Console.BadCommand = False
+            Case "moy"
+                Shiftorium_InstallFeatures(True, "moy", 26, 80)
+                Console.BadCommand = False
+            Case "year"
+                Shiftorium_InstallFeatures(True, "year", 27, 85)
+                Console.BadCommand = False
+            Case "mmyyyy"
+                Shiftorium_InstallFeatures(True, "mmyyyy", 28, 90)
+                Console.BadCommand = False
+            Case "generaldate"
+                Shiftorium_InstallFeatures(True, "generaldate", 29, 95)
+                Console.BadCommand = False
+            Case "batchscript"
+                Shiftorium_InstallFeatures(True, "batchscript", 30, 100)
+                Console.BadCommand = False
             Case Else
                 Console.BadCommand = False
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
+                NewLine("Shiftorium: Bad command or not available")
         End Select
     End Sub
 
@@ -438,6 +549,7 @@
                             success = True
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
+                            Strings.AvailableFeature(30) = "0"
                             success = True
                         Case "shiftkey"
                             Strings.AvailableFeature(18) = "1"
@@ -454,39 +566,72 @@
                             success = True
                         Case "cowsay"
                             Strings.AvailableFeature(22) = "1"
+                            success = True
                         Case "hhmm"
                             Strings.AvailableFeature(12) = "3"
                             Strings.AvailableFeature(23) = "1"
+                            Strings.AvailableFeature(24) = "0"
+                            success = True
+                        Case "date"
+                            Strings.AvailableFeature(24) = "1"
+                            Strings.AvailableFeature(25) = "0"
+                            success = True
+                        Case "woy"
+                            Strings.AvailableFeature(24) = "3"
+                            Strings.AvailableFeature(25) = "1"
+                            Strings.AvailableFeature(26) = "0"
+                            success = True
+                        Case "moy"
+                            Strings.AvailableFeature(25) = "3"
+                            Strings.AvailableFeature(26) = "1"
+                            Strings.AvailableFeature(27) = "0"
+                            success = True
+                        Case "year"
+                            Strings.AvailableFeature(26) = "3"
+                            Strings.AvailableFeature(27) = "1"
+                            Strings.AvailableFeature(28) = "0"
+                            success = True
+                        Case "mmyyyy"
+                            Strings.AvailableFeature(27) = "3"
+                            Strings.AvailableFeature(28) = "1"
+                            Strings.AvailableFeature(29) = "0"
+                            success = True
+                        Case "generaldate"
+                            Strings.AvailableFeature(28) = "3"
+                            Strings.AvailableFeature(29) = "1"
+                            success = True
+                        Case "batchscript"
+                            Strings.AvailableFeature(30) = "1"
                             success = True
                     End Select
                     If success = False Then
                         If IsCLI = True Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Invalid command or feature already installed"
+                            NewLine("Shiftorium: Invalid command or feature already installed")
                         End If
                     Else
                         Strings.ComputerInfo(4) = Strings.ComputerInfo(4) + 1
                         TempCP = TempCP - Codepoint
                         Strings.ComputerInfo(2) = Convert.ToString(TempCP)
                         If IsCLI = True Then
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Feature has been install succesfully"
+                            NewLine("Feature has been install succesfully")
                         End If
                     End If
                 Else
                     If IsCLI = True Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Insufficent Codepoint"
+                        NewLine("Shiftorium: Insufficent Codepoint")
                     End If
                 End If
             Case "1"
                 If IsCLI = True Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Feature has already been installed"
+                    NewLine("Shiftorium: Feature has already been installed")
                 End If
             Case "2"
                 If IsCLI = True Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Feature is not available"
+                    NewLine("Shiftorium: Feature is not available")
                 End If
             Case "3"
                 If IsCLI = True Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Feature is already upgraded to a newer one"
+                    NewLine("Shiftorium: Feature is already upgraded to a newer one")
                 End If
         End Select
     End Sub

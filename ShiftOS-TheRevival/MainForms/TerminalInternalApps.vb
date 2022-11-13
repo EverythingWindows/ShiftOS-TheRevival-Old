@@ -13,44 +13,44 @@
                         Exit Do
                     End If
                 Loop
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "< " & Say & " >"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & " "
+                NewLine("< " & Say & " >")
+                NewLine(" ")
                 Do
-                    Console.TextBox1.Text = Console.TextBox1.Text & "-"
+                    AddLine("-")
                     SubtractLength = SubtractLength - 1
                     If SubtractLength = 0 Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & "-"
+                        AddLine("-")
                         SubtractLength = Say.Length + 1
                         Exit Do
                     End If
                 Loop
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "        \   ^__^"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "         \  (oo)\_______"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "            (__)\       )\/\"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "                ||----w |"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "                ||     ||"
+                NewLine("        \   ^__^")
+                NewLine("         \  (oo)\_______")
+                NewLine("            (__)\       )\/\")
+                NewLine("                ||----w |")
+                NewLine("                ||     ||")
             Case 41 To 80
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & " __________________________________________ "
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "/ " & Say.Substring(0, 40) & " \"
+                NewLine(" __________________________________________ ")
+                NewLine("/ " & Say.Substring(0, 40) & " \")
                 Say = Say.Substring(40, Say.Length - 40)
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "\ " & Say
+                NewLine("\ " & Say)
                 Dim Spaces As Integer = 40 - Say.Length
                 Do
-                    Console.TextBox1.Text = Console.TextBox1.Text & " "
+                    AddLine(" ")
                     If Spaces = 0 Then
-                        Console.TextBox1.Text = Console.TextBox1.Text & "/"
+                        AddLine("/")
                         Exit Do
                     End If
                     Spaces = Spaces - 1
                 Loop
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & " ------------------------------------------ "
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "        \   ^__^"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "         \  (oo)\_______"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "            (__)\       )\/\"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "                ||----w |"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "                ||     ||"
+                NewLine(" ------------------------------------------ ")
+                NewLine("        \   ^__^")
+                NewLine("         \  (oo)\_______")
+                NewLine("            (__)\       )\/\")
+                NewLine("                ||----w |")
+                NewLine("                ||     ||")
             Case >= 81
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "cowsay: Character limit exceeded"
+                NewLine("cowsay: Character limit exceeded")
                 'Dim SubtractLength As Integer = Say.Length + 1
                 'Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & " __________________________________________ "
                 'Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & "/ " & Say.Substring(0, 40) & " \"
@@ -92,7 +92,8 @@
         'Summary of the command's action
         '
         'Example usage : command
-        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "ShiftOS Help Manual" & Environment.NewLine
+        NewLine("ShiftOS Help Manual")
+        NewLine(Nothing)
         'Terminal.TextBox1.Text = Terminal.TextBox1.Text & Environment.NewLine & command.Substring(4)
         Dim mancommand As String = Command.Replace("man ", "")
         Dim TempUsage As String = "'" & mancommand & "' Usage: "
@@ -237,7 +238,7 @@
                 Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_ver & Environment.NewLine
                 Console.BadCommand = False
             Case Else
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "MAN : Invalid command"
+                NewLine("MAN : Invalid command")
         End Select
     End Sub
 End Module

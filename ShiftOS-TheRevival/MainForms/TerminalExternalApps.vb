@@ -33,12 +33,18 @@ Module TerminalExternalApps
         Select Case App
             Case "bc"
                 Console.DefaultPrompt = "> "
-                Console.TextBox1.Text = "bc (Basic Calcultator)" & Environment.NewLine & "Copyright, Free Software Foundation." & Environment.NewLine & "ShiftOS port by DevX." & Environment.NewLine & "This is free software with ABSOLUTELY NO WARRANTY." & Environment.NewLine
+                ResetLine("bc (Basic Calcultator)")
+                NewLine("Copyright, Free Software Foundation.")
+                NewLine("ShiftOS port by DevX.")
+                NewLine("This is free software with ABSOLUTELY NO WARRANTY.")
+                NewLine(Nothing)
                 Console.CurrentInterpreter = "bc"
                 ShouldChange = True
             Case "guess" 'Guess the Number
                 Console.DefaultPrompt = "Your answer: "
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Guess the Number" & Environment.NewLine & "Guess the correct number between 1 and 50 and you'll get anything between 1 to 10 Codepoints" & Environment.NewLine & "Type 'exit' to terminate this game"
+                NewLine("Guess the Number")
+                NewLine("Guess the correct number between 1 and 50 and you'll get anything between 1 to 10 Codepoints")
+                NewLine("Type 'exit' to terminate this game")
                 Console.CurrentInterpreter = "guess"
                 GTN_GenerateNumber()
                 ShouldChange = True
@@ -53,7 +59,8 @@ Module TerminalExternalApps
                 Console.DefaultPrompt = "Navigate> "
                 Console.CurrentInterpreter = "shiftoriumfx"
                 ShiftoriumFX_DisplayPackages()
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate"
+                NewLine(Nothing)
+                NewLine("Type any package you want to investigate")
                 ShouldChange = True
             Case "textpad"
                 Console.DefaultPrompt = Nothing
@@ -64,6 +71,7 @@ Module TerminalExternalApps
                 TextPad_CheckExist(command)
                 Console.ToolBar.Text = "TextPad - " & command & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
                 Console.ReleaseCursor = True
+                TextRebind()
         End Select
         If Console.ReleaseCursor = True Then
             'Strings.OnceInfo(5) = Terminal.TrackPos
@@ -157,7 +165,7 @@ Module TerminalExternalApps
                         Try
                             GTN_CheckNumber()
                         Catch ex As Exception
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Invalid value!"
+                            NewLine("Invalid value!")
                         End Try
                 End Select
             Case "shiftoriumfx"
@@ -168,14 +176,18 @@ Module TerminalExternalApps
                         TerminateApp(Nothing)
                     Case Else
                         ShiftoriumFX_DisplayPackages()
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & Environment.NewLine & "Type any package you want to investigate" & Environment.NewLine & "Invalid package or bad command"
+                        NewLine(Nothing)
+                        NewLine("Type any package you want to investigate")
+                        NewLine("Invalid package or bad command")
                 End Select
             Case "bc"
                 Select Case command
                     Case "jim"
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "69, the funni number" & Environment.NewLine & "gotcha!"
+                        NewLine("69, the funni number")
+                        NewLine("gotcha!")
                     Case "ojas"
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "dis calculator is very gud" & Environment.NewLine & "it counts from another universe"
+                        NewLine("dis calculator is very gud")
+                        NewLine("it counts from another universe")
                     Case "exit"
                         TerminateApp(Nothing)
                     Case Else
@@ -224,7 +236,7 @@ Module TerminalExternalApps
                         End Try
                         BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
                         BC_ThriceMoreValue = Nothing
-                        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & BC_Result
+                        NewLine(BC_Result)
                 End Select
         End Select
     End Sub
@@ -254,13 +266,14 @@ Module TerminalExternalApps
                 Dim GetCP As New Random
                 Dim GotCP As Integer = GetCP.Next(1, 11)
                 ChangeCP(True, GotCP)
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "You are correct!, you got " & GotCP & " Codepoint(s)" & Environment.NewLine & "Guess the new number between 1 and 50."
+                NewLine("You are correct!, you got " & GotCP & " Codepoint(s)")
+                NewLine("Guess the new number between 1 and 50.")
                 GTN_GenerateNumber()
             Else
                 If TheirNumber < TheNumber Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Higher!"
+                    NewLine("Higher!")
                 ElseIf TheirNumber > TheNumber Then
-                    Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Lower!"
+                    NewLine("Lower!")
                 End If
             End If
         End If

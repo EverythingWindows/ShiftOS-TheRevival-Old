@@ -13,48 +13,49 @@
     Public FgColor As Color
 
     Public Sub DisplayColors()
-        Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "TERMINAL SUPPORTED COLORS" & Environment.NewLine & Environment.NewLine
+        NewLine("TERMINAL SUPPORTED COLORS")
+        NewLine(Nothing)
+        NewLine(Nothing)
         If Strings.AvailableFeature(10) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "0 = Black      8 = Gray"
+            NewLine("0 = Black      8 = Gray")
         Else
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "0 = Black      8 = ???"
+            NewLine("0 = Black      8 = ???")
         End If
         If Strings.AvailableFeature(14) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = Blue       9 = Light Blue"
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = Green      A = Light Green"
-
+            NewLine("1 = Blue       9 = Light Blue")
+            NewLine("2 = Green      A = Light Green")
         Else
             If Strings.AvailableFeature(13) = "1" Then
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = ???        9 = Light Blue"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = Green      A = ???"
+                NewLine("1 = ???        9 = Light Blue")
+                NewLine("2 = Green      A = ???")
             Else
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "1 = ???        9 = ???"
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "2 = ???        A = ???"
+                NewLine("1 = ???        9 = ???")
+                NewLine("2 = ???        A = ???")
             End If
         End If
         If Strings.AvailableFeature(15) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "3 = Aqua       B = Light Aqua"
+            NewLine("3 = Aqua       B = Light Aqua")
         Else
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "3 = ???        B = ???"
+            NewLine("3 = ???        B = ???")
         End If
         If Strings.AvailableFeature(14) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = Red        C = Light Red"
+            NewLine("4 = Red        C = Light Red")
         ElseIf Strings.AvailableFeature(13) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = ???        C = Light Red"
+            NewLine("4 = ???        C = Light Red")
         Else
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "4 = ???        C = ???"
+            NewLine("4 = ???        C = ???")
         End If
         If Strings.AvailableFeature(15) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "5 = Purple     D = Light Purple"
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "6 = Yellow     E = Yellow"
+            NewLine("5 = Purple     D = Light Purple")
+            NewLine("6 = Yellow     E = Yellow")
         Else
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "5 = ???        D = ???"
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "6 = ???        E = ???"
+            NewLine("5 = ???        D = ???")
+            NewLine("6 = ???        E = ???")
         End If
         If Strings.AvailableFeature(10) = "1" Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "7 = Dark Gray  F = White"
+            NewLine("7 = Dark Gray  F = White")
         Else
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "7 = ???        F = White"
+            NewLine("7 = ???        F = White")
         End If
     End Sub
 
@@ -68,7 +69,7 @@
                 FgColor = Color.Black
         End Select
         If Bg = Fg Then
-            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Background and Foreground Color cannot be same!"
+            NewLine("Background and Foreground Color cannot be same!")
         Else
             If Strings.AvailableFeature(10) = "1" Then
                 Select Case Bg
@@ -91,7 +92,7 @@
                                     BgColor = Color.Red
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case "1", "4", "a"
                         If Strings.AvailableFeature(14) = "1" Then
@@ -104,7 +105,7 @@
                                     BgColor = Color.Lime
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case "3", "5", "6", "b", "d", "e"
                         If Strings.AvailableFeature(15) = "1" Then
@@ -123,7 +124,7 @@
                                     BgColor = Color.Yellow
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case Else
                         BgColor = Color.Black
@@ -148,7 +149,7 @@
                                     FgColor = Color.Red
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case "1", "4", "a"
                         If Strings.AvailableFeature(14) = "1" Then
@@ -161,7 +162,7 @@
                                     FgColor = Color.Lime
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case "3", "5", "6", "b", "d", "e"
                         If Strings.AvailableFeature(15) = "1" Then
@@ -180,13 +181,13 @@
                                     FgColor = Color.Yellow
                             End Select
                         Else
-                            Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "One or two colors you selected is not available."
+                            NewLine("One or two colors you selected is not available.")
                         End If
                     Case Else
                         FgColor = Color.White
                 End Select
             Else
-                Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Color is not supported for 1-bit Color Display"
+                NewLine("Color is not supported for 1-bit Color Display")
                 Select Case App
                     Case "terminal"
                         BgColor = Color.Black

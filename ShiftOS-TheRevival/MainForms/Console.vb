@@ -101,7 +101,7 @@ Public Class Console
         NewLine("Oopsie! It's only for newer version")
     End Sub
 
-    Private Sub DoCommand()
+    Public Sub DoCommand()
         AdvancedCommand = True
         BadCommand = True
         Select Case command
@@ -134,6 +134,43 @@ Public Class Console
                 DisplayColors()
                 AdvancedCommand = False
                 BadCommand = False
+            Case "date"
+                If Strings.AvailableFeature(24) = 1 Then
+                    NewLine("The date is " & Date.Now.DayOfYear & " days since the first day of the year")
+                    AdvancedCommand = False
+                    BadCommand = False
+                ElseIf Strings.AvailableFeature(24) = 3 Then
+                    If Strings.AvailableFeature(25) = 1 Then
+                        Dim TheWeek As String = Date.Now.DayOfYear / 7
+                        NewLine("The date is " & TheWeek.Substring(0, 2) & " weeks since the first week of the year")
+                        AdvancedCommand = False
+                        BadCommand = False
+                    ElseIf Strings.AvailableFeature(25) = 3 Then
+                        If Strings.AvailableFeature(26) = 1 Then
+                            NewLine("The date is " & Date.Now.Month & " months since the first month of the year")
+                            AdvancedCommand = False
+                            BadCommand = False
+                        ElseIf Strings.AvailableFeature(26) = 3 Then
+                            If Strings.AvailableFeature(27) = 1 Then
+                                NewLine("The year is " & Date.Now.Year)
+                                AdvancedCommand = False
+                                BadCommand = False
+                            ElseIf Strings.AvailableFeature(27) = 3 Then
+                                If Strings.AvailableFeature(28) = 1 Then
+                                    NewLine("The date is " & Date.Now.Day & "/" & Date.Now.Month)
+                                    AdvancedCommand = False
+                                    BadCommand = False
+                                ElseIf Strings.AvailableFeature(28) = 3 Then
+                                    If Strings.AvailableFeature(29) = 1 Then
+                                        NewLine("The date is " & Date.Now.Day & "/" & Date.Now.Month & "/" & Date.Now.Year)
+                                        AdvancedCommand = False
+                                        BadCommand = False
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
             Case "dir"
                 If Strings.AvailableFeature(16) = "1" Then
                     TerminalDirectories(CurrentDirectory)
@@ -180,6 +217,29 @@ Public Class Console
                 NewLine("COLORS      Shows available colors support For the terminal")
                 If Strings.AvailableFeature(22) = 1 Then
                     NewLine("COWSAY      Spawn a cow And saying anything you want")
+                End If
+                If Strings.AvailableFeature(24) = 1 Then
+                    NewLine("DATE        Displays date in days since first day of the year format")
+                ElseIf Strings.AvailableFeature(24) = 3 Then
+                    If Strings.AvailableFeature(25) = 1 Then
+                        NewLine("DATE        Displays date in weeks since first week of the year format")
+                    ElseIf Strings.AvailableFeature(25) = 3 Then
+                        If Strings.AvailableFeature(26) = 1 Then
+                            NewLine("DATE        Displays date in months since first month of the year format")
+                        ElseIf Strings.AvailableFeature(26) = 3 Then
+                            If Strings.AvailableFeature(27) = 1 Then
+                                NewLine("DATE        Displays date in year format format")
+                            ElseIf Strings.AvailableFeature(27) = 3 Then
+                                If Strings.AvailableFeature(28) = 1 Then
+                                    NewLine("DATE        Displays date in MM/YYYY format")
+                                ElseIf Strings.AvailableFeature(28) = 3 Then
+                                    If Strings.AvailableFeature(29) = 1 Then
+                                        NewLine("DATE        Displays date in general DD/MM/YYYY format")
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
                 End If
                 If Strings.AvailableFeature(16) = 1 Then
                     NewLine("DEL         Delete a selected file from the directory")
@@ -455,6 +515,13 @@ Public Class Console
                     BadCommand = False
                 End If
             End If
+            If command Like "run *" Then
+                If Strings.AvailableFeature(30) = 1 Then
+                    Terminal_RunTerminalFile(command.Substring(4))
+                    AdvancedCommand = False
+                    BadCommand = False
+                End If
+            End If
             If command Like "shiftorium *" Then
                 Dim prompt As String = command.Replace("shiftorium ", "")
                 NewLine("Shiftorium ShiftOS Center")
@@ -493,7 +560,6 @@ Public Class Console
                 End If
             End If
         End If
-
         If BadCommand = True Then
             NewLine("Bad command or wrong file name")
         End If

@@ -46,4 +46,25 @@
             End If
         End If
     End Sub
+
+    Public Sub Terminal_RunTerminalFile(filename As String)
+        Dim sr As System.IO.StreamReader
+        If My.Computer.FileSystem.FileExists(Console.CurrentDirectory & "\" & filename) Then
+            Dim fileext As New IO.FileInfo(Console.CurrentDirectory & "\" & filename)
+            If fileext.Extension = ".scr" Then
+                sr = My.Computer.FileSystem.OpenTextFileReader(Console.CurrentDirectory & "\" & filename)
+                Dim linenum As Integer = IO.File.ReadAllLines(Console.CurrentDirectory & "\" & filename).Length
+                Dim i As Integer = 1
+                While i <= linenum
+                    command = sr.ReadLine()
+                    Console.DoCommand()
+                    NewLine(Nothing)
+                    i = i + 1
+                End While
+                sr.Close()
+            Else
+
+            End If
+        End If
+    End Sub
 End Module
