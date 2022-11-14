@@ -123,7 +123,7 @@ Public Class Console
                     BadCommand = False
                 End If
             Case "codepoint"
-                NewLine(Strings.ComputerInfo(2) & " Codepoint(s) available in your wallet")
+                Codepoint()
                 AdvancedCommand = False
                 BadCommand = False
             Case "colors"
@@ -131,7 +131,7 @@ Public Class Console
                 AdvancedCommand = False
                 BadCommand = False
             Case "date"
-                DateTerm()
+                Terminal_Date()
             Case "dir"
                 If Strings.AvailableFeature(16) = "1" Then
                     TerminalDirectories(CurrentDirectory)
@@ -164,7 +164,7 @@ Public Class Console
                 End If
             Case "pwd"
                 If Strings.AvailableFeature(16) = 1 Then
-                    NewLine(CurrentDirectory.Replace(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", "!"))
+                    Pwd()
                     AdvancedCommand = False
                     BadCommand = False
                 End If
@@ -200,25 +200,20 @@ Public Class Console
                 Close()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
-                    NewLine("Type any filename after 'textpad'!, ex: textpad text.txt")
+                    TextPad_WarnFile()
                     AdvancedCommand = False
                     BadCommand = False
                 End If
             Case "time"
-                TimeTerm()
+                Terminal_Time()
                 AdvancedCommand = False
                 BadCommand = False
             Case "su"
-                If Strings.OnceInfo(0) = "Yes" Then
-                    NewLine("You already in root mode!")
-                Else
-                    Strings.OnceInfo(0) = "Yes"
-                    Terminal_AssignPrompt()
-                End If
+                Terminal_Su()
                 AdvancedCommand = False
                 BadCommand = False
             Case "ver"
-                NewLine("ShiftOS TheRevival version " & My.Resources.CurrentVersion)
+                Terminal_Version()
                 AdvancedCommand = False
                 BadCommand = False
         End Select

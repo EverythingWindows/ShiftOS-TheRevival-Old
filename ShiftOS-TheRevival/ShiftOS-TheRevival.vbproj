@@ -149,8 +149,16 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="Terminal Applications\External\App_TextPad.vb" />
     <Compile Include="Terminal Applications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Codepoint.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Help.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Pwd.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Shiftfetch.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Su.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Ver.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Date.vb" />
     <Compile Include="Terminal Applications\Internal\TerminalInternalApps.vb" />
     <Compile Include="Functions\OutGame\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -169,6 +177,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Terminal Applications\Internal\Com_Time.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForms\BugSlap.resx">
