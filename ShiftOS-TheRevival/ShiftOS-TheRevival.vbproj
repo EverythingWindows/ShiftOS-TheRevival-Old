@@ -152,6 +152,7 @@
     <Compile Include="Terminal Applications\External\App_TextPad.vb" />
     <Compile Include="Terminal Applications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_05tray.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Codepoint.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Help.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Pwd.vb" />

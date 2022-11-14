@@ -3,6 +3,16 @@
     Public AdvancedCommand As Boolean
     Public RawCommand As String
 
+    Public Sub Terminal_ExecuteInput()
+        Terminal_ReadCommand()
+        If Strings.AvailableFeature(18) = 1 Then
+            ShOSKey_InputCommand(command)
+        End If
+        Console.DoCommand()
+        Terminal_PrintPrompt()
+        TextRebind()
+    End Sub
+
     Public Sub Terminal_ReadCommand()
         command = Console.TextBox1.Lines(Console.TextBox1.Lines.Length - 1)
         If Console.DefaultPrompt = Nothing Then
@@ -65,6 +75,273 @@
             Else
 
             End If
+        End If
+    End Sub
+
+    Public Sub Terminal_DoCommand()
+        AdvancedCommand = True
+        Console.BadCommand = True
+        Select Case command
+            Case ""
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "05tray"
+                _05tray()
+                NewLine("you cheater!")
+            Case "bc"
+                If Strings.AvailableFeature(9) = "1" Then
+                    Console.ChangeInterpreter = True
+                    AppHost("bc", False)
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "clear"
+                If Strings.AvailableFeature(1) = "1" Then
+                    Console.TextBox1.Text = Nothing
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "codepoint"
+                Codepoint()
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "colors"
+                DisplayColors()
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "date"
+                Terminal_Date()
+            Case "dir"
+                If Strings.AvailableFeature(16) = "1" Then
+                    TerminalDirectories(Console.CurrentDirectory)
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "exit su"
+                If Strings.OnceInfo(0) = "No" Then
+
+                Else
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                    NewLine("Exitting root mode...")
+                    Strings.OnceInfo(0) = "No"
+                    Terminal_AssignPrompt()
+                End If
+            Case "guess"
+                Console.ChangeInterpreter = True
+                AppHost("guess", False)
+                AdvancedCommand = False
+                Console.BadCommand = False
+                'Undeveloped()
+            Case "help"
+                Help()
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "infobar"
+                If Strings.AvailableFeature(4) = 1 Then
+                    NewLine(My.Resources.man_infobar)
+                End If
+            Case "pwd"
+                If Strings.AvailableFeature(16) = 1 Then
+                    Pwd()
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "reboot"
+                Console.TextBox1.Text = Nothing
+                AdvancedCommand = False
+                Console.BadCommand = False
+                SaveGame()
+                Console.InitializeTerminal()
+            Case "shiftorium"
+                NewLine(My.Resources.man_shiftorium)
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "shiftfetch"
+                If Strings.AvailableFeature(8) = "1" Then
+                    Shiftfetch()
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "shiftoriumfx"
+                'ChangeInterpreter = True
+                'AppHost("shiftoriumfx")
+                AdvancedCommand = False
+                Console.BadCommand = False
+                Undeveloped()
+            Case "shutdown", "shut down"
+                NewLine("Saving game...")
+                If Strings.OnceInfo(6) = "story" Then
+                    SaveGame()
+                End If
+                Cursor.Show()
+                ShiftOSMenu.Show()
+                Console.Close()
+            Case "textpad"
+                If Strings.AvailableFeature(17) = "1" Then
+                    TextPad_WarnFile()
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            Case "time"
+                Terminal_Time()
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "su"
+                Terminal_Su()
+                AdvancedCommand = False
+                Console.BadCommand = False
+            Case "ver"
+                Terminal_Version()
+                AdvancedCommand = False
+                Console.BadCommand = False
+        End Select
+
+        If AdvancedCommand = True Then
+            If command Like "cat *" Then
+                If Strings.AvailableFeature(16) = 1 Then
+                    CatFile(command.Substring(4))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "cd *" Then
+                If Strings.AvailableFeature(16) = 1 Then
+                    NavigateDir(command.Replace("cd ", ""))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "color *" Then
+                GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
+                Console.BadCommand = False
+            End If
+            If command Like "cowsay *" Then
+                If Strings.AvailableFeature(22) = 1 Then
+                    Cowsay_Say(RawCommand.Substring(7))
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "del *" Then
+                If Strings.AvailableFeature(16) = 1 Then
+                    DeleteFile(RawCommand.Substring(4))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "hostname *" Then
+                If Strings.AvailableFeature(20) = 1 Then
+                    Strings.ComputerInfo(0) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                    Terminal_AssignPrompt()
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "infobar *" Then
+                If Strings.AvailableFeature(4) = "1" Then
+                    'Infobar panel-ish and some sort
+                    Dim infobarcommand As String = command.Replace("infobar ", "")
+                    Dim advancedtool As Boolean = True
+                    Select Case infobarcommand
+                        Case "on"
+                            Strings.OnceInfo(2) = "True"
+                            Console.CheckFeature()
+                            Console.BadCommand = False
+                            advancedtool = False
+                        Case "off"
+                            Strings.OnceInfo(2) = "False"
+                            Console.CheckFeature()
+                            Console.BadCommand = False
+                            advancedtool = False
+                    End Select
+                    If advancedtool = True Then
+                        If infobarcommand Like "color *" Then
+                            GetColor("infobar", infobarcommand.Substring(6, 1), infobarcommand.Substring(7, 1))
+                            Console.BadCommand = False
+                        End If
+                    End If
+                End If
+            End If
+            If command Like "man *" Then
+                If Strings.AvailableFeature(0) = "1" Then
+                    Manual(command)
+                End If
+            End If
+            If command Like "mkdir *" Then
+                If Strings.AvailableFeature(16) Then
+                    CreateDir(command.Replace("mkdir ", ""))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "print *" Then
+                If Strings.AvailableFeature(2) = "1" Then
+                    NewLine(RawCommand.Substring(6))
+                    Console.BadCommand = False
+                    AdvancedCommand = False
+                End If
+            End If
+            If command Like "rev *" Then
+                If Strings.AvailableFeature(21) = 1 Then
+                    NewLine(StrReverse(RawCommand.Substring(4)))
+                    Console.BadCommand = False
+                    AdvancedCommand = False
+                End If
+            End If
+            If command Like "rmdir *" Then
+                If Strings.AvailableFeature(16) = 1 Then
+                    RemoveDir(command.Replace("rmdir ", ""))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "run *" Then
+                If Strings.AvailableFeature(30) = 1 Then
+                    Terminal_RunTerminalFile(command.Substring(4))
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "shiftorium *" Then
+                Dim prompt As String = command.Replace("shiftorium ", "")
+                NewLine("Shiftorium ShiftOS Center")
+                If prompt Like "info *" Then
+                    Shiftoriums.prompt = command.Replace("shiftorium info ", "")
+                    Shiftorium_InformationFeatures()
+                End If
+                If prompt Like "install *" Then
+                    Shiftoriums.prompt = command.Replace("shiftorium install ", "")
+                    Shiftorium_DetectInstallFeatures()
+                End If
+                If prompt = "list" Then
+                    Shiftorium_ListFeatures()
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "textpad *" Then
+                If Strings.AvailableFeature(17) = 1 Then
+                    Console.ChangeInterpreter = True
+                    command = RawCommand.Replace("textpad ", "")
+                    AppHost("textpad", True)
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+            If command Like "username *" Then
+                If Strings.AvailableFeature(19) = 1 Then
+                    If command.Substring(9) = "root" Then
+                        NewLine("This username is already taken!")
+                    Else
+                        Strings.ComputerInfo(1) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
+                        Terminal_AssignPrompt()
+                    End If
+                    AdvancedCommand = False
+                    Console.BadCommand = False
+                End If
+            End If
+        End If
+        If Console.BadCommand = True Then
+            NewLine("Bad command or wrong file name")
         End If
     End Sub
 End Module
