@@ -2,6 +2,8 @@
     Public prompt As String
 
     Public Sub Shiftorium_ListFeatures()
+        'Shows available installable feature on Shiftorium
+        'Only AvailableFeature that are in the value of 0 can be displayed in the list
         NewLine("Shiftorium Available Feature(s)")
         NewLine(Nothing)
         If Strings.AvailableFeature(11) = "0" Then
@@ -52,6 +54,9 @@
                                             Else
                                                 If Strings.AvailableFeature(30) = "0" Then
                                                     NewLine("(batchscript | 100 CP) ShiftOS Batch Script Support")
+                                                End If
+                                                If Strings.AvailableFeature(31) = "0" Then
+                                                    NewLine("(clipboard | 100 CP) Clipboard support")
                                                 End If
                                             End If
                                         End If
@@ -376,6 +381,17 @@
                     NewLine(ManHeader(1))
                     Console.BadCommand = False
                 End If
+            Case "clipboard"
+                If Strings.AvailableFeature(31) = "0" Then
+                    ManHeader(0) = "Clipboard Support"
+                    ManHeader(1) = "100 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds the supports for clipboard")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    Console.BadCommand = False
+                End If
             Case Else
                 Console.BadCommand = False
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -478,6 +494,9 @@
             Case "batchscript"
                 Shiftorium_InstallFeatures(True, "batchscript", 30, 100)
                 Console.BadCommand = False
+            Case "clipboard"
+                Shiftorium_InstallFeatures(True, "clipboard", 31, 100)
+                Console.BadCommand = False
             Case Else
                 Console.BadCommand = False
                 NewLine("Shiftorium: Bad command or not available")
@@ -485,7 +504,9 @@
     End Sub
 
     Public Sub Shiftorium_InstallFeatures(IsCLI As Boolean, Feature As String, FeatureRow As Integer, Codepoint As Integer)
+        'Import the current CP as an Integer
         Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
+        'See what feature that are going to be installed
         Select Case Strings.AvailableFeature(FeatureRow)
             Case "0"
                 If TempCP >= Codepoint Then
@@ -570,6 +591,7 @@
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
                             Strings.AvailableFeature(30) = "0"
+                            Strings.AvailableFeature(31) = "0"
                             success = True
                         Case "shiftkey"
                             Strings.AvailableFeature(18) = "1"
@@ -623,12 +645,16 @@
                         Case "batchscript"
                             Strings.AvailableFeature(30) = "1"
                             success = True
+                        Case "clipboard"
+                            Strings.AvailableFeature(31) = "1"
+                            success = True
                     End Select
                     If success = False Then
                         If IsCLI = True Then
                             NewLine("Shiftorium: Invalid command or feature already installed")
                         End If
                     Else
+                        'It will deduct the current codepoint to the modified codepoint and exporting it back to ComputerInfo(2)
                         Strings.ComputerInfo(4) = Strings.ComputerInfo(4) + 1
                         TempCP = TempCP - Codepoint
                         Strings.ComputerInfo(2) = Convert.ToString(TempCP)

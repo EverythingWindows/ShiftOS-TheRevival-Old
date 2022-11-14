@@ -3,6 +3,7 @@
 Module SaveLoadSystem
 
     Public Sub NewGameMode()
+        'Sets all features to 2 (Unavailable for Shiftorium) except ShiftOS Key (AvailableFeatures(11))
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", True)
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved", True)
         Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
@@ -44,9 +45,12 @@ Module SaveLoadSystem
         Strings.AvailableFeature(28) = "2"
         Strings.AvailableFeature(29) = "2"
         Strings.AvailableFeature(30) = "2"
+        '0.2.6 Features
+        Strings.AvailableFeature(31) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
+        'Sets all features to as bought
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
@@ -84,9 +88,12 @@ Module SaveLoadSystem
         Strings.AvailableFeature(28) = "3"
         Strings.AvailableFeature(29) = "1"
         Strings.AvailableFeature(30) = "1"
+        '0.2.6 Features
+        Strings.AvailableFeature(31) = "1"
     End Sub
 
     Public Sub GodMode()
+        'Same as new game but codepoints automatically assigned to 9999 and not saved into the FS
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = 9999
@@ -123,6 +130,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(28) = "2"
         Strings.AvailableFeature(29) = "2"
         Strings.AvailableFeature(30) = "2"
+        '0.2.6 Features
+        Strings.AvailableFeature(31) = "2"
     End Sub
 
     Public Sub SaveGame()

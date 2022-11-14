@@ -111,14 +111,14 @@
     <Compile Include="MainForms\DebugWindow.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\DirectoryManagements.vb" />
+    <Compile Include="Functions\InGame\DirectoryManagements.vb" />
     <Compile Include="MainForms\Epilepsy.Designer.vb">
       <DependentUpon>Epilepsy.vb</DependentUpon>
     </Compile>
     <Compile Include="MainForms\Epilepsy.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\FileManagement.vb" />
+    <Compile Include="Functions\InGame\FileManagement.vb" />
     <Compile Include="MainForms\IntroStory.Designer.vb">
       <DependentUpon>IntroStory.vb</DependentUpon>
     </Compile>
@@ -126,7 +126,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\SaveLoadSystem.vb" />
-    <Compile Include="MainForms\Shiftoriums.vb" />
+    <Compile Include="Functions\InGame\Shiftoriums.vb" />
     <Compile Include="MainForms\ShiftOSMenu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -140,19 +140,19 @@
     <Compile Include="MainForms\ShiftOSUpdater.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\Strings.vb" />
+    <Compile Include="Functions\InGame\Strings.vb" />
     <Compile Include="MainForms\Console.Designer.vb">
       <DependentUpon>Console.vb</DependentUpon>
     </Compile>
     <Compile Include="MainForms\Console.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\ConsoleAPI.vb" />
-    <Compile Include="MainForms\TerminalAPI.vb" />
-    <Compile Include="MainForms\TerminalExternalApps.vb" />
-    <Compile Include="MainForms\TerminalColorSystem.vb" />
-    <Compile Include="MainForms\TerminalInternalApps.vb" />
-    <Compile Include="MainForms\TheUpdater.vb" />
+    <Compile Include="API\ConsoleAPI.vb" />
+    <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="Functions\InGame\TerminalExternalApps.vb" />
+    <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
+    <Compile Include="Functions\InGame\TerminalInternalApps.vb" />
+    <Compile Include="Functions\OutGame\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
