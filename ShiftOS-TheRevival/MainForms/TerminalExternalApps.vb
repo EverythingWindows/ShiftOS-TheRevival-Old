@@ -205,7 +205,7 @@ Module TerminalExternalApps
                                 Select Case GetText
                                     Case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
                                         BC_CurrentNumber = BC_CurrentNumber & GetText
-                                    Case "+", "-", "*", "/"
+                                    Case "+", "-", "*", "/", "^"
                                         Dim BC_Numbers3 As Integer
                                         Select Case BC_ThriceMoreValue
                                             Case 1
@@ -224,7 +224,7 @@ Module TerminalExternalApps
                                         End Select
                                         BC_Operation2 = GetText
                                     Case "."
-                                        Console.TextBox1.Text = Console.TextBox1.Text & "Decimals aren't supported yet!"
+                                        NewLine("Decimals aren't supported yet!")
                                     Case Else
                                         'BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
                                 End Select
@@ -251,6 +251,8 @@ Module TerminalExternalApps
                 BC_Result = FirstNum * SecondNum
             Case "/"
                 BC_Result = FirstNum / SecondNum
+            Case "^"
+                BC_Result = FirstNum ^ SecondNum
         End Select
     End Sub
 

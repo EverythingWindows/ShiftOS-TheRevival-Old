@@ -131,42 +131,7 @@ Public Class Console
                 AdvancedCommand = False
                 BadCommand = False
             Case "date"
-                If Strings.AvailableFeature(24) = 1 Then
-                    NewLine("The date is " & Date.Now.DayOfYear & " days since the first day of the year")
-                    AdvancedCommand = False
-                    BadCommand = False
-                ElseIf Strings.AvailableFeature(24) = 3 Then
-                    If Strings.AvailableFeature(25) = 1 Then
-                        Dim TheWeek As String = Date.Now.DayOfYear / 7
-                        NewLine("The date is " & TheWeek.Substring(0, 2) & " weeks since the first week of the year")
-                        AdvancedCommand = False
-                        BadCommand = False
-                    ElseIf Strings.AvailableFeature(25) = 3 Then
-                        If Strings.AvailableFeature(26) = 1 Then
-                            NewLine("The date is " & Date.Now.Month & " months since the first month of the year")
-                            AdvancedCommand = False
-                            BadCommand = False
-                        ElseIf Strings.AvailableFeature(26) = 3 Then
-                            If Strings.AvailableFeature(27) = 1 Then
-                                NewLine("The year is " & Date.Now.Year)
-                                AdvancedCommand = False
-                                BadCommand = False
-                            ElseIf Strings.AvailableFeature(27) = 3 Then
-                                If Strings.AvailableFeature(28) = 1 Then
-                                    NewLine("The date is " & Date.Now.Day & "/" & Date.Now.Month)
-                                    AdvancedCommand = False
-                                    BadCommand = False
-                                ElseIf Strings.AvailableFeature(28) = 3 Then
-                                    If Strings.AvailableFeature(29) = 1 Then
-                                        NewLine("The date is " & Date.Now.Day & "/" & Date.Now.Month & "/" & Date.Now.Year)
-                                        AdvancedCommand = False
-                                        BadCommand = False
-                                    End If
-                                End If
-                            End If
-                        End If
-                    End If
-                End If
+                DateTerm()
             Case "dir"
                 If Strings.AvailableFeature(16) = "1" Then
                     TerminalDirectories(CurrentDirectory)
@@ -240,27 +205,7 @@ Public Class Console
                     BadCommand = False
                 End If
             Case "time"
-                If Strings.AvailableFeature(5) = "1" Then
-                    NewLine(Math.Floor(Date.Now.Subtract(Date.Today).TotalSeconds) & " seconds passed since midnight")
-                ElseIf Strings.AvailableFeature(5) = "3" Then
-                    If Strings.AvailableFeature(6) = "1" Then
-                        NewLine(Math.Floor(Date.Now.Subtract(Date.Today).TotalMinutes) & " minutes passed since midnight")
-                    ElseIf Strings.AvailableFeature(6) = "3" Then
-                        If Strings.AvailableFeature(7) = "1" Then
-                            NewLine(Math.Floor(Date.Now.Subtract(Date.Today).TotalHours) & " hours passed since midnight")
-                        ElseIf Strings.AvailableFeature(7) = "3" Then
-                            If Strings.AvailableFeature(12) = "1" Then
-                                If Date.Now.Hour < 12 Then
-                                    NewLine("The time is " & TimeOfDay.Hour & " AM")
-                                Else
-                                    NewLine("The time is " & TimeOfDay.Hour - 12 & " PM")
-                                End If
-                            ElseIf Strings.AvailableFeature(23) = "1" Then
-                                NewLine("The time is " & TimeOfDay.Hour & ":" & TimeOfDay.Minute)
-                            End If
-                        End If
-                    End If
-                End If
+                TimeTerm()
                 AdvancedCommand = False
                 BadCommand = False
             Case "su"

@@ -51,7 +51,7 @@
                                                 NewLine("(textpad | 100 CP) TextPad")
                                             Else
                                                 If Strings.AvailableFeature(30) = "0" Then
-                                                    NewLine("(script | 100 CP) ShiftOS Batch Script Support")
+                                                    NewLine("(batchscript | 100 CP) ShiftOS Batch Script Support")
                                                 End If
                                             End If
                                         End If
@@ -88,6 +88,26 @@
                                 Else
                                     If Strings.AvailableFeature(24) = "0" Then
                                         NewLine("(date | 70 CP) Date command")
+                                    Else
+                                        If Strings.AvailableFeature(25) = "0" Then
+                                            NewLine("(woy | 75 CP) Date by week of year")
+                                        Else
+                                            If Strings.AvailableFeature(26) = "0" Then
+                                                NewLine("(moy | 80 CP) Date by month of year")
+                                            Else
+                                                If Strings.AvailableFeature(27) = "0" Then
+                                                    NewLine("(year | 85 CP) Date by year")
+                                                Else
+                                                    If Strings.AvailableFeature(28) = "0" Then
+                                                        NewLine("(mmyyyy | 90 CP) Date by month and year")
+                                                    Else
+                                                        If Strings.AvailableFeature(29) = "0" Then
+                                                            NewLine("(generaldate | 95 CP) Date by general format")
+                                                        End If
+                                                    End If
+                                                End If
+                                            End If
+                                        End If
                                     End If
                                 End If
                             End If

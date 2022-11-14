@@ -10,6 +10,7 @@ Public Class ShiftOSMenu
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckInstall()
+        lbl_BuildString.Text = My.Resources.CurrentVersion
         BannerChange.Start()
     End Sub
 
