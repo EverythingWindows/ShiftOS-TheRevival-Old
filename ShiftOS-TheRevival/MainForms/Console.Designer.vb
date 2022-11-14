@@ -56,8 +56,10 @@ Partial Class Console
         Me.InfoBar.Location = New System.Drawing.Point(0, 432)
         Me.InfoBar.Name = "InfoBar"
         Me.InfoBar.ReadOnly = True
+        Me.InfoBar.ShortcutsEnabled = False
         Me.InfoBar.Size = New System.Drawing.Size(800, 18)
         Me.InfoBar.TabIndex = 0
+        Me.InfoBar.TabStop = False
         Me.InfoBar.Text = "Infobar"
         Me.InfoBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.InfoBar.Visible = False

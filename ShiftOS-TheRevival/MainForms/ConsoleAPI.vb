@@ -11,6 +11,10 @@
         Console.TextBox1.Text = str
     End Sub
 
+    Public Sub Undeveloped()
+        NewLine("Oopsie! It's only for newer version")
+    End Sub
+
     Public Sub TextRebind()
         Console.TextBox1.Select(Console.TextBox1.Text.Length, 0)
         Console.TextBox1.ScrollToCaret()
