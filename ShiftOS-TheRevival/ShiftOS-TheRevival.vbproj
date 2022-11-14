@@ -149,9 +149,9 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
-    <Compile Include="Functions\InGame\TerminalExternalApps.vb" />
+    <Compile Include="Terminal Applications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
-    <Compile Include="Functions\InGame\TerminalInternalApps.vb" />
+    <Compile Include="Terminal Applications\Internal\TerminalInternalApps.vb" />
     <Compile Include="Functions\OutGame\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
