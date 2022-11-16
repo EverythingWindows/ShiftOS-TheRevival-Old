@@ -154,10 +154,16 @@
     <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
     <Compile Include="Terminal Applications\Internal\Com_05tray.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Codepoint.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Cowsay.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Help.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Hostname.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Infobar.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Pwd.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Rev.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Shiftfetch.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Shiftorium.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Su.vb" />
+    <Compile Include="Terminal Applications\Internal\Com_Username.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Ver.vb" />
     <Compile Include="Terminal Applications\Internal\Com_Date.vb" />
     <Compile Include="Terminal Applications\Internal\TerminalInternalApps.vb" />

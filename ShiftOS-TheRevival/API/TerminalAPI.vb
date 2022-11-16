@@ -218,7 +218,7 @@
             End If
             If command Like "cowsay *" Then
                 If Strings.AvailableFeature(22) = 1 Then
-                    Cowsay_Say(RawCommand.Substring(7))
+                    Cowsay(RawCommand.Substring(7))
                     Console.BadCommand = False
                 End If
             End If
@@ -231,35 +231,14 @@
             End If
             If command Like "hostname *" Then
                 If Strings.AvailableFeature(20) = 1 Then
-                    Strings.ComputerInfo(0) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
-                    Terminal_AssignPrompt()
+                    Hostname()
                     AdvancedCommand = False
                     Console.BadCommand = False
                 End If
             End If
             If command Like "infobar *" Then
                 If Strings.AvailableFeature(4) = "1" Then
-                    'Infobar panel-ish and some sort
-                    Dim infobarcommand As String = command.Replace("infobar ", "")
-                    Dim advancedtool As Boolean = True
-                    Select Case infobarcommand
-                        Case "on"
-                            Strings.OnceInfo(2) = "True"
-                            Console.CheckFeature()
-                            Console.BadCommand = False
-                            advancedtool = False
-                        Case "off"
-                            Strings.OnceInfo(2) = "False"
-                            Console.CheckFeature()
-                            Console.BadCommand = False
-                            advancedtool = False
-                    End Select
-                    If advancedtool = True Then
-                        If infobarcommand Like "color *" Then
-                            GetColor("infobar", infobarcommand.Substring(6, 1), infobarcommand.Substring(7, 1))
-                            Console.BadCommand = False
-                        End If
-                    End If
+                    Infobar()
                 End If
             End If
             If command Like "man *" Then
@@ -283,7 +262,7 @@
             End If
             If command Like "rev *" Then
                 If Strings.AvailableFeature(21) = 1 Then
-                    NewLine(StrReverse(RawCommand.Substring(4)))
+                    Reverse()
                     Console.BadCommand = False
                     AdvancedCommand = False
                 End If
@@ -303,20 +282,7 @@
                 End If
             End If
             If command Like "shiftorium *" Then
-                Dim prompt As String = command.Replace("shiftorium ", "")
-                NewLine("Shiftorium ShiftOS Center")
-                If prompt Like "info *" Then
-                    Shiftoriums.prompt = command.Replace("shiftorium info ", "")
-                    Shiftorium_InformationFeatures()
-                End If
-                If prompt Like "install *" Then
-                    Shiftoriums.prompt = command.Replace("shiftorium install ", "")
-                    Shiftorium_DetectInstallFeatures()
-                End If
-                If prompt = "list" Then
-                    Shiftorium_ListFeatures()
-                    Console.BadCommand = False
-                End If
+                Shiftorium()
             End If
             If command Like "textpad *" Then
                 If Strings.AvailableFeature(17) = 1 Then
@@ -332,8 +298,7 @@
                     If command.Substring(9) = "root" Then
                         NewLine("This username is already taken!")
                     Else
-                        Strings.ComputerInfo(1) = command.Substring(command.LastIndexOf(" ") + 1, command.Length - (command.LastIndexOf(" ") + 1))
-                        Terminal_AssignPrompt()
+                        Username()
                     End If
                     AdvancedCommand = False
                     Console.BadCommand = False
