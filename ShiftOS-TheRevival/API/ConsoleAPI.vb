@@ -1,4 +1,14 @@
 ﻿Module ConsoleAPI
+
+    Public Sub Console_Windowed()
+        Console.WindowState = FormWindowState.Normal
+    End Sub
+
+    Public Sub Console_Full()
+        Console.FormBorderStyle = FormBorderStyle.None
+        Console.WindowState = FormWindowState.Maximized
+    End Sub
+
     Public Sub NewLine(str As String)
         Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & str
     End Sub

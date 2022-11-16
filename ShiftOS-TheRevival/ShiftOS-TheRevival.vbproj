@@ -93,6 +93,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\InGame\Terminate.vb" />
     <Compile Include="MainForms\BugSlap.Designer.vb">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </Compile>
@@ -112,6 +113,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions\InGame\DirectoryManagements.vb" />
+    <Compile Include="MainForms\DesktopEnvironment\master\Desktop.Designer.vb">
+      <DependentUpon>Desktop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\DesktopEnvironment\master\Desktop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\DesktopEnvironment\master\DesktopManager.vb" />
     <Compile Include="MainForms\Epilepsy.Designer.vb">
       <DependentUpon>Epilepsy.vb</DependentUpon>
     </Compile>
@@ -149,24 +157,24 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
-    <Compile Include="Terminal Applications\External\App_TextPad.vb" />
-    <Compile Include="Terminal Applications\External\TerminalExternalApps.vb" />
+    <Compile Include="TerminalApplications\External\App_TextPad.vb" />
+    <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_05tray.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Codepoint.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Cowsay.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Help.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Hostname.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Infobar.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Pwd.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Rev.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Shiftfetch.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Shiftorium.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Su.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Username.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Ver.vb" />
-    <Compile Include="Terminal Applications\Internal\Com_Date.vb" />
-    <Compile Include="Terminal Applications\Internal\TerminalInternalApps.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_05tray.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Codepoint.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Cowsay.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Help.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Hostname.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Infobar.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Pwd.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Rev.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Shiftfetch.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Shiftorium.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Su.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Username.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Ver.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Date.vb" />
+    <Compile Include="TerminalApplications\Internal\TerminalInternalApps.vb" />
     <Compile Include="Functions\OutGame\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -184,7 +192,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Terminal Applications\Internal\Com_Time.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Time.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForms\BugSlap.resx">
@@ -195,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\DebugWindow.resx">
       <DependentUpon>DebugWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\DesktopEnvironment\master\Desktop.resx">
+      <DependentUpon>Desktop.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Epilepsy.resx">
       <DependentUpon>Epilepsy.vb</DependentUpon>
@@ -233,6 +244,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DevOnlyRes\" />
+    <Folder Include="MainForms\Applications\" />
+    <Folder Include="MainForms\WindowManager\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ShiftOSBuildLab.txt" />

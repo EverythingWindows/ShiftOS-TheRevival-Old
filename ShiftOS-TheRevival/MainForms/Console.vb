@@ -16,8 +16,7 @@ Public Class Console
     Public ShOSKey As String
 
     Private Sub Console_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FormBorderStyle = FormBorderStyle.None
-        WindowState = FormWindowState.Maximized
+        Console_Full()
         Cursor.Hide()
         InitializeTerminal()
     End Sub

@@ -170,13 +170,10 @@
                 Console.BadCommand = False
                 Undeveloped()
             Case "shutdown", "shut down"
-                NewLine("Saving game...")
-                If Strings.OnceInfo(6) = "story" Then
-                    SaveGame()
-                End If
-                Cursor.Show()
-                ShiftOSMenu.Show()
-                Console.Close()
+                TerminateShiftOS()
+            Case "startx"
+                StartX()
+                Console_Windowed()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()
