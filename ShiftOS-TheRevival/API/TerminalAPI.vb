@@ -174,6 +174,8 @@
             Case "startx"
                 StartX()
                 Console_Windowed()
+            Case "stopx"
+                StopX()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()

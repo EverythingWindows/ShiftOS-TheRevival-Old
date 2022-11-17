@@ -8,5 +8,6 @@
 
     Public Sub StopX()
         Desktop.Close()
+        Console_Full()
     End Sub
 End Module

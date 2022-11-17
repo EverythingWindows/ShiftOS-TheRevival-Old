@@ -93,8 +93,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions\InGame\CodepointSystem.vb" />
-    <Compile Include="Functions\InGame\Terminate.vb" />
+    <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
+    <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
     <Compile Include="MainForms\BugSlap.Designer.vb">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </Compile>
@@ -134,9 +134,9 @@
     <Compile Include="MainForms\IntroStory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Functions\InGame\IntroStoryTell.vb" />
+    <Compile Include="Functions\InGame\LoreManager\IntroStoryTell.vb" />
     <Compile Include="MainForms\SaveLoadSystem.vb" />
-    <Compile Include="Functions\InGame\Shiftoriums.vb" />
+    <Compile Include="Functions\InGame\StoreManager\Shiftoriums.vb" />
     <Compile Include="MainForms\ShiftOSMenu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -150,7 +150,7 @@
     <Compile Include="MainForms\ShiftOSUpdater.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Functions\InGame\Strings.vb" />
+    <Compile Include="Functions\InGame\ROMs\Strings.vb" />
     <Compile Include="MainForms\Console.Designer.vb">
       <DependentUpon>Console.vb</DependentUpon>
     </Compile>
@@ -159,9 +159,9 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
-    <Compile Include="TerminalApplications\External\App_TextPad.vb" />
+    <Compile Include="TerminalApplications\External\Textpad\App_TextPad.vb" />
     <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
-    <Compile Include="Functions\InGame\ColorSystem.vb" />
+    <Compile Include="Functions\InGame\SystemManager\ColorSystem.vb" />
     <Compile Include="TerminalApplications\Internal\Com_05tray.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cd.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Clear.vb" />
