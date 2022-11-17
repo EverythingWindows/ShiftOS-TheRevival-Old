@@ -84,7 +84,7 @@
         Select Case command
             Case ""
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "05tray"
                 _05tray()
                 NewLine("you cheater!")
@@ -93,36 +93,36 @@
                     Console.ChangeInterpreter = True
                     AppHost("bc", False)
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "clear"
                 If Strings.AvailableFeature(1) = "1" Then
                     Clear()
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "codepoint"
                 Codepoint()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "colors"
                 Colors()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "date"
                 Terminal_Date()
             Case "dir"
                 If Strings.AvailableFeature(16) = "1" Then
                     TerminalDirectories(Console.CurrentDirectory)
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "exit su"
                 If Strings.OnceInfo(0) = "No" Then
 
                 Else
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                     NewLine("Exitting root mode...")
                     Strings.OnceInfo(0) = "No"
                     Terminal_AssignPrompt()
@@ -131,12 +131,12 @@
                 Console.ChangeInterpreter = True
                 AppHost("guess", False)
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
                 'Undeveloped()
             Case "help"
                 Help()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "infobar"
                 If Strings.AvailableFeature(4) = 1 Then
                     NewLine(My.Resources.man_infobar)
@@ -145,29 +145,29 @@
                 If Strings.AvailableFeature(16) = 1 Then
                     Pwd()
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "reboot"
                 Console.TextBox1.Text = Nothing
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
                 SaveGame()
                 Console.InitializeTerminal()
             Case "shiftorium"
                 NewLine(My.Resources.man_shiftorium)
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "shiftfetch"
                 If Strings.AvailableFeature(8) = "1" Then
                     Shiftfetch()
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "shiftoriumfx"
                 'ChangeInterpreter = True
                 'AppHost("shiftoriumfx")
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
                 Undeveloped()
             Case "shutdown", "shut down"
                 TerminateShiftOS()
@@ -180,20 +180,20 @@
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "time"
                 Terminal_Time()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "su"
                 Terminal_Su()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
             Case "ver"
                 Terminal_Version()
                 AdvancedCommand = False
-                Console.BadCommand = False
+                NormalCommand()
         End Select
 
         If AdvancedCommand = True Then
@@ -201,38 +201,38 @@
                 If Strings.AvailableFeature(16) = 1 Then
                     CatFile(command.Substring(4))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "cd *" Then
                 If Strings.AvailableFeature(16) = 1 Then
                     NavigateDir(command.Replace("cd ", ""))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "color *" Then
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
-                Console.BadCommand = False
+                NormalCommand()
             End If
             If command Like "cowsay *" Then
                 If Strings.AvailableFeature(22) = 1 Then
                     Cowsay(RawCommand.Substring(7))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "del *" Then
                 If Strings.AvailableFeature(16) = 1 Then
                     DeleteFile(RawCommand.Substring(4))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "hostname *" Then
                 If Strings.AvailableFeature(20) = 1 Then
                     Hostname()
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "infobar *" Then
@@ -249,20 +249,20 @@
                 If Strings.AvailableFeature(16) Then
                     CreateDir(command.Replace("mkdir ", ""))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "print *" Then
                 If Strings.AvailableFeature(2) = "1" Then
                     NewLine(RawCommand.Substring(6))
-                    Console.BadCommand = False
+                    NormalCommand()
                     AdvancedCommand = False
                 End If
             End If
             If command Like "rev *" Then
                 If Strings.AvailableFeature(21) = 1 Then
                     Reverse()
-                    Console.BadCommand = False
+                    NormalCommand()
                     AdvancedCommand = False
                 End If
             End If
@@ -270,14 +270,14 @@
                 If Strings.AvailableFeature(16) = 1 Then
                     RemoveDir(command.Replace("rmdir ", ""))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "run *" Then
                 If Strings.AvailableFeature(30) = 1 Then
                     Terminal_RunTerminalFile(command.Substring(4))
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "shiftorium *" Then
@@ -289,7 +289,7 @@
                     command = RawCommand.Replace("textpad ", "")
                     AppHost("textpad", True)
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
             If command Like "username *" Then
@@ -300,12 +300,16 @@
                         Username()
                     End If
                     AdvancedCommand = False
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             End If
         End If
         If Console.BadCommand = True Then
             NewLine("Bad command or wrong file name")
         End If
+    End Sub
+
+    Public Sub NormalCommand()
+        Console.BadCommand = False
     End Sub
 End Module

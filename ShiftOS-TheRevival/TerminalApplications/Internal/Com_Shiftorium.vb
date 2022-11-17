@@ -12,7 +12,7 @@
         End If
         If prompt = "list" Then
             Shiftorium_ListFeatures()
-            Console.BadCommand = False
+            NormalCommand()
         End If
     End Sub
 End Module

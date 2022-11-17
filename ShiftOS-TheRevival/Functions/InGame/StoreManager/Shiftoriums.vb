@@ -141,168 +141,168 @@
                     NewLine("Shows up any further help instruction on each command, its corresponding action and its example if necessary")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "clear"
                 If Strings.AvailableFeature(1) = "0" Then
                     ManHeader(0) = "Clear Terminal Screen (command: clear)"
                     ManHeader(1) = "20 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Clears the terminal screen" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "print"
                 If Strings.AvailableFeature(2) = "0" Then
                     ManHeader(0) = "Print Command (command: print)"
                     ManHeader(1) = "25 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Prints a corresponding text entered in the command" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "termdspdrv"
                 If Strings.AvailableFeature(3) = "0" Then
                     ManHeader(0) = "Terminal Display Driver"
                     ManHeader(1) = "40 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Display driver for ShiftOS' Terminal to utilize advantages such as Infobar, ASCII-based applications" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "infobar"
                 If Strings.AvailableFeature(4) = "0" Then
                     ManHeader(0) = "Terminal InfoBar"
                     ManHeader(1) = "50 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Panel bar at the bottom of the terminal to display basic informations" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "stime"
                 If Strings.AvailableFeature(5) = "0" Then
                     ManHeader(0) = "Time by Seconds"
                     ManHeader(1) = "10 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in seconds form since midnight" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "stime"
                 If Strings.AvailableFeature(6) = "0" Then
                     ManHeader(0) = "Time by Minutes"
                     ManHeader(1) = "20 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in minutes form since midnight" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "htime"
                 If Strings.AvailableFeature(7) = "0" Then
                     ManHeader(0) = "Time by Hours"
                     ManHeader(1) = "30 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in hours form since midnight" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "shiftfetch"
                 If Strings.AvailableFeature(8) = "0" Then
                     ManHeader(0) = "Shiftfetch"
                     ManHeader(1) = "55 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "ShiftOS port of Neofetch, A command-line system information tool" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "bc"
                 If Strings.AvailableFeature(9) = "0" Then
                     ManHeader(0) = "Basic Calculator"
                     ManHeader(1) = "55 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Basic Calculator for simple calculation" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "2bitcolor"
                 If Strings.AvailableFeature(10) = "0" Then
                     ManHeader(0) = "2-bit Color Support"
                     ManHeader(1) = "60 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds 2 colours (Dark Gray, Light Gray) supports to the terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "key"
                 If Strings.AvailableFeature(11) = "0" Then
                     ManHeader(0) = "ShiftOS Key"
                     ManHeader(1) = "5 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "An encryption key to unlock advanced terminal feature for ShiftOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "pmam"
                 If Strings.AvailableFeature(12) = "0" Then
                     ManHeader(0) = "PM and AM"
                     ManHeader(1) = "40 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in PM and AM format" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "rgb"
                 If Strings.AvailableFeature(13) = "0" Then
                     ManHeader(0) = "Red, Green, and Blue"
                     ManHeader(1) = "70 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds Red, Green, and Blue support to the Display Driver" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "rgb2"
                 If Strings.AvailableFeature(14) = "0" Then
                     ManHeader(0) = "RGB Variant"
                     ManHeader(1) = "75 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds lighter or darker variant of Red, Green, and Blue" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "4bitcolor"
                 If Strings.AvailableFeature(15) = "0" Then
                     ManHeader(0) = "4-bit Color Display"
                     ManHeader(1) = "80 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Adds to 16 colours support to the Display Driver" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "romdriver"
                 If Strings.AvailableFeature(16) = "0" Then
                     ManHeader(0) = "Terminal Read-Only Memory Driver"
                     ManHeader(1) = "90 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "ShiftOS Read-Only Memory support for ShiftOS such as writing and reading permanent memory such as HDD, SDD, etc." & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "textpad"
                 If Strings.AvailableFeature(17) = "0" Then
                     ManHeader(0) = "TextPad"
                     ManHeader(1) = "100 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "A simple text-editor for ShiftOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "shiftkey"
                 If Strings.AvailableFeature(18) = "0" Then
                     ManHeader(0) = "ShiftKey"
                     ManHeader(1) = "45 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Recall the previous command on terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "username"
                 If Strings.AvailableFeature(19) = "0" Then
                     ManHeader(0) = "Custom Username"
                     ManHeader(1) = "15 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Set custom username for ShfitOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "hostname"
                 If Strings.AvailableFeature(20) = "0" Then
                     ManHeader(0) = "Custom Hostname"
                     ManHeader(1) = "15 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Set custom hostname/computer name for ShfitOS" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "rev"
                 If Strings.AvailableFeature(21) = "0" Then
                     ManHeader(0) = "Reverse String"
                     ManHeader(1) = "30 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Reverse any text you entered in the terminal" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "cowsay"
                 If Strings.AvailableFeature(22) = "0" Then
                     ManHeader(0) = "Cowsay"
                     ManHeader(1) = "50 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Make the ASCII cow say anything you want to" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "hhmm"
                 If Strings.AvailableFeature(23) = "0" Then
                     ManHeader(0) = "Time by Hours and Minutes"
                     ManHeader(1) = "50 CP"
                     Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & ManHeader(0) & Environment.NewLine & Environment.NewLine & "Shows time in Hours and Minutes format" & Environment.NewLine & Environment.NewLine & ManHeader(1)
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "date"
                 If Strings.AvailableFeature(24) = "0" Then
@@ -313,7 +313,7 @@
                     NewLine("Displays date in days format since first day of the year")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "woy"
                 If Strings.AvailableFeature(25) = "0" Then
@@ -324,7 +324,7 @@
                     NewLine("Displays date in week format since first week of the year")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "moy"
                 If Strings.AvailableFeature(26) = "0" Then
@@ -335,7 +335,7 @@
                     NewLine("Displays date in month format since first month of the year")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "year"
                 If Strings.AvailableFeature(27) = "0" Then
@@ -346,7 +346,7 @@
                     NewLine("Displays date in year format")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "mmyyyy"
                 If Strings.AvailableFeature(28) = "0" Then
@@ -357,7 +357,7 @@
                     NewLine("Displays date in month and year format")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "generaldate"
                 If Strings.AvailableFeature(29) = "0" Then
@@ -368,7 +368,7 @@
                     NewLine("Displays date in DD/MM/YYYY format")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "batchscript"
                 If Strings.AvailableFeature(30) = "0" Then
@@ -379,7 +379,7 @@
                     NewLine("Adds the supports for ShiftOS Batch Script")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case "clipboard"
                 If Strings.AvailableFeature(31) = "0" Then
@@ -390,10 +390,10 @@
                     NewLine("Adds the supports for clipboard")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
-                    Console.BadCommand = False
+                    NormalCommand()
                 End If
             Case Else
-                Console.BadCommand = False
+                NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
         End Select
     End Sub
@@ -403,102 +403,102 @@
         Select Case prompt
             Case "man"
                 Shiftorium_InstallFeatures(True, "man", 0, 10)
-                Console.BadCommand = False
+                NormalCommand()
             Case "clear"
                 Shiftorium_InstallFeatures(True, "clear", 1, 20)
-                Console.BadCommand = False
+                NormalCommand()
             Case "print"
                 Shiftorium_InstallFeatures(True, "print", 2, 25)
-                Console.BadCommand = False
+                NormalCommand()
             Case "termdspdrv"
                 Shiftorium_InstallFeatures(True, "termdspdrv", 3, 40)
-                Console.BadCommand = False
+                NormalCommand()
             Case "infobar"
                 Shiftorium_InstallFeatures(True, "infobar", 4, 50)
-                Console.BadCommand = False
+                NormalCommand()
             Case "stime"
                 Shiftorium_InstallFeatures(True, "stime", 5, 10)
-                Console.BadCommand = False
+                NormalCommand()
             Case "mtime"
                 Shiftorium_InstallFeatures(True, "mtime", 6, 20)
-                Console.BadCommand = False
+                NormalCommand()
             Case "htime"
                 Shiftorium_InstallFeatures(True, "htime", 7, 30)
-                Console.BadCommand = False
+                NormalCommand()
             Case "shiftfetch"
                 Shiftorium_InstallFeatures(True, "shiftfetch", 8, 55)
-                Console.BadCommand = False
+                NormalCommand()
             Case "bc"
                 Shiftorium_InstallFeatures(True, "bc", 9, 55)
-                Console.BadCommand = False
+                NormalCommand()
             Case "2bitcolor"
                 Shiftorium_InstallFeatures(True, "2bitcolor", 10, 60)
-                Console.BadCommand = False
+                NormalCommand()
             Case "key"
                 Shiftorium_InstallFeatures(True, "key", 11, 5)
-                Console.BadCommand = False
+                NormalCommand()
             Case "pmam"
                 Shiftorium_InstallFeatures(True, "pmam", 12, 40)
-                Console.BadCommand = False
+                NormalCommand()
             Case "rgb"
                 Shiftorium_InstallFeatures(True, "rgb", 13, 70)
-                Console.BadCommand = False
+                NormalCommand()
             Case "rgb2"
                 Shiftorium_InstallFeatures(True, "rgb2", 14, 75)
-                Console.BadCommand = False
+                NormalCommand()
             Case "4bitcolor"
                 Shiftorium_InstallFeatures(True, "4bitcolor", 15, 80)
-                Console.BadCommand = False
+                NormalCommand()
             Case "romdriver"
                 Shiftorium_InstallFeatures(True, "romdriver", 16, 90)
-                Console.BadCommand = False
+                NormalCommand()
             Case "textpad"
                 Shiftorium_InstallFeatures(True, "textpad", 17, 100)
-                Console.BadCommand = False
+                NormalCommand()
             Case "shiftkey"
                 Shiftorium_InstallFeatures(True, "shiftkey", 18, 45)
-                Console.BadCommand = False
+                NormalCommand()
             Case "username"
                 Shiftorium_InstallFeatures(True, "username", 19, 15)
-                Console.BadCommand = False
+                NormalCommand()
             Case "hostname"
                 Shiftorium_InstallFeatures(True, "hostname", 20, 15)
-                Console.BadCommand = False
+                NormalCommand()
             Case "rev"
                 Shiftorium_InstallFeatures(True, "rev", 21, 30)
-                Console.BadCommand = False
+                NormalCommand()
             Case "cowsay"
                 Shiftorium_InstallFeatures(True, "cowsay", 22, 50)
-                Console.BadCommand = False
+                NormalCommand()
             Case "hhmm"
                 Shiftorium_InstallFeatures(True, "hhmm", 23, 50)
-                Console.BadCommand = False
+                NormalCommand()
             Case "date"
                 Shiftorium_InstallFeatures(True, "date", 24, 70)
-                Console.BadCommand = False
+                NormalCommand()
             Case "woy"
                 Shiftorium_InstallFeatures(True, "woy", 25, 75)
-                Console.BadCommand = False
+                NormalCommand()
             Case "moy"
                 Shiftorium_InstallFeatures(True, "moy", 26, 80)
-                Console.BadCommand = False
+                NormalCommand()
             Case "year"
                 Shiftorium_InstallFeatures(True, "year", 27, 85)
-                Console.BadCommand = False
+                NormalCommand()
             Case "mmyyyy"
                 Shiftorium_InstallFeatures(True, "mmyyyy", 28, 90)
-                Console.BadCommand = False
+                NormalCommand()
             Case "generaldate"
                 Shiftorium_InstallFeatures(True, "generaldate", 29, 95)
-                Console.BadCommand = False
+                NormalCommand()
             Case "batchscript"
                 Shiftorium_InstallFeatures(True, "batchscript", 30, 100)
-                Console.BadCommand = False
+                NormalCommand()
             Case "clipboard"
                 Shiftorium_InstallFeatures(True, "clipboard", 31, 100)
-                Console.BadCommand = False
+                NormalCommand()
             Case Else
-                Console.BadCommand = False
+                NormalCommand()
                 NewLine("Shiftorium: Bad command or not available")
         End Select
     End Sub
