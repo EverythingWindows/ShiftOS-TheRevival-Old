@@ -97,7 +97,7 @@
                 End If
             Case "clear"
                 If Strings.AvailableFeature(1) = "1" Then
-                    Console.TextBox1.Text = Nothing
+                    Clear()
                     AdvancedCommand = False
                     Console.BadCommand = False
                 End If
