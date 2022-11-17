@@ -3,6 +3,82 @@
     Public AdvancedCommand As Boolean
     Public RawCommand As String
 
+    Public Sub InitializeTerminal()
+        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
+        Strings.OnceInfo(4) = "!"
+        Strings.OnceInfo(7) = Console.Width
+        Strings.OnceInfo(8) = Console.Height
+        If Strings.IsFree = True Then
+            Strings.ComputerInfo(0) = "shiftos"
+            Strings.ComputerInfo(1) = "user"
+            Terminal_CheckFeature()
+            Terminal_PrintPrompt()
+            Terminal_AssignPrompt()
+        Else
+            If Console.StayAtChapter = True Then
+                LoadGame()
+                Terminal_CheckFeature()
+                Terminal_PrintPrompt()
+                Terminal_AssignPrompt()
+            Else
+                If Strings.ComputerInfo(3) = "0" Then
+                    Console.TextBox1.ReadOnly = True
+                    Console.StayAtChapter = True
+                    Console.StoryOnlyTimer.Start()
+                Else
+                    LoadGame()
+                    Terminal_CheckFeature()
+                    Terminal_PrintPrompt()
+                    Terminal_AssignPrompt()
+                End If
+            End If
+        End If
+        Console.CurrentDirectory = Strings.OnceInfo(1)
+        Console.Pseudodir = Console.CurrentDirectory.Replace(Strings.OnceInfo(1), "!\")
+        Console.CurrentInterpreter = "terminal"
+        TextRebind()
+    End Sub
+
+    Public Sub Terminal_CheckFeature()
+        If Strings.AvailableFeature(4) = "1" Then
+            If Console.ToolBarUse = True Then
+                If Strings.OnceInfo(2) = "True" Then
+                    Console.InfoBarTimer.Start()
+                    Console.TextBox1.Dock = DockStyle.None
+                    Console.ToolBar.Visible = True
+                    Console.ToolBar.SendToBack()
+                    Console.InfoBar.Visible = True
+                    Console.InfoBar.SendToBack()
+                    Console.TextBox1.Dock = DockStyle.Fill
+                Else
+                    Console.TextBox1.Dock = DockStyle.None
+                    Console.InfoBar.Visible = False
+                    Console.ToolBar.Visible = True
+                    Console.ToolBar.SendToBack()
+                    Console.TextBox1.Dock = DockStyle.Fill
+                End If
+            Else
+                If Strings.OnceInfo(2) = "True" Then
+                    Console.InfoBarTimer.Start()
+                    Console.TextBox1.Dock = DockStyle.None
+                    Console.InfoBar.Visible = True
+                    Console.InfoBar.SendToBack()
+                    Console.ToolBar.Visible = False
+                    Console.TextBox1.Dock = DockStyle.Fill
+                Else
+                    Console.TextBox1.Dock = DockStyle.None
+                    Console.InfoBar.Visible = False
+                    Console.ToolBar.Visible = False
+                    Console.TextBox1.Dock = DockStyle.Fill
+                End If
+            End If
+        Else
+            Console.TextBox1.Dock = DockStyle.None
+            Console.InfoBar.Visible = False
+            Console.TextBox1.Dock = DockStyle.Fill
+        End If
+    End Sub
+
     Public Sub Terminal_ExecuteInput()
         Terminal_ReadCommand()
         If Strings.AvailableFeature(18) = 1 Then
@@ -152,7 +228,7 @@
                 AdvancedCommand = False
                 NormalCommand()
                 SaveGame()
-                Console.InitializeTerminal()
+                InitializeTerminal()
             Case "shiftorium"
                 NewLine(My.Resources.man_shiftorium)
                 AdvancedCommand = False

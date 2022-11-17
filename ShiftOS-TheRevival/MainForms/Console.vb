@@ -7,7 +7,7 @@ Public Class Console
     Public DisplayStory As Integer                      'Keep record for displaying the DevX's or other's monologue
     Public StoryToTell As String                        'Which chapter that you're going to be in
     Public ChangeInterpreter As Boolean = False         'Default interpreter is Terminal, if it's changed to True, there'll be other program used by Console
-    Public CurrentInterpreter As String = "terminal"    'Shows what program is using Console
+    Public CurrentInterpreter As String                 'Shows what program is using Console
     Public CurrentDirectory As String                   'Current Directory for ShiftOS Explorer
     Public Pseudodir As String                          'Pseudo-directory for ShiftFS 
     Public StayAtChapter As Boolean = False             'If this set to true, then intro for chapters are mostly going to be in
@@ -19,81 +19,6 @@ Public Class Console
         Console_Full()
         Cursor.Hide()
         InitializeTerminal()
-    End Sub
-
-    Public Sub InitializeTerminal()
-        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
-        Strings.OnceInfo(4) = "!"
-        Strings.OnceInfo(7) = Width
-        Strings.OnceInfo(8) = Height
-        If Strings.IsFree = True Then
-            Strings.ComputerInfo(0) = "shiftos"
-            Strings.ComputerInfo(1) = "user"
-            CheckFeature()
-            Terminal_PrintPrompt()
-            Terminal_AssignPrompt()
-        Else
-            If StayAtChapter = True Then
-                LoadGame()
-                CheckFeature()
-                Terminal_PrintPrompt()
-                Terminal_AssignPrompt()
-            Else
-                If Strings.ComputerInfo(3) = "0" Then
-                    TextBox1.ReadOnly = True
-                    StayAtChapter = True
-                    StoryOnlyTimer.Start()
-                Else
-                    LoadGame()
-                    CheckFeature()
-                    Terminal_PrintPrompt()
-                    Terminal_AssignPrompt()
-                End If
-            End If
-        End If
-        CurrentDirectory = Strings.OnceInfo(1)
-        Pseudodir = CurrentDirectory.Replace(Strings.OnceInfo(1), "!\")
-        TextRebind()
-    End Sub
-
-    Public Sub CheckFeature()
-        If Strings.AvailableFeature(4) = "1" Then
-            If ToolBarUse = True Then
-                If Strings.OnceInfo(2) = "True" Then
-                    InfoBarTimer.Start()
-                    TextBox1.Dock = DockStyle.None
-                    ToolBar.Visible = True
-                    ToolBar.SendToBack()
-                    InfoBar.Visible = True
-                    InfoBar.SendToBack()
-                    TextBox1.Dock = DockStyle.Fill
-                Else
-                    TextBox1.Dock = DockStyle.None
-                    InfoBar.Visible = False
-                    ToolBar.Visible = True
-                    ToolBar.SendToBack()
-                    TextBox1.Dock = DockStyle.Fill
-                End If
-            Else
-                If Strings.OnceInfo(2) = "True" Then
-                    InfoBarTimer.Start()
-                    TextBox1.Dock = DockStyle.None
-                    InfoBar.Visible = True
-                    InfoBar.SendToBack()
-                    ToolBar.Visible = False
-                    TextBox1.Dock = DockStyle.Fill
-                Else
-                    TextBox1.Dock = DockStyle.None
-                    InfoBar.Visible = False
-                    ToolBar.Visible = False
-                    TextBox1.Dock = DockStyle.Fill
-                End If
-            End If
-        Else
-            TextBox1.Dock = DockStyle.None
-            InfoBar.Visible = False
-            TextBox1.Dock = DockStyle.Fill
-        End If
     End Sub
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown

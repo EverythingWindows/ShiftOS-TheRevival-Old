@@ -28,6 +28,7 @@ Partial Class Console
         Me.InfoBar = New System.Windows.Forms.TextBox()
         Me.InfoBarTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ToolBar = New System.Windows.Forms.TextBox()
+        Me.ShortcutHandler = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -102,4 +103,5 @@ Partial Class Console
     Friend WithEvents InfoBar As TextBox
     Friend WithEvents InfoBarTimer As Timer
     Friend WithEvents ToolBar As TextBox
+    Friend WithEvents ShortcutHandler As System.ComponentModel.BackgroundWorker
 End Class

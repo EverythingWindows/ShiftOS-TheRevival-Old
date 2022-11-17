@@ -31,7 +31,7 @@
                         Console.TextBox1.ReadOnly = False
                         Strings.ComputerInfo(0) = "shiftos"
                         Strings.ComputerInfo(1) = "user"
-                        Console.CheckFeature()
+                        Terminal_CheckFeature()
                         Terminal_PrintPrompt()
                         Terminal_AssignPrompt()
                         TextRebind()

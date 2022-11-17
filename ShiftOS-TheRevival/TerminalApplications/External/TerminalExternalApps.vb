@@ -56,7 +56,7 @@ Module TerminalExternalApps
                 Console.DefaultPrompt = Nothing
                 Console.TextBox1.Text = Nothing
                 Console.ToolBarUse = True
-                Console.CheckFeature()
+                Terminal_CheckFeature()
                 Console.CurrentInterpreter = "textpad"
                 TextPad_CheckExist(command)
                 Console.ToolBar.Text = "TextPad - " & command & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
@@ -98,7 +98,7 @@ Module TerminalExternalApps
                 Console.ChangeInterpreter = False
                 Console.ReleaseCursor = False
                 Console.CurrentInterpreter = "terminal"
-                Console.CheckFeature()
+                Terminal_CheckFeature()
                 Terminal_AssignPrompt()
                 Terminal_PrintPrompt()
                 TextRebind()
@@ -107,7 +107,7 @@ Module TerminalExternalApps
                 Console.ChangeInterpreter = False
                 Console.ReleaseCursor = False
                 Console.CurrentInterpreter = "terminal"
-                Console.CheckFeature()
+                Terminal_CheckFeature()
                 Terminal_AssignPrompt()
                 Terminal_PrintPrompt()
                 TextRebind()

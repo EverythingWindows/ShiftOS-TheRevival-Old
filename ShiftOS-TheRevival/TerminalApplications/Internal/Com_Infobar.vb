@@ -6,12 +6,12 @@
         Select Case infobarcommand
             Case "on"
                 Strings.OnceInfo(2) = "True"
-                Console.CheckFeature()
+                Terminal_CheckFeature()
                 NormalCommand()
                 advancedtool = False
             Case "off"
                 Strings.OnceInfo(2) = "False"
-                Console.CheckFeature()
+                Terminal_CheckFeature()
                 NormalCommand()
                 advancedtool = False
         End Select
