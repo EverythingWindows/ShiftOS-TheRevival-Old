@@ -98,16 +98,8 @@ Public Class Console
 
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
         KeyInput = e.KeyData
-        Select Case e.KeyData
-            Case (Keys.Control + Keys.Q)
-                If CurrentInterpreter = "terminal" Then
-                Else
-                    TerminateApp(KeyInput)
-                    TextRebind()
-                End If
-            Case Else
-                CaptureKeyBinding(KeyInput)
-        End Select
+        InputKey = e.KeyData
+        ShortcutHandle()
         If ReleaseCursor = True Then
 
         Else
