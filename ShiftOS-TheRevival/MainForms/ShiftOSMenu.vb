@@ -173,6 +173,7 @@ Public Class ShiftOSMenu
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
             End If
+            CheckUpdate()
         End If
     End Sub
 
