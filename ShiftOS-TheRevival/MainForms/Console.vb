@@ -96,10 +96,6 @@ Public Class Console
         End If
     End Sub
 
-    Public Sub DoCommand()
-
-    End Sub
-
     Private Sub txtterm_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
         KeyInput = e.KeyData
         Select Case e.KeyData

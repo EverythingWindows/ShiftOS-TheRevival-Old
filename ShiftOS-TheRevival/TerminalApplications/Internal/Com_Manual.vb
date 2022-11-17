@@ -1,12 +1,4 @@
-﻿Module TerminalInternalApps
-    Public Sub Cowsay_Say(Say As String)
-
-    End Sub
-
-    Public Sub DateTerm()
-
-    End Sub
-
+﻿Module Com_Manual
     Public Sub Manual(Command As String)
         'MAN command starts with this kinda format
         'ShiftOS Help Manual

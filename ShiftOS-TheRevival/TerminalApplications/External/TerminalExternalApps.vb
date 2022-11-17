@@ -19,16 +19,6 @@ Module TerminalExternalApps
     Public TextPad_FileName As String
     Public TextPad_TempText As New Timer
 
-    Public Sub ChangeCP(Addition As Boolean, NeededCP As Integer)
-        Dim TempCP As Integer = Convert.ToInt32(Strings.ComputerInfo(2))
-        If Addition = True Then
-            TempCP = TempCP + NeededCP
-        Else
-            TempCP = TempCP - NeededCP
-        End If
-        Strings.ComputerInfo(2) = Convert.ToString(TempCP)
-    End Sub
-
     Public Sub AppHost(App As Object, UseToolBar As Boolean)
         Select Case App
             Case "bc"

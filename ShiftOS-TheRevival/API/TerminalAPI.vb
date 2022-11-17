@@ -8,7 +8,7 @@
         If Strings.AvailableFeature(18) = 1 Then
             ShOSKey_InputCommand(command)
         End If
-        Console.DoCommand()
+        Terminal_DoCommand()
         Terminal_PrintPrompt()
         TextRebind()
     End Sub
@@ -67,7 +67,7 @@
                 Dim i As Integer = 1
                 While i <= linenum
                     command = sr.ReadLine()
-                    Console.DoCommand()
+                    Terminal_DoCommand()
                     NewLine(Nothing)
                     i = i + 1
                 End While
@@ -106,7 +106,7 @@
                 AdvancedCommand = False
                 Console.BadCommand = False
             Case "colors"
-                DisplayColors()
+                Colors()
                 AdvancedCommand = False
                 Console.BadCommand = False
             Case "date"

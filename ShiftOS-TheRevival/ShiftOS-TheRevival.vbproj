@@ -93,6 +93,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\InGame\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\Terminate.vb" />
     <Compile Include="MainForms\BugSlap.Designer.vb">
       <DependentUpon>BugSlap.vb</DependentUpon>
@@ -160,13 +161,16 @@
     <Compile Include="API\TerminalAPI.vb" />
     <Compile Include="TerminalApplications\External\App_TextPad.vb" />
     <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
-    <Compile Include="Functions\InGame\TerminalColorSystem.vb" />
+    <Compile Include="Functions\InGame\ColorSystem.vb" />
     <Compile Include="TerminalApplications\Internal\Com_05tray.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Codepoint.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Color.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Colors.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cowsay.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Help.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Hostname.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Infobar.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Manual.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Pwd.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Rev.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Shiftfetch.vb" />
@@ -175,7 +179,6 @@
     <Compile Include="TerminalApplications\Internal\Com_Username.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Ver.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Date.vb" />
-    <Compile Include="TerminalApplications\Internal\TerminalInternalApps.vb" />
     <Compile Include="Functions\OutGame\TheUpdater.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
