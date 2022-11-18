@@ -178,6 +178,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Manual.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Mkdir.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Pwd.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Rename.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Rev.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Rmdir.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Shiftfetch.vb" />

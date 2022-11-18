@@ -264,9 +264,15 @@
                     NormalCommand()
                 End If
             Case "time"
-                Terminal_Time()
-                AdvancedCommand = False
-                NormalCommand()
+                If Strings.AvailableFeature(5) = 1 Then
+                    Terminal_Time()
+                    AdvancedCommand = False
+                    NormalCommand()
+                ElseIf Strings.AvailableFeature(5) = 3 Then
+                    Terminal_Time()
+                    AdvancedCommand = False
+                    NormalCommand()
+                End If
             Case "su"
                 Terminal_Su()
                 AdvancedCommand = False
@@ -336,6 +342,13 @@
             If command Like "print *" Then
                 If Strings.AvailableFeature(2) = "1" Then
                     NewLine(RawCommand.Substring(6))
+                    NormalCommand()
+                    AdvancedCommand = False
+                End If
+            End If
+            If command Like "ren '*' '*'" Then
+                If Strings.AvailableFeature(31) = 1 Then
+                    Rename()
                     NormalCommand()
                     AdvancedCommand = False
                 End If

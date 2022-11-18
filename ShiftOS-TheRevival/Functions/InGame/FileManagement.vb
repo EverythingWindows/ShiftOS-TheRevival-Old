@@ -5,12 +5,16 @@ Module FileManagement
         If File.Exists(Console.CurrentDirectory & "\" & filename) = True Then
             Dim ContentsFinal As String = File.ReadAllText(Console.CurrentDirectory & "\" & filename)
             NewLine(ContentsFinal)
+        Else
+            NewLine("File is not exist")
         End If
     End Sub
 
     Public Sub DeleteFile(filename As String)
         If File.Exists(Console.CurrentDirectory & "\" & filename) = True Then
             File.Delete(Console.CurrentDirectory & "\" & filename)
+        Else
+            NewLine("File is not exist")
         End If
     End Sub
 

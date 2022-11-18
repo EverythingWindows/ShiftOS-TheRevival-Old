@@ -55,9 +55,9 @@
                                                 If Strings.AvailableFeature(30) = "0" Then
                                                     NewLine("(batchscript | 100 CP) ShiftOS Batch Script Support")
                                                 End If
-                                                If Strings.AvailableFeature(31) = "0" Then
-                                                    NewLine("(clipboard | 100 CP) Clipboard support")
-                                                End If
+                                            End If
+                                            If Strings.AvailableFeature(31) = "0" Then
+                                                NewLine("(rename | 95 CP) Rename command")
                                             End If
                                         End If
                                     End If
@@ -381,13 +381,13 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
-            Case "clipboard"
+            Case "rename"
                 If Strings.AvailableFeature(31) = "0" Then
-                    ManHeader(0) = "Clipboard Support"
-                    ManHeader(1) = "100 CP"
+                    ManHeader(0) = "Rename command"
+                    ManHeader(1) = "95 CP"
                     NewLine(ManHeader(0))
                     NewLine(Nothing)
-                    NewLine("Adds the supports for clipboard")
+                    NewLine("Gives ability to rename a file")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
                     NormalCommand()
@@ -494,8 +494,8 @@
             Case "batchscript"
                 Shiftorium_InstallFeatures(True, "batchscript", 30, 100)
                 NormalCommand()
-            Case "clipboard"
-                Shiftorium_InstallFeatures(True, "clipboard", 31, 100)
+            Case "rename"
+                Shiftorium_InstallFeatures(True, "rename", 31, 95)
                 NormalCommand()
             Case Else
                 NormalCommand()
@@ -587,11 +587,11 @@
                         Case "romdriver"
                             Strings.AvailableFeature(16) = "1"
                             Strings.AvailableFeature(17) = "0"
+                            Strings.AvailableFeature(31) = "0"
                             success = True
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
                             Strings.AvailableFeature(30) = "0"
-                            Strings.AvailableFeature(31) = "0"
                             success = True
                         Case "shiftkey"
                             Strings.AvailableFeature(18) = "1"
@@ -645,7 +645,7 @@
                         Case "batchscript"
                             Strings.AvailableFeature(30) = "1"
                             success = True
-                        Case "clipboard"
+                        Case "rename"
                             Strings.AvailableFeature(31) = "1"
                             success = True
                     End Select
