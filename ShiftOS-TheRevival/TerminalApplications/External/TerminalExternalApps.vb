@@ -1,43 +1,10 @@
 ﻿Imports System.IO
 
 Module TerminalExternalApps
-    Public ShouldChange As Boolean = False
     Public KeyInput As Keys
-    'This is for GTN's RAM
-    Public TheNumber As Integer = 0
-    Public FreezeText As String
-    'Basic Calculator's RAM
-    Public BC_ReadNumbers As Integer
-    Public BC_Numbers1 As String
-    Public BC_Numbers2 As String
-    Public BC_ThriceMoreValue As Integer
-    Public BC_ThriceMoreCount As Integer
-    Public BC_CurrentNumber As String
-    Public BC_Result As Integer
-    Public BC_Operation2 As String
-    'TextPad's RAM
-    Public TextPad_FileName As String
-    Public TextPad_TempText As New Timer
 
     Public Sub AppHost(App As Object, UseToolBar As Boolean)
         Select Case App
-            Case "bc"
-                Console.DefaultPrompt = "> "
-                ResetLine("bc (Basic Calcultator)")
-                NewLine("Copyright, Free Software Foundation.")
-                NewLine("ShiftOS port by DevX.")
-                NewLine("This is free software with ABSOLUTELY NO WARRANTY.")
-                NewLine(Nothing)
-                Console.CurrentInterpreter = "bc"
-                ShouldChange = True
-            Case "guess" 'Guess the Number
-                Console.DefaultPrompt = "Your answer: "
-                NewLine("Guess the Number")
-                NewLine("Guess the correct number between 1 and 50 and you'll get anything between 1 to 10 Codepoints")
-                NewLine("Type 'exit' to terminate this game")
-                Console.CurrentInterpreter = "guess"
-                GTN_GenerateNumber()
-                ShouldChange = True
             'Revisit Later
             'Case "pause" 'Pause function
             '    Terminal.TextBox1.ReadOnly = True
@@ -51,25 +18,15 @@ Module TerminalExternalApps
                 ShiftoriumFX_DisplayPackages()
                 NewLine(Nothing)
                 NewLine("Type any package you want to investigate")
-                ShouldChange = True
-            Case "textpad"
-                Console.DefaultPrompt = Nothing
-                Console.TextBox1.Text = Nothing
-                Console.ToolBarUse = True
-                Terminal_CheckFeature()
-                Console.CurrentInterpreter = "textpad"
-                TextPad_CheckExist(command)
-                Console.ToolBar.Text = "TextPad - " & command & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
-                Console.ReleaseCursor = True
-                TextRebind()
+                Console.ShouldChange = True
         End Select
         If Console.ReleaseCursor = True Then
             'Strings.OnceInfo(5) = Terminal.TrackPos
             'Terminal.TrackPos = Nothing
         End If
-        If ShouldChange = True Then
+        If Console.ShouldChange = True Then
             Console.ChangeInterpreter = True
-            ShouldChange = False
+            Console.ShouldChange = False
         End If
     End Sub
 
@@ -150,94 +107,9 @@ Module TerminalExternalApps
                     Case "exit"
                         TerminateApp(Nothing)
                     Case Else
-                        BC_ReadNumbers = 0
-                        BC_ThriceMoreValue = 1
-                        BC_Numbers1 = Nothing
-                        BC_Numbers2 = Nothing
-                        BC_Operation2 = Nothing
-                        BC_CurrentNumber = Nothing
-                        BC_Result = Nothing
-                        Dim GetText As String
-                        Try
-                            Do
-                                GetText = command.Chars(BC_ReadNumbers)
-                                Select Case GetText
-                                    Case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
-                                        BC_CurrentNumber = BC_CurrentNumber & GetText
-                                    Case "+", "-", "*", "/", "^"
-                                        Dim BC_Numbers3 As Integer
-                                        Select Case BC_ThriceMoreValue
-                                            Case 1
-                                                BC_Numbers1 = BC_CurrentNumber
-                                                BC_CurrentNumber = Nothing
-                                                BC_Operation2 = GetText
-                                                BC_ThriceMoreValue = BC_ThriceMoreValue + 1
-                                            Case >= 2
-                                                BC_Numbers2 = BC_CurrentNumber
-                                                BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
-                                                BC_Numbers3 = BC_Result
-                                                BC_Numbers1 = BC_Numbers3
-                                                BC_Numbers2 = Nothing
-                                                BC_CurrentNumber = Nothing
-                                                BC_ThriceMoreValue = BC_ThriceMoreValue + 1
-                                        End Select
-                                        BC_Operation2 = GetText
-                                    Case "."
-                                        NewLine("Decimals aren't supported yet!")
-                                    Case Else
-                                        'BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
-                                End Select
-                                BC_ReadNumbers = BC_ReadNumbers + 1
-                            Loop
-                        Catch ex As Exception
-                            BC_Numbers2 = BC_CurrentNumber
-                            BC_CurrentNumber = Nothing
-                        End Try
-                        BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
-                        BC_ThriceMoreValue = Nothing
-                        NewLine(BC_Result)
+                        BC_Calculate()
                 End Select
         End Select
-    End Sub
-
-    Public Sub BC_Counting(FirstNum As Integer, SecondNum As Integer, Operation As String)
-        Select Case Operation
-            Case "+"
-                BC_Result = FirstNum + SecondNum
-            Case "-"
-                BC_Result = FirstNum - SecondNum
-            Case "*"
-                BC_Result = FirstNum * SecondNum
-            Case "/"
-                BC_Result = FirstNum / SecondNum
-            Case "^"
-                BC_Result = FirstNum ^ SecondNum
-        End Select
-    End Sub
-
-    Public Sub GTN_GenerateNumber()
-        Dim RandNum As New Random
-        TheNumber = RandNum.Next(1, 51)
-    End Sub
-
-    Public Sub GTN_CheckNumber()
-        Dim TheirNumber As Integer = Convert.ToInt32(command)
-        If TheirNumber > 0 And TheirNumber < 51 Then
-            If TheirNumber = TheNumber Then
-                Dim GetCP As New Random
-                Dim GotCP As Integer = GetCP.Next(1, 11)
-                ChangeCP(True, GotCP)
-                NewLine("You are correct!, you got " & GotCP & " Codepoint(s)")
-                NewLine("Guess the new number between 1 and 50.")
-                GTN_GenerateNumber()
-            Else
-                If TheirNumber < TheNumber Then
-                    NewLine("Higher!")
-                ElseIf TheirNumber > TheNumber Then
-                    NewLine("Lower!")
-                End If
-            End If
-        End If
     End Sub
 
     Public Sub ShOSKey_InputCommand(lastcommand As String)

@@ -6,6 +6,7 @@ Public Class Console
     Public BadCommand As Boolean                        'Detect if it's a bad command or not
     Public DisplayStory As Integer                      'Keep record for displaying the DevX's or other's monologue
     Public StoryToTell As String                        'Which chapter that you're going to be in
+    Public ShouldChange As Boolean = False              'Indicates if the interpreter should changed to a specific program
     Public ChangeInterpreter As Boolean = False         'Default interpreter is Terminal, if it's changed to True, there'll be other program used by Console
     Public CurrentInterpreter As String                 'Shows what program is using Console
     Public CurrentDirectory As String                   'Current Directory for ShiftOS Explorer
@@ -16,6 +17,9 @@ Public Class Console
     Public ShOSKey As String                            'DOSKEY tracking string for ShiftOS
 
     Private Sub Console_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        With ShortcutHandler
+            .WorkerSupportsCancellation = True
+        End With
         Console_Full()
         Cursor.Hide()
         InitializeTerminal()

@@ -103,5 +103,5 @@ Partial Class Console
     Friend WithEvents InfoBar As TextBox
     Friend WithEvents InfoBarTimer As Timer
     Friend WithEvents ToolBar As TextBox
-    Friend WithEvents ShortcutHandler As System.ComponentModel.BackgroundWorker
+    Public WithEvents ShortcutHandler As System.ComponentModel.BackgroundWorker
 End Class

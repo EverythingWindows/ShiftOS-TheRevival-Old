@@ -167,7 +167,8 @@
             Case "bc"
                 If Strings.AvailableFeature(9) = "1" Then
                     Console.ChangeInterpreter = True
-                    AppHost("bc", False)
+                    'AppHost("bc", False)
+                    BC_Start()
                     AdvancedCommand = False
                     NormalCommand()
                 End If
@@ -205,7 +206,8 @@
                 End If
             Case "guess"
                 Console.ChangeInterpreter = True
-                AppHost("guess", False)
+                'AppHost("guess", False)
+                GTN_Start()
                 AdvancedCommand = False
                 NormalCommand()
                 'Undeveloped()
@@ -363,7 +365,8 @@
                 If Strings.AvailableFeature(17) = 1 Then
                     Console.ChangeInterpreter = True
                     command = RawCommand.Replace("textpad ", "")
-                    AppHost("textpad", True)
+                    TextPad_Start()
+                    'AppHost("textpad", True)
                     AdvancedCommand = False
                     NormalCommand()
                 End If

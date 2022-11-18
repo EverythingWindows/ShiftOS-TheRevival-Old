@@ -160,6 +160,8 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="TerminalApplications\External\BasicCalculator\App_BC.vb" />
+    <Compile Include="TerminalApplications\External\GuessTheNumber\App_Guess.vb" />
     <Compile Include="TerminalApplications\External\Textpad\App_TextPad.vb" />
     <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\SystemManager\ColorSystem.vb" />
