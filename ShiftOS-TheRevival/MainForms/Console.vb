@@ -15,6 +15,8 @@ Public Class Console
     Public ToolBarUse As Boolean = False                'Either any program is using ToolBar or not
     Public ReleaseCursor As Boolean = False             'Release cursor from TrackPos
     Public ShOSKey As String                            'DOSKEY tracking string for ShiftOS
+    Public Secure As Boolean                            'Define either Secure Text mode is enabled or not (experimental!)
+    Public SecureString As String                       'String for Secure Text mode (experimental)
 
     Private Sub Console_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With ShortcutHandler
@@ -35,21 +37,31 @@ Public Class Console
             Select Case e.KeyData
                 Case Keys.Enter
                     e.SuppressKeyPress = True
-                    If TextBox1.ReadOnly = True Then
-
-                    Else
+                    If Secure = True Then
+                        Secure = False
+                        TextBox1.ReadOnly = False
                         Terminal_ReadCommand()
-                        If Strings.AvailableFeature(18) = 1 Then
-                            ShOSKey_InputCommand(command)
-                        End If
-                        If ChangeInterpreter = True Then
-                            DoChildCommand()
-                            Terminal_PrintPrompt()
-                            TextRebind()
+                        NewLine(SecureString)
+                        Terminal_PrintPrompt()
+                        SecureString = Nothing
+                        TextRebind()
+                    Else
+                        If TextBox1.ReadOnly = True Then
+
                         Else
-                            Terminal_DoCommand()
-                            Terminal_PrintPrompt()
-                            TextRebind()
+                            Terminal_ReadCommand()
+                            If Strings.AvailableFeature(18) = 1 Then
+                                ShOSKey_InputCommand(command)
+                            End If
+                            If ChangeInterpreter = True Then
+                                DoChildCommand()
+                                Terminal_PrintPrompt()
+                                TextRebind()
+                            Else
+                                Terminal_DoCommand()
+                                Terminal_PrintPrompt()
+                                TextRebind()
+                            End If
                         End If
                     End If
                     TrackPos = 0
@@ -113,7 +125,15 @@ Public Class Console
                         TextRebind()
                     End If
                 Case Else
-                    TrackPos = TrackPos + 1
+                    If Secure = True Then
+                        If e.Modifiers = Keys.Shift Then
+                            SecureString = SecureString & Chr(e.KeyValue)
+                        Else
+                            SecureString = SecureString & Chr(e.KeyValue + 32)
+                        End If
+                    Else
+                        TrackPos = TrackPos + 1
+                    End If
             End Select
         End If
         'If e.KeyCode = Keys.Enter Then

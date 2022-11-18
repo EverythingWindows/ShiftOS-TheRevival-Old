@@ -231,6 +231,9 @@
                 NormalCommand()
                 SaveGame()
                 InitializeTerminal()
+            'Case "secure"
+            '    Console.Secure = True
+            '    Console.TextBox1.ReadOnly = True
             Case "shiftorium"
                 NewLine(My.Resources.man_shiftorium)
                 AdvancedCommand = False
