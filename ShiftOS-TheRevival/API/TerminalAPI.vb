@@ -1,4 +1,6 @@
-﻿Module TerminalAPI
+﻿Imports System.IO.Compression
+
+Module TerminalAPI
     Public command As String
     Public AdvancedCommand As Boolean
     Public RawCommand As String
@@ -298,6 +300,12 @@
             End If
             If command Like "color *" Then
                 GetColor("terminal", command.Substring(6, 1), command.Substring(7, 1))
+                AdvancedCommand = False
+                NormalCommand()
+            End If
+            If command Like "copy *" Then
+                Copy()
+                AdvancedCommand = False
                 NormalCommand()
             End If
             If command Like "cowsay *" Then
@@ -394,6 +402,20 @@
                     AdvancedCommand = False
                     NormalCommand()
                 End If
+            End If
+            If command Like "unzip *" Then
+                If Strings.AvailableFeature(33) = 1 Then
+                    Unzip()
+                End If
+                AdvancedCommand = False
+                NormalCommand()
+            End If
+            If command Like "zip *" Then
+                If Strings.AvailableFeature(32) = 1 Then
+                    Zip()
+                End If
+                AdvancedCommand = False
+                NormalCommand()
             End If
         End If
         If Console.BadCommand = True Then

@@ -72,6 +72,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -170,6 +172,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Clear.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Codepoint.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Colors.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Copy.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cowsay.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Dir.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Help.vb" />
@@ -184,6 +187,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Shiftfetch.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Shiftorium.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Su.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Unzip.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Username.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Ver.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Date.vb" />
@@ -205,6 +209,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="TerminalApplications\Internal\Com_Time.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForms\BugSlap.resx">

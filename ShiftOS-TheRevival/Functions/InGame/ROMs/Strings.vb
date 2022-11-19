@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(6) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(31) As String
+    Public Shared AvailableFeature(35) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -80,6 +80,8 @@
     '29 = Date by general [Shows date in general DD/MM/YYYY format] (0.2.5) (default : 0)
     '30 = Batch-file support for ShiftOS [Gives execution support for ShiftOS Script File (.scr)] (0.2.5) (default : 0)
     '31 = Rename support [Ability to rename files in ShiftOS] (default : 0)
+    '32 = Zip command [Ability to compress file in a zip file] (default : 0)
+    '33 = Unzip command [Ability to extract file in a zip file] (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -100,6 +102,8 @@
     '>>>>>>RGB Variant (rgb2) (75 CP)
     '>>>>>>>4-bit Color Display (4BITCOLOR) (80 CP)
     '>>>>>>>>Terminal Read-Only Memory Driver (ROMDRIVER, DIR, MKDIR, RMDIR, CD, PWD) (90 CP)
+    '>>>>>>>>>ZIP command (ZIP) (95 CP)
+    '>>>>>>>>>UNZIP command (UNZIP) (95 CP)
     '>>>>>>>>>Rename support (RENAME) (95 CP)
     '>>>>>>>>>TextPad (100 CP)
     '>>>>>>>>>>ShiftOS Batch Script Support (BATCHSCRIPT) (100 CP)

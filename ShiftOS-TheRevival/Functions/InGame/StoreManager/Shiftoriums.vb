@@ -59,6 +59,12 @@
                                             If Strings.AvailableFeature(31) = "0" Then
                                                 NewLine("(rename | 95 CP) Rename command")
                                             End If
+                                            If Strings.AvailableFeature(32) = 0 Then
+                                                NewLine("(zip | 95 CP) Zip command")
+                                            End If
+                                            If Strings.AvailableFeature(33) = 0 Then
+                                                NewLine("(unzip | 95 CP) Unzip command")
+                                            End If
                                         End If
                                     End If
                                 End If
@@ -392,6 +398,28 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
+            Case "zip"
+                If Strings.AvailableFeature(32) = "0" Then
+                    ManHeader(0) = "Zip command"
+                    ManHeader(1) = "95 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Gives ShiftOS support for compressing a file or directory into a ZIP file")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "unzip"
+                If Strings.AvailableFeature(33) = "0" Then
+                    ManHeader(0) = "Unzip command"
+                    ManHeader(1) = "95 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Gives ShiftOS support for compressing extracting a file or directory from a ZIP file")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
             Case Else
                 NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -497,6 +525,12 @@
             Case "rename"
                 Shiftorium_InstallFeatures(True, "rename", 31, 95)
                 NormalCommand()
+            Case "zip"
+                Shiftorium_InstallFeatures(True, "zip", 32, 95)
+                NormalCommand()
+            Case "unzip"
+                Shiftorium_InstallFeatures(True, "unzip", 33, 95)
+                NormalCommand()
             Case Else
                 NormalCommand()
                 NewLine("Shiftorium: Bad command or not available")
@@ -588,6 +622,8 @@
                             Strings.AvailableFeature(16) = "1"
                             Strings.AvailableFeature(17) = "0"
                             Strings.AvailableFeature(31) = "0"
+                            Strings.AvailableFeature(32) = "0"
+                            Strings.AvailableFeature(33) = "0"
                             success = True
                         Case "textpad"
                             Strings.AvailableFeature(17) = "1"
@@ -647,6 +683,12 @@
                             success = True
                         Case "rename"
                             Strings.AvailableFeature(31) = "1"
+                            success = True
+                        Case "zip"
+                            Strings.AvailableFeature(32) = "1"
+                            success = True
+                        Case "unzip"
+                            Strings.AvailableFeature(33) = "1"
                             success = True
                     End Select
                     If success = False Then
