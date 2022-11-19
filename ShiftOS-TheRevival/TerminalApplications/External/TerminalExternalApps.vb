@@ -24,10 +24,6 @@ Module TerminalExternalApps
             'Strings.OnceInfo(5) = Terminal.TrackPos
             'Terminal.TrackPos = Nothing
         End If
-        If Console.ShouldChange = True Then
-            Console.ChangeInterpreter = True
-            Console.ShouldChange = False
-        End If
     End Sub
 
 

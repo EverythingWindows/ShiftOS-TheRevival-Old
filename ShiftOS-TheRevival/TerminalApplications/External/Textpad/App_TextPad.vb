@@ -16,6 +16,8 @@ Module App_TextPad
         TextPad_CheckExist(command)
         Console.ToolBar.Text = "TextPad - " & command & Environment.NewLine & "Ctrl-Q Exit | Ctrl-N New | Ctrl-O Open | Ctrl-S Save | F12 Save As"
         Console.ReleaseCursor = True
+        Console.ShouldChange = True
+        Console_Interpreters()
         TextRebind()
     End Sub
 

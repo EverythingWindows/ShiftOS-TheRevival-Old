@@ -18,6 +18,7 @@
         NewLine(Nothing)
         Console.CurrentInterpreter = "bc"
         Console.ShouldChange = True
+        Console_Interpreters()
     End Sub
 
     Public Sub BC_Calculate()

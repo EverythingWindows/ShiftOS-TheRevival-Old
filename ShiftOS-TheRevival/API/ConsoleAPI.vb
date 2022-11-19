@@ -9,6 +9,13 @@
         Console.WindowState = FormWindowState.Maximized
     End Sub
 
+    Public Sub Console_Interpreters()
+        If Console.ShouldChange = True Then
+            Console.ChangeInterpreter = True
+            Console.ShouldChange = False
+        End If
+    End Sub
+
     Public Sub NewLine(str As String)
         Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & str
     End Sub

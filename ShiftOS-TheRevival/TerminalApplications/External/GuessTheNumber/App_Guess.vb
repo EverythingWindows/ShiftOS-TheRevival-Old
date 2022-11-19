@@ -11,6 +11,7 @@
         Console.CurrentInterpreter = "guess"
         GTN_GenerateNumber()
         Console.ShouldChange = True
+        Console_Interpreters()
     End Sub
 
     Public Sub GTN_GenerateNumber()
