@@ -303,11 +303,6 @@ Module TerminalAPI
                 AdvancedCommand = False
                 NormalCommand()
             End If
-            If command Like "copy *" Then
-                Copy()
-                AdvancedCommand = False
-                NormalCommand()
-            End If
             If command Like "cowsay *" Then
                 If Strings.AvailableFeature(22) = 1 Then
                     Cowsay(RawCommand.Substring(7))
