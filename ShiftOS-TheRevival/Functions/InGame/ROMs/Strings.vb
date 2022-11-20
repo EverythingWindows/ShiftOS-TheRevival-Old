@@ -82,6 +82,7 @@
     '31 = Rename support [Ability to rename files in ShiftOS] (default : 0)
     '32 = Zip command [Ability to compress file in a zip file] (default : 0)
     '33 = Unzip command [Ability to extract file in a zip file] (default : 0)
+    '34 = MathQuiz [Simple arithmatical question game to get codepoint] (default : 0)
     '
     'Features bought hierarchy :
     'ShiftOS Key (KEY) (5 CP)
@@ -108,6 +109,7 @@
     '>>>>>>>>>TextPad (100 CP)
     '>>>>>>>>>>ShiftOS Batch Script Support (BATCHSCRIPT) (100 CP)
     '>>Basic Calculator (BC) (55 CP)
+    '>>>MathQuiz (MATHQUIZ) (60 CP)
     '>>Time by Seconds (TIME, STIME) (10 CP)
     '>>>Time by Minutes (TIME, MTIME) (20 CP)
     '>>>>Time by Hours (Time, HTIME) (30 CP)

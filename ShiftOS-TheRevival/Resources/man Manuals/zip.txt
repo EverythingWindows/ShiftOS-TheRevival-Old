@@ -1,0 +1,11 @@
+﻿Compress file or directory into a zip file
+
+[CONTENT TYPE] Type of content you want to add into the archive
+-D             Adding a directory into the archive
+-F             Adding a file into the archive
+
+[FILENAME.ZIP] Filename of the archive you want to make
+
+[CONTENT NAME] The name of file or directory you want to archive
+
+example: zip -f 'lorem.zip' 'ipsum.txt'

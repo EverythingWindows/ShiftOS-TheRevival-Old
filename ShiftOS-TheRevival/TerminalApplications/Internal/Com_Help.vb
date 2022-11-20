@@ -3,6 +3,7 @@
         NewLine("ShiftOS Help Manual")
         NewLine(Nothing)
         NewLine("You can type 'help' to get all available commands and its corresponding action.")
+        NewLine("Type 'guide' to get the rough definitive guide on using ShiftOS")
         If Strings.AvailableFeature(0) = 1 Then
             NewLine("To get help on each command, you can type 'man [command]'")
             NewLine(Nothing)
@@ -52,6 +53,7 @@
             NewLine("DIR         Displays subdirectories And files In a directory")
         End If
         NewLine("GUESS       Runs 'Guess the Number' application")
+        NewLine("GUIDE       Shows the definitive guide on using ShiftOS")
         NewLine("HELP        Shows all commands available and its corresponding action")
         If Strings.AvailableFeature(20) = 1 Then
             NewLine("HOSTNAME    Sets the name of current hostname/computer name with a new one")
@@ -61,6 +63,9 @@
         End If
         If Strings.AvailableFeature(0) = 1 Then
             NewLine("MAN         Shows a command, its corresponding action, and its example usage")
+        End If
+        If Strings.AvailableFeature(34) = 1 Then
+            NewLine("MATHQUIZ    A simple puzzle game to answer simpla arithmatical questions")
         End If
         If Strings.AvailableFeature(16) = 1 Then
             NewLine("MKDIR       Creating a directory")
@@ -98,6 +103,10 @@
                 ElseIf Strings.AvailableFeature(7) = 3 Then
                     If Strings.AvailableFeature(12) = 1 Then
                         NewLine("TIME        Display the current time in the form of PM and AM format")
+                    ElseIf Strings.AvailableFeature(12) = 3 Then
+                        If Strings.AvailableFeature(23) = 1 Then
+                            NewLine("TIME        Display the current time in the form of HH:MM")
+                        End If
                     End If
                 End If
             End If
@@ -105,6 +114,12 @@
         If Strings.AvailableFeature(20) = 1 Then
             NewLine("USERNAME    Sets the name of current user with a new one")
         End If
+        If Strings.AvailableFeature(33) = 1 Then
+            NewLine("UNZIP       Extract any files from a zip file")
+        End If
         NewLine("VER         Printing current version of ShiftOS TheRevival")
+        If Strings.AvailableFeature(32) = 1 Then
+            NewLine("ZIP         Compress selected file/directory into a zip file")
+        End If
     End Sub
 End Module

@@ -138,8 +138,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions\InGame\LoreManager\IntroStoryTell.vb" />
-    <Compile Include="MainForms\SaveLoadSystem.vb" />
+    <Compile Include="Functions\OutGame\SaveLoadSystem.vb" />
     <Compile Include="Functions\InGame\StoreManager\Shiftoriums.vb" />
+    <Compile Include="MainForms\ShiftOSAbout.Designer.vb">
+      <DependentUpon>ShiftOSAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\ShiftOSAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\ShiftOSMenu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -154,16 +160,17 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Functions\InGame\ROMs\Strings.vb" />
-    <Compile Include="MainForms\Console.Designer.vb">
+    <Compile Include="MainForms\Applications\Console.Designer.vb">
       <DependentUpon>Console.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Console.vb">
+    <Compile Include="MainForms\Applications\Console.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
     <Compile Include="TerminalApplications\External\BasicCalculator\App_BC.vb" />
     <Compile Include="TerminalApplications\External\GuessTheNumber\App_Guess.vb" />
+    <Compile Include="TerminalApplications\External\MathQuiz\App_MathQuiz.vb" />
     <Compile Include="TerminalApplications\External\Textpad\App_TextPad.vb" />
     <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\SystemManager\ColorSystem.vb" />
@@ -175,6 +182,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Copy.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cowsay.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Dir.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Guide.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Help.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Hostname.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Infobar.vb" />
@@ -230,10 +238,13 @@
     <EmbeddedResource Include="MainForms\IntroStory.resx">
       <DependentUpon>IntroStory.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\ShiftOSAbout.resx">
+      <DependentUpon>ShiftOSAbout.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\ShiftOSUpdater.resx">
       <DependentUpon>ShiftOSUpdater.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\Console.resx">
+    <EmbeddedResource Include="MainForms\Applications\Console.resx">
       <DependentUpon>Console.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -261,7 +272,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DevOnlyRes\" />
-    <Folder Include="MainForms\Applications\" />
     <Folder Include="MainForms\WindowManager\" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +287,7 @@
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
     <Content Include="MainForms\rev.txt" />
+    <Content Include="Resources\man Manuals\zip.txt" />
     <Content Include="Resources\man Manuals\textpad.txt" />
     <Content Include="Resources\Fortunes.txt" />
     <Content Include="Resources\hangman.txt" />

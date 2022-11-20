@@ -149,10 +149,22 @@
                     Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_username & Environment.NewLine
                     NormalCommand()
                 End If
+            Case "unzip"
+                If Strings.AvailableFeature(33) = "1" Then
+                    TempUsage = TempUsage & "unzip [FILENAME.ZIP]"
+                    Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_unzip & Environment.NewLine
+                    NormalCommand()
+                End If
             Case "ver"
                 TempUsage = TempUsage & "ver"
                 Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_ver & Environment.NewLine
                 NormalCommand()
+            Case "zip"
+                If Strings.AvailableFeature(32) = "1" Then
+                    TempUsage = TempUsage & "zip [CONTENT TYPE] '[FILENAME.ZIP]' '[CONTENT NAME]'"
+                    Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_zip & Environment.NewLine
+                    NormalCommand()
+                End If
             Case Else
                 NewLine("MAN : Invalid command")
         End Select

@@ -78,12 +78,13 @@ Public Class ShiftOSMenu
                 btn_Back.Visible = True
             Case "Chapter 1" & Environment.NewLine & "Hijacked!"
                 Epilepsy.Show()
-                DebugWindow.ShouldDebug = True
         End Select
     End Sub
 
     Private Sub btn_Aboot_Click(sender As Object, e As EventArgs) Handles btn_Aboot.Click
         Select Case btn_Aboot.Text
+            Case "About"
+                ShiftOSAbout.ShowDialog()
             Case "Back"
                 btn_StoryMode.Text = "Story Mode"
                 btn_FreeRoam.Text = "Free Roam Mode"

@@ -3,6 +3,7 @@ Imports System.IO.Compression
 
 Module Com_Zip
     Public ZipString As String
+    Public NothingIn As Boolean = True
 
     Public Sub Zip()
         ZipString = RawCommand.Substring(4)
@@ -20,6 +21,7 @@ Module Com_Zip
                 ZipFile.CreateFromDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, Console.CurrentDirectory & "\" & ZipEXE(1))
                 NewLine("Removing temporary place of the file...")
                 Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, True)
+                NothingIn = False
             Else
 
             End If
@@ -29,6 +31,7 @@ Module Com_Zip
             If Directory.Exists(Console.CurrentDirectory & "\" & ZipEXE(3)) = True Then
                 NewLine("Compressing the directory into a zip file...")
                 ZipFile.CreateFromDirectory(Console.CurrentDirectory & "\" & ZipEXE(3), Console.CurrentDirectory & "\" & ZipEXE(1))
+                NothingIn = False
             Else
 
             End If

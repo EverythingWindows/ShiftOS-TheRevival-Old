@@ -25,7 +25,8 @@
                         ResetLine("Installing ShiftOS...")
                     Case 550
                         ResetLine("ShiftOS Installed, The computer will restart in a few seconds")
-                    Case 600
+                        NewLine("To get the definitive guide on using ShiftOS, you can type 'guide' on ShiftOS")
+                    Case 650
                         Console.StoryOnlyTimer.Stop()
                         Console.TextBox1.Text = Nothing
                         Console.TextBox1.ReadOnly = False

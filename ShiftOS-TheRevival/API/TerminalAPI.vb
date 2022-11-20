@@ -211,6 +211,10 @@ Module TerminalAPI
                 AdvancedCommand = False
                 NormalCommand()
                 'Undeveloped()
+            Case "guide"
+                Guide()
+                AdvancedCommand = False
+                NormalCommand()
             Case "help"
                 Help()
                 AdvancedCommand = False
@@ -218,6 +222,12 @@ Module TerminalAPI
             Case "infobar"
                 If Strings.AvailableFeature(4) = 1 Then
                     NewLine(My.Resources.man_infobar)
+                End If
+            Case "mathquiz"
+                If Strings.AvailableFeature(34) = 1 Then
+                    MQ_Start()
+                    AdvancedCommand = False
+                    NormalCommand()
                 End If
             Case "pwd"
                 If Strings.AvailableFeature(16) = 1 Then

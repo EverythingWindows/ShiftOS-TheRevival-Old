@@ -28,7 +28,7 @@ Module Com_Unzip
 
             End If
         End If
-        If UnzipString Like "-h '*.zip'" Then
+        If UnzipString Like "-f '*.zip'" Then
             Dim UnzipEXE() As String = UnzipString.Split("''")
             NewLine(UnzipEXE(1))
             If File.Exists(Console.CurrentDirectory & "\" & UnzipEXE(1)) = True Then
@@ -77,6 +77,7 @@ Module Com_Unzip
                     ' if Overwrite = false, copy the file only if it does not exist
                     ' this is done to avoid an IOException if a file already exists
                     ' this way the other files can be copied anyway...
+                    NewLine("Copying " & ChildFile.Name & "...")
                     If Not File.Exists(Path.Combine(DestDir.FullName, ChildFile.Name)) Then
                         ChildFile.CopyTo(Path.Combine(DestDir.FullName, ChildFile.Name), False)
                     End If

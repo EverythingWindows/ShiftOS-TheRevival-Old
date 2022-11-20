@@ -105,6 +105,13 @@ Module TerminalExternalApps
                     Case Else
                         BC_Calculate()
                 End Select
+            Case "mathquiz"
+                Select Case command
+                    Case "exit"
+                        TerminateApp(Nothing)
+                    Case Else
+                        MQ_CheckAnswer()
+                End Select
         End Select
     End Sub
 

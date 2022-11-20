@@ -71,7 +71,7 @@ Partial Class ShiftOSMenu
         Me.btn_Aboot.Name = "btn_Aboot"
         Me.btn_Aboot.Size = New System.Drawing.Size(224, 40)
         Me.btn_Aboot.TabIndex = 3
-        Me.btn_Aboot.Text = "About" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.btn_Aboot.Text = "About"
         Me.btn_Aboot.UseVisualStyleBackColor = True
         '
         'lbl_BuildString
@@ -155,7 +155,7 @@ Partial Class ShiftOSMenu
         Me.btn_Chapter5.Location = New System.Drawing.Point(22, 296)
         Me.btn_Chapter5.Name = "btn_Chapter5"
         Me.btn_Chapter5.Size = New System.Drawing.Size(224, 40)
-        Me.btn_Chapter5.TabIndex = 4
+        Me.btn_Chapter5.TabIndex = 5
         Me.btn_Chapter5.Text = "Chapter 5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Praeter sensum"
         Me.btn_Chapter5.UseVisualStyleBackColor = True
         Me.btn_Chapter5.Visible = False
@@ -168,7 +168,7 @@ Partial Class ShiftOSMenu
         Me.btn_Back.Location = New System.Drawing.Point(22, 342)
         Me.btn_Back.Name = "btn_Back"
         Me.btn_Back.Size = New System.Drawing.Size(224, 40)
-        Me.btn_Back.TabIndex = 4
+        Me.btn_Back.TabIndex = 6
         Me.btn_Back.Text = "Back"
         Me.btn_Back.UseVisualStyleBackColor = True
         Me.btn_Back.Visible = False

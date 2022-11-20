@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 0.2.4.
+        '''  Looks up a localized string similar to 0.2.6.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
@@ -378,6 +378,25 @@ Namespace My.Resources
         Friend ReadOnly Property man_ver() As String
             Get
                 Return ResourceManager.GetString("man_ver", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compress file or directory into a zip file
+        '''
+        '''[CONTENT TYPE] Type of content you want to add into the archive
+        '''-D             Adding a directory into the archive
+        '''-F             Adding a file into the archive
+        '''
+        '''[FILENAME.ZIP] Filename of the archive you want to make
+        '''
+        '''[CONTENT NAME] The name of file or directory you want to archive
+        '''
+        '''example: zip -f &apos;lorem.zip&apos; &apos;ipsum.txt&apos;.
+        '''</summary>
+        Friend ReadOnly Property man_zip() As String
+            Get
+                Return ResourceManager.GetString("man_zip", resourceCulture)
             End Get
         End Property
         

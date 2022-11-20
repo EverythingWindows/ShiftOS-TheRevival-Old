@@ -5,8 +5,10 @@ Module SaveLoadSystem
     Public Sub NewGameMode()
         'Sets all features to 2 (Unavailable for Shiftorium) except ShiftOS Key (AvailableFeatures(11))
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", True)
+        Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS", True)
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved", True)
         Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS")
+        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS")
         Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
@@ -49,6 +51,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(31) = "2"
         Strings.AvailableFeature(32) = "2"
         Strings.AvailableFeature(33) = "2"
+        '0.2.7 Features
+        Strings.AvailableFeature(34) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
@@ -94,6 +98,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(31) = "1"
         Strings.AvailableFeature(32) = "1"
         Strings.AvailableFeature(33) = "1"
+        '0.2.7 Features
+        Strings.AvailableFeature(34) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -138,6 +144,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(31) = "2"
         Strings.AvailableFeature(32) = "2"
         Strings.AvailableFeature(33) = "2"
+        '0.2.7 Features
+        Strings.AvailableFeature(34) = "2"
     End Sub
 
     Public Sub SaveGame()
