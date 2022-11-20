@@ -17,6 +17,7 @@ Public Class Console
     Public ShOSKey As String                            'DOSKEY tracking string for ShiftOS
     Public Secure As Boolean                            'Define either Secure Text mode is enabled or not (experimental!)
     Public SecureString As String                       'String for Secure Text mode (experimental)
+    Public DuWM_PID As Integer                          'DuWM Process ID
 
     Private Sub Console_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With ShortcutHandler
@@ -223,7 +224,7 @@ Public Class Console
                 End If
             End If
         End If
-            If Strings.OnceInfo(0) = "Yes" Then
+        If Strings.OnceInfo(0) = "Yes" Then
             InfoBar.Text = InfoBar.Text & " root |"
         Else
             InfoBar.Text = InfoBar.Text & " user |"

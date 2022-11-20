@@ -98,6 +98,12 @@
     <Compile Include="Functions\InGame\Hardwares\KeyboardHandler.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
+    <Compile Include="MainForms\Applications\Shifter.Designer.vb">
+      <DependentUpon>Shifter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Shifter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\BugSlap.Designer.vb">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </Compile>
@@ -168,6 +174,13 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="MainForms\WindowManager\DualWindowManager\DuWM_Main.vb" />
+    <Compile Include="MainForms\WindowManager\DualWindowManager\DuWM_WindowContainer.Designer.vb">
+      <DependentUpon>DuWM_WindowContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\WindowManager\DualWindowManager\DuWM_WindowContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TerminalApplications\External\BasicCalculator\App_BC.vb" />
     <Compile Include="TerminalApplications\External\GuessTheNumber\App_Guess.vb" />
     <Compile Include="TerminalApplications\External\MathQuiz\App_MathQuiz.vb" />
@@ -220,6 +233,9 @@
     <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MainForms\Applications\Shifter.resx">
+      <DependentUpon>Shifter.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\BugSlap.resx">
       <DependentUpon>BugSlap.vb</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +263,9 @@
     <EmbeddedResource Include="MainForms\Applications\Console.resx">
       <DependentUpon>Console.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\WindowManager\DualWindowManager\DuWM_WindowContainer.resx">
+      <DependentUpon>DuWM_WindowContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -272,7 +291,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DevOnlyRes\" />
-    <Folder Include="MainForms\WindowManager\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ShiftOSBuildLab.txt" />

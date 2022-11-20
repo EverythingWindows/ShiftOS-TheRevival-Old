@@ -26,7 +26,7 @@
                 MQ_Operation = " + "
                 MQ_ShouldResult = MQ_1stNum + MQ_2ndNum
             Case 2
-                While MQ_2ndNum > MQ_1stNum
+                While MQ_2ndNum >= MQ_1stNum
                     MQ_2ndNum = RandomNum.Next(1, 10)
                 End While
                 MQ_Operation = " - "
@@ -35,6 +35,9 @@
                 MQ_Operation = " * "
                 MQ_ShouldResult = MQ_1stNum * MQ_2ndNum
             Case 4
+                While MQ_2ndNum > MQ_1stNum
+                        MQ_2ndNum = RandomNum.Next(1, 10)
+                    End While
                 MQ_Operation = " / "
                 MQ_ShouldResult = MQ_1stNum / MQ_2ndNum
             Case Else

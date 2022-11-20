@@ -263,10 +263,15 @@ Module TerminalAPI
             Case "shutdown", "shut down"
                 TerminateShiftOS()
             Case "startx"
+                Undeveloped()
                 StartX()
                 Console_Windowed()
+                DuWM_FirstWindowSet(Console)
+            Case "shiftertest"
+                DuWM_SecondWindowSet(Shifter)
             Case "stopx"
                 StopX()
+                Undeveloped()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()

@@ -84,7 +84,7 @@ Module Com_Unzip
             ' copy all the sub-directories by recursively calling this same routine
             Dim SubDir As DirectoryInfo
             For Each SubDir In SourceDir.GetDirectories()
-                NewLine("Copying " & SubDir.Name & "...")
+                NewLine("Copying '" & SubDir.Name & "' directory ...")
                 CopyDirectory(SubDir.FullName, Path.Combine(DestDir.FullName,
                   SubDir.Name), Overwrite)
                 AddLine(" OK")
