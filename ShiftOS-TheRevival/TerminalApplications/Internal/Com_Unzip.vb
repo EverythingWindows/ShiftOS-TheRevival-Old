@@ -8,10 +8,8 @@ Module Com_Unzip
         UnzipString = RawCommand.Substring(6)
         If UnzipString Like "-d '*.zip'" Then
             Dim UnzipEXE() As String = UnzipString.Split("''")
-            NewLine(UnzipEXE(1))
             If File.Exists(Console.CurrentDirectory & "\" & UnzipEXE(1)) = True Then
                 Dim UnzipDir As String = UnzipEXE(1).Replace(".zip", "")
-                NewLine(UnzipDir)
                 Dim UnzipRandomInt As Integer
                 Dim UnzipRandom As New Random
                 UnzipRandomInt = UnzipRandom.Next(1, 1000000)
@@ -30,10 +28,8 @@ Module Com_Unzip
         End If
         If UnzipString Like "-f '*.zip'" Then
             Dim UnzipEXE() As String = UnzipString.Split("''")
-            NewLine(UnzipEXE(1))
             If File.Exists(Console.CurrentDirectory & "\" & UnzipEXE(1)) = True Then
                 Dim UnzipDir As String = UnzipEXE(1).Replace(".zip", "")
-                NewLine(UnzipDir)
                 Dim UnzipRandomInt As Integer
                 Dim UnzipRandom As New Random
                 UnzipRandomInt = UnzipRandom.Next(1, 1000000)
@@ -80,6 +76,7 @@ Module Com_Unzip
                     NewLine("Copying " & ChildFile.Name & "...")
                     If Not File.Exists(Path.Combine(DestDir.FullName, ChildFile.Name)) Then
                         ChildFile.CopyTo(Path.Combine(DestDir.FullName, ChildFile.Name), False)
+                        AddLine(" OK")
                     End If
                 End If
             Next
@@ -87,8 +84,10 @@ Module Com_Unzip
             ' copy all the sub-directories by recursively calling this same routine
             Dim SubDir As DirectoryInfo
             For Each SubDir In SourceDir.GetDirectories()
+                NewLine("Copying " & SubDir.Name & "...")
                 CopyDirectory(SubDir.FullName, Path.Combine(DestDir.FullName,
                   SubDir.Name), Overwrite)
+                AddLine(" OK")
             Next
         Else
             Throw New DirectoryNotFoundException("Source directory does not exist: " + SourceDir.FullName)

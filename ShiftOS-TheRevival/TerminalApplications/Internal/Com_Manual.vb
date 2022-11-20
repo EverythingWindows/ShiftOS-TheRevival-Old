@@ -152,7 +152,7 @@
             Case "unzip"
                 If Strings.AvailableFeature(33) = "1" Then
                     TempUsage = TempUsage & "unzip [FILENAME.ZIP]"
-                    Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_unzip & Environment.NewLine
+                    'Console.TextBox1.Text = Console.TextBox1.Text & TempUsage & Environment.NewLine & Environment.NewLine & My.Resources.man_unzip & Environment.NewLine
                     NormalCommand()
                 End If
             Case "ver"
