@@ -3,6 +3,7 @@
     Public FirstWindow As Form
     Public SecondWindow As Form
     Public DuWM_CurrentProcess As Integer = 0
+    Public DuWM_ChangeLayout As Boolean
 
     Public Sub DuWM_Initiate()
         Strings.ProcessID(0) = 0
@@ -66,7 +67,12 @@
                 NewWindow.Height = Desktop.Height - 20
                 NewWindow.Width = Desktop.Width - 20
                 NewWindow.Location = New Point(10, 10)
+            Case 2
+                NewWindow.Height = Desktop.Height - 20
+                NewWindow.Width = (Desktop.Width / 2) - 20
+                NewWindow.Location = New Point((Desktop.Width / 2) + 10, 10)
         End Select
+        DuWM_ChangeLayout = True
     End Sub
 
     'Public Sub DuWM_GenerateWindowSet(WindowName As Form, PID As Integer)

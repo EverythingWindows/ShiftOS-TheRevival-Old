@@ -56,6 +56,7 @@ Module SaveLoadSystem
     End Sub
 
     Public Sub FreeRoamMode()
+        IsConsoleParent = True
         'Sets all features to as bought
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"

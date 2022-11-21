@@ -23,7 +23,9 @@ Public Class Console
         With ShortcutHandler
             .WorkerSupportsCancellation = True
         End With
+        'MsgBox("Full!")
         Console_Full()
+        'MsgBox("Initialize!")
         InitializeTerminal()
     End Sub
 

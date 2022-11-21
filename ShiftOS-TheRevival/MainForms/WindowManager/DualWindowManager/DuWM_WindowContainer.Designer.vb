@@ -26,6 +26,7 @@ Partial Class DuWM_WindowContainer
         Me.DuWM_ContainerPanel = New System.Windows.Forms.Panel()
         Me.DuWM_WMCheck = New System.Windows.Forms.Timer(Me.components)
         Me.DuWM_ChildSize = New System.Windows.Forms.Timer(Me.components)
+        Me.DuWM_LayoutCheck = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'DuWM_ContainerPanel
@@ -41,6 +42,9 @@ Partial Class DuWM_WindowContainer
         '
         '
         'DuWM_ChildSize
+        '
+        '
+        'DuWM_LayoutCheck
         '
         '
         'DuWM_WindowContainer
@@ -61,4 +65,5 @@ Partial Class DuWM_WindowContainer
     Friend WithEvents DuWM_ContainerPanel As Panel
     Friend WithEvents DuWM_WMCheck As Timer
     Friend WithEvents DuWM_ChildSize As Timer
+    Friend WithEvents DuWM_LayoutCheck As Timer
 End Class

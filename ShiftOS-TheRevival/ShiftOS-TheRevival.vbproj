@@ -130,6 +130,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\DesktopEnvironment\master\DesktopManager.vb" />
+    <Compile Include="MainForms\DesktopEnvironment\master\ThisIsNotABugThisIsAFeature.Designer.vb">
+      <DependentUpon>ThisIsNotABugThisIsAFeature.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\DesktopEnvironment\master\ThisIsNotABugThisIsAFeature.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\Epilepsy.Designer.vb">
       <DependentUpon>Epilepsy.vb</DependentUpon>
     </Compile>

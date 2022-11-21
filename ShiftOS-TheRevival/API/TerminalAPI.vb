@@ -4,10 +4,11 @@ Module TerminalAPI
     Public command As String
     Public AdvancedCommand As Boolean
     Public RawCommand As String
-    Public IsConsoleParent As Boolean = True
+    Public IsConsoleParent As Boolean
 
     Public Sub InitializeTerminal()
         If IsConsoleParent = True Then
+            Console.TopMost = False
             Cursor.Hide()
             Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
             Strings.OnceInfo(4) = "!"
@@ -279,13 +280,18 @@ Module TerminalAPI
                 TerminateShiftOS()
             Case "startg"
                 Undeveloped()
-                StartG()
+                If IsStartG = False Then
+                    StartG()
+                End If
             Case "shiftertest"
-                DuWM_SecondWindowSet(Shifter)
-                Console.Close()
-                DuWM_FirstWindowSet(Console)
+                'DuWM_SecondWindowSet(Shifter)
+                'Console.Close()
+                'DuWM_FirstWindowSet(Console)
+                DuWM_NewProcess(Shifter)
             Case "stopg"
-                StopG()
+                If IsStartG = True Then
+                    StopG()
+                End If
                 Undeveloped()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then

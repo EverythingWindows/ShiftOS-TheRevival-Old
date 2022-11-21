@@ -37,6 +37,7 @@ Partial Class Desktop
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "term"
         Me.Button1.UseVisualStyleBackColor = False
+        Me.Button1.Visible = False
         '
         'Desktop
         '

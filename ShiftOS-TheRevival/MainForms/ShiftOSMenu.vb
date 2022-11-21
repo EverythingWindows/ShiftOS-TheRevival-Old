@@ -17,7 +17,8 @@ Public Class ShiftOSMenu
     Private Sub btn_Exit_Click(sender As Object, e As EventArgs) Handles btn_Exit.Click
         Select Case btn_Exit.Text
             Case "Exit"
-                Close()
+                'Close()
+                Application.Exit()
         End Select
     End Sub
 

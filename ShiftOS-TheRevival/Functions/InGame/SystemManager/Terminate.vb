@@ -1,7 +1,9 @@
 ﻿Module Terminate
     Public Sub TerminateShiftOS()
-        NewLine("Stopping the Window Manager...")
-        StopG()
+        If IsStartG = True Then
+            NewLine("Stopping the Window Manager...")
+            StopG()
+        End If
         Console_Full()
         If Strings.OnceInfo(6) = "story" Then
             NewLine("Saving game...")
@@ -10,7 +12,8 @@
         Cursor.Show()
         NewLine("Shutting down...")
         ShiftOSMenu.Show()
-        Console.Close()
-        Shifter.Close()
+        If IsStartG = False Then
+            Console.Close()
+        End If
     End Sub
 End Module
