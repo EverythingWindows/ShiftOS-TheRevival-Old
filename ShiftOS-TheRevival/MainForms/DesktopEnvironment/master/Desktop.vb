@@ -12,6 +12,5 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'DuWM_FirstWindowSet(Console)
-        DuWM_SingleWindowSet(Console)
     End Sub
 End Class

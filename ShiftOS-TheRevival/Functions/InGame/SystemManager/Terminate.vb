@@ -1,7 +1,7 @@
 ﻿Module Terminate
     Public Sub TerminateShiftOS()
         NewLine("Stopping the Window Manager...")
-        StopX()
+        StopG()
         Console_Full()
         If Strings.OnceInfo(6) = "story" Then
             NewLine("Saving game...")

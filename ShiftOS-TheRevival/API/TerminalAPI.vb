@@ -16,6 +16,7 @@ Module TerminalAPI
             If Strings.IsFree = True Then
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
+                Strings.ComputerInfo(7) = 1
                 Terminal_CheckFeature()
                 Terminal_PrintPrompt()
                 Terminal_AssignPrompt()
@@ -276,15 +277,15 @@ Module TerminalAPI
                 Undeveloped()
             Case "shutdown", "shut down"
                 TerminateShiftOS()
-            Case "startx"
+            Case "startg"
                 Undeveloped()
-                StartX()
+                StartG()
             Case "shiftertest"
                 DuWM_SecondWindowSet(Shifter)
                 Console.Close()
                 DuWM_FirstWindowSet(Console)
-            Case "stopx"
-                StopX()
+            Case "stopg"
+                StopG()
                 Undeveloped()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then

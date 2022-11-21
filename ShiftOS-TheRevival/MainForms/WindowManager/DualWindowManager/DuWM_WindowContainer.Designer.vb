@@ -25,10 +25,12 @@ Partial Class DuWM_WindowContainer
         Me.components = New System.ComponentModel.Container()
         Me.DuWM_ContainerPanel = New System.Windows.Forms.Panel()
         Me.DuWM_WMCheck = New System.Windows.Forms.Timer(Me.components)
+        Me.DuWM_ChildSize = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'DuWM_ContainerPanel
         '
+        Me.DuWM_ContainerPanel.BackColor = System.Drawing.Color.Transparent
         Me.DuWM_ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DuWM_ContainerPanel.Location = New System.Drawing.Point(0, 0)
         Me.DuWM_ContainerPanel.Name = "DuWM_ContainerPanel"
@@ -36,6 +38,9 @@ Partial Class DuWM_WindowContainer
         Me.DuWM_ContainerPanel.TabIndex = 0
         '
         'DuWM_WMCheck
+        '
+        '
+        'DuWM_ChildSize
         '
         '
         'DuWM_WindowContainer
@@ -46,6 +51,7 @@ Partial Class DuWM_WindowContainer
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.DuWM_ContainerPanel)
         Me.ForeColor = System.Drawing.Color.Black
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "DuWM_WindowContainer"
         Me.Text = "DuWM_WindowContainer"
         Me.ResumeLayout(False)
@@ -54,4 +60,5 @@ Partial Class DuWM_WindowContainer
 
     Friend WithEvents DuWM_ContainerPanel As Panel
     Friend WithEvents DuWM_WMCheck As Timer
+    Friend WithEvents DuWM_ChildSize As Timer
 End Class
