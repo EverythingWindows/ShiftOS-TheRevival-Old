@@ -29,6 +29,7 @@ Partial Class Console
         Me.InfoBarTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ToolBar = New System.Windows.Forms.TextBox()
         Me.ShortcutHandler = New System.ComponentModel.BackgroundWorker()
+        Me.DuWMHandle = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'TextBox1
@@ -80,6 +81,9 @@ Partial Class Console
         Me.ToolBar.TabIndex = 1
         Me.ToolBar.Visible = False
         '
+        'DuWMHandle
+        '
+        '
         'Console
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -104,4 +108,5 @@ Partial Class Console
     Friend WithEvents InfoBarTimer As Timer
     Friend WithEvents ToolBar As TextBox
     Public WithEvents ShortcutHandler As System.ComponentModel.BackgroundWorker
+    Friend WithEvents DuWMHandle As Timer
 End Class

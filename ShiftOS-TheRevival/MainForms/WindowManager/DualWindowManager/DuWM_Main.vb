@@ -1,10 +1,15 @@
 ﻿Module DuWM_Main
-    Public IsDual As Boolean
+    Public OnlyOne As Boolean
+    Public FirstWindow As Form
+    Public SecondWindow As Form
 
     Public Sub DuWM_FirstWindowSet(WindowName As Form)
+        WindowName.Show()
         WindowName.Height = Desktop.Height - 20
         WindowName.Width = (Desktop.Width / 2) - 20
         WindowName.Location = New Point(10, 10)
+        FirstWindow = WindowName
+        Strings.ProcessID(0) = 1
     End Sub
 
     Public Sub DuWM_SecondWindowSet(WindowName As Form)
@@ -12,6 +17,16 @@
         WindowName.Height = Desktop.Height - 20
         WindowName.Width = (Desktop.Width / 2) - 20
         WindowName.Location = New Point((Desktop.Width / 2) + 10, 10)
+        SecondWindow = WindowName
+        Strings.ProcessID(1) = 1
+    End Sub
+
+    Public Sub DuWM_SingleWindowSet(WindowName As Form)
+        WindowName.Show()
+        WindowName.Height = Desktop.Height - 20
+        WindowName.Width = Desktop.Width - 20
+        WindowName.Location = New Point(10, 10)
+        FirstWindow = WindowName
     End Sub
 
     'Public Sub DuWM_GenerateWindowSet(WindowName As Form, PID As Integer)

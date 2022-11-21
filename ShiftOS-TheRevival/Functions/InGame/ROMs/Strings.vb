@@ -1,13 +1,13 @@
 ﻿Public Class Strings
     Public Shared OSInfo() As String
-    Public Shared ComputerInfo(6) As String
+    Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
     Public Shared AvailableFeature(35) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
-    Public Shared ProcessID(2) As String
+    Public Shared ProcessID(1) As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!
@@ -47,6 +47,7 @@
     '4 = Installed Packages (0.2.3) (default : 0 for New Game)
     '5 = Color for Terminal (0.2.4) (default : 0F)
     '6 = Color for Infobar (0.2.4) (default : F0)
+    '7 = Window Manager (0.2.7) (default : 0)
     '
     'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2, Upgraded assigned as 3) Strings:
     '0 = MAN command [Manual on each command] (0.2) (default : 0)

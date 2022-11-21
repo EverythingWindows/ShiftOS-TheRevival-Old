@@ -4,36 +4,46 @@ Module TerminalAPI
     Public command As String
     Public AdvancedCommand As Boolean
     Public RawCommand As String
+    Public IsConsoleParent As Boolean = True
 
     Public Sub InitializeTerminal()
-        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
-        Strings.OnceInfo(4) = "!"
-        Strings.OnceInfo(7) = Console.Width
-        Strings.OnceInfo(8) = Console.Height
-        If Strings.IsFree = True Then
-            Strings.ComputerInfo(0) = "shiftos"
-            Strings.ComputerInfo(1) = "user"
-            Terminal_CheckFeature()
-            Terminal_PrintPrompt()
-            Terminal_AssignPrompt()
-        Else
-            If Console.StayAtChapter = True Then
-                LoadGame()
+        If IsConsoleParent = True Then
+            Cursor.Hide()
+            Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
+            Strings.OnceInfo(4) = "!"
+            Strings.OnceInfo(7) = Console.Width
+            Strings.OnceInfo(8) = Console.Height
+            If Strings.IsFree = True Then
+                Strings.ComputerInfo(0) = "shiftos"
+                Strings.ComputerInfo(1) = "user"
                 Terminal_CheckFeature()
                 Terminal_PrintPrompt()
                 Terminal_AssignPrompt()
             Else
-                If Strings.ComputerInfo(3) = "0" Then
-                    Console.TextBox1.ReadOnly = True
-                    Console.StayAtChapter = True
-                    Console.StoryOnlyTimer.Start()
-                Else
+                If Console.StayAtChapter = True Then
                     LoadGame()
                     Terminal_CheckFeature()
                     Terminal_PrintPrompt()
                     Terminal_AssignPrompt()
+                Else
+                    If Strings.ComputerInfo(3) = "0" Then
+                        Console.TextBox1.ReadOnly = True
+                        Console.StayAtChapter = True
+                        Console.StoryOnlyTimer.Start()
+                    Else
+                        LoadGame()
+                        Terminal_CheckFeature()
+                        Terminal_PrintPrompt()
+                        Terminal_AssignPrompt()
+                    End If
                 End If
             End If
+        Else
+            Cursor.Show()
+            Console_Windowed()
+            Console.TopMost = True
+            Terminal_PrintPrompt()
+            Terminal_AssignPrompt()
         End If
         Console.CurrentDirectory = Strings.OnceInfo(1)
         Console.Pseudodir = Console.CurrentDirectory.Replace(Strings.OnceInfo(1), "!\")
@@ -179,6 +189,10 @@ Module TerminalAPI
                     AdvancedCommand = False
                     NormalCommand()
                 End If
+            Case "close"
+                If IsConsoleParent = False Then
+                    Console.Close()
+                End If
             Case "codepoint"
                 Codepoint()
                 AdvancedCommand = False
@@ -265,10 +279,10 @@ Module TerminalAPI
             Case "startx"
                 Undeveloped()
                 StartX()
-                Console_Windowed()
-                DuWM_FirstWindowSet(Console)
             Case "shiftertest"
                 DuWM_SecondWindowSet(Shifter)
+                Console.Close()
+                DuWM_FirstWindowSet(Console)
             Case "stopx"
                 StopX()
                 Undeveloped()

@@ -1,9 +1,12 @@
 ﻿Module DesktopManager
     Public Sub StartX()
         Desktop.Show()
-        Desktop.TopMost = False
         Desktop.FormBorderStyle = FormBorderStyle.None
         Desktop.WindowState = FormWindowState.Maximized
+        Desktop.TopMost = False
+        IsConsoleParent = False
+        OnlyOne = True
+        Console.Close()
         Cursor.Show()
     End Sub
 
@@ -11,5 +14,6 @@
         Desktop.Close()
         Cursor.Hide()
         Console_Full()
+        IsConsoleParent = True
     End Sub
 End Module

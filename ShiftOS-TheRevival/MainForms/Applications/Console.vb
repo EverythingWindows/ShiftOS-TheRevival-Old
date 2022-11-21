@@ -24,7 +24,6 @@ Public Class Console
             .WorkerSupportsCancellation = True
         End With
         Console_Full()
-        Cursor.Hide()
         InitializeTerminal()
     End Sub
 
@@ -235,6 +234,10 @@ Public Class Console
     End Sub
 
     Private Sub TextBox1_Click(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseDoubleClick, TextBox1.Click
+
+    End Sub
+
+    Private Sub DuWMHandle_Tick(sender As Object, e As EventArgs) Handles DuWMHandle.Tick
 
     End Sub
 End Class

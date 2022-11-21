@@ -11,5 +11,6 @@
         NewLine("Shutting down...")
         ShiftOSMenu.Show()
         Console.Close()
+        Shifter.Close()
     End Sub
 End Module
