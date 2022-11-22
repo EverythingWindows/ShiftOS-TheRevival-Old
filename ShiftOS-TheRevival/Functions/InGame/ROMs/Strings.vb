@@ -87,6 +87,8 @@
     '34 = MathQuiz [Simple arithmatical question game to get codepoint] (default : 0)
     '
     'Features bought hierarchy :
+    '
+    'Chapter 1:
     'ShiftOS Key (KEY) (5 CP)
     '>ShiftOS Help Manual (MAN) (10 CP)
     '>>Custom Username (USERNAME) (15 CP)
@@ -123,4 +125,11 @@
     '>>>>>>>>>>Date by year (DATE, YEAR (85 CP))
     '>>>>>>>>>>>Date by month and year (DATE, MMYYYY (90 CP))
     '>>>>>>>>>>>>Date by general (DATE, GENERALDATE (95 CP))
+    '
+    'Chpater 2:
+    '>Dual Window Manager (200 CP)
+    '>>DuWM RGB Support (225 CP)
+    '>>>DuWM 16 Colors Support (275 CP)
+    '>>Shifter (250 CP)
+    '>>Knowledge Input (275 CP)
 End Class

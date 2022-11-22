@@ -98,6 +98,12 @@
     <Compile Include="Functions\InGame\Hardwares\KeyboardHandler.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
+    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.Designer.vb">
+      <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.Designer.vb">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </Compile>
@@ -200,6 +206,7 @@
     <Compile Include="TerminalApplications\External\TerminalExternalApps.vb" />
     <Compile Include="Functions\InGame\SystemManager\ColorSystem.vb" />
     <Compile Include="TerminalApplications\Internal\Com_05tray.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_App.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cd.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Clear.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Codepoint.vb" />
@@ -245,6 +252,9 @@
     <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.resx">
+      <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.resx">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </EmbeddedResource>

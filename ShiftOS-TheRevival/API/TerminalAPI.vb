@@ -283,11 +283,6 @@ Module TerminalAPI
                 If IsStartG = False Then
                     StartG()
                 End If
-            Case "shiftertest"
-                'DuWM_SecondWindowSet(Shifter)
-                'Console.Close()
-                'DuWM_FirstWindowSet(Console)
-                DuWM_NewProcess(DuWM_Shifter)
             Case "stopg"
                 If IsStartG = True Then
                     StopG()
@@ -320,6 +315,13 @@ Module TerminalAPI
         End Select
 
         If AdvancedCommand = True Then
+            If command Like "app *" Then
+                If IsStartG = True Then
+                    App()
+                    AdvancedCommand = False
+                    NormalCommand()
+                End If
+            End If
             If command Like "cat *" Then
                 If Strings.AvailableFeature(16) = 1 Then
                     CatFile(command.Substring(4))
