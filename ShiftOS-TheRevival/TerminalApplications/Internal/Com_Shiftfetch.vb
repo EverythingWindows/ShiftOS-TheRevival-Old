@@ -12,7 +12,15 @@
         NewLine("    B@G^ .J                        : 7?..J@G:     Uptime : N/ A")
         NewLine("   ~&@Y  7         ~PB&#Y:.           ~G7 ~&&^    Packages: " & Strings.ComputerInfo(4))
         NewLine("  ^&@Y  Y         5#5??YB@&B~          .GJ :&&:   Shell: sos-justshell")
-        NewLine("  G@B  ?         5P      ^YB!           .#! ~@G   Window Manager: -")
+        NewLine("  G@B  ?         5P      ^YB!           .#! ~@G   Window Manager: ")
+        If IsStartG = False Then
+            AddLine("-")
+        Else
+            Select Case Strings.ComputerInfo(7)
+                Case 1
+                    AddLine("Dual Window Manager")
+            End Select
+        End If
         NewLine(" ^@@! :          @Y   .:::^~:.           7#  Y@^  Window Manager Theme: -")
         NewLine(" 7@@: !          B@&BBBBGPPB@#Y.         :&^ ^@?  Terminal: shiftos-terminal")
         NewLine(" ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: Consolas, 11pt")
