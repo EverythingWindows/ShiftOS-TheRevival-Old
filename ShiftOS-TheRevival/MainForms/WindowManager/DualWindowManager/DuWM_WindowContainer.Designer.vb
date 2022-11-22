@@ -58,6 +58,7 @@ Partial Class DuWM_WindowContainer
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "DuWM_WindowContainer"
         Me.Text = "DuWM_WindowContainer"
+        Me.TopMost = True
         Me.ResumeLayout(False)
 
     End Sub

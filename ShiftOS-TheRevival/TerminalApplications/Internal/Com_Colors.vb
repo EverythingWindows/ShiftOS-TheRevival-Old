@@ -34,7 +34,7 @@
         End If
         If Strings.AvailableFeature(15) = "1" Then
             NewLine("5 = Purple     D = Light Purple")
-            NewLine("6 = Yellow     E = Yellow")
+            NewLine("6 = Yellow     E = Dark Yellow")
         Else
             NewLine("5 = ???        D = ???")
             NewLine("6 = ???        E = ???")

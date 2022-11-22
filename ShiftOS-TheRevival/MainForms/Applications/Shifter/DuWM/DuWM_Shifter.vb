@@ -1,0 +1,35 @@
+﻿Public Class DuWM_Shifter
+    Private PrevHeight As Integer = Height
+    Private PrevWidth As Integer = Width
+    Private FeatureGap As Integer = 450 - 400
+    Private ChildFeature As UserControl
+
+    Private Sub Shifter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Close.Click
+        Close()
+    End Sub
+
+    Private Sub DuWM_Shifter_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim WidthRatio As Double = (Width / PrevWidth)
+        Dim HeightRatio As Double = (Height / PrevHeight)
+        lst_Features.Height = Height - FeatureGap
+        PrevHeight = Height
+        PrevWidth = Width
+    End Sub
+
+    Private Sub lst_Features_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_Features.SelectedIndexChanged
+        Select Case lst_Features.SelectedItem
+            Case "Desktop"
+                Dim Shifter_Desktop As New DuWM_Shifter_Desktop
+                Shifter_Desktop.Size = pnl_Content.Size
+                pnl_Content.Controls.Clear()
+                pnl_Content.Controls.Add(Shifter_Desktop)
+            Case "About"
+                pnl_Content.Controls.Clear()
+                MsgBox("Aboot")
+        End Select
+    End Sub
+End Class

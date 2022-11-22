@@ -98,10 +98,16 @@
     <Compile Include="Functions\InGame\Hardwares\KeyboardHandler.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
-    <Compile Include="MainForms\Applications\Shifter.Designer.vb">
-      <DependentUpon>Shifter.vb</DependentUpon>
+    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.Designer.vb">
+      <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter.vb">
+    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.Designer.vb">
+      <DependentUpon>DuWM_Shifter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\BugSlap.Designer.vb">
@@ -239,8 +245,11 @@
     <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForms\Applications\Shifter.resx">
-      <DependentUpon>Shifter.vb</DependentUpon>
+    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.resx">
+      <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.resx">
+      <DependentUpon>DuWM_Shifter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\BugSlap.resx">
       <DependentUpon>BugSlap.vb</DependentUpon>

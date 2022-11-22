@@ -97,6 +97,7 @@ Partial Class Console
         Me.Name = "Console"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Terminal"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

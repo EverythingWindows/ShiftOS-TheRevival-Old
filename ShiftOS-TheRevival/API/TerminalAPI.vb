@@ -287,7 +287,7 @@ Module TerminalAPI
                 'DuWM_SecondWindowSet(Shifter)
                 'Console.Close()
                 'DuWM_FirstWindowSet(Console)
-                DuWM_NewProcess(Shifter)
+                DuWM_NewProcess(DuWM_Shifter)
             Case "stopg"
                 If IsStartG = True Then
                     StopG()
