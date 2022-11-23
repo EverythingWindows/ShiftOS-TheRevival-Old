@@ -8,7 +8,7 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Close.Click
+    Private Sub btn_Close_Click(sender As Object, e As EventArgs) Handles btn_Close.Click
         Close()
     End Sub
 
@@ -39,5 +39,12 @@
                     pnl_Content.Controls.Add(Shifter_About)
             End Select
         End If
+    End Sub
+
+    Private Sub btn_Apply_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Select Case lst_Features.SelectedItem
+            Case "Desktop"
+                Desktop.BackColor = DuWM_Shifter_Configs.DesktopBackColor
+        End Select
     End Sub
 End Class

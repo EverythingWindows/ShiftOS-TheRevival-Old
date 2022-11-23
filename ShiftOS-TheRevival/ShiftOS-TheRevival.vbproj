@@ -98,22 +98,29 @@
     <Compile Include="Functions\InGame\Hardwares\KeyboardHandler.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
-    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.Designer.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.Designer.vb">
       <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.Designer.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Desktop.Designer.vb">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Desktop.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.Designer.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter_Configs.vb" />
+    <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.Designer.vb">
       <DependentUpon>DuWM_Shifter.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.vb">
+    <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\Knowledge Input\Uni_KnowledgeInput.Designer.vb">
+      <DependentUpon>Uni_KnowledgeInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\Knowledge Input\Uni_KnowledgeInput.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForms\BugSlap.Designer.vb">
@@ -227,6 +234,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Shiftfetch.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Shiftorium.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Su.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Taskkill.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Unzip.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Username.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Ver.vb" />
@@ -252,14 +260,17 @@
     <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_About.resx">
+    <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.resx">
       <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\Categories\DuWM_Shifter_Desktop.resx">
+    <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Desktop.resx">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForms\Applications\Shifter\DuWM\DuWM_Shifter.resx">
+    <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.resx">
       <DependentUpon>DuWM_Shifter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\Knowledge Input\Uni_KnowledgeInput.resx">
+      <DependentUpon>Uni_KnowledgeInput.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\BugSlap.resx">
       <DependentUpon>BugSlap.vb</DependentUpon>

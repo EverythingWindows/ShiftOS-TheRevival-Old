@@ -41,38 +41,42 @@
 
     Public Sub DuWM_NewProcess(ProcessName As Form)
         Dim NewWindow As New DuWM_WindowContainer
-        DuWM_CurrentProcess = DuWM_CurrentProcess + 1
-        NewWindow.ChildForm = ProcessName
-        NewWindow.ChildForm.TopLevel = False
-        NewWindow.ChildForm.FormBorderStyle = FormBorderStyle.None
-        NewWindow.ChildForm.WindowState = FormWindowState.Normal
-        NewWindow.ChildForm.Visible = False
-        NewWindow.DuWM_ContainerPanel.Controls.Add(NewWindow.ChildForm)
-        Select Case NewWindow.ChildForm.Visible
-            Case False
-                NewWindow.ChildForm.Visible = True
-            Case Else
-                NewWindow.ChildForm.Visible = False
-        End Select
-        If ProcessName Is Console Then
-            Strings.ProcessID(0) = 1
-            NewWindow.DuWM_PID = 0
+        If DuWM_CurrentProcess = 2 Then
+            NewLine("You've reached the limit of usable programs")
         Else
-            Strings.ProcessID(1) = 1
-            NewWindow.DuWM_PID = 1
+            DuWM_CurrentProcess = DuWM_CurrentProcess + 1
+            NewWindow.ChildForm = ProcessName
+            NewWindow.ChildForm.TopLevel = False
+            NewWindow.ChildForm.FormBorderStyle = FormBorderStyle.None
+            NewWindow.ChildForm.WindowState = FormWindowState.Normal
+            NewWindow.ChildForm.Visible = False
+            NewWindow.DuWM_ContainerPanel.Controls.Add(NewWindow.ChildForm)
+            Select Case NewWindow.ChildForm.Visible
+                Case False
+                    NewWindow.ChildForm.Visible = True
+                Case Else
+                    NewWindow.ChildForm.Visible = False
+            End Select
+            If ProcessName Is Console Then
+                Strings.ProcessID(0) = 1
+                NewWindow.DuWM_PID = 0
+            Else
+                Strings.ProcessID(1) = 1
+                NewWindow.DuWM_PID = 1
+            End If
+            NewWindow.Show()
+            Select Case DuWM_CurrentProcess
+                Case 1
+                    NewWindow.Height = Desktop.Height - 20
+                    NewWindow.Width = Desktop.Width - 20
+                    NewWindow.Location = New Point(10, 10)
+                Case 2
+                    NewWindow.Height = Desktop.Height - 20
+                    NewWindow.Width = (Desktop.Width / 2) - 20
+                    NewWindow.Location = New Point((Desktop.Width / 2) + 10, 10)
+            End Select
+            DuWM_ChangeLayout = True
         End If
-        NewWindow.Show()
-        Select Case DuWM_CurrentProcess
-            Case 1
-                NewWindow.Height = Desktop.Height - 20
-                NewWindow.Width = Desktop.Width - 20
-                NewWindow.Location = New Point(10, 10)
-            Case 2
-                NewWindow.Height = Desktop.Height - 20
-                NewWindow.Width = (Desktop.Width / 2) - 20
-                NewWindow.Location = New Point((Desktop.Width / 2) + 10, 10)
-        End Select
-        DuWM_ChangeLayout = True
     End Sub
 
     'Public Sub DuWM_GenerateWindowSet(WindowName As Form, PID As Integer)

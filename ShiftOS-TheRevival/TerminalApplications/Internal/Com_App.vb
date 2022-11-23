@@ -6,6 +6,8 @@
         Select Case Strings.ComputerInfo(7)
             Case 1
                 Select Case AppName
+                    Case "knowledge_input"
+                        DuWM_NewProcess(Uni_KnowledgeInput)
                     Case "shifter"
                         DuWM_NewProcess(DuWM_Shifter)
                 End Select

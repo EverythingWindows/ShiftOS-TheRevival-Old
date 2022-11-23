@@ -252,6 +252,9 @@ Module TerminalAPI
                     NormalCommand()
                 End If
             Case "reboot"
+                If IsStartG = True Then
+                    StopG()
+                End If
                 Console.TextBox1.Text = Nothing
                 AdvancedCommand = False
                 NormalCommand()
@@ -365,6 +368,11 @@ Module TerminalAPI
                 If Strings.AvailableFeature(4) = "1" Then
                     Infobar()
                 End If
+            End If
+            If command Like "taskkill *" Then
+                Taskkill()
+                AdvancedCommand = False
+                NormalCommand()
             End If
             If command Like "man *" Then
                 If Strings.AvailableFeature(0) = "1" Then

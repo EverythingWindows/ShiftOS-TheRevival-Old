@@ -128,6 +128,7 @@
     '
     'Chpater 2:
     '>Dual Window Manager (200 CP)
+    '>>Console Scrollbra (200 CP)
     '>>DuWM RGB Support (225 CP)
     '>>>DuWM 16 Colors Support (275 CP)
     '>>Shifter (250 CP)
