@@ -1,4 +1,18 @@
 ﻿Module IntroStoryTell
+    Public NextChapter As Boolean
+
+    Public Sub CheckNextChapterEligibility()
+        Select Case Strings.ComputerInfo(3)
+            Case 0
+                If Strings.ComputerInfo(4) = 35 Then
+                    Strings.ComputerInfo(3) = 1
+                    NextChapter = True
+                Else
+                    NextChapter = False
+                End If
+        End Select
+    End Sub
+
     Public Sub StoryLineIntro(Timestamp As Integer)
         Select Case Strings.ComputerInfo(3)
             Case 0
@@ -65,6 +79,17 @@
                         NewLine("<null> : Once you able to afford it and installing it, there's a guide to use the window manager")
                     Case 600
                         NewLine("<null> : Alright, I gotta go now and see you in the next progress.")
+                    Case 630
+                        NewLine("<null> Disconnected")
+                    Case 675
+                        Console.StoryOnlyTimer.Stop()
+                        Console.TextBox1.Text = Nothing
+                        Console.TextBox1.ReadOnly = False
+                        Strings.AvailableFeature(35) = 0
+                        Terminal_CheckFeature()
+                        Terminal_PrintPrompt()
+                        Terminal_AssignPrompt()
+                        TextRebind()
                 End Select
         End Select
     End Sub

@@ -52,6 +52,7 @@ Partial Class Uni_KnowledgeInput
         Me.cmb_Category.Name = "cmb_Category"
         Me.cmb_Category.Size = New System.Drawing.Size(266, 31)
         Me.cmb_Category.TabIndex = 1
+        Me.cmb_Category.Text = "Select Category"
         '
         'Panel1
         '
@@ -66,14 +67,19 @@ Partial Class Uni_KnowledgeInput
         '
         'txt_InputWord
         '
+        Me.txt_InputWord.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_InputWord.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
-        Me.txt_InputWord.Location = New System.Drawing.Point(302, 74)
+        Me.txt_InputWord.Location = New System.Drawing.Point(292, 73)
         Me.txt_InputWord.Name = "txt_InputWord"
         Me.txt_InputWord.Size = New System.Drawing.Size(470, 30)
         Me.txt_InputWord.TabIndex = 2
         '
         'lst_Guessed
         '
+        Me.lst_Guessed.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lst_Guessed.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
         Me.lst_Guessed.FormattingEnabled = True
         Me.lst_Guessed.ItemHeight = 23

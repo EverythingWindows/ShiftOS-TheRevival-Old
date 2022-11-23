@@ -7,11 +7,11 @@ Module TerminalAPI
     Public IsConsoleParent As Boolean
 
     Public Sub InitializeTerminal()
+        Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
+        Strings.OnceInfo(4) = "!"
         If IsConsoleParent = True Then
             Console.TopMost = False
             Cursor.Hide()
-            Strings.OnceInfo(1) = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS"
-            Strings.OnceInfo(4) = "!"
             Strings.OnceInfo(7) = Console.Width
             Strings.OnceInfo(8) = Console.Height
             If Strings.IsFree = True Then
@@ -22,22 +22,33 @@ Module TerminalAPI
                 Terminal_PrintPrompt()
                 Terminal_AssignPrompt()
             Else
-                If Console.StayAtChapter = True Then
+                If StayAtChapter = True Then
                     LoadGame()
-                    Terminal_CheckFeature()
-                    Terminal_PrintPrompt()
-                    Terminal_AssignPrompt()
-                Else
-                    If Strings.ComputerInfo(3) = "0" Then
-                        Console.TextBox1.ReadOnly = True
-                        Console.StayAtChapter = True
-                        Console.StoryOnlyTimer.Start()
+                    CheckNextChapterEligibility()
+                    If NextChapter = True Then
+                        StayAtChapter = False
+                        InitializeTerminal()
                     Else
-                        LoadGame()
                         Terminal_CheckFeature()
                         Terminal_PrintPrompt()
                         Terminal_AssignPrompt()
                     End If
+                Else
+                    Select Case Strings.ComputerInfo(3)
+                        Case 0
+                            Console.TextBox1.ReadOnly = True
+                            StayAtChapter = True
+                            Console.StoryOnlyTimer.Start()
+                        Case 1
+                            Console.TextBox1.ReadOnly = True
+                            StayAtChapter = True
+                            Console.StoryOnlyTimer.Start()
+                        Case Else
+                            LoadGame()
+                            Terminal_CheckFeature()
+                            Terminal_PrintPrompt()
+                            Terminal_AssignPrompt()
+                    End Select
                 End If
             End If
         Else
@@ -282,15 +293,21 @@ Module TerminalAPI
             Case "shutdown", "shut down"
                 TerminateShiftOS()
             Case "startg"
-                Undeveloped()
-                If IsStartG = False Then
-                    StartG()
+                If Strings.AvailableFeature(35) = 1 Then
+                    If IsStartG = False Then
+                        StartG()
+                        AdvancedCommand = False
+                        NormalCommand()
+                    End If
                 End If
             Case "stopg"
-                If IsStartG = True Then
-                    StopG()
+                If Strings.AvailableFeature(35) = 1 Then
+                    If IsStartG = True Then
+                        StopG()
+                        AdvancedCommand = False
+                        NormalCommand()
+                    End If
                 End If
-                Undeveloped()
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()

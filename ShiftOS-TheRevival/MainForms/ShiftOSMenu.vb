@@ -28,6 +28,7 @@ Public Class ShiftOSMenu
                 Try
                     Strings.IsFree = True
                     Strings.OnceInfo(6) = "free"
+                    IsConsoleParent = True
                     FreeRoamMode()
                     Console.Show()
                     Close()
@@ -40,7 +41,8 @@ Public Class ShiftOSMenu
             Case "Continue"
                 Strings.IsFree = False
                 Strings.OnceInfo(6) = "story"
-                Console.StayAtChapter = True
+                IsConsoleParent = True
+                StayAtChapter = True
                 Console.Show()
                 Close()
             Case "No"

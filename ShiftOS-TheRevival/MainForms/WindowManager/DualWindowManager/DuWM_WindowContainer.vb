@@ -13,7 +13,6 @@
             Strings.ProcessID(DuWM_PID) = 0
         End If
         If Strings.ProcessID(DuWM_PID) = 0 Then
-            'MsgBox(Convert.ToString(ChildForm))
             DuWM_CurrentProcess = DuWM_CurrentProcess - 1
             DuWM_ChangeLayout = True
             DuWM_WMCheck.Stop()

@@ -11,7 +11,6 @@ Public Class Console
     Public CurrentInterpreter As String                 'Shows what program is using Console
     Public CurrentDirectory As String                   'Current Directory for ShiftOS Explorer
     Public Pseudodir As String                          'Pseudo-directory for ShiftFS 
-    Public StayAtChapter As Boolean = False             'If this set to true, then intro for chapters are mostly going to be in
     Public ToolBarUse As Boolean = False                'Either any program is using ToolBar or not
     Public ReleaseCursor As Boolean = False             'Release cursor from TrackPos
     Public ShOSKey As String                            'DOSKEY tracking string for ShiftOS

@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(35) As String
+    Public Shared AvailableFeature(37) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -50,6 +50,8 @@
     '7 = Window Manager (0.2.7) (default : 0)
     '
     'AvailableFeature (Default is defined on the Story Mode, Free Mode automatically assigns every available feature to 1, Unavailable in the Shiftorium assigned as 2, Upgraded assigned as 3) Strings:
+    'Chapter 1
+    '
     '0 = MAN command [Manual on each command] (0.2) (default : 0)
     '1 = CLEAR command [Clearing the screen] (0.2) (default : 0)
     '2 = PRINT command [Printing a string] (0.2.2) (default : 0)
@@ -85,6 +87,10 @@
     '32 = Zip command [Ability to compress file in a zip file] (default : 0)
     '33 = Unzip command [Ability to extract file in a zip file] (default : 0)
     '34 = MathQuiz [Simple arithmatical question game to get codepoint] (default : 0)
+    '
+    'Chapter 2 for ShiftOS
+    '35 = Dual Window Manager [Simple Window Manager for ShiftOS] (default : 0)
+    '36 = Shifter [Customization program for ShiftOS, DuWM version] (default : 0)
     '
     'Features bought hierarchy :
     '
@@ -128,7 +134,6 @@
     '
     'Chpater 2:
     '>Dual Window Manager (200 CP)
-    '>>Console Scrollbra (200 CP)
     '>>DuWM RGB Support (225 CP)
     '>>>DuWM 16 Colors Support (275 CP)
     '>>Shifter (250 CP)

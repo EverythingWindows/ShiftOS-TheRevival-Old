@@ -1,13 +1,15 @@
 ﻿Public Class Uni_KnowledgeInput
-    Dim PrevWidthTxt_InputWord As Integer
+    Dim PrevWidthTxt_InputWord As Integer = 470
 
     Private Sub Uni_KnowledgeInput_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PrevWidthTxt_InputWord = txt_InputWord.Width
+        cmb_Category.Items.Remove("Animals")
     End Sub
 
-    Private Sub Uni_KnowledgeInput_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        'Dim Txt_InputTextWidthRatio As Double = (txt_InputWord.Width / PrevWidthTxt_InputWord)
-        'txt_InputWord.Width = txt_InputWord.Width * Txt_InputTextWidthRatio
-        'PrevWidthTxt_InputWord = txt_InputWord.Width
+    Private Sub txt_InputWord_TextChanged(sender As Object, e As KeyEventArgs) Handles txt_InputWord.KeyDown
+        Select Case e.KeyCode
+            Case Keys.Enter
+                lst_Guessed.Items.Add(txt_InputWord.Text)
+                txt_InputWord.Text = Nothing
+        End Select
     End Sub
 End Class

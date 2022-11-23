@@ -6,6 +6,7 @@
         'Only AvailableFeature that are in the value of 0 can be displayed in the list
         NewLine("Shiftorium Available Feature(s)")
         NewLine(Nothing)
+        'This is for Chapter 1 features of ShiftOS
         If Strings.AvailableFeature(11) = 0 Then
             NewLine("(key | 5 CP) ShiftOS Key")
         Else
@@ -133,6 +134,10 @@
                     End If
                 End If
             End If
+        End If
+        'This is for Chapter 2 packages for ShiftOS
+        If Strings.AvailableFeature(35) = 0 Then
+            NewLine("(duwm | 200 CP) Dual Window Manager")
         End If
     End Sub
 
@@ -435,6 +440,17 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
+            Case "duwm"
+                If Strings.AvailableFeature(35) = 0 Then
+                    ManHeader(0) = "Dual Window Manager"
+                    ManHeader(1) = "200 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Simple tiling window manager for ShiftOS")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
             Case Else
                 NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -548,6 +564,10 @@
                 NormalCommand()
             Case "mathquiz"
                 Shiftorium_InstallFeatures(True, "mathquiz", 34, 60)
+                NormalCommand()
+            'Chapter 2 packages
+            Case "duwm"
+                Shiftorium_InstallFeatures(True, "duwm", 35, 200)
                 NormalCommand()
             Case Else
                 NormalCommand()
@@ -711,6 +731,10 @@
                             success = True
                         Case "mathquiz"
                             Strings.AvailableFeature(34) = "1"
+                            success = True
+                        'Chapter 2 packages
+                        Case "duwm"
+                            Strings.AvailableFeature(35) = "1"
                             success = True
                     End Select
                     If success = False Then

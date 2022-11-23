@@ -1,4 +1,5 @@
 ﻿Module ConsoleAPI
+    Public StayAtChapter As Boolean = False             'If this set to true, then intro for chapters are mostly going to be in
 
     Public Sub Console_Windowed()
         Console.WindowState = FormWindowState.Normal
