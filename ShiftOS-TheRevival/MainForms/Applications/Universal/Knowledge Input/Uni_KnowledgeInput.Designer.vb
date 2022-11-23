@@ -23,6 +23,12 @@ Partial Class Uni_KnowledgeInput
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.lbl_Title = New System.Windows.Forms.Label()
+        Me.cmb_Category = New System.Windows.Forms.ComboBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txt_InputWord = New System.Windows.Forms.TextBox()
+        Me.lst_Guessed = New System.Windows.Forms.ListBox()
+        Me.lbl_Guessed = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lbl_Title
@@ -35,6 +41,57 @@ Partial Class Uni_KnowledgeInput
         Me.lbl_Title.TabIndex = 0
         Me.lbl_Title.Text = "Knowledge Input"
         '
+        'cmb_Category
+        '
+        Me.cmb_Category.BackColor = System.Drawing.Color.White
+        Me.cmb_Category.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.cmb_Category.ForeColor = System.Drawing.Color.Black
+        Me.cmb_Category.FormattingEnabled = True
+        Me.cmb_Category.Items.AddRange(New Object() {"Animals", "Countries", "Fruits"})
+        Me.cmb_Category.Location = New System.Drawing.Point(20, 73)
+        Me.cmb_Category.Name = "cmb_Category"
+        Me.cmb_Category.Size = New System.Drawing.Size(266, 31)
+        Me.cmb_Category.TabIndex = 1
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.txt_InputWord)
+        Me.Panel1.Controls.Add(Me.lbl_Title)
+        Me.Panel1.Controls.Add(Me.cmb_Category)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(784, 125)
+        Me.Panel1.TabIndex = 2
+        '
+        'txt_InputWord
+        '
+        Me.txt_InputWord.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.txt_InputWord.Location = New System.Drawing.Point(302, 74)
+        Me.txt_InputWord.Name = "txt_InputWord"
+        Me.txt_InputWord.Size = New System.Drawing.Size(470, 30)
+        Me.txt_InputWord.TabIndex = 2
+        '
+        'lst_Guessed
+        '
+        Me.lst_Guessed.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.lst_Guessed.FormattingEnabled = True
+        Me.lst_Guessed.ItemHeight = 23
+        Me.lst_Guessed.Location = New System.Drawing.Point(20, 177)
+        Me.lst_Guessed.Name = "lst_Guessed"
+        Me.lst_Guessed.Size = New System.Drawing.Size(752, 372)
+        Me.lst_Guessed.TabIndex = 3
+        '
+        'lbl_Guessed
+        '
+        Me.lbl_Guessed.AutoSize = True
+        Me.lbl_Guessed.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.lbl_Guessed.Location = New System.Drawing.Point(16, 140)
+        Me.lbl_Guessed.Name = "lbl_Guessed"
+        Me.lbl_Guessed.Size = New System.Drawing.Size(132, 23)
+        Me.lbl_Guessed.TabIndex = 4
+        Me.lbl_Guessed.Text = "Guessed Words :"
+        '
         'Uni_KnowledgeInput
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -42,7 +99,9 @@ Partial Class Uni_KnowledgeInput
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(784, 561)
         Me.ControlBox = False
-        Me.Controls.Add(Me.lbl_Title)
+        Me.Controls.Add(Me.lbl_Guessed)
+        Me.Controls.Add(Me.lst_Guessed)
+        Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Uni_KnowledgeInput"
@@ -51,10 +110,17 @@ Partial Class Uni_KnowledgeInput
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Uni_KnowledgeInput"
         Me.TopMost = True
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents lbl_Title As Label
+    Friend WithEvents cmb_Category As ComboBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents txt_InputWord As TextBox
+    Friend WithEvents lst_Guessed As ListBox
+    Friend WithEvents lbl_Guessed As Label
 End Class
