@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(37) As String
+    Public Shared AvailableFeature(41) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -92,6 +92,10 @@
     '35 = Dual Window Manager [Simple Window Manager for ShiftOS] (default : 0)
     '36 = Shifter [Customization program for ShiftOS, DuWM version] (default : 0)
     '37 = Knowledge Input [Guess how much things as many as you can] (default : 0)
+    '38 = KI Animals [Adds animal category into the Knowledge Input] (default : 0)
+    '39 = KI Fruits [Adds fruit category into the Knowledge Input] (default : 0)
+    '40 = DuWM RGB Support [Adds RGB and its other variant support to DuWM] (default : 0)
+    '41 = DuWM 16 Colors Support [Adds mix of RGB color support into ShiftOS] (default : 0)
     '
     'Features bought hierarchy :
     '
@@ -134,9 +138,11 @@
     '>>>>>>>>>>>>Date by general (DATE, GENERALDATE (95 CP))
     '
     'Chpater 2:
-    '>Dual Window Manager (200 CP)
-    '>>DuWM RGB Support (225 CP)
-    '>>>DuWM 16 Colors Support (275 CP)
-    '>>Shifter (250 CP)
-    '>>Knowledge Input (275 CP)
+    '>Dual Window Manager (DUWM) (200 CP)
+    '>>DuWM RGB Support (DUWMRGB) (225 CP)
+    '>>>DuWM 16 Colors Support (DUWMRGB2) (275 CP)
+    '>>Shifter (SHIFTER) (250 CP)
+    '>>Knowledge Input (KNOWLEDGE) (275 CP)
+    '>>>KI Animals (KI_ANIMALS) (300 CP)
+    '>>>KI Fruits (KI_FRUITS) (300 CP)
 End Class

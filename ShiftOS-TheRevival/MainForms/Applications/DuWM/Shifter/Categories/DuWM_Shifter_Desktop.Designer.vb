@@ -39,12 +39,13 @@ Partial Class DuWM_Shifter_Desktop
         '
         'cmb_DesktopColor
         '
+        Me.cmb_DesktopColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cmb_DesktopColor.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.cmb_DesktopColor.FormattingEnabled = True
         Me.cmb_DesktopColor.Items.AddRange(New Object() {"Black", "Dark Gray", "Light Gray", "Red", "Dark Red", "Green", "Light Green", "Blue", "Dark Blue", "Yellow", "Dark Yellow", "Purple", "Light Purple", "Aqua", "Light Aqua", "White"})
         Me.cmb_DesktopColor.Location = New System.Drawing.Point(156, 91)
         Me.cmb_DesktopColor.Name = "cmb_DesktopColor"
-        Me.cmb_DesktopColor.Size = New System.Drawing.Size(121, 29)
+        Me.cmb_DesktopColor.Size = New System.Drawing.Size(121, 30)
         Me.cmb_DesktopColor.TabIndex = 1
         '
         'Label1

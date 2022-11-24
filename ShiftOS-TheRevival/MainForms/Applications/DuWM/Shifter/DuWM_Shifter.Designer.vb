@@ -49,6 +49,7 @@ Partial Class DuWM_Shifter
         Me.lst_Features.BackColor = System.Drawing.Color.Silver
         Me.lst_Features.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lst_Features.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lst_Features.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.lst_Features.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.lst_Features.FormattingEnabled = True
         Me.lst_Features.ItemHeight = 21
@@ -84,6 +85,7 @@ Partial Class DuWM_Shifter
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Button3.ForeColor = System.Drawing.Color.White
         Me.Button3.Location = New System.Drawing.Point(351, 10)
         Me.Button3.Name = "Button3"
@@ -96,6 +98,7 @@ Partial Class DuWM_Shifter
         '
         Me.btn_Close.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Close.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_Close.ForeColor = System.Drawing.Color.White
         Me.btn_Close.Location = New System.Drawing.Point(432, 10)
         Me.btn_Close.Name = "btn_Close"
@@ -108,6 +111,7 @@ Partial Class DuWM_Shifter
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(513, 10)
         Me.Button1.Name = "Button1"

@@ -141,6 +141,24 @@
         Else
             If Strings.AvailableFeature(36) = 0 Then
                 NewLine("(shifter | 250 CP) Shifter")
+            Else
+                If Strings.AvailableFeature(40) = 0 Then
+                    NewLine("(duwmrgb | 225 CP) DuWM RGB Support")
+                Else
+                    If Strings.AvailableFeature(41) = 0 Then
+                        NewLine("(duwmrgb2 | 275 CP) DuWM 16 Color Support")
+                    End If
+                End If
+            End If
+                If Strings.AvailableFeature(37) = 0 Then
+                NewLine("(knowledge | 275 CP) Knowledge Input")
+            Else
+                If Strings.AvailableFeature(38) = 0 Then
+                    NewLine("(ki_animals | 300 CP) KI Animals")
+                End If
+                If Strings.AvailableFeature(39) = 0 Then
+                    NewLine("(ki_fruits | 300 CP) KI Fruits")
+                End If
             End If
         End If
     End Sub
@@ -466,6 +484,17 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
+            Case "knowledge"
+                If Strings.AvailableFeature(37) = 0 Then
+                    ManHeader(0) = "Knowledge Input"
+                    ManHeader(1) = "275 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Puzzle game where you have to guess as many things as you want")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
             Case Else
                 NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -583,6 +612,24 @@
             'Chapter 2 packages
             Case "duwm"
                 Shiftorium_InstallFeatures(True, "duwm", 35, 200)
+                NormalCommand()
+            Case "shifter"
+                Shiftorium_InstallFeatures(True, "shifter", 36, 250)
+                NormalCommand()
+            Case "knowledge"
+                Shiftorium_InstallFeatures(True, "knowledge", 37, 275)
+                NormalCommand()
+            Case "ki_animals"
+                Shiftorium_InstallFeatures(True, "ki_animals", 38, 300)
+                NormalCommand()
+            Case "ki_fruits"
+                Shiftorium_InstallFeatures(True, "ki_animals", 39, 300)
+                NormalCommand()
+            Case "duwmrgb"
+                Shiftorium_InstallFeatures(True, "duwmrgb", 40, 225)
+                NormalCommand()
+            Case "duwmrgb2"
+                Shiftorium_InstallFeatures(True, "duwmrgb2", 41, 275)
                 NormalCommand()
             Case Else
                 NormalCommand()
@@ -751,6 +798,30 @@
                         Case "duwm"
                             Strings.AvailableFeature(35) = "1"
                             Strings.AvailableFeature(36) = "0"
+                            Strings.AvailableFeature(37) = "0"
+                            success = True
+                        Case "shifter"
+                            Strings.AvailableFeature(36) = "1"
+                            Strings.AvailableFeature(40) = "0"
+                            Strings.AvailableFeature(41) = "0"
+                            success = True
+                        Case "knowledge"
+                            Strings.AvailableFeature(37) = "1"
+                            Strings.AvailableFeature(38) = "0"
+                            Strings.AvailableFeature(39) = "0"
+                            success = True
+                        Case "ki_animals"
+                            Strings.AvailableFeature(38) = "1"
+                            success = True
+                        Case "ki_fruits"
+                            Strings.AvailableFeature(39) = "1"
+                            success = True
+                        Case "duwmrgb"
+                            Strings.AvailableFeature(40) = "1"
+                            success = True
+                        Case "duwmrgb2"
+                            Strings.AvailableFeature(40) = "3"
+                            Strings.AvailableFeature(41) = "1"
                             success = True
                     End Select
                     If success = False Then

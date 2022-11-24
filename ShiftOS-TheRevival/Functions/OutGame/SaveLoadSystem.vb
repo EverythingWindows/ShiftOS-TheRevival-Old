@@ -55,6 +55,11 @@ Module SaveLoadSystem
         Strings.AvailableFeature(34) = "2"
         Strings.AvailableFeature(35) = "2"
         Strings.AvailableFeature(36) = "2"
+        Strings.AvailableFeature(37) = "2"
+        Strings.AvailableFeature(38) = "2"
+        Strings.AvailableFeature(39) = "2"
+        Strings.AvailableFeature(40) = "2"
+        Strings.AvailableFeature(41) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
@@ -105,6 +110,11 @@ Module SaveLoadSystem
         Strings.AvailableFeature(34) = "1"
         Strings.AvailableFeature(35) = "1"
         Strings.AvailableFeature(36) = "1"
+        Strings.AvailableFeature(37) = "1"
+        Strings.AvailableFeature(38) = "1"
+        Strings.AvailableFeature(39) = "1"
+        Strings.AvailableFeature(40) = "3"
+        Strings.AvailableFeature(41) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -153,6 +163,11 @@ Module SaveLoadSystem
         Strings.AvailableFeature(34) = "2"
         Strings.AvailableFeature(35) = "2"
         Strings.AvailableFeature(36) = "2"
+        Strings.AvailableFeature(37) = "2"
+        Strings.AvailableFeature(38) = "2"
+        Strings.AvailableFeature(39) = "2"
+        Strings.AvailableFeature(40) = "2"
+        Strings.AvailableFeature(41) = "2"
     End Sub
 
     Public Sub SaveGame()

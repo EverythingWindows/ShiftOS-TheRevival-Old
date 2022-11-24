@@ -7,9 +7,11 @@
             Case 1
                 Select Case AppName
                     Case "knowledge_input"
-                        DuWM_NewProcess(Uni_KnowledgeInput)
+                        If Strings.AvailableFeature(37) = 1 Then
+                            DuWM_NewProcess(Uni_KnowledgeInput)
+                        End If
                     Case "shifter"
-                        If Strings.AvailableFeature(36) = 0 Then
+                        If Strings.AvailableFeature(36) = 1 Then
                             DuWM_NewProcess(DuWM_Shifter)
                         End If
                 End Select

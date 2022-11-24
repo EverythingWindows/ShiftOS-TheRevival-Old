@@ -117,6 +117,11 @@
     <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\Applications\Universal\Knowledge Input\Contents\KnowledgeInputContent.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KnowledgeInputContent.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\Applications\Universal\Knowledge Input\Uni_KnowledgeInput.Designer.vb">
       <DependentUpon>Uni_KnowledgeInput.vb</DependentUpon>
     </Compile>
@@ -269,6 +274,11 @@
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.resx">
       <DependentUpon>DuWM_Shifter.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\Knowledge Input\Contents\KnowledgeInputContent.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>KnowledgeInputContent.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\Universal\Knowledge Input\Uni_KnowledgeInput.resx">
       <DependentUpon>Uni_KnowledgeInput.vb</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +350,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Animals.txt" />
+    <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Countries.txt" />
+    <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Fruits.txt" />
     <Content Include="MainForms\rev.txt" />
     <Content Include="Resources\man Manuals\zip.txt" />
     <Content Include="Resources\man Manuals\textpad.txt" />

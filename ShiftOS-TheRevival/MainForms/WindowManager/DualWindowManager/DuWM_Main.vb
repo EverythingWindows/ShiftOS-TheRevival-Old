@@ -50,6 +50,7 @@
             NewWindow.ChildForm.FormBorderStyle = FormBorderStyle.None
             NewWindow.ChildForm.WindowState = FormWindowState.Normal
             NewWindow.ChildForm.Visible = False
+            NewWindow.Text = ProcessName.Text
             NewWindow.DuWM_ContainerPanel.Controls.Add(NewWindow.ChildForm)
             Select Case NewWindow.ChildForm.Visible
                 Case False

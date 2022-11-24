@@ -25,6 +25,9 @@ Partial Class Uni_KnowledgeInput
         Me.lbl_Title = New System.Windows.Forms.Label()
         Me.cmb_Category = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl_NextLevel = New System.Windows.Forms.Label()
+        Me.lbl_Level = New System.Windows.Forms.Label()
+        Me.lbl_TotalGuess = New System.Windows.Forms.Label()
         Me.txt_InputWord = New System.Windows.Forms.TextBox()
         Me.lst_Guessed = New System.Windows.Forms.ListBox()
         Me.lbl_Guessed = New System.Windows.Forms.Label()
@@ -44,11 +47,12 @@ Partial Class Uni_KnowledgeInput
         'cmb_Category
         '
         Me.cmb_Category.BackColor = System.Drawing.Color.White
+        Me.cmb_Category.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cmb_Category.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
         Me.cmb_Category.ForeColor = System.Drawing.Color.Black
         Me.cmb_Category.FormattingEnabled = True
         Me.cmb_Category.Items.AddRange(New Object() {"Animals", "Countries", "Fruits"})
-        Me.cmb_Category.Location = New System.Drawing.Point(20, 73)
+        Me.cmb_Category.Location = New System.Drawing.Point(20, 96)
         Me.cmb_Category.Name = "cmb_Category"
         Me.cmb_Category.Size = New System.Drawing.Size(266, 31)
         Me.cmb_Category.TabIndex = 1
@@ -56,21 +60,54 @@ Partial Class Uni_KnowledgeInput
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.lbl_NextLevel)
+        Me.Panel1.Controls.Add(Me.lbl_Level)
+        Me.Panel1.Controls.Add(Me.lbl_TotalGuess)
         Me.Panel1.Controls.Add(Me.txt_InputWord)
         Me.Panel1.Controls.Add(Me.lbl_Title)
         Me.Panel1.Controls.Add(Me.cmb_Category)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(784, 125)
+        Me.Panel1.Size = New System.Drawing.Size(784, 143)
         Me.Panel1.TabIndex = 2
+        '
+        'lbl_NextLevel
+        '
+        Me.lbl_NextLevel.AutoSize = True
+        Me.lbl_NextLevel.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.lbl_NextLevel.Location = New System.Drawing.Point(288, 55)
+        Me.lbl_NextLevel.Name = "lbl_NextLevel"
+        Me.lbl_NextLevel.Size = New System.Drawing.Size(223, 23)
+        Me.lbl_NextLevel.TabIndex = 3
+        Me.lbl_NextLevel.Text = "Words until next level ( CP) :"
+        '
+        'lbl_Level
+        '
+        Me.lbl_Level.AutoSize = True
+        Me.lbl_Level.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.lbl_Level.Location = New System.Drawing.Point(288, 32)
+        Me.lbl_Level.Name = "lbl_Level"
+        Me.lbl_Level.Size = New System.Drawing.Size(63, 23)
+        Me.lbl_Level.TabIndex = 3
+        Me.lbl_Level.Text = "Level 0"
+        '
+        'lbl_TotalGuess
+        '
+        Me.lbl_TotalGuess.AutoSize = True
+        Me.lbl_TotalGuess.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
+        Me.lbl_TotalGuess.Location = New System.Drawing.Point(288, 9)
+        Me.lbl_TotalGuess.Name = "lbl_TotalGuess"
+        Me.lbl_TotalGuess.Size = New System.Drawing.Size(112, 23)
+        Me.lbl_TotalGuess.TabIndex = 3
+        Me.lbl_TotalGuess.Text = "Guessed : 0/0"
         '
         'txt_InputWord
         '
         Me.txt_InputWord.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_InputWord.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
-        Me.txt_InputWord.Location = New System.Drawing.Point(292, 73)
+        Me.txt_InputWord.Location = New System.Drawing.Point(292, 96)
         Me.txt_InputWord.Name = "txt_InputWord"
         Me.txt_InputWord.Size = New System.Drawing.Size(470, 30)
         Me.txt_InputWord.TabIndex = 2
@@ -80,6 +117,7 @@ Partial Class Uni_KnowledgeInput
         Me.lst_Guessed.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lst_Guessed.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.lst_Guessed.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
         Me.lst_Guessed.FormattingEnabled = True
         Me.lst_Guessed.ItemHeight = 23
@@ -92,7 +130,7 @@ Partial Class Uni_KnowledgeInput
         '
         Me.lbl_Guessed.AutoSize = True
         Me.lbl_Guessed.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
-        Me.lbl_Guessed.Location = New System.Drawing.Point(16, 140)
+        Me.lbl_Guessed.Location = New System.Drawing.Point(16, 146)
         Me.lbl_Guessed.Name = "lbl_Guessed"
         Me.lbl_Guessed.Size = New System.Drawing.Size(132, 23)
         Me.lbl_Guessed.TabIndex = 4
@@ -129,4 +167,7 @@ Partial Class Uni_KnowledgeInput
     Friend WithEvents txt_InputWord As TextBox
     Friend WithEvents lst_Guessed As ListBox
     Friend WithEvents lbl_Guessed As Label
+    Friend WithEvents lbl_TotalGuess As Label
+    Friend WithEvents lbl_Level As Label
+    Friend WithEvents lbl_NextLevel As Label
 End Class
