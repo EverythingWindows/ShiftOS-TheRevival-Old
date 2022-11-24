@@ -31,6 +31,7 @@
                 If Opacity = 1 Then
                     Strings.ComputerInfo(3) = "0"
                     Strings.IsFree = False
+                    IsConsoleParent = True
                     Console.Show()
                     Close()
                 Else
