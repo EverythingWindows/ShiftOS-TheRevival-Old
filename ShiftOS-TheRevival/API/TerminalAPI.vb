@@ -29,6 +29,9 @@ Module TerminalAPI
                         StayAtChapter = False
                         InitializeTerminal()
                     Else
+                        If Strings.AvailableFeature(35) = 0 Then
+                            MsgBox("Fuck you!")
+                        End If
                         Terminal_CheckFeature()
                         Terminal_PrintPrompt()
                         Terminal_AssignPrompt()

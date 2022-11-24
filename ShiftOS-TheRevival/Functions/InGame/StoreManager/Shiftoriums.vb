@@ -138,6 +138,10 @@
         'This is for Chapter 2 packages for ShiftOS
         If Strings.AvailableFeature(35) = 0 Then
             NewLine("(duwm | 200 CP) Dual Window Manager")
+        Else
+            If Strings.AvailableFeature(36) = 0 Then
+                NewLine("(shifter | 250 CP) Shifter")
+            End If
         End If
     End Sub
 
@@ -451,6 +455,17 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
+            Case "shifter"
+                If Strings.AvailableFeature(36) = 0 Then
+                    ManHeader(0) = "Shifter"
+                    ManHeader(1) = "250 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Desktop customization program for ShiftOS")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
             Case Else
                 NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -735,6 +750,7 @@
                         'Chapter 2 packages
                         Case "duwm"
                             Strings.AvailableFeature(35) = "1"
+                            Strings.AvailableFeature(36) = "0"
                             success = True
                     End Select
                     If success = False Then

@@ -17,18 +17,14 @@ Module DesktopManager
 
     Public Sub StopG()
         IsStartG = False
-        'MsgBox("IsConsoleParent should be true!")
         IsConsoleParent = True
-        ''MsgBox("PID 0 0")
-        'Strings.ProcessID(0) = 0
-        ''MsgBox("PID 1 0")
-        'Strings.ProcessID(1) = 0
         TerminateWindowApps()
-        'MsgBox("Hide!")
         Cursor.Hide()
+        If Strings.OnceInfo(6) = "story" Then
+            SaveGame()
+        End If
         MsgBox("this is not a bug, this is a feature") 'Use this messagebox to hold Console to stay open, because removing this line closes Console all together for some reason
         Console.Show()
-        'MsgBox("ADIOS!")
         Desktop.Hide()
     End Sub
 

@@ -91,6 +91,7 @@
     'Chapter 2 for ShiftOS
     '35 = Dual Window Manager [Simple Window Manager for ShiftOS] (default : 0)
     '36 = Shifter [Customization program for ShiftOS, DuWM version] (default : 0)
+    '37 = Knowledge Input [Guess how much things as many as you can] (default : 0)
     '
     'Features bought hierarchy :
     '

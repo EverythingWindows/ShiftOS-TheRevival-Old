@@ -53,11 +53,13 @@ Module SaveLoadSystem
         Strings.AvailableFeature(33) = "2"
         '0.2.7 Features
         Strings.AvailableFeature(34) = "2"
+        Strings.AvailableFeature(35) = "2"
+        Strings.AvailableFeature(36) = "2"
     End Sub
 
     Public Sub FreeRoamMode()
         IsConsoleParent = True
-        'Sets all features to as bought
+        'Sets all features to as bought or either upgraded, Complete ShiftOS should have been like this
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
@@ -101,6 +103,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(33) = "1"
         '0.2.7 Features
         Strings.AvailableFeature(34) = "1"
+        Strings.AvailableFeature(35) = "1"
+        Strings.AvailableFeature(36) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -147,10 +151,15 @@ Module SaveLoadSystem
         Strings.AvailableFeature(33) = "2"
         '0.2.7 Features
         Strings.AvailableFeature(34) = "2"
+        Strings.AvailableFeature(35) = "2"
+        Strings.AvailableFeature(36) = "2"
     End Sub
 
     Public Sub SaveGame()
         If Strings.OnceInfo(6) = "story" Then
+            If Strings.AvailableFeature(35) = 0 Then
+                MsgBox("Fuck you!!")
+            End If
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\ComputerInfo.sos", Strings.ComputerInfo)
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\AvailableFeature.sos", Strings.AvailableFeature)
         End If
