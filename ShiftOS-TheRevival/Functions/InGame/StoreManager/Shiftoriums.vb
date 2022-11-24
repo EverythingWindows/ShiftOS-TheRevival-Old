@@ -623,7 +623,7 @@
                 Shiftorium_InstallFeatures(True, "ki_animals", 38, 300)
                 NormalCommand()
             Case "ki_fruits"
-                Shiftorium_InstallFeatures(True, "ki_animals", 39, 300)
+                Shiftorium_InstallFeatures(True, "ki_fruits", 39, 300)
                 NormalCommand()
             Case "duwmrgb"
                 Shiftorium_InstallFeatures(True, "duwmrgb", 40, 225)
@@ -797,6 +797,8 @@
                         'Chapter 2 packages
                         Case "duwm"
                             Strings.AvailableFeature(35) = "1"
+                            Strings.ComputerInfo(7) = 1
+                            GUISCustomizations.DesktopColor = Color.Black
                             Strings.AvailableFeature(36) = "0"
                             Strings.AvailableFeature(37) = "0"
                             success = True
