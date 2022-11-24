@@ -4,11 +4,18 @@
         NewLine(Nothing)
         NewLine("You can type 'help' to get all available commands and its corresponding action.")
         NewLine("Type 'guide' to get the rough definitive guide on using ShiftOS")
+        If IsStartG = True Then
+            NewLine("To get lists of available applications, you can type 'applist'")
+        End If
         If Strings.AvailableFeature(0) = 1 Then
             NewLine("To get help on each command, you can type 'man [command]'")
             NewLine(Nothing)
         Else
             NewLine(Nothing)
+        End If
+        If IsStartG = True Then
+            NewLine("APP         Running graphical application")
+            NewLine("APPLIST     Shows lists of available graphical applications")
         End If
         If Strings.AvailableFeature(9) = 1 Then
             NewLine("BC          Basic Calculator for simple calculation")
@@ -88,7 +95,15 @@
         End If
         NewLine("SHIFTORIUM  A software center for upgrading features on ShiftOS")
         NewLine("SHUTDOWN    Terminate ShiftOS session")
+        If IsStartG = False Then
+            NewLine("STARTG      Starts Graphical User Interface for ShiftOS")
+        Else
+            NewLine("STOPG       Stops Graphical User Interface for ShiftOS")
+        End If
         NewLine("SU          Runs terminal as super user")
+        If IsStartG = True Then
+            NewLine("TASKKILL    Kills or closes application")
+        End If
         If Strings.AvailableFeature(17) = 1 Then
             NewLine("TEXTPAD     Simple text-editor for ShiftOS")
         End If

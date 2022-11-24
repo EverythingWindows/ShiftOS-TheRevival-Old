@@ -54,7 +54,7 @@
             Case 1
                 Select Case Timestamp
                     Case 5
-                        ResetLine("<null> Connected")
+                        ResetLine("Connected to <null>")
                     Case 25
                         NewLine("<null> : Hmmm, you've got your terminal explored enough, ay?")
                     Case 75

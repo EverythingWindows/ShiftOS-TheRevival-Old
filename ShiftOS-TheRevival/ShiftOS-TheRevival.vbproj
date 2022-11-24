@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions\InGame\Hardwares\KeyboardHandler.vb" />
+    <Compile Include="Functions\InGame\ROMs\GUISCustomizations.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
     <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.Designer.vb">
@@ -219,6 +220,7 @@
     <Compile Include="Functions\InGame\SystemManager\ColorSystem.vb" />
     <Compile Include="TerminalApplications\Internal\Com_05tray.vb" />
     <Compile Include="TerminalApplications\Internal\Com_App.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Applist.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Cd.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Clear.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Codepoint.vb" />

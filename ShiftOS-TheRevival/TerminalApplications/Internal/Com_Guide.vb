@@ -15,6 +15,17 @@
         If Strings.AvailableFeature(0) = 1 Then
             NewLine("To get any help for each command in the operating system, you can type 'man' and the name of the feature")
             NewLine(Nothing)
+        Else
+            NewLine(Nothing)
+        End If
+        If Strings.ComputerInfo(7) IsNot "0" Then
+            NewLine("You can run a graphical user Interface With its installed window manager And desktop environment by typing 'startg', and stopping it by typing 'stopg'")
+            If IsStartG = True Then
+                NewLine("To run a program, type 'app ' and the program's name, and 'applist' for getting list of available applications")
+                NewLine(Nothing)
+            Else
+                NewLine(Nothing)
+            End If
         End If
         If Strings.AvailableFeature(5) = 1 Then
             NewLine("Time is displayed by seconds since 0:00 format such as 660 seconds since midnight is 0:11")
@@ -91,6 +102,11 @@
         End If
         If Strings.AvailableFeature(34) = 1 Then
             AddLine(", answer basic arithmatical question on 'mathquiz'")
+        End If
+        If IsStartG = True Then
+            If Strings.AvailableFeature(37) = 1 Then
+                AddLine(", guess as many things as you can in 'knowledge_input'")
+            End If
         End If
         AddLine(".")
     End Sub

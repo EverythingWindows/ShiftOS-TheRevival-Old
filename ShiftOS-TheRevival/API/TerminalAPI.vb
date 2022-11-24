@@ -29,9 +29,6 @@ Module TerminalAPI
                         StayAtChapter = False
                         InitializeTerminal()
                     Else
-                        If Strings.AvailableFeature(35) = 0 Then
-                            MsgBox("Fuck you!")
-                        End If
                         Terminal_CheckFeature()
                         Terminal_PrintPrompt()
                         Terminal_AssignPrompt()
@@ -192,6 +189,12 @@ Module TerminalAPI
             Case "05tray"
                 _05tray()
                 NewLine("you cheater!")
+            Case "applist"
+                If IsStartG = True Then
+                    AppList()
+                    AdvancedCommand = False
+                    NormalCommand()
+                End If
             Case "bc"
                 If Strings.AvailableFeature(9) = "1" Then
                     Console.ChangeInterpreter = True

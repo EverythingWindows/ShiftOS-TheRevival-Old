@@ -8,7 +8,7 @@
     Public Sub DuWM_Initiate()
         Strings.ProcessID(0) = 0
         Strings.ProcessID(1) = 0
-        'DuWM_SingleWindowSet(Console)
+        Desktop.BackColor = GUISCustomizations.DesktopColor
         DuWM_NewProcess(Console)
     End Sub
 

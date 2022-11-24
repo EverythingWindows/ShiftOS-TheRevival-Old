@@ -55,6 +55,30 @@
                 DuWM_Shifter_Configs.DesktopBackColor = Color.Silver
             Case "Dark Gray"
                 DuWM_Shifter_Configs.DesktopBackColor = Color.Gray
+            Case "Red"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Red
+            Case "Dark Red"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Maroon
+            Case "Green"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Green
+            Case "Light Green"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Lime
+            Case "Blue"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Navy
+            Case "Dark Blue"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Blue
+            Case "Yellow"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Yellow
+            Case "Dark Yellow"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Brown
+            Case "Purple"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Magenta
+            Case "Light Purple"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Fuchsia
+            Case "Aqua"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Aqua
+            Case "Light Aqua"
+                DuWM_Shifter_Configs.DesktopBackColor = Color.Cyan
         End Select
     End Sub
 End Class

@@ -54,9 +54,19 @@
     End Sub
 
     Private Sub btn_Apply_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Apply()
+    End Sub
+
+    Private Sub Apply()
         Select Case lst_Features.SelectedItem
             Case "Desktop"
                 Desktop.BackColor = DuWM_Shifter_Configs.DesktopBackColor
+                GUISCustomizations.DesktopColor = Desktop.BackColor
         End Select
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Apply()
+        Close()
     End Sub
 End Class

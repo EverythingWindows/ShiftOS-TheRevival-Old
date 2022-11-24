@@ -172,11 +172,15 @@ Module SaveLoadSystem
 
     Public Sub SaveGame()
         If Strings.OnceInfo(6) = "story" Then
-            If Strings.AvailableFeature(35) = 0 Then
-                MsgBox("Fuck you!!")
-            End If
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\ComputerInfo.sos", Strings.ComputerInfo)
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\AvailableFeature.sos", Strings.AvailableFeature)
+            If Strings.AvailableFeature(35) Then
+                Select Case Strings.ComputerInfo(7)
+                    Case 1
+                        Dim DesktopColor As Integer = GUISCustomizations.DesktopColor.ToArgb()
+                        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_Desktop.sos", DesktopColor.ToString)
+                End Select
+            End If
         End If
     End Sub
 
@@ -184,6 +188,18 @@ Module SaveLoadSystem
         If Strings.OnceInfo(6) = "story" Then
             Strings.ComputerInfo = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\ComputerInfo.sos")
             Strings.AvailableFeature = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\AvailableFeature.sos")
+            If Strings.AvailableFeature(35) Then
+                Select Case Strings.ComputerInfo(7)
+                    Case 1
+                        Dim DesktopColor As Integer
+                        If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_Desktop.sos") = True Then
+                            DesktopColor = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_Desktop.sos")
+                            GUISCustomizations.DesktopColor = Color.FromArgb(DesktopColor)
+                        Else
+                            GUISCustomizations.DesktopColor = Color.Black
+                        End If
+                End Select
+            End If
         End If
     End Sub
 End Module
