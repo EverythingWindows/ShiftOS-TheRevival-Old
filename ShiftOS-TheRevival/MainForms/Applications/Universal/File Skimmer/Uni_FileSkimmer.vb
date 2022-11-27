@@ -6,6 +6,7 @@ Public Class Uni_FileSkimmer
     Dim ItemsDeleted As Integer
 
     Private Sub Uni_FileSkimmer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckAvailable()
         'Sets icons for buttons in here, for some reason
         btn_Up.BackgroundImage = My.Resources.FileSkimmerFunctionIcons.ico_up1
         'End thingy
@@ -13,6 +14,11 @@ Public Class Uni_FileSkimmer
         txt_AddressBar.Text = CurrentDir.Replace(Strings.OnceInfo(1), "!\")
         pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_folder
         ShowContent()
+    End Sub
+
+    Private Sub CheckAvailable()
+        btn_NewFolder.Text = "???"
+        btn_NewFolder.Image = Nothing
     End Sub
 
     Private Sub PropertyPaneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PropertyPaneToolStripMenuItem.Click
@@ -28,41 +34,43 @@ Public Class Uni_FileSkimmer
     End Sub
 
     Private Sub btn_Up_Click(sender As Object, e As EventArgs) Handles btn_Up.Click
-        If txt_AddressBar.Text = "!\" Then
-            btn_Up.Enabled = False
-        Else
-            Try
-                If txt_AddressBar.Text = "!\" Then
-                Else
-                    Dim directoryInfo As System.IO.DirectoryInfo
-                    directoryInfo = System.IO.Directory.GetParent(txt_AddressBar.Text.Replace("!\", Strings.OnceInfo(1) & "\"))
-                    txt_AddressBar.Text = directoryInfo.FullName
-                    CurrentDir = directoryInfo.FullName
+        Try
+            If txt_AddressBar.Text = "!\" Or txt_AddressBar.Text = "!\" Then
 
-                    Dim endloop As Boolean = False
-                    txt_AddressBar.Text = txt_AddressBar.Text.Substring(0, txt_AddressBar.Text.Length - 1)
+            Else
+                Dim directoryInfo As System.IO.DirectoryInfo
+                MsgBox(CurrentDir.Replace("!\", Strings.OnceInfo(1) & "\"))
+                directoryInfo = System.IO.Directory.GetParent(CurrentDir.Replace("!\", Strings.OnceInfo(1) & "\"))
+                MsgBox(directoryInfo.FullName)
 
-                    While endloop = False
-                        Try
-                            If txt_AddressBar.Text.Substring(txt_AddressBar.Text.Length - 1) = "\" Then
-                                endloop = True
-                            Else
-                                txt_AddressBar.Text = txt_AddressBar.Text.Substring(0, txt_AddressBar.Text.Length - 1)
-                            End If
-                        Catch
-                        End Try
-                    End While
-                    ShowContent()
-                    'Try
-                    '    ShowContent()
-                    'Catch
+                'Dim endloop As Boolean = False
+                'lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
 
-                    'End Try
-                End If
-            Catch ex As Exception
+                'While endloop = False
+                '    Try
+                '        If lbllocation.Text.Substring(lbllocation.Text.Length - 1) = "/" Then
+                '            endloop = True
+                '        Else
+                '            lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
+                '        End If
+                '    Catch
+                '        infobox.title = "File Skimmer - Error!"
+                '        infobox.textinfo = "Unable to move into a higher directory due to error reading the requested folder on the drive." & Environment.NewLine & Environment.NewLine & "An error occured going up"
+                '        infobox.Show()
+                '    End Try
+                'End While
+                Dim DirFullName As String = directoryInfo.FullName
+                txt_AddressBar.Text = DirFullName.Replace(Strings.OnceInfo(1), "!\")
+                CurrentDir = DirFullName
+                ShowContent()
+            End If
+        Catch ex As Exception
 
-            End Try
-        End If
+        End Try
+    End Sub
+
+    Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
+        ShowContent()
     End Sub
 
     Private Sub lsv_Content_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lsv_Content.MouseDoubleClick
@@ -241,4 +249,8 @@ Public Class Uni_FileSkimmer
             'WARNING TO GET BACK BUTTON DISABLED
         End If
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click, Button1.Click
+        DeleteFile(CurrentDir & lsv_Content.SelectedItems(0).Text)
+    End Sub
 End Class

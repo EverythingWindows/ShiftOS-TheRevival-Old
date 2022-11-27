@@ -24,7 +24,7 @@ Partial Class Uni_FileSkimmer
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Uni_FileSkimmer))
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("test", 0)
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("test", 0)
         Me.msn_Options = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -32,24 +32,27 @@ Partial Class Uni_FileSkimmer
         Me.PropertyPaneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_Ribbon = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_Delete = New System.Windows.Forms.Button()
+        Me.btn_NewFolder = New System.Windows.Forms.Button()
         Me.pnl_Properties = New System.Windows.Forms.Panel()
+        Me.pic_Icon = New System.Windows.Forms.PictureBox()
         Me.lbl_filesize = New System.Windows.Forms.Label()
         Me.lbl_filetype = New System.Windows.Forms.Label()
         Me.lbl_filename = New System.Windows.Forms.Label()
         Me.lbl_Properties = New System.Windows.Forms.Label()
         Me.iml_icons = New System.Windows.Forms.ImageList(Me.components)
         Me.pnl_AddressBar = New System.Windows.Forms.Panel()
+        Me.btn_Refresh = New System.Windows.Forms.Button()
         Me.btn_Up = New System.Windows.Forms.Button()
         Me.txt_AddressBar = New System.Windows.Forms.TextBox()
         Me.lbl_Address = New System.Windows.Forms.Label()
         Me.lsv_Content = New System.Windows.Forms.ListView()
-        Me.pic_Icon = New System.Windows.Forms.PictureBox()
-        Me.btn_NewFolder = New System.Windows.Forms.Button()
         Me.msn_Options.SuspendLayout()
         Me.pnl_Ribbon.SuspendLayout()
         Me.pnl_Properties.SuspendLayout()
-        Me.pnl_AddressBar.SuspendLayout()
         CType(Me.pic_Icon, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnl_AddressBar.SuspendLayout()
         Me.SuspendLayout()
         '
         'msn_Options
@@ -99,12 +102,59 @@ Partial Class Uni_FileSkimmer
         'pnl_Ribbon
         '
         Me.pnl_Ribbon.BackColor = System.Drawing.Color.Silver
+        Me.pnl_Ribbon.Controls.Add(Me.Button1)
+        Me.pnl_Ribbon.Controls.Add(Me.btn_Delete)
         Me.pnl_Ribbon.Controls.Add(Me.btn_NewFolder)
         Me.pnl_Ribbon.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnl_Ribbon.Location = New System.Drawing.Point(0, 27)
         Me.pnl_Ribbon.Name = "pnl_Ribbon"
         Me.pnl_Ribbon.Size = New System.Drawing.Size(800, 69)
         Me.pnl_Ribbon.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.Button1.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(142, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(116, 26)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Rename"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btn_Delete
+        '
+        Me.btn_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Delete.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.btn_Delete.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.btn_Delete.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btn_Delete.Location = New System.Drawing.Point(71, 0)
+        Me.btn_Delete.Name = "btn_Delete"
+        Me.btn_Delete.Size = New System.Drawing.Size(72, 69)
+        Me.btn_Delete.TabIndex = 0
+        Me.btn_Delete.Text = "Delete"
+        Me.btn_Delete.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_Delete.UseVisualStyleBackColor = True
+        '
+        'btn_NewFolder
+        '
+        Me.btn_NewFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_NewFolder.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.btn_NewFolder.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.btn_NewFolder.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btn_NewFolder.Location = New System.Drawing.Point(0, 0)
+        Me.btn_NewFolder.Name = "btn_NewFolder"
+        Me.btn_NewFolder.Size = New System.Drawing.Size(72, 69)
+        Me.btn_NewFolder.TabIndex = 0
+        Me.btn_NewFolder.Text = "New Folder"
+        Me.btn_NewFolder.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_NewFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_NewFolder.UseVisualStyleBackColor = True
         '
         'pnl_Properties
         '
@@ -120,6 +170,15 @@ Partial Class Uni_FileSkimmer
         Me.pnl_Properties.Size = New System.Drawing.Size(200, 318)
         Me.pnl_Properties.TabIndex = 2
         Me.pnl_Properties.Visible = False
+        '
+        'pic_Icon
+        '
+        Me.pic_Icon.Location = New System.Drawing.Point(10, 42)
+        Me.pic_Icon.Name = "pic_Icon"
+        Me.pic_Icon.Size = New System.Drawing.Size(64, 64)
+        Me.pic_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pic_Icon.TabIndex = 2
+        Me.pic_Icon.TabStop = False
         '
         'lbl_filesize
         '
@@ -177,6 +236,7 @@ Partial Class Uni_FileSkimmer
         '
         'pnl_AddressBar
         '
+        Me.pnl_AddressBar.Controls.Add(Me.btn_Refresh)
         Me.pnl_AddressBar.Controls.Add(Me.btn_Up)
         Me.pnl_AddressBar.Controls.Add(Me.txt_AddressBar)
         Me.pnl_AddressBar.Controls.Add(Me.lbl_Address)
@@ -186,11 +246,21 @@ Partial Class Uni_FileSkimmer
         Me.pnl_AddressBar.Size = New System.Drawing.Size(800, 36)
         Me.pnl_AddressBar.TabIndex = 4
         '
+        'btn_Refresh
+        '
+        Me.btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Refresh.Location = New System.Drawing.Point(5, 5)
+        Me.btn_Refresh.Name = "btn_Refresh"
+        Me.btn_Refresh.Size = New System.Drawing.Size(24, 24)
+        Me.btn_Refresh.TabIndex = 2
+        Me.btn_Refresh.UseVisualStyleBackColor = True
+        '
         'btn_Up
         '
         Me.btn_Up.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_Up.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_Up.Location = New System.Drawing.Point(65, 5)
+        Me.btn_Up.Location = New System.Drawing.Point(28, 5)
         Me.btn_Up.Name = "btn_Up"
         Me.btn_Up.Size = New System.Drawing.Size(24, 24)
         Me.btn_Up.TabIndex = 2
@@ -201,16 +271,16 @@ Partial Class Uni_FileSkimmer
         Me.txt_AddressBar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_AddressBar.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.txt_AddressBar.Location = New System.Drawing.Point(161, 5)
+        Me.txt_AddressBar.Location = New System.Drawing.Point(129, 5)
         Me.txt_AddressBar.Name = "txt_AddressBar"
-        Me.txt_AddressBar.Size = New System.Drawing.Size(627, 25)
+        Me.txt_AddressBar.Size = New System.Drawing.Size(659, 25)
         Me.txt_AddressBar.TabIndex = 1
         '
         'lbl_Address
         '
         Me.lbl_Address.AutoSize = True
         Me.lbl_Address.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.lbl_Address.Location = New System.Drawing.Point(90, 8)
+        Me.lbl_Address.Location = New System.Drawing.Point(58, 8)
         Me.lbl_Address.Name = "lbl_Address"
         Me.lbl_Address.Size = New System.Drawing.Size(65, 19)
         Me.lbl_Address.TabIndex = 0
@@ -221,8 +291,9 @@ Partial Class Uni_FileSkimmer
         Me.lsv_Content.BackColor = System.Drawing.Color.White
         Me.lsv_Content.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lsv_Content.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lsv_Content.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.lsv_Content.HideSelection = False
-        Me.lsv_Content.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
+        Me.lsv_Content.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.lsv_Content.LargeImageList = Me.iml_icons
         Me.lsv_Content.Location = New System.Drawing.Point(0, 132)
         Me.lsv_Content.MultiSelect = False
@@ -231,29 +302,6 @@ Partial Class Uni_FileSkimmer
         Me.lsv_Content.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.lsv_Content.TabIndex = 5
         Me.lsv_Content.UseCompatibleStateImageBehavior = False
-        '
-        'pic_Icon
-        '
-        Me.pic_Icon.Location = New System.Drawing.Point(10, 42)
-        Me.pic_Icon.Name = "pic_Icon"
-        Me.pic_Icon.Size = New System.Drawing.Size(64, 64)
-        Me.pic_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pic_Icon.TabIndex = 2
-        Me.pic_Icon.TabStop = False
-        '
-        'btn_NewFolder
-        '
-        Me.btn_NewFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_NewFolder.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
-        Me.btn_NewFolder.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn_NewFolder.Location = New System.Drawing.Point(0, 0)
-        Me.btn_NewFolder.Name = "btn_NewFolder"
-        Me.btn_NewFolder.Size = New System.Drawing.Size(72, 69)
-        Me.btn_NewFolder.TabIndex = 0
-        Me.btn_NewFolder.Text = "New Folder"
-        Me.btn_NewFolder.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_NewFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_NewFolder.UseVisualStyleBackColor = True
         '
         'Uni_FileSkimmer
         '
@@ -277,9 +325,9 @@ Partial Class Uni_FileSkimmer
         Me.pnl_Ribbon.ResumeLayout(False)
         Me.pnl_Properties.ResumeLayout(False)
         Me.pnl_Properties.PerformLayout()
+        CType(Me.pic_Icon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnl_AddressBar.ResumeLayout(False)
         Me.pnl_AddressBar.PerformLayout()
-        CType(Me.pic_Icon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -305,4 +353,7 @@ Partial Class Uni_FileSkimmer
     Friend WithEvents PropertyPaneToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_NewFolder As Button
     Friend WithEvents btn_Up As Button
+    Friend WithEvents btn_Refresh As Button
+    Friend WithEvents btn_Delete As Button
+    Friend WithEvents Button1 As Button
 End Class
