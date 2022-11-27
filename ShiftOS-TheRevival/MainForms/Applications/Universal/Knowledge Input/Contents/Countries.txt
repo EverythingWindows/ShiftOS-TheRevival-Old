@@ -7,7 +7,7 @@ antigua and barbuda
 argentina
 armenia
 australia
-austia
+austria
 azerbaijan
 bahamas
 bahrain
@@ -23,7 +23,7 @@ bosnia and herzegovina
 botswana
 brazil
 brunei
-bulgraia
+bulgaria
 burkina faso
 burundi
 cambodia
@@ -37,7 +37,8 @@ china
 colombia
 comoros
 democratic republic of the congo
-republic of the congocosta rica
+republic of the congo
+costa rica
 croatia
 cuba
 cyprus

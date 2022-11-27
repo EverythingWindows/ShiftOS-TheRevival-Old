@@ -51,7 +51,7 @@ Partial Class Uni_KnowledgeInput
         Me.cmb_Category.Font = New System.Drawing.Font("Comic Sans MS", 12.0!)
         Me.cmb_Category.ForeColor = System.Drawing.Color.Black
         Me.cmb_Category.FormattingEnabled = True
-        Me.cmb_Category.Items.AddRange(New Object() {"Animals", "Countries", "Fruits"})
+        Me.cmb_Category.Items.AddRange(New Object() {"Animals", "Countries", "Fruits", "US States"})
         Me.cmb_Category.Location = New System.Drawing.Point(20, 96)
         Me.cmb_Category.Name = "cmb_Category"
         Me.cmb_Category.Size = New System.Drawing.Size(266, 31)

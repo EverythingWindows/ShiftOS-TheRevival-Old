@@ -14,6 +14,8 @@
                         If Strings.AvailableFeature(36) = 1 Then
                             DuWM_NewProcess(DuWM_Shifter)
                         End If
+                    Case "file_skimmer"
+                        DuWM_NewProcess(Uni_FileSkimmer)
                 End Select
         End Select
     End Sub

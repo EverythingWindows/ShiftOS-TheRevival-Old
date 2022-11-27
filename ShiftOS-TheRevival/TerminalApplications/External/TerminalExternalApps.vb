@@ -10,7 +10,7 @@ Module TerminalExternalApps
             '    Terminal.TextBox1.ReadOnly = True
             '    Terminal.DefaultPrompt = "Press any key to continue..."
             '    Terminal.CurrentInterpreter = "pause"
-            '    FreezeText = Terminal.TextBox1.Text
+            '    FreezeText = Terminal.TextBox1 x .Text
             '    ShouldChange = True
             Case "shiftoriumfx" 'ShiftoriumFX : Advanced Shiftorium
                 Console.DefaultPrompt = "Navigate> "
@@ -100,6 +100,8 @@ Module TerminalExternalApps
                     Case "ojas"
                         NewLine("dis calculator is very gud")
                         NewLine("it counts from another universe")
+                    Case "cameron"
+                        NewLine("quiet frankly it's ShiftOS")
                     Case "exit"
                         TerminateApp(Nothing)
                     Case Else

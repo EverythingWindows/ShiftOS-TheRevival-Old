@@ -1,9 +1,10 @@
 ﻿Imports System.IO
 
 Public Class Uni_KnowledgeInput
-    Public Countries(193) As String
+    Public Countries(194) As String
     Public Animals(226) As String
     Public Fruits(75) As String
+    Public US_States(50) As String
     Public TotalGuessed As Integer
     Public CurrentCategory As String
     Public Level As Integer
@@ -24,6 +25,13 @@ Public Class Uni_KnowledgeInput
             Else
                 If Strings.AvailableFeature(39) = 1 Then
                     File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\Fruits.kin", My.Resources.KnowledgeInputContent.Fruits)
+                End If
+            End If
+            If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\US_States.kin") = True Then
+
+            Else
+                If Strings.AvailableFeature(42) = 1 Then
+                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\US_States.kin", My.Resources.KnowledgeInputContent.US_States)
                 End If
             End If
         Else
@@ -91,6 +99,12 @@ Public Class Uni_KnowledgeInput
                 End If
                 Available = True
                 Fruits = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\Fruits.kin")
+            Case "US States"
+                If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\CurrentUS_States.kin") = True Then
+                    lst_Guessed.Items.AddRange(File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\CurrentUS_States.kin"))
+                End If
+                Available = True
+                US_States = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\US_States.kin")
         End Select
         If Available = True Then
             TotalGuessed = lst_Guessed.Items.Count
@@ -102,6 +116,8 @@ Public Class Uni_KnowledgeInput
                     lbl_TotalGuess.Text = lbl_TotalGuess.Text & Animals.Length
                 Case "Fruits"
                     lbl_TotalGuess.Text = lbl_TotalGuess.Text & Fruits.Length
+                Case "US States"
+                    lbl_TotalGuess.Text = lbl_TotalGuess.Text & US_States.Length
             End Select
             Level = Math.Ceiling((TotalGuessed / 10))
             CheckLevel()
@@ -115,6 +131,9 @@ Public Class Uni_KnowledgeInput
         End If
         If Strings.AvailableFeature(39) = 0 Then
             cmb_Category.Items.Remove("Fruits")
+        End If
+        If Strings.AvailableFeature(42) = 0 Then
+            cmb_Category.Items.Remove("US States")
         End If
     End Sub
 
@@ -177,6 +196,20 @@ Public Class Uni_KnowledgeInput
                         Lines = Lines + 1
                     End If
                 Loop
+            Case "US States"
+                Dim Lines As Integer = 0
+                Do
+                    If Lines = US_States.Length Then
+                        Exit Do
+                    End If
+                    If US_States(Lines) = Input Then
+                        US_States(Lines) = "null"
+                        Correct = True
+                        Exit Do
+                    Else
+                        Lines = Lines + 1
+                    End If
+                Loop
         End Select
         If Correct = True Then
             lst_Guessed.Items.Add(Input)
@@ -189,6 +222,8 @@ Public Class Uni_KnowledgeInput
                     lbl_TotalGuess.Text = lbl_TotalGuess.Text & Animals.Length
                 Case "Fruits"
                     lbl_TotalGuess.Text = lbl_TotalGuess.Text & Fruits.Length
+                Case "US States"
+                    lbl_TotalGuess.Text = lbl_TotalGuess.Text & US_States.Length
             End Select
             CheckLevel()
             SaveCategory()
@@ -206,6 +241,9 @@ Public Class Uni_KnowledgeInput
             Case "Fruits"
                 File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\Fruits.kin", Fruits)
                 File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\CurrentFruits.kin", lst_Guessed.Items.Cast(Of String).ToArray)
+            Case "US States"
+                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\US_States.kin", US_States)
+                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\KnowledgeInput\CurrentUS_States.kin", lst_Guessed.Items.Cast(Of String).ToArray)
         End Select
     End Sub
 End Class

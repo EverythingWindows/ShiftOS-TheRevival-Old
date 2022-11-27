@@ -121,86 +121,29 @@
   <data name="CurrentVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CurrentVersion.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Fortunes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fortunes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_bc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\bc.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_cd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\cd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\clear.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_codepoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\codepoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\color.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_colors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\colors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_cowsay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\cowsay.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_del" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\del.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_dir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\dir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_guess" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\guess.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\help.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_hostname" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\hostname.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_infobar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\infobar.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_man" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\man.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_mkdir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\mkdir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\print.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_pwd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\pwd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_reboot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\reboot.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_rmdir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\rmdir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_shiftfetch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\shiftfetch.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_shiftorium" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\shiftorium.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\shutdown.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_textpad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\textpad.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="man_time" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\man manuals\time.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="man_username" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\username.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="man_ver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\ver.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_guess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\guess.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_codepoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\codepoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_cd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\cd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\color.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_del" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\del.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_mkdir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\mkdir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="man_zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\man manuals\zip.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -208,7 +151,67 @@
   <data name="MenuBanner1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Menu Picture\ShiftOS_MenuBanner1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="man_dir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\dir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\shutdown.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="MenuBanner2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Menu Picture\ShiftOS_MenuBanner2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="man_hostname" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\hostname.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_colors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\colors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_bc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\bc.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_pwd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\pwd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\man.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\print.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_textpad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\textpad.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_cowsay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\cowsay.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\clear.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_infobar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\infobar.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\help.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_rmdir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\rmdir.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_reboot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\reboot.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_shiftorium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\shiftorium.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_shiftfetch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\shiftfetch.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="man_time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\man manuals\time.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Fortunes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fortunes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ico_folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MainForms\Applications\Universal\File Skimmer\Icons\ico_folder.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -159,8 +159,11 @@
                 If Strings.AvailableFeature(39) = 0 Then
                     NewLine("(ki_fruits | 300 CP) KI Fruits")
                 End If
+                If Strings.AvailableFeature(42) = 0 Then
+                    NewLine("(ki_us | 300 CP) KI US States")
+                End If
             End If
-        End If
+            End If
     End Sub
 
     Public Sub Shiftorium_InformationFeatures()
@@ -495,6 +498,61 @@
                     NewLine(ManHeader(1))
                     NormalCommand()
                 End If
+            Case "ki_animals"
+                If Strings.AvailableFeature(38) = 0 Then
+                    ManHeader(0) = "KI Animals"
+                    ManHeader(1) = "300 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds animals category into Knowledge Input")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "ki_fruits"
+                If Strings.AvailableFeature(39) = 0 Then
+                    ManHeader(0) = "KI Fruits"
+                    ManHeader(1) = "300 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds fruits category into Knowledge Input")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "duwmrgb"
+                If Strings.AvailableFeature(40) = 0 Then
+                    ManHeader(0) = "DuWM RGB support"
+                    ManHeader(1) = "225 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds Red, Green, and Blue and its darker/lighter color support for Dual Window Manager")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "duwmrgb2"
+                If Strings.AvailableFeature(41) = 0 Then
+                    ManHeader(0) = "DuWM 16 Colors support"
+                    ManHeader(1) = "275 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds 16 colors support for Dual Window Manager")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "ki_us"
+                If Strings.AvailableFeature(42) = 0 Then
+                    ManHeader(0) = "KI US States"
+                    ManHeader(1) = "300 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds US States category into Knowledge Input")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
             Case Else
                 NormalCommand()
                 Console.TextBox1.Text = Console.TextBox1.Text & Environment.NewLine & "Shiftorium: Bad command or not available"
@@ -630,6 +688,9 @@
                 NormalCommand()
             Case "duwmrgb2"
                 Shiftorium_InstallFeatures(True, "duwmrgb2", 41, 275)
+                NormalCommand()
+            Case "ki_us"
+                Shiftorium_InstallFeatures(True, "ki_us", 42, 300)
                 NormalCommand()
             Case Else
                 NormalCommand()
@@ -811,6 +872,7 @@
                             Strings.AvailableFeature(37) = "1"
                             Strings.AvailableFeature(38) = "0"
                             Strings.AvailableFeature(39) = "0"
+                            Strings.AvailableFeature(42) = "0"
                             success = True
                         Case "ki_animals"
                             Strings.AvailableFeature(38) = "1"
@@ -824,6 +886,9 @@
                         Case "duwmrgb2"
                             Strings.AvailableFeature(40) = "3"
                             Strings.AvailableFeature(41) = "1"
+                            success = True
+                        Case "ki_us"
+                            Strings.AvailableFeature(42) = "1"
                             success = True
                     End Select
                     If success = False Then

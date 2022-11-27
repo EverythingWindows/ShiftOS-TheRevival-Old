@@ -52,6 +52,14 @@ Public Class ShiftOSMenu
                 btn_Aboot.Text = "About"
                 btn_Aboot.Visible = True
                 btn_Exit.Visible = True
+            Case "Chapter 2" & Environment.NewLine & "Exploration"
+                Strings.ComputerInfo(3) = "1"
+                IsConsoleParent = True
+                Strings.IsFree = False
+                Strings.OnceInfo(6) = "story"
+                NewGameMode(1)
+                Console.Show()
+                Close()
         End Select
     End Sub
 

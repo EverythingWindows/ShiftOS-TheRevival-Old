@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(41) As String
+    Public Shared AvailableFeature(42) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -96,6 +96,7 @@
     '39 = KI Fruits [Adds fruit category into the Knowledge Input] (default : 0)
     '40 = DuWM RGB Support [Adds RGB and its other variant support to DuWM] (default : 0)
     '41 = DuWM 16 Colors Support [Adds mix of RGB color support into ShiftOS] (default : 0)
+    '42 = KI US States [Adds United States States category into the Knowledge Input] (default : 0)
     '
     'Features bought hierarchy :
     '
@@ -145,4 +146,5 @@
     '>>Knowledge Input (KNOWLEDGE) (275 CP)
     '>>>KI Animals (KI_ANIMALS) (300 CP)
     '>>>KI Fruits (KI_FRUITS) (300 CP)
+    '>>>KI US States (KI_US) (300 CP)
 End Class

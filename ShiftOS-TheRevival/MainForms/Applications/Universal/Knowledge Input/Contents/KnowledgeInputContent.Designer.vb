@@ -145,7 +145,7 @@ Namespace My.Resources
         '''argentina
         '''armenia
         '''australia
-        '''austia
+        '''austria
         '''azerbaijan
         '''bahamas
         '''bahrain
@@ -161,7 +161,7 @@ Namespace My.Resources
         '''botswana
         '''brazil
         '''brunei
-        '''bulgraia
+        '''bulgaria
         '''burkina faso
         '''burundi
         '''cambodia
@@ -175,13 +175,14 @@ Namespace My.Resources
         '''colombia
         '''comoros
         '''democratic republic of the congo
-        '''republic of the congocosta rica
+        '''republic of the congo
+        '''costa rica
         '''croatia
         '''cuba
         '''cyprus
         '''czechia
         '''denmark
-        '''djibou [rest of string was truncated]&quot;;.
+        '''dji [rest of string was truncated]&quot;;.
         '''</summary>
         Friend Shared ReadOnly Property Countries() As String
             Get
@@ -248,6 +249,63 @@ Namespace My.Resources
         Friend Shared ReadOnly Property Fruits() As String
             Get
                 Return ResourceManager.GetString("Fruits", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to alabama
+        '''alaska
+        '''arizona
+        '''arkansas
+        '''california
+        '''colorado
+        '''connecticut
+        '''delaware
+        '''florida
+        '''georgia
+        '''hawaii
+        '''idaho
+        '''illinois
+        '''indiana
+        '''iowa
+        '''kansas
+        '''kentucky
+        '''louisiana
+        '''maine
+        '''maryland
+        '''massachusetts
+        '''michigan
+        '''minnesota
+        '''mississippi
+        '''missouri
+        '''montana
+        '''nebraska
+        '''nevada
+        '''new hampshire
+        '''new jersey
+        '''new mexico
+        '''new york
+        '''north carolina
+        '''north dakota
+        '''ohio
+        '''oklahoma
+        '''oregon
+        '''pennsylvania
+        '''rhode island
+        '''south carolina
+        '''south dakota
+        '''tennessee
+        '''texas
+        '''utah
+        '''vermont
+        '''virginia
+        '''washington
+        '''washington dc
+        '''west virgi [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend Shared ReadOnly Property US_States() As String
+            Get
+                Return ResourceManager.GetString("US_States", resourceCulture)
             End Get
         End Property
     End Class

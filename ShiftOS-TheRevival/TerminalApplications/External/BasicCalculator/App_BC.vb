@@ -68,6 +68,9 @@
         BC_Counting(BC_Numbers1, BC_Numbers2, BC_Operation2)
         BC_ThriceMoreValue = Nothing
         NewLine(BC_Result)
+        If BC_Result = 69 Then
+            NewLine("Nice!")
+        End If
     End Sub
 
     Public Sub BC_Counting(FirstNum As Integer, SecondNum As Integer, Operation As String)

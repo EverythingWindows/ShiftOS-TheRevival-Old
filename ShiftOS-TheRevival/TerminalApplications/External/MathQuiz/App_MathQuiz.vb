@@ -17,34 +17,36 @@
     End Sub
 
     Public Sub MQ_GiveQuestion()
-        Dim RandomNum As New Random
-        MQ_1stNum = RandomNum.Next(1, 10)
-        MQ_2ndNum = RandomNum.Next(1, 10)
-        OperationChooser = RandomNum.Next(1, 5)
-        Select Case OperationChooser
-            Case 1
-                MQ_Operation = " + "
-                MQ_ShouldResult = MQ_1stNum + MQ_2ndNum
-            Case 2
-                While MQ_2ndNum >= MQ_1stNum
-                    MQ_2ndNum = RandomNum.Next(1, 10)
-                End While
-                MQ_Operation = " - "
-                MQ_ShouldResult = MQ_1stNum - MQ_2ndNum
-            Case 3
-                MQ_Operation = " * "
-                MQ_ShouldResult = MQ_1stNum * MQ_2ndNum
-            Case 4
-                While MQ_2ndNum > MQ_1stNum
+        Try
+            Dim RandomNum As New Random
+            MQ_1stNum = RandomNum.Next(1, 10)
+            MQ_2ndNum = RandomNum.Next(1, 10)
+            OperationChooser = RandomNum.Next(1, 5)
+            Select Case OperationChooser
+                Case 1
+                    MQ_Operation = " + "
+                    MQ_ShouldResult = MQ_1stNum + MQ_2ndNum
+                Case 2
+                    While MQ_2ndNum >= MQ_1stNum
                         MQ_2ndNum = RandomNum.Next(1, 10)
                     End While
-                MQ_Operation = " / "
-                MQ_ShouldResult = MQ_1stNum / MQ_2ndNum
-            Case Else
-                MQ_Operation = " + "
-                MQ_ShouldResult = MQ_1stNum + MQ_2ndNum
-        End Select
-        NewLine("What is " & MQ_1stNum & MQ_Operation & MQ_2ndNum & " ?")
+                    MQ_Operation = " - "
+                    MQ_ShouldResult = MQ_1stNum - MQ_2ndNum
+                Case 3
+                    MQ_Operation = " * "
+                    MQ_ShouldResult = MQ_1stNum * MQ_2ndNum
+                Case 4
+                    While MQ_2ndNum > MQ_1stNum
+                        MQ_2ndNum = RandomNum.Next(1, 10)
+                    End While
+                    MQ_Operation = " / "
+                    MQ_ShouldResult = MQ_1stNum / MQ_2ndNum
+            End Select
+            NewLine("What is " & MQ_1stNum & MQ_Operation & MQ_2ndNum & " ?")
+        Catch ex As Exception
+            NewLine(ex.Message)
+            TerminateApp(Nothing)
+        End Try
     End Sub
 
     Public Sub MQ_CheckAnswer()

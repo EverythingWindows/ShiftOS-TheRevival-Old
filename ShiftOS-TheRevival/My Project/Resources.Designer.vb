@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 0.2.6.
+        '''  Looks up a localized string similar to 0.2.7.
         '''</summary>
         Friend ReadOnly Property CurrentVersion() As String
             Get
@@ -78,6 +78,16 @@ Namespace My.Resources
         Friend ReadOnly Property Fortunes() As String
             Get
                 Return ResourceManager.GetString("Fortunes", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ico_folder() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ico_folder", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

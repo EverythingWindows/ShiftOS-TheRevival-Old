@@ -12,6 +12,7 @@
         Cursor.Show()
         NewLine("Shutting down...")
         ShiftOSMenu.Show()
+        Cursor.Show()
         If IsStartG = False Then
             Console.Close()
         End If

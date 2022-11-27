@@ -2,7 +2,7 @@
 
 Module SaveLoadSystem
 
-    Public Sub NewGameMode()
+    Public Sub NewGameMode(Chapter As Integer)
         'Sets all features to 2 (Unavailable for Shiftorium) except ShiftOS Key (AvailableFeatures(11))
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS", True)
         Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS", True)
@@ -14,52 +14,106 @@ Module SaveLoadSystem
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
         Strings.ComputerInfo(4) = "0"
-        Strings.AvailableFeature(0) = "2"
-        Strings.AvailableFeature(1) = "2"
-        Strings.AvailableFeature(2) = "2"
-        Strings.AvailableFeature(3) = "2"
-        Strings.AvailableFeature(4) = "2"
-        Strings.AvailableFeature(5) = "2"
-        Strings.AvailableFeature(6) = "2"
-        Strings.AvailableFeature(7) = "2"
-        Strings.AvailableFeature(8) = "2"
-        Strings.AvailableFeature(9) = "2"
-        Strings.AvailableFeature(10) = "2"
-        Strings.AvailableFeature(11) = "0"
-        Strings.AvailableFeature(12) = "2"
-        Strings.AvailableFeature(13) = "2"
-        Strings.AvailableFeature(14) = "2"
-        Strings.AvailableFeature(15) = "2"
-        '0.2.4 Features
-        Strings.AvailableFeature(16) = "2"
-        Strings.AvailableFeature(17) = "2"
-        Strings.AvailableFeature(18) = "2"
-        Strings.AvailableFeature(19) = "2"
-        Strings.AvailableFeature(20) = "2"
-        Strings.AvailableFeature(21) = "2"
-        Strings.AvailableFeature(22) = "2"
-        '0.2.5 Features
-        Strings.AvailableFeature(23) = "2"
-        Strings.AvailableFeature(24) = "2"
-        Strings.AvailableFeature(25) = "2"
-        Strings.AvailableFeature(26) = "2"
-        Strings.AvailableFeature(27) = "2"
-        Strings.AvailableFeature(28) = "2"
-        Strings.AvailableFeature(29) = "2"
-        Strings.AvailableFeature(30) = "2"
-        '0.2.6 Features
-        Strings.AvailableFeature(31) = "2"
-        Strings.AvailableFeature(32) = "2"
-        Strings.AvailableFeature(33) = "2"
-        '0.2.7 Features
-        Strings.AvailableFeature(34) = "2"
-        Strings.AvailableFeature(35) = "2"
-        Strings.AvailableFeature(36) = "2"
-        Strings.AvailableFeature(37) = "2"
-        Strings.AvailableFeature(38) = "2"
-        Strings.AvailableFeature(39) = "2"
-        Strings.AvailableFeature(40) = "2"
-        Strings.AvailableFeature(41) = "2"
+        Select Case Chapter
+            Case 0
+                Strings.AvailableFeature(0) = "2"
+                Strings.AvailableFeature(1) = "2"
+                Strings.AvailableFeature(2) = "2"
+                Strings.AvailableFeature(3) = "2"
+                Strings.AvailableFeature(4) = "2"
+                Strings.AvailableFeature(5) = "2"
+                Strings.AvailableFeature(6) = "2"
+                Strings.AvailableFeature(7) = "2"
+                Strings.AvailableFeature(8) = "2"
+                Strings.AvailableFeature(9) = "2"
+                Strings.AvailableFeature(10) = "2"
+                Strings.AvailableFeature(11) = "0"
+                Strings.AvailableFeature(12) = "2"
+                Strings.AvailableFeature(13) = "2"
+                Strings.AvailableFeature(14) = "2"
+                Strings.AvailableFeature(15) = "2"
+                '0.2.4 Features
+                Strings.AvailableFeature(16) = "2"
+                Strings.AvailableFeature(17) = "2"
+                Strings.AvailableFeature(18) = "2"
+                Strings.AvailableFeature(19) = "2"
+                Strings.AvailableFeature(20) = "2"
+                Strings.AvailableFeature(21) = "2"
+                Strings.AvailableFeature(22) = "2"
+                '0.2.5 Features
+                Strings.AvailableFeature(23) = "2"
+                Strings.AvailableFeature(24) = "2"
+                Strings.AvailableFeature(25) = "2"
+                Strings.AvailableFeature(26) = "2"
+                Strings.AvailableFeature(27) = "2"
+                Strings.AvailableFeature(28) = "2"
+                Strings.AvailableFeature(29) = "2"
+                Strings.AvailableFeature(30) = "2"
+                '0.2.6 Features
+                Strings.AvailableFeature(31) = "2"
+                Strings.AvailableFeature(32) = "2"
+                Strings.AvailableFeature(33) = "2"
+                '0.2.7 Features
+                Strings.AvailableFeature(34) = "2"
+                Strings.AvailableFeature(35) = "2"
+                Strings.AvailableFeature(36) = "2"
+                Strings.AvailableFeature(37) = "2"
+                Strings.AvailableFeature(38) = "2"
+                Strings.AvailableFeature(39) = "2"
+                Strings.AvailableFeature(40) = "2"
+                Strings.AvailableFeature(41) = "2"
+                '0.2.8 Features
+                Strings.AvailableFeature(42) = "2"
+            Case 1
+                Strings.AvailableFeature(0) = "1"
+                Strings.AvailableFeature(1) = "1"
+                Strings.AvailableFeature(2) = "1"
+                Strings.AvailableFeature(3) = "1"
+                Strings.AvailableFeature(4) = "1"
+                Strings.AvailableFeature(5) = "3"
+                Strings.AvailableFeature(6) = "3"
+                Strings.AvailableFeature(7) = "3"
+                Strings.AvailableFeature(8) = "1"
+                Strings.AvailableFeature(9) = "1"
+                Strings.AvailableFeature(10) = "1"
+                Strings.AvailableFeature(11) = "1"
+                Strings.AvailableFeature(12) = "3"
+                Strings.AvailableFeature(13) = "1"
+                Strings.AvailableFeature(14) = "1"
+                Strings.AvailableFeature(15) = "1"
+                '0.2.4 Features
+                Strings.AvailableFeature(16) = "1"
+                Strings.AvailableFeature(17) = "1"
+                Strings.AvailableFeature(18) = "1"
+                Strings.AvailableFeature(19) = "1"
+                Strings.AvailableFeature(20) = "1"
+                Strings.AvailableFeature(21) = "1"
+                Strings.AvailableFeature(22) = "1"
+                '0.2.5 Features
+                Strings.AvailableFeature(23) = "1"
+                Strings.AvailableFeature(24) = "3"
+                Strings.AvailableFeature(25) = "3"
+                Strings.AvailableFeature(26) = "3"
+                Strings.AvailableFeature(27) = "3"
+                Strings.AvailableFeature(28) = "3"
+                Strings.AvailableFeature(29) = "1"
+                Strings.AvailableFeature(30) = "1"
+                '0.2.6 Features
+                Strings.AvailableFeature(31) = "1"
+                Strings.AvailableFeature(32) = "1"
+                Strings.AvailableFeature(33) = "1"
+                '0.2.7 Features
+                Strings.AvailableFeature(34) = "1"
+                Strings.AvailableFeature(35) = "2"
+                Strings.AvailableFeature(36) = "2"
+                Strings.AvailableFeature(37) = "2"
+                Strings.AvailableFeature(38) = "2"
+                Strings.AvailableFeature(39) = "2"
+                Strings.AvailableFeature(40) = "2"
+                Strings.AvailableFeature(41) = "2"
+                '0.2.8 Features
+                Strings.AvailableFeature(42) = "2"
+        End Select
     End Sub
 
     Public Sub FreeRoamMode()
@@ -115,6 +169,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(39) = "1"
         Strings.AvailableFeature(40) = "3"
         Strings.AvailableFeature(41) = "1"
+        '0.2.8 Features
+        Strings.AvailableFeature(42) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -168,6 +224,8 @@ Module SaveLoadSystem
         Strings.AvailableFeature(39) = "2"
         Strings.AvailableFeature(40) = "2"
         Strings.AvailableFeature(41) = "2"
+        '0.2.8 Features
+        Strings.AvailableFeature(42) = "2"
     End Sub
 
     Public Sub SaveGame()

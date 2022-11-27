@@ -17,7 +17,7 @@
                 Strings.OnceInfo(6) = "story"
                 IntroStory.Show()
                 ShiftOSMenu.Close()
-                NewGameMode()
+                NewGameMode(0)
                 Close()
         End Select
     End Sub

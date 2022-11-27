@@ -118,6 +118,22 @@
     <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFileIcons.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileSkimmerFileIcons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFunctionIcons.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileSkimmerFunctionIcons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\File Skimmer\Uni_FileSkimmer.Designer.vb">
+      <DependentUpon>Uni_FileSkimmer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\File Skimmer\Uni_FileSkimmer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\Applications\Universal\Knowledge Input\Contents\KnowledgeInputContent.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,6 +292,19 @@
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.resx">
       <DependentUpon>DuWM_Shifter.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFileIcons.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileSkimmerFileIcons.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFunctionIcons.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileSkimmerFunctionIcons.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\File Skimmer\Uni_FileSkimmer.resx">
+      <DependentUpon>Uni_FileSkimmer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\Universal\Knowledge Input\Contents\KnowledgeInputContent.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -352,10 +381,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CurrentVersion.txt" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_exe.png" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_folder.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_picture.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_sfp.png" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_textfile.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_unknown.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_up.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_url.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_video.bmp" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Animals.txt" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Countries.txt" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Fruits.txt" />
+    <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\US_States.txt" />
     <Content Include="MainForms\rev.txt" />
+    <None Include="Resources\ico_up1.png" />
     <Content Include="Resources\man Manuals\zip.txt" />
     <Content Include="Resources\man Manuals\textpad.txt" />
     <Content Include="Resources\Fortunes.txt" />
