@@ -17,8 +17,8 @@ Public Class Uni_FileSkimmer
     End Sub
 
     Private Sub CheckAvailable()
-        btn_NewFolder.Text = "???"
-        btn_NewFolder.Image = Nothing
+        'btn_NewFolder.Text = "???"
+        'btn_NewFolder.Image = Nothing
     End Sub
 
     Private Sub PropertyPaneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PropertyPaneToolStripMenuItem.Click
@@ -33,15 +33,36 @@ Public Class Uni_FileSkimmer
         Dispose()
     End Sub
 
+    Private Sub cmb_Layout_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_Layout.SelectedIndexChanged
+        Select Case cmb_Layout.SelectedItem.ToString
+            Case "Large Icons"
+                lsv_Content.View = View.LargeIcon
+            Case "Small Icons"
+                lsv_Content.View = View.SmallIcon
+            Case "List"
+                lsv_Content.View = View.List
+        End Select
+    End Sub
+
+    Private Sub cmb_Layout_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles cmb_Layout.DrawItem
+        e.DrawBackground()
+        If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+            e.Graphics.FillRectangle(Brushes.Black, e.Bounds)
+        End If
+        Dim sf As New StringFormat
+        Using b As New SolidBrush(e.ForeColor)
+            e.Graphics.DrawString(cmb_Layout.GetItemText(cmb_Layout.Items(e.Index)), e.Font, b, e.Bounds, sf)
+        End Using
+        e.DrawFocusRectangle()
+    End Sub
+
     Private Sub btn_Up_Click(sender As Object, e As EventArgs) Handles btn_Up.Click
         Try
-            If txt_AddressBar.Text = "!\" Or txt_AddressBar.Text = "!\" Then
+            If txt_AddressBar.Text = "!\" Or txt_AddressBar.Text = "!" Then
 
             Else
                 Dim directoryInfo As System.IO.DirectoryInfo
-                MsgBox(CurrentDir.Replace("!\", Strings.OnceInfo(1) & "\"))
                 directoryInfo = System.IO.Directory.GetParent(CurrentDir.Replace("!\", Strings.OnceInfo(1) & "\"))
-                MsgBox(directoryInfo.FullName)
 
                 'Dim endloop As Boolean = False
                 'lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
@@ -60,7 +81,7 @@ Public Class Uni_FileSkimmer
                 '    End Try
                 'End While
                 Dim DirFullName As String = directoryInfo.FullName
-                txt_AddressBar.Text = DirFullName.Replace(Strings.OnceInfo(1), "!\")
+                txt_AddressBar.Text = DirFullName.Replace(Strings.OnceInfo(1), "!")
                 CurrentDir = DirFullName
                 ShowContent()
             End If
@@ -71,6 +92,24 @@ Public Class Uni_FileSkimmer
 
     Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
         ShowContent()
+    End Sub
+
+    Private Sub txt_AddressBar_TextChanged(sender As Object, e As KeyEventArgs) Handles txt_AddressBar.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If txt_AddressBar.Text Like "!*" Then
+                Dim BackupCurrentDir As String = txt_AddressBar.Text
+                BackupCurrentDir = BackupCurrentDir.Replace("!", Strings.OnceInfo(1))
+                If BackupCurrentDir Like "*.*" Then
+
+                Else
+                    If Directory.Exists(BackupCurrentDir) = True Then
+                        txt_AddressBar.Text = BackupCurrentDir.Replace(Strings.OnceInfo(1), "!")
+                        CurrentDir = BackupCurrentDir
+                        ShowContent()
+                    End If
+                End If
+                End If
+        End If
     End Sub
 
     Private Sub lsv_Content_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lsv_Content.MouseDoubleClick
@@ -87,16 +126,25 @@ Public Class Uni_FileSkimmer
                 If pnl_Properties.Visible = True Then
                     Dim IsFile As Boolean = False
                     If lsv_Content.SelectedItems(0).Text = Nothing Then
-
+                        pic_Icon.Image = Nothing
+                        lbl_filename.Visible = False
+                        lbl_filetype.Visible = False
+                        lbl_filesize.Visible = False
                     Else
+                        lbl_filename.Visible = True
+                        lbl_filetype.Visible = True
                         If lsv_Content.SelectedItems(0).Text Like "*.txt" Then
                             pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_textfile
                             lbl_filetype.Text = "Text File"
                             IsFile = True
+                        ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
+                            pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_unknown
+                            lbl_filetype.Text = "Unknown File Type"
+                            IsFile = True
                         End If
                         If IsFile = True Then
-                            lbl_filesize.Visible = False
-                            Dim filinf As New IO.FileInfo(CurrentDir & lsv_Content.SelectedItems(0).Text)
+                            lbl_filesize.Visible = True
+                            Dim filinf As New IO.FileInfo(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text)
                             Dim filsize As Long = filinf.Length / 1024
                             Dim thesize As Integer = 1
                             Do
@@ -116,6 +164,7 @@ Public Class Uni_FileSkimmer
                                     lbl_filesize.Text = filsize & " GB"
                             End Select
                         Else
+                            pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_folder
                             lbl_filetype.Text = "Folder"
                             lbl_filesize.Visible = False
                         End If
@@ -250,7 +299,7 @@ Public Class Uni_FileSkimmer
         End If
     End Function
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click, Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
         DeleteFile(CurrentDir & lsv_Content.SelectedItems(0).Text)
     End Sub
 End Class

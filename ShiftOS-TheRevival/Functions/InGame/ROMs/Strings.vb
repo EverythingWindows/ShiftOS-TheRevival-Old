@@ -147,4 +147,11 @@
     '>>>KI Animals (KI_ANIMALS) (300 CP)
     '>>>KI Fruits (KI_FRUITS) (300 CP)
     '>>>KI US States (KI_US) (300 CP)
+    '>>DuWM Read and Write support (250 CP)
+    '>>>File Skimmer (300 CP)
+    '>>>>FS Properties Pane (325 CP)
+    '>>>>FS Small Images Layout (350 CP)
+    '>>>>FS List Layout (350 CP)
+    '>>>>FS Delete (350 CP)
+    '>>>>FS ZIP support (400 CP)
 End Class

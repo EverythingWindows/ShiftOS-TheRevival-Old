@@ -24,7 +24,7 @@ Partial Class Uni_FileSkimmer
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Uni_FileSkimmer))
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("test", 0)
+        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("test", 0)
         Me.msn_Options = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -32,8 +32,12 @@ Partial Class Uni_FileSkimmer
         Me.PropertyPaneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_Ribbon = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmb_Layout = New System.Windows.Forms.ComboBox()
+        Me.btn_Properties = New System.Windows.Forms.Button()
+        Me.btn_Rename = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_Delete = New System.Windows.Forms.Button()
+        Me.btn_Compress = New System.Windows.Forms.Button()
         Me.btn_NewFolder = New System.Windows.Forms.Button()
         Me.pnl_Properties = New System.Windows.Forms.Panel()
         Me.pic_Icon = New System.Windows.Forms.PictureBox()
@@ -48,6 +52,7 @@ Partial Class Uni_FileSkimmer
         Me.txt_AddressBar = New System.Windows.Forms.TextBox()
         Me.lbl_Address = New System.Windows.Forms.Label()
         Me.lsv_Content = New System.Windows.Forms.ListView()
+        Me.iml_smallicons = New System.Windows.Forms.ImageList(Me.components)
         Me.msn_Options.SuspendLayout()
         Me.pnl_Ribbon.SuspendLayout()
         Me.pnl_Properties.SuspendLayout()
@@ -102,29 +107,69 @@ Partial Class Uni_FileSkimmer
         'pnl_Ribbon
         '
         Me.pnl_Ribbon.BackColor = System.Drawing.Color.Silver
-        Me.pnl_Ribbon.Controls.Add(Me.Button1)
+        Me.pnl_Ribbon.Controls.Add(Me.cmb_Layout)
+        Me.pnl_Ribbon.Controls.Add(Me.btn_Properties)
+        Me.pnl_Ribbon.Controls.Add(Me.btn_Rename)
+        Me.pnl_Ribbon.Controls.Add(Me.Label1)
         Me.pnl_Ribbon.Controls.Add(Me.btn_Delete)
+        Me.pnl_Ribbon.Controls.Add(Me.btn_Compress)
         Me.pnl_Ribbon.Controls.Add(Me.btn_NewFolder)
         Me.pnl_Ribbon.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnl_Ribbon.Location = New System.Drawing.Point(0, 27)
         Me.pnl_Ribbon.Name = "pnl_Ribbon"
-        Me.pnl_Ribbon.Size = New System.Drawing.Size(800, 69)
+        Me.pnl_Ribbon.Size = New System.Drawing.Size(800, 70)
         Me.pnl_Ribbon.TabIndex = 1
         '
-        'Button1
+        'cmb_Layout
         '
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.Button1.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(142, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(116, 26)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Rename"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.cmb_Layout.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cmb_Layout.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cmb_Layout.FormattingEnabled = True
+        Me.cmb_Layout.Items.AddRange(New Object() {"Large Icons", "Small Icons", "List"})
+        Me.cmb_Layout.Location = New System.Drawing.Point(335, 38)
+        Me.cmb_Layout.Name = "cmb_Layout"
+        Me.cmb_Layout.Size = New System.Drawing.Size(121, 26)
+        Me.cmb_Layout.TabIndex = 1
+        '
+        'btn_Properties
+        '
+        Me.btn_Properties.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Properties.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.btn_Properties.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.btn_Properties.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_Properties.Location = New System.Drawing.Point(142, 34)
+        Me.btn_Properties.Name = "btn_Properties"
+        Me.btn_Properties.Size = New System.Drawing.Size(116, 35)
+        Me.btn_Properties.TabIndex = 0
+        Me.btn_Properties.Text = "Properties"
+        Me.btn_Properties.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btn_Properties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_Properties.UseVisualStyleBackColor = True
+        '
+        'btn_Rename
+        '
+        Me.btn_Rename.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Rename.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.btn_Rename.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.btn_Rename.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_Rename.Location = New System.Drawing.Point(142, 0)
+        Me.btn_Rename.Name = "btn_Rename"
+        Me.btn_Rename.Size = New System.Drawing.Size(116, 35)
+        Me.btn_Rename.TabIndex = 0
+        Me.btn_Rename.Text = "Rename"
+        Me.btn_Rename.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btn_Rename.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_Rename.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Label1.Location = New System.Drawing.Point(331, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 19)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Layout"
         '
         'btn_Delete
         '
@@ -134,12 +179,27 @@ Partial Class Uni_FileSkimmer
         Me.btn_Delete.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btn_Delete.Location = New System.Drawing.Point(71, 0)
         Me.btn_Delete.Name = "btn_Delete"
-        Me.btn_Delete.Size = New System.Drawing.Size(72, 69)
+        Me.btn_Delete.Size = New System.Drawing.Size(72, 70)
         Me.btn_Delete.TabIndex = 0
         Me.btn_Delete.Text = "Delete"
         Me.btn_Delete.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btn_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_Delete.UseVisualStyleBackColor = True
+        '
+        'btn_Compress
+        '
+        Me.btn_Compress.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Compress.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.btn_Compress.Image = Global.ShiftOS_TheRevival.My.Resources.Resources.ico_folder
+        Me.btn_Compress.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btn_Compress.Location = New System.Drawing.Point(257, 0)
+        Me.btn_Compress.Name = "btn_Compress"
+        Me.btn_Compress.Size = New System.Drawing.Size(72, 70)
+        Me.btn_Compress.TabIndex = 0
+        Me.btn_Compress.Text = "Compress"
+        Me.btn_Compress.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_Compress.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_Compress.UseVisualStyleBackColor = True
         '
         'btn_NewFolder
         '
@@ -149,7 +209,7 @@ Partial Class Uni_FileSkimmer
         Me.btn_NewFolder.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btn_NewFolder.Location = New System.Drawing.Point(0, 0)
         Me.btn_NewFolder.Name = "btn_NewFolder"
-        Me.btn_NewFolder.Size = New System.Drawing.Size(72, 69)
+        Me.btn_NewFolder.Size = New System.Drawing.Size(72, 70)
         Me.btn_NewFolder.TabIndex = 0
         Me.btn_NewFolder.Text = "New Folder"
         Me.btn_NewFolder.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -165,9 +225,9 @@ Partial Class Uni_FileSkimmer
         Me.pnl_Properties.Controls.Add(Me.lbl_filename)
         Me.pnl_Properties.Controls.Add(Me.lbl_Properties)
         Me.pnl_Properties.Dock = System.Windows.Forms.DockStyle.Right
-        Me.pnl_Properties.Location = New System.Drawing.Point(600, 132)
+        Me.pnl_Properties.Location = New System.Drawing.Point(600, 133)
         Me.pnl_Properties.Name = "pnl_Properties"
-        Me.pnl_Properties.Size = New System.Drawing.Size(200, 318)
+        Me.pnl_Properties.Size = New System.Drawing.Size(200, 317)
         Me.pnl_Properties.TabIndex = 2
         Me.pnl_Properties.Visible = False
         '
@@ -241,7 +301,7 @@ Partial Class Uni_FileSkimmer
         Me.pnl_AddressBar.Controls.Add(Me.txt_AddressBar)
         Me.pnl_AddressBar.Controls.Add(Me.lbl_Address)
         Me.pnl_AddressBar.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnl_AddressBar.Location = New System.Drawing.Point(0, 96)
+        Me.pnl_AddressBar.Location = New System.Drawing.Point(0, 97)
         Me.pnl_AddressBar.Name = "pnl_AddressBar"
         Me.pnl_AddressBar.Size = New System.Drawing.Size(800, 36)
         Me.pnl_AddressBar.TabIndex = 4
@@ -293,15 +353,30 @@ Partial Class Uni_FileSkimmer
         Me.lsv_Content.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lsv_Content.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.lsv_Content.HideSelection = False
-        Me.lsv_Content.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
+        Me.lsv_Content.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
         Me.lsv_Content.LargeImageList = Me.iml_icons
-        Me.lsv_Content.Location = New System.Drawing.Point(0, 132)
+        Me.lsv_Content.Location = New System.Drawing.Point(0, 133)
         Me.lsv_Content.MultiSelect = False
         Me.lsv_Content.Name = "lsv_Content"
-        Me.lsv_Content.Size = New System.Drawing.Size(600, 318)
+        Me.lsv_Content.Size = New System.Drawing.Size(600, 317)
+        Me.lsv_Content.SmallImageList = Me.iml_smallicons
         Me.lsv_Content.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.lsv_Content.TabIndex = 5
         Me.lsv_Content.UseCompatibleStateImageBehavior = False
+        '
+        'iml_smallicons
+        '
+        Me.iml_smallicons.ImageStream = CType(resources.GetObject("iml_smallicons.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.iml_smallicons.TransparentColor = System.Drawing.Color.Transparent
+        Me.iml_smallicons.Images.SetKeyName(0, "ico_folder.bmp")
+        Me.iml_smallicons.Images.SetKeyName(1, "ico_textfile.bmp")
+        Me.iml_smallicons.Images.SetKeyName(2, "ico_unknown.bmp")
+        Me.iml_smallicons.Images.SetKeyName(3, "ico_picture.bmp")
+        Me.iml_smallicons.Images.SetKeyName(4, "ico_up.bmp")
+        Me.iml_smallicons.Images.SetKeyName(5, "ico_url.bmp")
+        Me.iml_smallicons.Images.SetKeyName(6, "ico_video.bmp")
+        Me.iml_smallicons.Images.SetKeyName(7, "ico_sfp.png")
+        Me.iml_smallicons.Images.SetKeyName(8, "ico_exe.png")
         '
         'Uni_FileSkimmer
         '
@@ -323,6 +398,7 @@ Partial Class Uni_FileSkimmer
         Me.msn_Options.ResumeLayout(False)
         Me.msn_Options.PerformLayout()
         Me.pnl_Ribbon.ResumeLayout(False)
+        Me.pnl_Ribbon.PerformLayout()
         Me.pnl_Properties.ResumeLayout(False)
         Me.pnl_Properties.PerformLayout()
         CType(Me.pic_Icon, System.ComponentModel.ISupportInitialize).EndInit()
@@ -355,5 +431,10 @@ Partial Class Uni_FileSkimmer
     Friend WithEvents btn_Up As Button
     Friend WithEvents btn_Refresh As Button
     Friend WithEvents btn_Delete As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_Rename As Button
+    Friend WithEvents btn_Properties As Button
+    Friend WithEvents btn_Compress As Button
+    Friend WithEvents cmb_Layout As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents iml_smallicons As ImageList
 End Class
