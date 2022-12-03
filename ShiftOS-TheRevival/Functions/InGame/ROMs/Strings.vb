@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(52) As String
+    Public Shared AvailableFeature(53) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -107,6 +107,7 @@
     '50 = File Skimmer JobBar [Adds a top bar for actions on File Skimmer] (default : 0)
     '51 = File Skimmer Small Icons [Adds small icons layout on File Skimmer] (default : 0)
     '52 = File Skimmer List [Adds small icons layout on File Skimmer] (default : 0)
+    '53 = Shifter Console [Adds Console Customization on Shifter] (default : 0)
     '
     'Features bought hierarchy :
     '
@@ -153,6 +154,7 @@
     '>>DuWM RGB Support (DUWMRGB) (225 CP)
     '>>>DuWM 16 Colors Support (DUWMRGB2) (275 CP)
     '>>Shifter (SHIFTER) (250 CP)
+    '>>>Shifter Console (SHR_CONSOLE) (275 CP)
     '>>Knowledge Input (KNOWLEDGE) (275 CP)
     '>>>KI Animals (KI_ANIMALS) (300 CP)
     '>>>KI Fruits (KI_FRUITS) (300 CP)

@@ -142,14 +142,17 @@
             If Strings.AvailableFeature(36) = 0 Then
                 NewLine("(shifter | 250 CP) Shifter")
             Else
+                If Strings.AvailableFeature(53) = 0 Then
+                    NewLine("(shr_console | 275 CP) Shifter Console")
+                End If
                 If Strings.AvailableFeature(40) = 0 Then
-                    NewLine("(duwmrgb | 225 CP) DuWM RGB Support")
-                Else
-                    If Strings.AvailableFeature(41) = 0 Then
-                        NewLine("(duwmrgb2 | 275 CP) DuWM 16 Color Support")
+                        NewLine("(duwmrgb | 225 CP) DuWM RGB Support")
+                    Else
+                        If Strings.AvailableFeature(41) = 0 Then
+                            NewLine("(duwmrgb2 | 275 CP) DuWM 16 Color Support")
+                        End If
                     End If
                 End If
-            End If
             If Strings.AvailableFeature(37) = 0 Then
                 NewLine("(knowledge | 275 CP) Knowledge Input")
             Else
@@ -688,12 +691,23 @@
                     NormalCommand()
                 End If
             Case "fs_list"
-                If Strings.AvailableFeature(51) = 0 Then
+                If Strings.AvailableFeature(52) = 0 Then
                     ManHeader(0) = "FS List"
                     ManHeader(1) = "425 CP"
                     NewLine(ManHeader(0))
                     NewLine(Nothing)
                     NewLine("Adds list as a display layout in File Skimmer")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "shr_console"
+                If Strings.AvailableFeature(53) = 0 Then
+                    ManHeader(0) = "Shifter Console"
+                    ManHeader(1) = "275 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds Console customability on Shifter")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
                     NormalCommand()
@@ -867,6 +881,9 @@
             Case "fs_list"
                 Shiftorium_InstallFeatures(True, "fs_list", 52, 425)
                 NormalCommand()
+            Case "shr_console"
+                Shiftorium_InstallFeatures(True, "shr_console", 53, 275)
+                NormalCommand()
             Case Else
                 NormalCommand()
                 NewLine("Shiftorium: Bad command or not available")
@@ -1035,6 +1052,7 @@
                             Strings.AvailableFeature(35) = "1"
                             Strings.ComputerInfo(7) = 1
                             GUISCustomizations.DesktopColor = Color.Black
+                            GUISCustomizations.GUIConsoleFont = New Font("Consolas", 11)
                             Strings.AvailableFeature(36) = "0"
                             Strings.AvailableFeature(37) = "0"
                             Strings.AvailableFeature(43) = "0"
@@ -1043,6 +1061,7 @@
                             Strings.AvailableFeature(36) = "1"
                             Strings.AvailableFeature(40) = "0"
                             Strings.AvailableFeature(41) = "0"
+                            Strings.AvailableFeature(53) = "0"
                             success = True
                         Case "knowledge"
                             Strings.AvailableFeature(37) = "1"
@@ -1104,6 +1123,9 @@
                             success = True
                         Case "fs_list"
                             Strings.AvailableFeature(52) = "1"
+                            success = True
+                        Case "shr_console"
+                            Strings.AvailableFeature(53) = "1"
                             success = True
                     End Select
                     If success = False Then

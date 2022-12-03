@@ -14,6 +14,7 @@ Module TerminalAPI
             Cursor.Hide()
             Strings.OnceInfo(7) = Console.Width
             Strings.OnceInfo(8) = Console.Height
+            Console.TextBox1.Font = New Font("Consolas", 11)
             If Strings.IsFree = True Then
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
@@ -55,6 +56,11 @@ Module TerminalAPI
             Cursor.Show()
             Console_Windowed()
             Console.TopMost = True
+            Try
+                Console.TextBox1.Font = GUISCustomizations.GUIConsoleFont
+            Catch ex As Exception
+                Console.TextBox1.Font = New Font("Consolas", 11)
+            End Try
             Terminal_PrintPrompt()
             Terminal_AssignPrompt()
         End If

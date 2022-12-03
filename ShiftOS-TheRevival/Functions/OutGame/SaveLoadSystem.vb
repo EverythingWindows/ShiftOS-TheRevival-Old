@@ -123,6 +123,7 @@ Module SaveLoadSystem
                 Strings.AvailableFeature(50) = "2"
                 Strings.AvailableFeature(51) = "2"
                 Strings.AvailableFeature(52) = "2"
+                Strings.AvailableFeature(53) = "2"
         End Select
     End Sub
 
@@ -191,6 +192,10 @@ Module SaveLoadSystem
         Strings.AvailableFeature(50) = "1"
         Strings.AvailableFeature(51) = "1"
         Strings.AvailableFeature(52) = "1"
+        Strings.AvailableFeature(53) = "1"
+        'GUI Customizations
+        GUISCustomizations.DesktopColor = Color.Black
+        GUISCustomizations.GUIConsoleFont = New Font("Consolas", 11)
     End Sub
 
     Public Sub GodMode()
@@ -256,6 +261,7 @@ Module SaveLoadSystem
         Strings.AvailableFeature(50) = "2"
         Strings.AvailableFeature(51) = "2"
         Strings.AvailableFeature(52) = "2"
+        Strings.AvailableFeature(53) = "2"
     End Sub
 
     Public Sub SaveGame()
@@ -267,6 +273,10 @@ Module SaveLoadSystem
                     Case 1
                         Dim DesktopColor As Integer = GUISCustomizations.DesktopColor.ToArgb()
                         File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_Desktop.sos", DesktopColor.ToString)
+                        Dim ConsoleFont(1) As String
+                        ConsoleFont(0) = GUISCustomizations.GUIConsoleFont.Name
+                        ConsoleFont(1) = GUISCustomizations.GUIConsoleFont.Size
+                        File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_ConsoleFont.sos", ConsoleFont)
                 End Select
             End If
         End If
@@ -285,6 +295,13 @@ Module SaveLoadSystem
                             GUISCustomizations.DesktopColor = Color.FromArgb(DesktopColor)
                         Else
                             GUISCustomizations.DesktopColor = Color.Black
+                        End If
+                        If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_ConsoleFont.sos") = True Then
+                            Dim ConsoleFont(1) As String
+                            ConsoleFont = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved\Shifter_ConsoleFont.sos")
+                            GUISCustomizations.GUIConsoleFont = New Font(ConsoleFont(0), ConsoleFont(1))
+                        Else
+                            GUISCustomizations.GUIConsoleFont = New Font("Consolas", 11)
                         End If
                 End Select
             End If

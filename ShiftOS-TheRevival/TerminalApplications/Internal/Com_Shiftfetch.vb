@@ -23,7 +23,12 @@
         End If
         NewLine(" ^@@! :          @Y   .:::^~:.           7#  Y@^  Window Manager Theme: -")
         NewLine(" 7@@: !          B@&BBBBGPPB@#Y.         :&^ ^@?  Terminal: shiftos-terminal")
-        NewLine(" ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: Consolas, 11pt")
+        NewLine(" ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: ")
+        If IsStartG = True Then
+            AddLine(GUISCustomizations.GUIConsoleFont.Name & ", " & GUISCustomizations.GUIConsoleFont.Size & "pt")
+        Else
+            AddLine("Consolas, 11pt (default)")
+        End If
         NewLine(" ~@@! !@    G#&B!.          Y@@B         7#.  Y~  CPU: " & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0", "ProcessorNameString", Nothing))
         NewLine("  B@G  B@J   ...~&G.       7@@@?        .#?   7   GPU: N/A")
         Dim TripleDigitRAM As String

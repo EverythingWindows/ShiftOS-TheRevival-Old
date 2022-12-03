@@ -5,7 +5,7 @@
     Private ChildFeature As String
 
     Private Sub Shifter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        CheckAvailability()
     End Sub
 
     Private Sub lst_Features_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lst_Features.DrawItem
@@ -37,6 +37,12 @@
 
         Else
             Select Case lst_Features.SelectedItem
+                Case "Console"
+                    Dim Shifter_Console As New DuWM_Shifter_Console
+                    Shifter_Console.Size = pnl_Content.Size
+                    ChildFeature = "Console"
+                    pnl_Content.Controls.Clear()
+                    pnl_Content.Controls.Add(Shifter_Console)
                 Case "Desktop"
                     Dim Shifter_Desktop As New DuWM_Shifter_Desktop
                     Shifter_Desktop.Size = pnl_Content.Size
@@ -59,6 +65,9 @@
 
     Private Sub Apply()
         Select Case lst_Features.SelectedItem
+            Case "Console"
+                Console.TextBox1.Font = DuWM_Shifter_Configs.ConsoleFont
+                GUISCustomizations.GUIConsoleFont = Console.TextBox1.Font
             Case "Desktop"
                 Desktop.BackColor = DuWM_Shifter_Configs.DesktopBackColor
                 GUISCustomizations.DesktopColor = Desktop.BackColor
@@ -68,5 +77,11 @@
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Apply()
         Close()
+    End Sub
+
+    Private Sub CheckAvailability()
+        If Strings.AvailableFeature(53) = 0 Then
+            lst_Features.Items.Remove("Console")
+        End If
     End Sub
 End Class

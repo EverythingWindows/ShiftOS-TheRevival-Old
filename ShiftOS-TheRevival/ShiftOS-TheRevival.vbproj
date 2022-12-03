@@ -105,6 +105,12 @@
     <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Console.Designer.vb">
+      <DependentUpon>DuWM_Shifter_Console.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Console.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Desktop.Designer.vb">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </Compile>
@@ -221,6 +227,12 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="MainForms\WindowManager\codename AnusWM\AnusWM_Menu.Designer.vb">
+      <DependentUpon>AnusWM_Menu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\WindowManager\codename AnusWM\AnusWM_Menu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\WindowManager\DualWindowManager\DuWM_Main.vb" />
     <Compile Include="MainForms\WindowManager\DualWindowManager\DuWM_WindowContainer.Designer.vb">
       <DependentUpon>DuWM_WindowContainer.vb</DependentUpon>
@@ -286,6 +298,9 @@
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.resx">
       <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Console.resx">
+      <DependentUpon>DuWM_Shifter_Console.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_Desktop.resx">
       <DependentUpon>DuWM_Shifter_Desktop.vb</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +355,9 @@
     <EmbeddedResource Include="MainForms\Applications\Console.resx">
       <DependentUpon>Console.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\WindowManager\codename AnusWM\AnusWM_Menu.resx">
+      <DependentUpon>AnusWM_Menu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\WindowManager\DualWindowManager\DuWM_WindowContainer.resx">
       <DependentUpon>DuWM_WindowContainer.vb</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +408,7 @@
     <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_up.bmp" />
     <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_url.bmp" />
     <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_video.bmp" />
+    <None Include="MainForms\Applications\Universal\File Skimmer\Icons\ico_zip.png" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Animals.txt" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Countries.txt" />
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\Fruits.txt" />

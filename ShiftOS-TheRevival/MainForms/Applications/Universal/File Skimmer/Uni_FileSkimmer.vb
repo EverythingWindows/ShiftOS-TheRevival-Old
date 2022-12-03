@@ -158,6 +158,9 @@ Public Class Uni_FileSkimmer
                 Dim DirFullName As String = directoryInfo.FullName
                 txt_AddressBar.Text = DirFullName.Replace(Strings.OnceInfo(1), "!")
                 CurrentDir = DirFullName
+                If txt_AddressBar.Text = "!" Then
+                    txt_AddressBar.Text = txt_AddressBar.Text & "\"
+                End If
                 ShowContent()
             End If
         Catch ex As Exception
@@ -221,6 +224,7 @@ Public Class Uni_FileSkimmer
                             lbl_filetype.Text = "Text File"
                             IsFile = True
                         ElseIf lsv_Content.SelectedItems(0).Text Like "*.zip" Then
+                            pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_zip
                             lbl_filetype.Text = "Compressed ZIP File"
                             IsFile = True
                         ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
@@ -275,8 +279,12 @@ Public Class Uni_FileSkimmer
     End Sub
 
     Public Sub ExecuteFile(path As String)
-        If path Like "*.txt" Then
-            Undeveloped()
+        If path Like "*.*" Then
+            If path Like "*.txt" Then
+
+            ElseIf path Like "*.zip" Then
+
+            End If
         Else
             path = path.Replace("!\", Strings.OnceInfo(1) & "\")
             If My.Computer.FileSystem.DirectoryExists(path) Then
@@ -299,18 +307,12 @@ Public Class Uni_FileSkimmer
         Dim Folders As DirectoryInfo() = Dir.GetDirectories()
         Dim Folder As DirectoryInfo
 
-        'For Each Dir As String In IO.Directory.GetDirectories(CurrentDir)
-        '    Dim Dirinfo As New IO.DirectoryInfo(Dir)
-        '    lsv_Content.Items.Add(Dirinfo.Name, 0)
-        '    'NewLine("[DIR]     0 KB " & dirinf.Name)
-        'Next
-
         For Each Folder In Folders
             Dim FolderName As String = Folder.Name
             If Strings.AvailableFeature(45) = 1 Then
                 lsv_Content.Items.Add(FolderName, 0)
             Else
-                lsv_Content.Items.Add("???", 2)
+                lsv_Content.Items.Add("???", 1)
             End If
         Next
 
@@ -321,7 +323,7 @@ Public Class Uni_FileSkimmer
             If Strings.AvailableFeature(46) = 1 Then
                 lsv_Content.Items.Add(filename, FileType)
             Else
-                lsv_Content.Items.Add("???", 2)
+                lsv_Content.Items.Add("???", 1)
             End If
         Next
     End Sub
@@ -333,8 +335,11 @@ Public Class Uni_FileSkimmer
 
         Select Case fileex
             Case ".txt"
-                FileType = 1
+                FileType = 2
                 Program = "Text Document"
+            Case ".zip"
+                FileType = 3
+                Program = "Compressed ZIP file"
             'Case ".doc"
             '    filetype = 5
             '    program = "Word Document"
@@ -393,7 +398,7 @@ Public Class Uni_FileSkimmer
                 '    filetype = 5
                 '    program = "Web Page"
             Case Else
-                FileType = 2
+                FileType = 1
                 Program = "Unknown File Type"
         End Select
 
@@ -411,31 +416,35 @@ Public Class Uni_FileSkimmer
         Dim ZipRandom As New Random
         Dim UnzipRandomInt As Integer
         Dim UnzipRandom As New Random
-        If lsv_Content.SelectedItems(0).Text Like "*.zip" Then
-            UnzipRandomInt = UnzipRandom.Next(1, 1000000)
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
-            ZipFile.ExtractToDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
-            Directory.CreateDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace(".zip", ""))
-            CopyDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace("zip", ""))
-            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, True)
-        ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
-            ZipRandomInt = ZipRandom.Next(1, 1000000)
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt)
-            File.Copy(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt & "\" & lsv_Content.SelectedItems(0).Text)
-            Dim Numbering As String = lsv_Content.SelectedItems(0).Text.Length
-            Dim TheNaming As String = lsv_Content.SelectedItems(0).Text.Substring(0, Numbering - 3) & "zip"
-            ZipFile.CreateFromDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, CurrentDir & "\" & TheNaming)
-            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, True)
-            NothingIn = False
-        ElseIf lsv_Content.SelectedItems(0).Text Like "*" Then
-            If Directory.Exists(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text) = True Then
-                ZipFile.CreateFromDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text & ".zip")
+        Try
+            If lsv_Content.SelectedItems(0).Text Like "*.zip" Then
+                UnzipRandomInt = UnzipRandom.Next(1, 1000000)
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
+                ZipFile.ExtractToDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
+                Directory.CreateDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace(".zip", ""))
+                CopyDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace("zip", ""))
+                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, True)
+            ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
+                ZipRandomInt = ZipRandom.Next(1, 1000000)
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt)
+                File.Copy(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt & "\" & lsv_Content.SelectedItems(0).Text)
+                Dim Numbering As String = lsv_Content.SelectedItems(0).Text.Length
+                Dim TheNaming As String = lsv_Content.SelectedItems(0).Text.Substring(0, Numbering - 3) & "zip"
+                ZipFile.CreateFromDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, CurrentDir & "\" & TheNaming)
+                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, True)
                 NothingIn = False
-            Else
+            ElseIf lsv_Content.SelectedItems(0).Text Like "*" Then
+                If Directory.Exists(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text) = True Then
+                    ZipFile.CreateFromDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text & ".zip")
+                    NothingIn = False
+                Else
 
+                End If
             End If
-        End If
-        ShowContent()
+            ShowContent()
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub FS_Delete()

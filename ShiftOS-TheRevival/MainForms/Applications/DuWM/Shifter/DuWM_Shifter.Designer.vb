@@ -53,7 +53,7 @@ Partial Class DuWM_Shifter
         Me.lst_Features.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.lst_Features.FormattingEnabled = True
         Me.lst_Features.ItemHeight = 21
-        Me.lst_Features.Items.AddRange(New Object() {"Desktop", "About"})
+        Me.lst_Features.Items.AddRange(New Object() {"Console", "Desktop", "About"})
         Me.lst_Features.Location = New System.Drawing.Point(0, 51)
         Me.lst_Features.Name = "lst_Features"
         Me.lst_Features.Size = New System.Drawing.Size(200, 399)
