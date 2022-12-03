@@ -113,6 +113,16 @@ Module SaveLoadSystem
                 Strings.AvailableFeature(41) = "2"
                 '0.2.8 Features
                 Strings.AvailableFeature(42) = "2"
+                Strings.AvailableFeature(43) = "2"
+                Strings.AvailableFeature(44) = "2"
+                Strings.AvailableFeature(45) = "2"
+                Strings.AvailableFeature(46) = "2"
+                Strings.AvailableFeature(47) = "2"
+                Strings.AvailableFeature(48) = "2"
+                Strings.AvailableFeature(49) = "2"
+                Strings.AvailableFeature(50) = "2"
+                Strings.AvailableFeature(51) = "2"
+                Strings.AvailableFeature(52) = "2"
         End Select
     End Sub
 
@@ -171,6 +181,16 @@ Module SaveLoadSystem
         Strings.AvailableFeature(41) = "1"
         '0.2.8 Features
         Strings.AvailableFeature(42) = "1"
+        Strings.AvailableFeature(43) = "1"
+        Strings.AvailableFeature(44) = "1"
+        Strings.AvailableFeature(45) = "1"
+        Strings.AvailableFeature(46) = "1"
+        Strings.AvailableFeature(47) = "1"
+        Strings.AvailableFeature(48) = "1"
+        Strings.AvailableFeature(49) = "1"
+        Strings.AvailableFeature(50) = "1"
+        Strings.AvailableFeature(51) = "1"
+        Strings.AvailableFeature(52) = "1"
     End Sub
 
     Public Sub GodMode()
@@ -226,6 +246,16 @@ Module SaveLoadSystem
         Strings.AvailableFeature(41) = "2"
         '0.2.8 Features
         Strings.AvailableFeature(42) = "2"
+        Strings.AvailableFeature(43) = "2"
+        Strings.AvailableFeature(44) = "2"
+        Strings.AvailableFeature(45) = "2"
+        Strings.AvailableFeature(46) = "2"
+        Strings.AvailableFeature(47) = "2"
+        Strings.AvailableFeature(48) = "2"
+        Strings.AvailableFeature(49) = "2"
+        Strings.AvailableFeature(50) = "2"
+        Strings.AvailableFeature(51) = "2"
+        Strings.AvailableFeature(52) = "2"
     End Sub
 
     Public Sub SaveGame()

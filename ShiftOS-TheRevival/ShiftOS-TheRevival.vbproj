@@ -396,6 +396,11 @@
     <Content Include="MainForms\Applications\Universal\Knowledge Input\Contents\US_States.txt" />
     <Content Include="MainForms\rev.txt" />
     <None Include="Resources\ico_up1.png" />
+    <None Include="Resources\ico_refresh.png" />
+    <None Include="Resources\ico_deletefile.png" />
+    <None Include="Resources\largeico_compress.png" />
+    <None Include="Resources\largeico_uncompress.png" />
+    <None Include="Resources\largeico_rename.png" />
     <Content Include="Resources\man Manuals\zip.txt" />
     <Content Include="Resources\man Manuals\textpad.txt" />
     <Content Include="Resources\Fortunes.txt" />

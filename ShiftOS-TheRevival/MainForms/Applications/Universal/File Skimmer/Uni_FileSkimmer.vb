@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.IO.Compression
 
 Public Class Uni_FileSkimmer
     Public CurrentDir As String
@@ -7,8 +8,6 @@ Public Class Uni_FileSkimmer
 
     Private Sub Uni_FileSkimmer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckAvailable()
-        'Sets icons for buttons in here, for some reason
-        btn_Up.BackgroundImage = My.Resources.FileSkimmerFunctionIcons.ico_up1
         'End thingy
         CurrentDir = Strings.OnceInfo(1)
         txt_AddressBar.Text = CurrentDir.Replace(Strings.OnceInfo(1), "!\")
@@ -17,8 +16,55 @@ Public Class Uni_FileSkimmer
     End Sub
 
     Private Sub CheckAvailable()
-        'btn_NewFolder.Text = "???"
-        'btn_NewFolder.Image = Nothing
+        If Strings.AvailableFeature(47) = 1 Then
+            btn_Delete.Image = My.Resources.FileSkimmerFunctionIcons.largeico_deletefile
+            DeleteToolStripMenuItem.Visible = True
+        Else
+            btn_Delete.Image = My.Resources.FileSkimmerFunctionIcons.largeico_unknown
+            btn_Delete.Text = "???"
+            DeleteToolStripMenuItem.Visible = False
+        End If
+        If Strings.AvailableFeature(48) = 1 Then
+            btn_Compress.Image = My.Resources.FileSkimmerFunctionIcons.largeico_compress
+            CompressToolStripMenuItem.Visible = True
+        Else
+            btn_Compress.Image = My.Resources.FileSkimmerFunctionIcons.largeico_unknown
+            btn_Compress.Text = "???"
+            CompressToolStripMenuItem.Visible = False
+        End If
+        If Strings.AvailableFeature(49) = 1 Then
+            PropertyPaneToolStripMenuItem.Checked = True
+            pnl_Properties.Visible = True
+        Else
+            PropertyPaneToolStripMenuItem.Checked = False
+            PropertyPaneToolStripMenuItem.Visible = False
+            pnl_Properties.Visible = False
+        End If
+        If Strings.AvailableFeature(50) = 1 Then
+            JobBarToolStripMenuItem.Checked = True
+            pnl_JobBar.Visible = True
+        Else
+            JobBarToolStripMenuItem.Checked = False
+            JobBarToolStripMenuItem.Visible = False
+            pnl_JobBar.Visible = False
+        End If
+        'Sets icons for buttons in here, for some reason
+        btn_NewFolder.Image = My.Resources.FileSkimmerFunctionIcons.largeico_unknown
+        btn_NewFolder.Text = "???"
+        btn_Rename.Image = My.Resources.FileSkimmerFunctionIcons.largeico_unknown
+        btn_Rename.Text = "???"
+        btn_CopyPath.Image = My.Resources.FileSkimmerFunctionIcons.largeico_unknown
+        btn_CopyPath.Text = "???"
+        If Strings.AvailableFeature(51) = 1 Then
+        Else
+            cmb_Layout.Items.Remove("Small Icons")
+        End If
+        If Strings.AvailableFeature(52) = 1 Then
+        Else
+            cmb_Layout.Items.Remove("List")
+        End If
+        btn_Up.BackgroundImage = My.Resources.FileSkimmerFunctionIcons.ico_up1
+        btn_Refresh.BackgroundImage = My.Resources.FileSkimmerFunctionIcons.ico_refresh
     End Sub
 
     Private Sub PropertyPaneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PropertyPaneToolStripMenuItem.Click
@@ -29,8 +75,38 @@ Public Class Uni_FileSkimmer
         End If
     End Sub
 
+    Private Sub JobBarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JobBarToolStripMenuItem.Click
+        If JobBarToolStripMenuItem.CheckState = False Then
+            pnl_JobBar.Visible = False
+        Else
+            pnl_JobBar.Visible = True
+        End If
+    End Sub
+
+    Private Sub CompressToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CompressToolStripMenuItem.Click
+        If Strings.AvailableFeature(48) = 1 Then
+            FS_Compression()
+        End If
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+        FS_Delete()
+    End Sub
+
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Dispose()
+    End Sub
+
+    Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
+        FS_Delete()
+    End Sub
+
+    Private Sub btn_Compress_Click(sender As Object, e As EventArgs) Handles btn_Compress.Click
+        If Strings.AvailableFeature(48) = 1 Then
+            FS_Compression()
+        Else
+
+        End If
     End Sub
 
     Private Sub cmb_Layout_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_Layout.SelectedIndexChanged
@@ -108,7 +184,11 @@ Public Class Uni_FileSkimmer
                         ShowContent()
                     End If
                 End If
-                End If
+            Else
+                txt_AddressBar.Text = "!\"
+                CurrentDir = Strings.OnceInfo(1)
+                ShowContent()
+            End If
         End If
     End Sub
 
@@ -123,6 +203,10 @@ Public Class Uni_FileSkimmer
     Private Sub lsv_Content_MouseClick(sender As Object, e As MouseEventArgs) Handles lsv_Content.MouseClick
         Select Case e.Button
             Case MouseButtons.Left
+                Dim IsCompressed As Boolean = False
+                If lsv_Content.SelectedItems(0).Text Like "*.zip" Then
+                    IsCompressed = True
+                End If
                 If pnl_Properties.Visible = True Then
                     Dim IsFile As Boolean = False
                     If lsv_Content.SelectedItems(0).Text = Nothing Then
@@ -136,6 +220,9 @@ Public Class Uni_FileSkimmer
                         If lsv_Content.SelectedItems(0).Text Like "*.txt" Then
                             pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_textfile
                             lbl_filetype.Text = "Text File"
+                            IsFile = True
+                        ElseIf lsv_Content.SelectedItems(0).Text Like "*.zip" Then
+                            lbl_filetype.Text = "Compressed ZIP File"
                             IsFile = True
                         ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
                             pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_unknown
@@ -169,6 +256,17 @@ Public Class Uni_FileSkimmer
                             lbl_filesize.Visible = False
                         End If
                         lbl_filename.Text = lsv_Content.SelectedItems(0).Text
+                    End If
+                End If
+                If Strings.AvailableFeature(48) = 1 Then
+                    If IsCompressed = True Then
+                        btn_Compress.Image = My.Resources.FileSkimmerFunctionIcons.largeico_uncompress
+                        btn_Compress.Text = "Extract"
+                        CompressToolStripMenuItem.Text = "Extract"
+                    Else
+                        btn_Compress.Image = My.Resources.FileSkimmerFunctionIcons.largeico_compress
+                        btn_Compress.Text = "Compress"
+                        CompressToolStripMenuItem.Text = "Compress"
                     End If
                 End If
         End Select
@@ -207,16 +305,22 @@ Public Class Uni_FileSkimmer
 
         For Each Folder In Folders
             Dim FolderName As String = Folder.Name
-            lsv_Content.Items.Add(FolderName, 0)
+            If Strings.AvailableFeature(45) = 1 Then
+                lsv_Content.Items.Add(FolderName, 0)
+            Else
+                lsv_Content.Items.Add("???", 2)
+            End If
         Next
 
         For Each File In Files
             Dim filename As String = File.Name
             Dim fileex As String = File.Extension
-
             FileType = GetFileType(fileex)(0)
-
-            lsv_Content.Items.Add(filename, FileType)
+            If Strings.AvailableFeature(46) = 1 Then
+                lsv_Content.Items.Add(filename, FileType)
+            Else
+                lsv_Content.Items.Add("???", 2)
+            End If
         Next
     End Sub
 
@@ -299,7 +403,53 @@ Public Class Uni_FileSkimmer
         End If
     End Function
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
-        DeleteFile(CurrentDir & lsv_Content.SelectedItems(0).Text)
+    Private Sub FS_Compression()
+        Dim NothingIn As Boolean = True
+        Dim ZipRandomInt As Integer
+        Dim ZipRandom As New Random
+        Dim UnzipRandomInt As Integer
+        Dim UnzipRandom As New Random
+        If lsv_Content.SelectedItems(0).Text Like "*.zip" Then
+            UnzipRandomInt = UnzipRandom.Next(1, 1000000)
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
+            ZipFile.ExtractToDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt)
+            Directory.CreateDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace(".zip", ""))
+            CopyDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text.Replace("zip", ""))
+            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\UNZIP" & UnzipRandomInt, True)
+        ElseIf lsv_Content.SelectedItems(0).Text Like "*.*" Then
+            ZipRandomInt = ZipRandom.Next(1, 1000000)
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt)
+            File.Copy(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt & "\" & lsv_Content.SelectedItems(0).Text)
+            Dim Numbering As String = lsv_Content.SelectedItems(0).Text.Length
+            Dim TheNaming As String = lsv_Content.SelectedItems(0).Text.Substring(0, Numbering - 3) & "zip"
+            ZipFile.CreateFromDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, CurrentDir & "\" & TheNaming)
+            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\SysShiftFS\ZIP" & ZipRandomInt, True)
+            NothingIn = False
+        ElseIf lsv_Content.SelectedItems(0).Text Like "*" Then
+            If Directory.Exists(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text) = True Then
+                ZipFile.CreateFromDirectory(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text, CurrentDir & "\" & lsv_Content.SelectedItems(0).Text & ".zip")
+                NothingIn = False
+            Else
+
+            End If
+        End If
+        ShowContent()
+    End Sub
+
+    Private Sub FS_Delete()
+        If Strings.AvailableFeature(47) = 0 Then
+
+        Else
+            Try
+                If lsv_Content.SelectedItems(0).Text Like "*.*" Then
+                    File.Delete(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text)
+                ElseIf lsv_Content.SelectedItems(0).Text Like "*" Then
+                    Directory.Delete(CurrentDir & "\" & lsv_Content.SelectedItems(0).Text)
+                End If
+                ShowContent()
+            Catch ex As Exception
+
+            End Try
+        End If
     End Sub
 End Class

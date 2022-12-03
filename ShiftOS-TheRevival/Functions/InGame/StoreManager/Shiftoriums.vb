@@ -150,7 +150,7 @@
                     End If
                 End If
             End If
-                If Strings.AvailableFeature(37) = 0 Then
+            If Strings.AvailableFeature(37) = 0 Then
                 NewLine("(knowledge | 275 CP) Knowledge Input")
             Else
                 If Strings.AvailableFeature(38) = 0 Then
@@ -163,6 +163,12 @@
                     NewLine("(ki_us | 300 CP) KI US States")
                 End If
             End If
+            If Strings.AvailableFeature(43) = 0 Then
+                NewLine("(duwm_rw | 250 CP) DuWM Advanced Read and Write support")
+            Else
+                If Strings.AvailableFeature(44) = 0 Then
+                    NewLine("(fileskimmer | 300 CP) File Skimmer")
+                End If
             End If
     End Sub
 
@@ -546,6 +552,17 @@
                 If Strings.AvailableFeature(42) = 0 Then
                     ManHeader(0) = "KI US States"
                     ManHeader(1) = "300 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds US States category into Knowledge Input")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "duwm_rw"
+                If Strings.AvailableFeature(43) = 0 Then
+                    ManHeader(0) = "DuWM Advanced Read and Write support"
+                    ManHeader(1) = "250 CP"
                     NewLine(ManHeader(0))
                     NewLine(Nothing)
                     NewLine("Adds US States category into Knowledge Input")

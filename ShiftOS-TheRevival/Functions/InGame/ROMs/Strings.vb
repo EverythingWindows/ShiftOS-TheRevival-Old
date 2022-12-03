@@ -3,7 +3,7 @@
     Public Shared ComputerInfo(7) As String
     Public Shared IsFree As Boolean
     Public Shared OnceInfo(8) As String
-    Public Shared AvailableFeature(42) As String
+    Public Shared AvailableFeature(52) As String
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
@@ -97,6 +97,16 @@
     '40 = DuWM RGB Support [Adds RGB and its other variant support to DuWM] (default : 0)
     '41 = DuWM 16 Colors Support [Adds mix of RGB color support into ShiftOS] (default : 0)
     '42 = KI US States [Adds United States States category into the Knowledge Input] (default : 0)
+    '43 = DuWM Advanced Read and Write [Expands read and write support for DuWM] (default : 0)
+    '44 = File Skimmer [A file manager for ShiftOS] (default : 0)
+    '45 = File Skimmer Folder Support [Supports for reading and writing folder in File Skimmer] (default : 0)
+    '46 = File Skimmer File Support [Supports for reading and writing file in File Skimmer] (default : 0)
+    '47 = File Skimmer Delete Support [Adds file deletion function into ShiftOS] (default : 0)
+    '48 = File Skimmer ZIP Support [Adds ZIP compression function into ShiftOS] (default : 0)
+    '49 = File Skimmer Properties Pane [Adds a sidebar contains file/directory informations] (default : 0)
+    '50 = File Skimmer JobBar [Adds a top bar for actions on File Skimmer] (default : 0)
+    '51 = File Skimmer Small Icons [Adds small icons layout on File Skimmer] (default : 0)
+    '52 = File Skimmer List [Adds small icons layout on File Skimmer] (default : 0)
     '
     'Features bought hierarchy :
     '
@@ -147,11 +157,14 @@
     '>>>KI Animals (KI_ANIMALS) (300 CP)
     '>>>KI Fruits (KI_FRUITS) (300 CP)
     '>>>KI US States (KI_US) (300 CP)
-    '>>DuWM Read and Write support (250 CP)
-    '>>>File Skimmer (300 CP)
-    '>>>>FS Properties Pane (325 CP)
-    '>>>>FS Small Images Layout (350 CP)
-    '>>>>FS List Layout (350 CP)
-    '>>>>FS Delete (350 CP)
-    '>>>>FS ZIP support (400 CP)
+    '>>DuWM Advanced Read and Write support (DUWM_RW) (250 CP)
+    '>>>File Skimmer (FILESKIMMER) (300 CP)
+    '>>>>FS Folder Support (FS_FOLDER) (325 CP)
+    '>>>>>FS File Support (FS_FILE) (350 CP)
+    '>>>>>>FS Delete Support (FS_DELETE) (400 CP)
+    '>>>>>>FS ZIP Support (FS_ZIP) (500 CP)
+    '>>>>FS Properties Pane (FS_PPANE) (350 CP)
+    '>>>>FS JobBar (FS_JOBBAR) (400 CP)
+    '>>>>>FS Small Icons Layout (FS_SMALLICONS) (425 CP)
+    '>>>>>FS List Layout (FS_LIST) (425 CP)
 End Class
