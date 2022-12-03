@@ -168,8 +168,37 @@
             Else
                 If Strings.AvailableFeature(44) = 0 Then
                     NewLine("(fileskimmer | 300 CP) File Skimmer")
+                Else
+                    If Strings.AvailableFeature(45) = 0 Then
+                        NewLine("(fs_folder | 325 CP) FS Folder Support")
+                    Else
+                        If Strings.AvailableFeature(46) = 0 Then
+                            NewLine("(fs_file | 350 CP) FS File Support")
+                        Else
+                            If Strings.AvailableFeature(47) = 0 Then
+                                NewLine("(fs_delete | 400 CP) FS Delete Support")
+                            End If
+                            If Strings.AvailableFeature(48) = 0 Then
+                                NewLine("(fs_zip | 500 CP) FS ZIP Support")
+                            End If
+                        End If
+                    End If
+                    If Strings.AvailableFeature(49) = 0 Then
+                        NewLine("(fs_ppane | 350 CP) FS Property Pane")
+                    End If
+                    If Strings.AvailableFeature(50) = 0 Then
+                        NewLine("(fs_jobbar | 400 CP) FS JobBar")
+                    Else
+                        If Strings.AvailableFeature(51) = 0 Then
+                            NewLine("(fs_smallicons | 425 CP) FS Small Icons Layout")
+                        End If
+                        If Strings.AvailableFeature(52) = 0 Then
+                            NewLine("(fs_list | 425 CP) FS List Layout")
+                        End If
+                    End If
                 End If
             End If
+        End If
     End Sub
 
     Public Sub Shiftorium_InformationFeatures()
@@ -565,7 +594,106 @@
                     ManHeader(1) = "250 CP"
                     NewLine(ManHeader(0))
                     NewLine(Nothing)
-                    NewLine("Adds US States category into Knowledge Input")
+                    NewLine("Expands read and write support for Dual Window Manager")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fileskimmer"
+                If Strings.AvailableFeature(44) = 0 Then
+                    ManHeader(0) = "File Skimmer"
+                    ManHeader(1) = "300 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("A file manager for ShiftOS")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_folder"
+                If Strings.AvailableFeature(45) = 0 Then
+                    ManHeader(0) = "FS Folder support"
+                    ManHeader(1) = "325 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds folder read and write support for File Skimmer")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_file"
+                If Strings.AvailableFeature(46) = 0 Then
+                    ManHeader(0) = "FS File support"
+                    ManHeader(1) = "350 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds file read and write support for File Skimmer")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_delete"
+                If Strings.AvailableFeature(47) = 0 Then
+                    ManHeader(0) = "FS Delete support"
+                    ManHeader(1) = "400 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Supports file or directory deletion function in ShiftOS")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_zip"
+                If Strings.AvailableFeature(48) = 0 Then
+                    ManHeader(0) = "FS Delete support"
+                    ManHeader(1) = "500 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Supports ZIP compression function in ShiftOS")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_ppane"
+                If Strings.AvailableFeature(49) = 0 Then
+                    ManHeader(0) = "FS Property Pane"
+                    ManHeader(1) = "350 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("A sidebar for displaying informations about the file / directory")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_jobbar"
+                If Strings.AvailableFeature(50) = 0 Then
+                    ManHeader(0) = "FS JobBar"
+                    ManHeader(1) = "400 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("A top panel contains certain actions for File Skimmer")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_smallicons"
+                If Strings.AvailableFeature(51) = 0 Then
+                    ManHeader(0) = "FS Small Icons Layout"
+                    ManHeader(1) = "425 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds small icons as a display layout in File Skimmer")
+                    NewLine(Nothing)
+                    NewLine(ManHeader(1))
+                    NormalCommand()
+                End If
+            Case "fs_list"
+                If Strings.AvailableFeature(51) = 0 Then
+                    ManHeader(0) = "FS List"
+                    ManHeader(1) = "425 CP"
+                    NewLine(ManHeader(0))
+                    NewLine(Nothing)
+                    NewLine("Adds list as a display layout in File Skimmer")
                     NewLine(Nothing)
                     NewLine(ManHeader(1))
                     NormalCommand()
@@ -708,6 +836,36 @@
                 NormalCommand()
             Case "ki_us"
                 Shiftorium_InstallFeatures(True, "ki_us", 42, 300)
+                NormalCommand()
+            Case "duwm_rw"
+                Shiftorium_InstallFeatures(True, "duwm_rw", 43, 250)
+                NormalCommand()
+            Case "fileskimmer"
+                Shiftorium_InstallFeatures(True, "fileskimmer", 44, 300)
+                NormalCommand()
+            Case "fs_folder"
+                Shiftorium_InstallFeatures(True, "fs_folder", 45, 325)
+                NormalCommand()
+            Case "fs_file"
+                Shiftorium_InstallFeatures(True, "fs_file", 46, 350)
+                NormalCommand()
+            Case "fs_delete"
+                Shiftorium_InstallFeatures(True, "fs_delete", 47, 400)
+                NormalCommand()
+            Case "fs_zip"
+                Shiftorium_InstallFeatures(True, "fs_zip", 48, 500)
+                NormalCommand()
+            Case "fs_ppane"
+                Shiftorium_InstallFeatures(True, "fs_ppane", 49, 350)
+                NormalCommand()
+            Case "fs_jobbar"
+                Shiftorium_InstallFeatures(True, "fs_jobbar", 50, 400)
+                NormalCommand()
+            Case "fs_smallicons"
+                Shiftorium_InstallFeatures(True, "fs_smallicons", 51, 425)
+                NormalCommand()
+            Case "fs_list"
+                Shiftorium_InstallFeatures(True, "fs_list", 52, 425)
                 NormalCommand()
             Case Else
                 NormalCommand()
@@ -879,6 +1037,7 @@
                             GUISCustomizations.DesktopColor = Color.Black
                             Strings.AvailableFeature(36) = "0"
                             Strings.AvailableFeature(37) = "0"
+                            Strings.AvailableFeature(43) = "0"
                             success = True
                         Case "shifter"
                             Strings.AvailableFeature(36) = "1"
@@ -906,6 +1065,45 @@
                             success = True
                         Case "ki_us"
                             Strings.AvailableFeature(42) = "1"
+                            success = True
+                        Case "duwm_rw"
+                            Strings.AvailableFeature(43) = "1"
+                            Strings.AvailableFeature(44) = "0"
+                            success = True
+                        Case "fileskimmer"
+                            Strings.AvailableFeature(44) = "1"
+                            Strings.AvailableFeature(45) = "0"
+                            Strings.AvailableFeature(49) = "0"
+                            Strings.AvailableFeature(50) = "0"
+                            success = True
+                        Case "fs_folder"
+                            Strings.AvailableFeature(45) = "1"
+                            Strings.AvailableFeature(46) = "0"
+                            success = True
+                        Case "fs_file"
+                            Strings.AvailableFeature(46) = "1"
+                            Strings.AvailableFeature(47) = "0"
+                            Strings.AvailableFeature(48) = "0"
+                            success = True
+                        Case "fs_delete"
+                            Strings.AvailableFeature(47) = "1"
+                            success = True
+                        Case "fs_zip"
+                            Strings.AvailableFeature(48) = "1"
+                            success = True
+                        Case "fs_ppane"
+                            Strings.AvailableFeature(49) = "1"
+                            success = True
+                        Case "fs_jobbar"
+                            Strings.AvailableFeature(50) = "1"
+                            Strings.AvailableFeature(51) = "0"
+                            Strings.AvailableFeature(52) = "0"
+                            success = True
+                        Case "fs_smallicons"
+                            Strings.AvailableFeature(51) = "1"
+                            success = True
+                        Case "fs_list"
+                            Strings.AvailableFeature(52) = "1"
                             success = True
                     End Select
                     If success = False Then

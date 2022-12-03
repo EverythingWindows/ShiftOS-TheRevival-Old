@@ -11,7 +11,6 @@ Public Class Uni_FileSkimmer
         'End thingy
         CurrentDir = Strings.OnceInfo(1)
         txt_AddressBar.Text = CurrentDir.Replace(Strings.OnceInfo(1), "!\")
-        pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_folder
         ShowContent()
     End Sub
 
@@ -228,6 +227,9 @@ Public Class Uni_FileSkimmer
                             pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_unknown
                             lbl_filetype.Text = "Unknown File Type"
                             IsFile = True
+                        ElseIf lsv_Content.SelectedItems(0).Text = "???" Then
+                            pic_Icon.Image = My.Resources.FileSkimmerFileIcons.ico_unknown
+                            lbl_filetype.Text = "Unknown Type"
                         End If
                         If IsFile = True Then
                             lbl_filesize.Visible = True
