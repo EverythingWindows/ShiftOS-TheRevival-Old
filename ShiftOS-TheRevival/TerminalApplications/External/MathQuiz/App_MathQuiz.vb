@@ -50,14 +50,18 @@
     End Sub
 
     Public Sub MQ_CheckAnswer()
-        Dim TheAnswer As Integer = command
-        If TheAnswer = MQ_ShouldResult Then
-            NewLine("You got the right answer! You got " & MQ_ShouldResult & " Codepoint(s)")
-            ChangeCP(True, MQ_ShouldResult)
-            MQ_GiveQuestion()
-        Else
-            NewLine("You got the wrong answer! Try again")
-            MQ_GiveQuestion()
-        End If
+        Try
+            Dim TheAnswer As Integer = command
+            If TheAnswer = MQ_ShouldResult Then
+                NewLine("You got the right answer! You got " & MQ_ShouldResult & " Codepoint(s)")
+                ChangeCP(True, MQ_ShouldResult)
+                MQ_GiveQuestion()
+            Else
+                NewLine("You got the wrong answer! Try again")
+                MQ_GiveQuestion()
+            End If
+        Catch ex As Exception
+            NewLine("Invalid number or command")
+        End Try
     End Sub
 End Module

@@ -64,6 +64,17 @@ Module SaveLoadSystem
                 Strings.AvailableFeature(41) = "2"
                 '0.2.8 Features
                 Strings.AvailableFeature(42) = "2"
+                Strings.AvailableFeature(43) = "2"
+                Strings.AvailableFeature(44) = "2"
+                Strings.AvailableFeature(45) = "2"
+                Strings.AvailableFeature(46) = "2"
+                Strings.AvailableFeature(47) = "2"
+                Strings.AvailableFeature(48) = "2"
+                Strings.AvailableFeature(49) = "2"
+                Strings.AvailableFeature(50) = "2"
+                Strings.AvailableFeature(51) = "2"
+                Strings.AvailableFeature(52) = "2"
+                Strings.AvailableFeature(53) = "2"
             Case 1
                 Strings.AvailableFeature(0) = "1"
                 Strings.AvailableFeature(1) = "1"

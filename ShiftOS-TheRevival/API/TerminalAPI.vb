@@ -11,10 +11,11 @@ Module TerminalAPI
         Strings.OnceInfo(4) = "!"
         If IsConsoleParent = True Then
             Console.TopMost = False
-            Cursor.Hide()
             Strings.OnceInfo(7) = Console.Width
             Strings.OnceInfo(8) = Console.Height
             Console.TextBox1.Font = New Font("Consolas", 11)
+            Console.ConsoleFontHandle.Stop()
+            Cursor.Hide()
             If Strings.IsFree = True Then
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
@@ -53,7 +54,6 @@ Module TerminalAPI
                 End If
             End If
         Else
-            Cursor.Show()
             Console_Windowed()
             Console.TopMost = True
             Try
@@ -63,6 +63,8 @@ Module TerminalAPI
             End Try
             Terminal_PrintPrompt()
             Terminal_AssignPrompt()
+            Cursor.Show()
+            Console.ConsoleFontHandle.Start()
         End If
         Console.CurrentDirectory = Strings.OnceInfo(1)
         Console.Pseudodir = Console.CurrentDirectory.Replace(Strings.OnceInfo(1), "!\")
@@ -195,6 +197,8 @@ Module TerminalAPI
             Case "05tray"
                 _05tray()
                 NewLine("you cheater!")
+            Case "anus"
+                AnusWM_Menu.Show()
             Case "applist"
                 If IsStartG = True Then
                     AppList()

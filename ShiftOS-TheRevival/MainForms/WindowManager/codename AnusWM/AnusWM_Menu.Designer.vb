@@ -22,7 +22,7 @@ Partial Class AnusWM_Menu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.mnu_Main = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ApplicationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShifterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -31,20 +31,21 @@ Partial Class AnusWM_Menu
         Me.StopAnusWMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShutdownToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuStrip1.SuspendLayout()
+        Me.TestcocjToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnu_Main.SuspendLayout()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'mnu_Main
         '
-        Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ApplicationsToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.AboutToolStripMenuItem, Me.ExitToolStripMenuItem})
-        Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(169, 121)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.mnu_Main.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.mnu_Main.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.mnu_Main.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ApplicationsToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.AboutToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.mnu_Main.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
+        Me.mnu_Main.Location = New System.Drawing.Point(0, 0)
+        Me.mnu_Main.Name = "mnu_Main"
+        Me.mnu_Main.Size = New System.Drawing.Size(169, 121)
+        Me.mnu_Main.TabIndex = 0
+        Me.mnu_Main.Text = "MenuStrip1"
         '
         'ToolStripMenuItem1
         '
@@ -53,6 +54,7 @@ Partial Class AnusWM_Menu
         '
         'ApplicationsToolStripMenuItem
         '
+        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TestcocjToolStripMenuItem})
         Me.ApplicationsToolStripMenuItem.Name = "ApplicationsToolStripMenuItem"
         Me.ApplicationsToolStripMenuItem.Size = New System.Drawing.Size(162, 25)
         Me.ApplicationsToolStripMenuItem.Text = "Applications"
@@ -79,20 +81,26 @@ Partial Class AnusWM_Menu
         'StopAnusWMToolStripMenuItem
         '
         Me.StopAnusWMToolStripMenuItem.Name = "StopAnusWMToolStripMenuItem"
-        Me.StopAnusWMToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.StopAnusWMToolStripMenuItem.Size = New System.Drawing.Size(179, 26)
         Me.StopAnusWMToolStripMenuItem.Text = "Stop AnusWM"
         '
         'RestartToolStripMenuItem
         '
         Me.RestartToolStripMenuItem.Name = "RestartToolStripMenuItem"
-        Me.RestartToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.RestartToolStripMenuItem.Size = New System.Drawing.Size(179, 26)
         Me.RestartToolStripMenuItem.Text = "Restart"
         '
         'ShutdownToolStripMenuItem
         '
         Me.ShutdownToolStripMenuItem.Name = "ShutdownToolStripMenuItem"
-        Me.ShutdownToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.ShutdownToolStripMenuItem.Size = New System.Drawing.Size(179, 26)
         Me.ShutdownToolStripMenuItem.Text = "Shutdown"
+        '
+        'TestcocjToolStripMenuItem
+        '
+        Me.TestcocjToolStripMenuItem.Name = "TestcocjToolStripMenuItem"
+        Me.TestcocjToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.TestcocjToolStripMenuItem.Text = "Testcocj"
         '
         'AnusWM_Menu
         '
@@ -100,19 +108,19 @@ Partial Class AnusWM_Menu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(169, 121)
-        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.mnu_Main)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.MainMenuStrip = Me.mnu_Main
         Me.Name = "AnusWM_Menu"
         Me.Text = "AnusWM_Menu"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        Me.mnu_Main.ResumeLayout(False)
+        Me.mnu_Main.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents mnu_Main As MenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ApplicationsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShifterToolStripMenuItem As ToolStripMenuItem
@@ -121,4 +129,5 @@ Partial Class AnusWM_Menu
     Friend WithEvents StopAnusWMToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RestartToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShutdownToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestcocjToolStripMenuItem As ToolStripMenuItem
 End Class

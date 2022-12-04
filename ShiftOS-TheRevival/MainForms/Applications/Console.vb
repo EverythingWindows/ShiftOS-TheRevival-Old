@@ -22,9 +22,7 @@ Public Class Console
         With ShortcutHandler
             .WorkerSupportsCancellation = True
         End With
-        'MsgBox("Full!")
         Console_Full()
-        'MsgBox("Initialize!")
         InitializeTerminal()
     End Sub
 
@@ -227,7 +225,7 @@ Public Class Console
         If Strings.OnceInfo(0) = "Yes" Then
             InfoBar.Text = InfoBar.Text & " root |"
         Else
-            InfoBar.Text = InfoBar.Text & " user |"
+            InfoBar.Text = InfoBar.Text & " " & Strings.ComputerInfo(1) & " |"
         End If
         InfoBar.Text = InfoBar.Text & " " & CurrentInterpreter & " |"
         InfoBar.Text = InfoBar.Text & " " & Strings.ComputerInfo(2) & " CP |"
@@ -238,7 +236,12 @@ Public Class Console
 
     End Sub
 
-    Private Sub DuWMHandle_Tick(sender As Object, e As EventArgs) Handles DuWMHandle.Tick
-
+    Private Sub ConsoleFontHandle_Tick(sender As Object, e As EventArgs) Handles ConsoleFontHandle.Tick
+        If InfoBar.Font IsNot GUISCustomizations.GUIConsoleFont Then
+            InfoBar.Font = GUISCustomizations.GUIConsoleFont
+        End If
+        If ToolBar.Font IsNot GUISCustomizations.GUIConsoleFont Then
+            ToolBar.Font = GUISCustomizations.GUIConsoleFont
+        End If
     End Sub
 End Class
