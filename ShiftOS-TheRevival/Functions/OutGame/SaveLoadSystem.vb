@@ -144,7 +144,7 @@ Module SaveLoadSystem
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
         Strings.ComputerInfo(2) = "0"
-        Strings.ComputerInfo(4) = "42"
+        Strings.ComputerInfo(4) = "53"
         Strings.AvailableFeature(0) = "1"
         Strings.AvailableFeature(1) = "1"
         Strings.AvailableFeature(2) = "1"
@@ -213,7 +213,7 @@ Module SaveLoadSystem
         'Same as new game but codepoints automatically assigned to 9999 and not saved into the FS
         Strings.ComputerInfo(0) = "shiftos"
         Strings.ComputerInfo(1) = "user"
-        Strings.ComputerInfo(2) = 9999
+        Strings.ComputerInfo(2) = 100000
         Strings.ComputerInfo(4) = "0"
         Strings.AvailableFeature(0) = "2"
         Strings.AvailableFeature(1) = "2"

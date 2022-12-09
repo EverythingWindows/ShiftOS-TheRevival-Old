@@ -124,6 +124,12 @@
     <Compile Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForms\Applications\Universal\Calculator\Uni_Calculator.Designer.vb">
+      <DependentUpon>Uni_Calculator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\Applications\Universal\Calculator\Uni_Calculator.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFileIcons.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\DuWM_Shifter.resx">
       <DependentUpon>DuWM_Shifter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\Applications\Universal\Calculator\Uni_Calculator.resx">
+      <DependentUpon>Uni_Calculator.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\Universal\File Skimmer\Icons\FileSkimmerFileIcons.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>

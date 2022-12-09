@@ -26,7 +26,8 @@ Public Class ShiftOSUpdater
             If Not FilePut.FileName = "" Then
                 Button1.Enabled = False
                 Button2.Enabled = False
-                Dim PutTo As String = "http://148.251.124.62:8080/ShiftOS/versions/ShiftOS-TheRevival.v" & NewVersion & ".exe"
+                Dim PutTo As String = "http://github.com/EverythingWindows/ShiftOS-TheRevival/releases/download/" & NewVersion & "/ShiftOS-TheRevival.v" & NewVersion & ".exe"
+                'Dim PutTo As String = "http://148.251.124.62:8080/ShiftOS/versions/ShiftOS-TheRevival.v" & NewVersion & ".exe" <= Legacy Updater
                 'Dim GetTo As New Uri(PutTo)
                 My.Computer.Network.DownloadFile(PutTo, FilePut.FileName)
                 'Revisit this later

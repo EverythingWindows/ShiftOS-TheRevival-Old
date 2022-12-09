@@ -72,6 +72,7 @@ Partial Class Uni_FileSkimmer
         Me.msn_Options.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.msn_Options.Location = New System.Drawing.Point(0, 0)
         Me.msn_Options.Name = "msn_Options"
+        Me.msn_Options.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.msn_Options.Size = New System.Drawing.Size(800, 27)
         Me.msn_Options.TabIndex = 0
         Me.msn_Options.Text = "mns_Options"
@@ -86,24 +87,24 @@ Partial Class Uni_FileSkimmer
         'CompressToolStripMenuItem
         '
         Me.CompressToolStripMenuItem.Name = "CompressToolStripMenuItem"
-        Me.CompressToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
+        Me.CompressToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.CompressToolStripMenuItem.Text = "Compress"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(136, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'OptionsToolStripMenuItem
@@ -117,14 +118,14 @@ Partial Class Uni_FileSkimmer
         '
         Me.JobBarToolStripMenuItem.CheckOnClick = True
         Me.JobBarToolStripMenuItem.Name = "JobBarToolStripMenuItem"
-        Me.JobBarToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
+        Me.JobBarToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.JobBarToolStripMenuItem.Text = "JobBar"
         '
         'PropertyPaneToolStripMenuItem
         '
         Me.PropertyPaneToolStripMenuItem.CheckOnClick = True
         Me.PropertyPaneToolStripMenuItem.Name = "PropertyPaneToolStripMenuItem"
-        Me.PropertyPaneToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
+        Me.PropertyPaneToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.PropertyPaneToolStripMenuItem.Text = "Property Pane"
         '
         'AboutToolStripMenuItem

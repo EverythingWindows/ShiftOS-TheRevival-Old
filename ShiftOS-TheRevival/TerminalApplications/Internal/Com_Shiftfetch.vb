@@ -21,7 +21,7 @@
                     AddLine("Dual Window Manager")
             End Select
         End If
-        NewLine(" ^@@! :          @Y   .:::^~:.           7#  Y@^  Window Manager Theme: -")
+        NewLine(" ^@@! :          @Y   .:::^~:.           7#  Y@^  Desktop Environment: -")
         NewLine(" 7@@: !          B@&BBBBGPPB@#Y.         :&^ ^@?  Terminal: shiftos-terminal")
         NewLine(" ?@@: 7          :??7~:.    5@@5         :&^ .&?  Terminal Font: ")
         If IsStartG = True Then
