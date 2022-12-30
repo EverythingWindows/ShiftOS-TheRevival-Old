@@ -51,31 +51,31 @@ Partial Class AnusWM_Menu
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(106, 4)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(132, 4)
         '
         'ApplicationsToolStripMenuItem
         '
         Me.ApplicationsToolStripMenuItem.Name = "ApplicationsToolStripMenuItem"
-        Me.ApplicationsToolStripMenuItem.Size = New System.Drawing.Size(106, 25)
+        Me.ApplicationsToolStripMenuItem.Size = New System.Drawing.Size(132, 25)
         Me.ApplicationsToolStripMenuItem.Text = "Applications"
         '
         'ShifterToolStripMenuItem
         '
         Me.ShifterToolStripMenuItem.Name = "ShifterToolStripMenuItem"
-        Me.ShifterToolStripMenuItem.Size = New System.Drawing.Size(106, 25)
+        Me.ShifterToolStripMenuItem.Size = New System.Drawing.Size(132, 25)
         Me.ShifterToolStripMenuItem.Text = "Shifter"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(106, 25)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(132, 25)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StopAnusWMToolStripMenuItem, Me.RestartToolStripMenuItem, Me.ShutdownToolStripMenuItem})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(106, 25)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(132, 25)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'StopAnusWMToolStripMenuItem
@@ -98,10 +98,10 @@ Partial Class AnusWM_Menu
         '
         'lbl_Title
         '
-        Me.lbl_Title.BackColor = System.Drawing.Color.Black
+        Me.lbl_Title.BackColor = System.Drawing.Color.Gray
         Me.lbl_Title.Dock = System.Windows.Forms.DockStyle.Top
         Me.lbl_Title.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic)
-        Me.lbl_Title.ForeColor = System.Drawing.Color.White
+        Me.lbl_Title.ForeColor = System.Drawing.Color.Black
         Me.lbl_Title.Location = New System.Drawing.Point(0, 0)
         Me.lbl_Title.Name = "lbl_Title"
         Me.lbl_Title.Size = New System.Drawing.Size(139, 25)
@@ -117,6 +117,7 @@ Partial Class AnusWM_Menu
         Me.ClientSize = New System.Drawing.Size(139, 137)
         Me.Controls.Add(Me.mnu_Main)
         Me.Controls.Add(Me.lbl_Title)
+        Me.ForeColor = System.Drawing.Color.Gray
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.mnu_Main
         Me.Name = "AnusWM_Menu"

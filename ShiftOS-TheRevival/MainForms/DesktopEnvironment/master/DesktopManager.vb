@@ -23,7 +23,9 @@ Module DesktopManager
         If Strings.OnceInfo(6) = "story" Then
             SaveGame()
         End If
-        MsgBox("this is not a bug, this is a feature") 'Use this messagebox to hold Console to stay open, because removing this line closes Console all together for some reason
+        If Strings.ComputerInfo(7) = 1 Then
+            MsgBox("this is not a bug, this is a feature") 'Use this messagebox to hold Console to stay open, because removing this line closes Console all together for some reason
+        End If
         Console.Show()
         Desktop.Hide()
     End Sub
@@ -44,6 +46,8 @@ Module DesktopManager
         Select Case Strings.ComputerInfo(7)
             Case 1
                 DuWM_Initiate()
+            Case 2
+                AnusWM_Initiate()
         End Select
     End Sub
 End Module

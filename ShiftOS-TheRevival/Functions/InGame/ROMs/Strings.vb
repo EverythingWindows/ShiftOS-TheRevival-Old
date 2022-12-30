@@ -7,7 +7,7 @@
     Public Shared CLIInterpreter As String
     Public Shared SaveFile As String
     Public Shared Achievement As String
-    Public Shared ProcessID(1) As String
+    Public Shared ProcessID(15) As String
 
     'STRING CATEGORIZATION WRITING RULES!
     'THIS IS IN ORDER TO REMAIN COMPATIBLE WITH OLDER VERSIONS!

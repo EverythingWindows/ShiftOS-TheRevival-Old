@@ -19,7 +19,7 @@ Module TerminalAPI
             If Strings.IsFree = True Then
                 Strings.ComputerInfo(0) = "shiftos"
                 Strings.ComputerInfo(1) = "user"
-                Strings.ComputerInfo(7) = 1
+                Strings.ComputerInfo(7) = 2
                 Terminal_CheckFeature()
                 Terminal_PrintPrompt()
                 Terminal_AssignPrompt()

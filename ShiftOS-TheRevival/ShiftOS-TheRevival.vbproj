@@ -233,6 +233,7 @@
     </Compile>
     <Compile Include="API\ConsoleAPI.vb" />
     <Compile Include="API\TerminalAPI.vb" />
+    <Compile Include="MainForms\WindowManager\codename AnusWM\AnusWM_Main.vb" />
     <Compile Include="MainForms\WindowManager\codename AnusWM\AnusWM_Menu.Designer.vb">
       <DependentUpon>AnusWM_Menu.vb</DependentUpon>
     </Compile>

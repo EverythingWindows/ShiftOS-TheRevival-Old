@@ -19,6 +19,8 @@
             Select Case Strings.ComputerInfo(7)
                 Case 1
                     AddLine("Dual Window Manager")
+                Case 2
+                    AddLine("Anus Window Manager")
             End Select
         End If
         NewLine(" ^@@! :          @Y   .:::^~:.           7#  Y@^  Desktop Environment: -")
