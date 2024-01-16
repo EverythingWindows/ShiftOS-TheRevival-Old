@@ -86,6 +86,7 @@ Partial Class ShiftOSMenu
         '
         'btn_StoryMode
         '
+        Me.btn_StoryMode.Enabled = False
         Me.btn_StoryMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_StoryMode.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btn_StoryMode.ForeColor = System.Drawing.Color.White

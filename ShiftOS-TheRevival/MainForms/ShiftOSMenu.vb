@@ -155,7 +155,7 @@ Public Class ShiftOSMenu
             End If
             If TheUpdater.WhatVersion = My.Resources.CurrentVersion Then
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
-                CheckUpdate()
+                'CheckUpdate()
             Else
                 btn_Aboot.Enabled = False
                 btn_Exit.Enabled = False
@@ -191,7 +191,7 @@ Public Class ShiftOSMenu
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\saved")
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
             End If
-            CheckUpdate()
+            'CheckUpdate()
         End If
     End Sub
 
