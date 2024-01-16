@@ -148,25 +148,25 @@ Public Class ShiftOSMenu
     Private Sub CheckInstall()
         If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
             Dim CurrentVersion As String = My.Resources.CurrentVersion
-            If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt") = True Then
-                TheUpdater.WhatVersion = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
-            Else
-                TheUpdater.WhatVersion = "0.2.4"
-            End If
-            If TheUpdater.WhatVersion = My.Resources.CurrentVersion Then
-                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
-                'CheckUpdate()
-            Else
-                btn_Aboot.Enabled = False
-                btn_Exit.Enabled = False
-                btn_FreeRoam.Enabled = False
-                btn_StoryMode.Enabled = False
-                ShouldUpdate = True
-                ShiftOSUpdater.Show()
-                ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & Environment.NewLine & "Update now to get more features."                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."
-                'ShiftOSUpdater.Label2.Text = "Update function is temporarily disabled." & Environment.NewLine & "Click the 'Reset' to reset the save"
-                'ShiftOSUpdater.Button2.Text = "Reset"
-            End If
+            'If File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt") = True Then
+            '    TheUpdater.WhatVersion = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt")
+            'Else
+            '    TheUpdater.WhatVersion = "0.2.4"
+            'End If
+            'If TheUpdater.WhatVersion = My.Resources.CurrentVersion Then
+            '    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\version.txt", My.Resources.CurrentVersion)
+            '    'CheckUpdate()
+            'Else
+            '    btn_Aboot.Enabled = False
+            '    btn_Exit.Enabled = False
+            '    btn_FreeRoam.Enabled = False
+            '    btn_StoryMode.Enabled = False
+            '    ShouldUpdate = True
+            '    ShiftOSUpdater.Show()
+            '    ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & Environment.NewLine & "Update now to get more features."                'ShiftOSUpdater.Label2.Text = "A new version, " & CurrentVersion & " is available." & Environment.NewLine & "Your version is " & TheUpdater.WhatVersion & "Update now to get more features."
+            '    'ShiftOSUpdater.Label2.Text = "Update function is temporarily disabled." & Environment.NewLine & "Click the 'Reset' to reset the save"
+            '    'ShiftOSUpdater.Button2.Text = "Reset"
+            'End If
         Else
             If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS") = True Then
                 If Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\ShiftOS\ShiftFS") = True Then
