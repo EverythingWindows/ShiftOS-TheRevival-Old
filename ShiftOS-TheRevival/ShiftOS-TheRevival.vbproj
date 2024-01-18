@@ -99,6 +99,16 @@
     <Compile Include="Functions\InGame\ROMs\GUISCustomizations.vb" />
     <Compile Include="Functions\InGame\SystemManager\CodepointSystem.vb" />
     <Compile Include="Functions\InGame\SystemManager\Terminate.vb" />
+    <Compile Include="Languages\lang_en.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lang_en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\lang_id.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lang_id.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.Designer.vb">
       <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
     </Compile>
@@ -267,6 +277,7 @@
     <Compile Include="TerminalApplications\Internal\Com_Help.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Hostname.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Infobar.vb" />
+    <Compile Include="TerminalApplications\Internal\Com_Lang.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Manual.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Mkdir.vb" />
     <Compile Include="TerminalApplications\Internal\Com_Pwd.vb" />
@@ -302,6 +313,16 @@
     <Compile Include="TerminalApplications\Internal\Com_Zip.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Languages\lang_en.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>lang_en.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\lang_id.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>lang_id.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Applications\DuWM\Shifter\Categories\DuWM_Shifter_About.resx">
       <DependentUpon>DuWM_Shifter_About.vb</DependentUpon>
     </EmbeddedResource>

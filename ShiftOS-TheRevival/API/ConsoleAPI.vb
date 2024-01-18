@@ -1,5 +1,6 @@
 ﻿Module ConsoleAPI
     Public StayAtChapter As Boolean = False             'If this set to true, then intro for chapters are mostly going to be in
+    Public NewBackground As System.ComponentModel.BackgroundWorker
 
     Public Sub Console_Windowed()
         Console.WindowState = FormWindowState.Normal
@@ -42,5 +43,26 @@
         'Console.TextBox1.Select(Console.TextBox1.Lines.Length - 1, 0)
         Console.TextBox1.Select(Console.TextBox1.Lines.Length - 1, 0)
         Console.TextBox1.ScrollToCaret()
+    End Sub
+
+    Public Function NewBackgroundWorker(WorkSub As System.ComponentModel.DoWorkEventHandler, ProgressSub As System.ComponentModel.ProgressChangedEventHandler, CompleteSub As System.ComponentModel.RunWorkerCompletedEventHandler)
+        NewLine("NewBW")
+        NewBackground = New ComponentModel.BackgroundWorker
+        NewBackground.WorkerReportsProgress = True
+        NewBackground.WorkerSupportsCancellation = True
+        AddHandler NewBackground.DoWork, WorkSub
+        AddHandler NewBackground.ProgressChanged, ProgressSub
+        AddHandler NewBackground.RunWorkerCompleted, CompleteSub
+        NewBackground.RunWorkerAsync()
+
+        'Return NewBackground
+    End Function
+
+    Public Sub StopBackgroundWorker(WhichBackgroundWorker As System.ComponentModel.BackgroundWorker)
+        If WhichBackgroundWorker IsNot Nothing AndAlso WhichBackgroundWorker.WorkerSupportsCancellation Then
+            ' Request cancellation
+            NewLine("CloseBW")
+            WhichBackgroundWorker.CancelAsync()
+        End If
     End Sub
 End Module

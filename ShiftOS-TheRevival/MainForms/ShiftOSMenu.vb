@@ -28,6 +28,7 @@ Public Class ShiftOSMenu
                 Try
                     Strings.IsFree = True
                     Strings.OnceInfo(6) = "free"
+                    Strings.OnceInfo(9) = 1
                     IsConsoleParent = True
                     FreeRoamMode()
                     Console.Show()

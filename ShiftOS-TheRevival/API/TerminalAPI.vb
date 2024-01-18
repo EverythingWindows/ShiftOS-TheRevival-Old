@@ -309,21 +309,25 @@ Module TerminalAPI
             Case "shutdown", "shut down"
                 TerminateShiftOS()
             Case "startg"
-                If Strings.AvailableFeature(35) = 1 Then
-                    If IsStartG = False Then
-                        StartG()
-                        AdvancedCommand = False
-                        NormalCommand()
-                    End If
-                End If
+                NormalCommand()
+                Undeveloped()
+                'If Strings.AvailableFeature(35) = 1 Then
+                '    If IsStartG = False Then
+                '        StartG()
+                '        AdvancedCommand = False
+                '        NormalCommand()
+                '    End If
+                'End If
             Case "stopg"
-                If Strings.AvailableFeature(35) = 1 Then
-                    If IsStartG = True Then
-                        StopG()
-                        AdvancedCommand = False
-                        NormalCommand()
-                    End If
-                End If
+                NormalCommand()
+                Undeveloped()
+                'If Strings.AvailableFeature(35) = 1 Then
+                '    If IsStartG = True Then
+                '        StopG()
+                '        AdvancedCommand = False
+                '        NormalCommand()
+                '    End If
+                'End If
             Case "textpad"
                 If Strings.AvailableFeature(17) = "1" Then
                     TextPad_WarnFile()
@@ -401,6 +405,11 @@ Module TerminalAPI
                 If Strings.AvailableFeature(4) = "1" Then
                     Infobar()
                 End If
+            End If
+            If command Like "lang *" Then
+                Lang()
+                AdvancedCommand = False
+                NormalCommand()
             End If
             If command Like "taskkill *" Then
                 Taskkill()
